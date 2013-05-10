@@ -1,0 +1,96 @@
+@model IEnumerable<Request>
+
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Models
+@using CaucasianPearl.Models.EDM;
+@using Resources.Request
+@using Resources.Shared
+
+@{
+    ViewBag.Title = RequestViewRes.Request;
+}
+
+<h2>@RequestViewRes.Request</h2>
+
+<p>
+    @Html.ActionLink(
+        RequestViewRes.AddComment,
+        Consts.Actions.Create
+    )
+</p>
+
+@foreach (var request in Model)
+{
+    <div>
+        @request.Name, @request.City, @String.Format("{0:g}", request.RequestDateTime)
+        
+        <div>
+            <span class="display-label">@RequestModelRes.Phone:</span>
+            <div class="display-field">
+                @request.Phone
+            </div>
+            
+            <span class="display-label">@RequestModelRes.Email:</span>
+            <div class="display-field">
+                @request.Email
+            </div>
+
+            <span class="display-label">@RequestModelRes.Content:</span>
+            <div class="display-field">
+                @(request.Content.Length < 100 ? request.Content : request.Content.Substring(0, 150) + "...")
+            </div>
+
+            <span class="display-label">@RequestModelRes.Status:</span>
+            <div class="display-field">
+                @request.Status
+            </div>
+            
+            <span class="display-label">@RequestModelRes.Comment:</span>
+            <div class="display-field">
+                @(request.Comment.Length < 100 ? request.Comment : request.Comment.Substring(0, 150) + "...")
+            </div>
+
+            @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+            {
+                <p>
+                    @Html.ActionLink(
+                        linkText: SharedViewRes.Edit,
+                        actionName: Consts.Actions.Edit,
+                        routeValues: new {id = request.ID}
+                         ) |
+                    @Html.ActionLink(
+                        linkText: SharedViewRes.Delete,
+                        actionName: Consts.Actions.Delete,
+                        routeValues: new {id = request.ID}
+                         )
+                </p>
+            }
+        </div>
+        
+        @Html.ActionLink(
+            linkText: @RequestViewRes.Details,
+            actionName: Consts.Actions.Details,
+            routeValues: new {id = request.ID})
+    </div>
+    
+    if (request != Model.Last())
+    {
+        <hr />
+    }
+}
+
+<br /><br />
+
+<div class="paginator">
+    @Html.Partial(
+        Consts.UserControlsPaths.Paginator,
+        (Paginator.GetLinks(
+            DependencyResolverHelper<IBaseService<Request>>.GetService().Count(Request.QueryString),
+            Consts.Paginator.RequestLinksPerPage,
+            Consts.Paginator.RequestNumberOfVisibleLinks)
+        )
+    )
+</div>

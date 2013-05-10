@@ -1,0 +1,115 @@
+﻿@model WrapperModel
+
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Core.Extensions
+@using CaucasianPearl.Core.Helpers;
+@using CaucasianPearl.Models
+@using Resources.Shared;
+@using Resources.Event;
+@using Resources.News;
+
+@{
+    ViewBag.Title = SharedRes.ProjectTitle;
+}
+
+<div class="wrapper-table">
+    <table>
+        <tr>
+            <!-- Events -->
+            <td>
+                <div class="events-block">
+                    <h2>@EventViewRes.Events</h2>
+                </div>
+
+                @if (Request.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+                {
+                    <p>
+                        @Html.ActionLink(
+                            linkText: EventViewRes.CreateEvent,
+                            actionName: Consts.Actions.Create,
+                            controllerName: Consts.Controllers.Event.Name,
+                            routeValues: null,
+                            htmlAttributes: new { @class = "link" }
+                        )
+                    </p>
+                }
+
+                <table>
+                    @foreach (var @event in Model.Events)
+                    {
+                        <tr>
+                            <td style="text-align: center;">
+                                <div class="event-image">
+                                    @Html.ActionImage(
+                                        action: Consts.Actions.GetByShortName,
+                                        controller: Consts.Controllers.Event.Name,
+                                        routeValues: new { shortname = @event.ShortName },
+                                        imagePath: ImageHelper.GetImageUrl(
+                                            @event, Consts.Controllers.Event.EventImagesFolder),
+                                            alt: @event.Name
+                                    )
+                                </div>
+                            </td>
+                            <td style="text-align: center;">
+                                @Html.ActionLink(
+                                    @event.Name,
+                                    actionName: Consts.Actions.GetByShortName,
+                                    controllerName: Consts.Controllers.Event.Name,
+                                    routeValues: new { shortname = @event.ShortName },
+                                    htmlAttributes: new { @class = "link" }
+                                )
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </td>
+            <!-- OneNews -->
+            <td>
+                <div class="news-block">
+                    <h2>@NewsViewRes.News</h2>
+                </div>
+
+                @if (Request.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+                {
+                    <p>
+                        @Html.ActionLink(NewsViewRes.CreateNews,
+                            actionName: Consts.Actions.Create,
+                            controllerName: Consts.Controllers.OneNews.Name,
+                            routeValues: null,
+                            htmlAttributes: new { @class = "link" }
+                        )
+                    </p>
+                }
+
+                <table>
+                    @foreach (var oneNews in Model.OneNews)
+                    {
+                        <tr>
+                            <td style="text-align: center;">
+                                <div class="oneNews-image">
+                                    @Html.ActionImage(
+                                        Consts.Actions.GetByShortName,
+                                        controller: Consts.Controllers.OneNews.Name,
+                                        routeValues: new { shortname = oneNews.ShortName },
+                                        imagePath: ImageHelper.GetImageUrl(
+                                            oneNews, Consts.Controllers.OneNews.OneNewsImagesFolder),
+                                            alt: oneNews.Name
+                                    )
+                                </div>
+                            </td>
+                            <td style="text-align: center;">
+                                @Html.ActionLink(oneNews.Name,
+                                    actionName: Consts.Actions.GetByShortName,
+                                    controllerName: Consts.Controllers.OneNews.Name,
+                                    routeValues: new { shortname = oneNews.ShortName },
+                                    htmlAttributes: new { @class = "link" }
+                                )
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

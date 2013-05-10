@@ -1,0 +1,55 @@
+@model CaucasianPearl.Models.EDM.Feedback
+
+@using CaucasianPearl.Core.Constants
+@using Resources.Feedback
+@using Resources.Feedback
+@using Resources.Shared
+
+@{
+    ViewBag.Title = FeedbackViewRes.Feedback;
+}
+
+<h2>@FeedbackViewRes.Feedback</h2>
+
+<p>
+    @Html.ActionLink(
+        linkText: @FeedbackViewRes.BackToList,
+        actionName: Consts.Actions.Index)
+</p>
+
+<div>
+    @Model.Name, @Model.City, @String.Format("{0:g}", Model.FeedbackDateTime)
+
+    <div>
+        <span class="display-label">@FeedbackModelRes.Comment:</span>
+        <div class="display-field">@Model.Comment</div>
+
+        @if (!string.IsNullOrWhiteSpace(@Model.Suggestion))
+        {
+            <span class="display-label">@FeedbackModelRes.Suggestion:</span>
+            <div class="display-field">@Model.Suggestion</div>
+        }
+
+        @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+        {
+            <span class="display-label">@FeedbackModelRes.IsApproved:</span>
+            <div class="display-field">@Model.IsApproved</div>
+        }
+
+        @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+        {
+            <p>
+                @Html.ActionLink(
+                    linkText: SharedViewRes.Edit,
+                    actionName: Consts.Actions.Edit,
+                    routeValues: new { id = Model.ID }
+                        ) |
+                @Html.ActionLink(
+                    linkText: SharedViewRes.Delete,
+                    actionName: Consts.Actions.Delete,
+                    routeValues: new { id = Model.ID }
+                        )
+            </p>
+        }
+    </div>
+</div>

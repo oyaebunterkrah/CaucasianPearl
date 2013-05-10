@@ -1,0 +1,31 @@
+@model CaucasianPearl.Models.EDM.Feedback
+
+@using CaucasianPearl.Core.Constants
+@using Resources.Feedback
+@using Resources.Shared
+
+@{
+    ViewBag.Title = FeedbackViewRes.Feedback;
+}
+
+<h2>@FeedbackViewRes.AddComment</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@FeedbackViewRes.Feedback</legend>
+
+		@Html.Partial("CreateOrEdit", Model)
+
+        <p>
+            <input type="submit" value="@SharedViewRes.Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink(@FeedbackViewRes.BackToList, Consts.Actions.Index)
+</div>
+
+

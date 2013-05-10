@@ -1,0 +1,100 @@
+﻿@model IEnumerable<OneNews>
+
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Core.Extensions
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Models
+@using CaucasianPearl.Models.EDM
+@using Resources.News
+@using Resources.Shared
+
+@{
+    ViewBag.Title = Consts.Title;
+}
+
+<p>
+    @Html.ActionLink(
+        SharedViewRes.ToHomePage,
+        actionName: Consts.Actions.Index,
+        controllerName: Consts.Controllers.Home.Name,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" }
+    )
+</p>
+
+@if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+{
+    <p>
+        @Html.ActionLink(
+            NewsViewRes.CreateNews,
+            actionName: Consts.Actions.Create,
+            controllerName: Consts.Controllers.OneNews.Name,
+            routeValues: null,
+            htmlAttributes: new { @class = "link" }
+        )
+    </p>
+}
+
+<table>
+    @foreach (var oneNews in Model)
+    {
+        <tr>
+            <td style="text-align: center;">
+                <div class="model-image">
+                    @Html.ActionImage(
+                        Consts.Actions.GetByShortName,
+                        controller: Consts.Controllers.OneNews.Name,
+                        routeValues: new { shortname = oneNews.ShortName },
+                        imagePath: ImageHelper.GetImageUrl(oneNews, Consts.Controllers.OneNews.OneNewsImagesFolder),
+                        alt: oneNews.Name
+                    )
+                </div>
+            </td>
+            <td style="text-align: center;">
+                @Html.ActionLink(
+                    oneNews.Name,
+                    actionName: Consts.Actions.GetByShortName,
+                    controllerName: Consts.Controllers.OneNews.Name,
+                    routeValues: new { shortname = oneNews.ShortName },
+                    htmlAttributes: new { @class = "link" }
+                     )
+                |
+            </td>
+
+            @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+            {
+                <td>
+                    <!-- Вверх -->
+                    @Html.ActionLink(
+                        SharedViewRes.Up,
+                        Consts.Actions.Up,
+                        new { id = oneNews.ID }
+                         ) |
+                </td>
+                <td>
+                    <!-- Вниз -->
+                    @Html.ActionLink(
+                        SharedViewRes.Down,
+                        Consts.Actions.Down,
+                        new { id = oneNews.ID }
+                    )
+                </td>
+            }
+        </tr>
+    }
+</table>
+
+<br /><br />
+
+<div class="paginator">
+    @Html.Partial(
+        Consts.UserControlsPaths.Paginator,
+        (Paginator.GetLinks(
+            DependencyResolverHelper<IUrlFriendlyService<OneNews>>.GetService().Count(Request.QueryString),
+            Consts.Paginator.NewsLinksPerPage,
+            Consts.Paginator.NewsNumberOfVisibleLinks)
+        )
+    )
+</div>

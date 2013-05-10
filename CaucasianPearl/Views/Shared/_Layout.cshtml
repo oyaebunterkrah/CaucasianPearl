@@ -1,0 +1,106 @@
+﻿@using CaucasianPearl
+@using CaucasianPearl.Core.Constants
+@using Resources.Shared
+@using Resources.TopMenu
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>@SharedRes.ProjectTitle</title>
+        
+        <link href="@Url.Content("~/content/img/favicon.ico")" rel="site icon" type="image/x-icon" />
+        
+        @Styles.Render("~/content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">
+                        @Html.ActionLink(
+                            SharedRes.ProjectTitle,
+                            actionName: Consts.Actions.Index,
+                            controllerName: Consts.Controllers.Home.Name
+                        )
+                    </p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial(Consts.UserControlsPaths.LoginPartial)
+                        @Html.Partial(Consts.UserControlsPaths.CulturePartial)
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: TopMenuRes.Home,
+                                    actionName: Consts.Actions.Index,
+                                    controllerName: Consts.Controllers.Home.Name)
+                            </li>
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: TopMenuRes.Events,
+                                    actionName: Consts.Actions.Index,
+                                    controllerName: Consts.Controllers.Event.Name)
+                            </li>
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: TopMenuRes.News,
+                                    actionName: Consts.Actions.Index,
+                                    controllerName: Consts.Controllers.OneNews.Name)
+                            </li>
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: TopMenuRes.About,
+                                    actionName: Consts.Controllers.Home.Actions.About,
+                                    controllerName: Consts.Controllers.Home.Name)
+                            </li>
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: TopMenuRes.Requests,
+                                    actionName: Consts.Actions.Index,
+                                    controllerName: Consts.Controllers.Request.Name)
+                            </li>
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: TopMenuRes.Feedbacks,
+                                    actionName: Consts.Actions.Index,
+                                    controllerName: Consts.Controllers.Feedback.Name)
+                            </li>
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: TopMenuRes.Contacts,
+                                    actionName: Consts.Controllers.Home.Actions.Contacts,
+                                    controllerName: Consts.Controllers.Home.Name)
+                            </li>
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: TopMenuRes.Contact,
+                                    actionName: Consts.Controllers.Home.Actions.Contact,
+                                    controllerName: Consts.Controllers.Home.Name)
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year | Designed by Artem Pogosoff</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

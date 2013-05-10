@@ -1,0 +1,20 @@
+﻿@model HandleErrorInfo
+
+@using CaucasianPearl.Core.Constants
+
+@{
+    ViewBag.Title = "Ошибка";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <h2>
+        @ViewBag.ErrorMessage. Вернуться на предыдущую <a href="@Url.Content(ViewBag.RedirectedUrl)" alt="Вернуться назад">страницу</a>
+    </h2>
+}
+else
+{
+    <h2>
+        Во время обработки Вашего запроса произошла неожиданная ошибка. Извините.
+    </h2>
+}

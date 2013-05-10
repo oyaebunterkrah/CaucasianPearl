@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Event>
+
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Core.Extensions
+@using CaucasianPearl.Core.Helpers;
+@using CaucasianPearl.Models
+@using CaucasianPearl.Models.EDM;
+@using Resources.Event
+@using Resources.Shared
+
+@{
+    ViewBag.Title = Consts.Title;
+}
+
+<p>
+    @Html.ActionLink(
+        SharedViewRes.ToHomePage,
+        Consts.Actions.Index,
+        controllerName: Consts.Controllers.Home.Name,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" }
+    )
+</p>
+
+@if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+{
+    <p>
+        @Html.ActionLink(
+            EventViewRes.CreateEvent,
+            actionName: Consts.Actions.Create,
+            controllerName: Consts.Controllers.Event.Name,
+            routeValues: null,
+            htmlAttributes: new { @class = "link" }
+        )
+    </p>
+}
+
+<table>
+    @foreach (var @event in Model)
+    {
+        <tr>
+            <td style="text-align: center;">
+                <div class="model-image">
+                    @Html.ActionImage(
+                        Consts.Actions.GetByShortName,
+                        Consts.Controllers.Event.Name,
+                        routeValues: new { shortname = @event.ShortName },
+                        imagePath: ImageHelper.GetImageUrl(@event, Consts.Controllers.Event.EventImagesFolder), alt: @event.Name
+                    )
+                </div>
+            </td>
+            <td style="text-align: center;">
+                @Html.ActionLink(
+                    @event.Name,
+                    Consts.Actions.GetByShortName,
+                    controllerName: Consts.Controllers.Event.Name,
+                    routeValues: new { shortname = @event.ShortName },
+                    htmlAttributes: new { @class = "link" }
+                )
+            </td>
+            
+            @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+            {
+                <td>
+                    <!-- Вверх -->
+                    @Html.ActionLink(
+                        SharedViewRes.Up,
+                        Consts.Actions.Up,
+                        new { id = @event.ID }
+                         ) |
+                </td>
+                <td>
+                    <!-- Вниз -->
+                    @Html.ActionLink(
+                        SharedViewRes.Down,
+                        Consts.Actions.Down,
+                        new { id = @event.ID }
+                    )
+                </td>
+            }
+        </tr>
+    }
+</table>
+
+<br /><br />
+
+<div class="paginator">
+    @Html.Partial(
+        Consts.UserControlsPaths.Paginator,
+        (Paginator.GetLinks(
+            DependencyResolverHelper<IUrlFriendlyService<Event>>.GetService().Count(Request.QueryString),
+            Consts.Paginator.EventLinksPerPage,
+            Consts.Paginator.EventNumberOfVisibleLinks)
+        )
+    )
+</div>

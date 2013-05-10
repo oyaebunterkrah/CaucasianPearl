@@ -1,0 +1,22 @@
+﻿@using CaucasianPearl;
+@using CaucasianPearl.Core.Constants
+
+@Html.ActionLink(
+    Consts.Culture.Russian,
+    Consts.Controllers.Account.Actions.ChangeCulture,
+    Consts.Controllers.Account.Name,
+    new {
+        lang = Consts.Culture.Ru,
+        returnUrl = Request.RawUrl
+    },
+    null)
+
+@Html.ActionLink(
+    Consts.Culture.Armenian,
+    Consts.Controllers.Account.Actions.ChangeCulture,
+    Consts.Controllers.Account.Name,
+    new {
+        lang = Consts.Culture.Hy,
+        returnUrl = Request.RawUrl
+    },
+    null)

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaucasianPearl", "CaucasianPearl\CaucasianPearl.csproj", "{87570E03-5CF8-4BAC-8221-4B66C1A2BAAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{85EE7365-BE65-4E9C-8928-76920DB73783}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87570E03-5CF8-4BAC-8221-4B66C1A2BAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87570E03-5CF8-4BAC-8221-4B66C1A2BAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87570E03-5CF8-4BAC-8221-4B66C1A2BAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87570E03-5CF8-4BAC-8221-4B66C1A2BAAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85EE7365-BE65-4E9C-8928-76920DB73783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85EE7365-BE65-4E9C-8928-76920DB73783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85EE7365-BE65-4E9C-8928-76920DB73783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85EE7365-BE65-4E9C-8928-76920DB73783}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

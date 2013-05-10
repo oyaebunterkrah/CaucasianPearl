@@ -1,0 +1,45 @@
+﻿@model object
+
+@using CaucasianPearl;
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.Helpers
+
+<div class="editor-form">
+    @if (ViewData.TemplateInfo.TemplateDepth > 1) {
+        @ViewData.ModelMetadata.SimpleDisplayText
+    }
+    else {
+        
+        foreach (var property in ViewData.ModelMetadata.Properties.Where(p => p.ShowForEdit && !ViewData.TemplateInfo.Visited(p))) {
+            if (property.HideSurroundingHtml) {
+                    @Html.Editor(property.PropertyName)
+                }
+                else {
+                    <div class="object-editor-property">
+                        <div class="editor-label">@Html.Label(property.PropertyName)</div>
+                        <div class="editor-field @GetInputClass(property.DataTypeName)">@Html.Editor(property.PropertyName)</div>
+                        @if (property.IsRequired) {
+                            <span class="required">*</span>
+                        } else {
+                            @(string.Empty)
+                        }                
+                        <span class="editor-validation-warn">@Html.ValidationMessage(property.PropertyName)</span>
+                        <div class="clear"></div>
+                    </div>
+                }
+            }
+        }
+</div>
+
+@functions {
+    private string GetInputClass(string dataTypeName)
+    {
+        var inputClass = StringHelper.FirstCharToLower(Consts.DataType.Text.ToString());
+
+        Consts.DataType dataType;
+        if (Enum.TryParse(dataTypeName, out dataType))
+            inputClass = StringHelper.FirstCharToLower(dataType.ToString());
+
+        return inputClass;
+    }
+}

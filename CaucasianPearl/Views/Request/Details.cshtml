@@ -1,0 +1,69 @@
+@model CaucasianPearl.Models.EDM.Request
+
+@using CaucasianPearl.Core.Constants
+@using Resources.Request
+@using Resources.Shared
+
+@{
+    ViewBag.Title = RequestViewRes.Request;
+}
+
+<h2>@RequestViewRes.Request</h2>
+
+<p>
+    @Html.ActionLink(
+        linkText: @RequestViewRes.BackToList,
+        actionName: Consts.Actions.Index)
+</p>
+
+<div>
+    @Model.Name, @Model.City, @String.Format("{0:g}", Model.RequestDateTime)
+        
+    <div>
+        <span class="display-label">@RequestModelRes.Phone:</span>
+        <div class="display-field">
+            @Model.Phone
+        </div>
+            
+        <span class="display-label">@RequestModelRes.Email:</span>
+        <div class="display-field">
+            @Model.Email
+        </div>
+        
+        <span class="display-label">@RequestModelRes.Content:</span>
+        <div class="display-field">
+            @(Model.Content.Length < 100 ? Model.Content : Model.Content.Substring(0, 150) + "...")
+        </div>
+        
+        <span class="display-label">@RequestModelRes.Status:</span>
+        <div class="display-field">
+            @Model.Status
+        </div>
+        
+        <span class="display-label">@RequestModelRes.Comment:</span>
+        <div class="display-field">
+            @(Model.Comment.Length < 100 ? Model.Comment : Model.Comment.Substring(0, 150) + "...")
+        </div>
+
+        @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+        {
+            <p>
+                @Html.ActionLink(
+                    linkText: SharedViewRes.Edit,
+                    actionName: Consts.Actions.Edit,
+                    routeValues: new {id = Model.ID}
+                        ) |
+                @Html.ActionLink(
+                    linkText: SharedViewRes.Delete,
+                    actionName: Consts.Actions.Delete,
+                    routeValues: new {id = Model.ID}
+                        )
+            </p>
+        }
+    </div>
+        
+    @Html.ActionLink(
+        linkText: @RequestViewRes.Details,
+        actionName: Consts.Actions.Details,
+        routeValues: new {id = Model.ID})
+</div>

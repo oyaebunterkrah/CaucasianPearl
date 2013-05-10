@@ -1,0 +1,56 @@
+﻿@model CaucasianPearl.Models.EDM.Event
+
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.Helpers
+@using Resources.Event
+@using Resources.Shared
+
+@{
+    ViewBag.Title = string.Format("{0} | {1}", Model.Name, Consts.Title);
+}
+
+<p>
+    @Html.ActionLink(SharedViewRes.ToHomePage,
+        Consts.Actions.Index,
+        controllerName: Consts.Controllers.Home.Name,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" }
+    )
+    @Consts.BreadcrumbsSeparator
+    @Html.ActionLink(
+        EventViewRes.AllEvents,
+        actionName: Consts.Actions.Index,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" }
+    )
+    @Consts.BreadcrumbsSeparator
+    @Model.Name
+</p>
+
+@if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+{
+    <p>
+        @Html.ActionLink(
+            SharedViewRes.Edit,
+            Consts.Actions.Edit,
+            controllerName: Consts.Controllers.Event.Name,
+            routeValues: new { id = Model.ID },
+            htmlAttributes: new { @class = "link" }
+        )
+        @Consts.MenuSeparator
+        @Html.ActionLink(
+            SharedViewRes.Delete, actionName: Consts.Actions.Delete,
+            controllerName: Consts.Controllers.Event.Name,
+            routeValues: new { id = Model.ID },
+            htmlAttributes: new { @class = "link" }
+        )
+    </p>
+}
+
+<h2>@Model.Name</h2>
+
+<div class="model-image">
+    <img src='@(Url.Content(Consts.EntityImagesFolder))/@(Consts.Controllers.Event.EventImagesFolder)/@ImageHelper.GetImageName(Model)' alt='@Model.Name' />
+</div>
+
+@Html.DisplayForModel()

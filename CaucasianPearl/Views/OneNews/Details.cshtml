@@ -1,0 +1,58 @@
+﻿@model CaucasianPearl.Models.EDM.OneNews
+
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.Helpers
+@using Resources.News
+@using Resources.Shared
+
+@{
+    ViewBag.Title = string.Format("{0} | {1}", Model.Name, Consts.Title);
+}
+
+<p>
+    @Html.ActionLink(
+        SharedViewRes.ToHomePage,
+        actionName: Consts.Actions.Index,
+        controllerName: Consts.Controllers.Home.Name,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" }
+    )
+    @Consts.BreadcrumbsSeparator
+    @Html.ActionLink(
+        NewsViewRes.AllNews,
+        actionName: Consts.Actions.Index,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" }
+    )
+    @Consts.BreadcrumbsSeparator
+    @Model.Name
+</p>
+
+@if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+{
+    <p>
+        @Html.ActionLink(
+            SharedViewRes.Edit,
+            actionName: Consts.Actions.Edit,
+            controllerName: Consts.Controllers.OneNews.Name,
+            routeValues: new { id = Model.ID },
+            htmlAttributes: new { @class = "link" }
+        )
+        @Consts.MenuSeparator
+        @Html.ActionLink(
+            SharedViewRes.Delete,
+            actionName: Consts.Actions.Delete,
+            controllerName: Consts.Controllers.OneNews.Name,
+            routeValues: new { id = Model.ID },
+            htmlAttributes: new { @class = "link" }
+        )
+    </p>
+}
+
+<h2>@Model.Name</h2>
+
+<div class="model-image">
+    <img src='@(Url.Content(Consts.EntityImagesFolder))/@(Consts.Controllers.OneNews.OneNewsImagesFolder)/@ImageHelper.GetImageName(Model)' alt='@Model.Name' />
+</div>
+
+@Html.DisplayForModel()

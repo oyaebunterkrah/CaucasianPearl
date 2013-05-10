@@ -1,0 +1,21 @@
+﻿@model object
+
+<div class="display-form">
+    @if (Model == null) {
+        @ViewData.ModelMetadata.NullDisplayText
+    } else if (@ViewData.TemplateInfo.TemplateDepth > 1) {
+        @ViewData.ModelMetadata.SimpleDisplayText
+    } else {
+        foreach (var property in ViewData.ModelMetadata.Properties.Where(p => p.ShowForDisplay && !ViewData.TemplateInfo.Visited(p))) {
+            if (property.HideSurroundingHtml) {
+                @Html.Display(property.PropertyName)
+            } else {
+                <div class="object-display-property">
+                    <div class="display-label">@property.GetDisplayName()</div>
+                    <div class="display-field">@Html.Display(property.PropertyName)</div>
+                </div>
+                <div class="clear"></div>
+            }
+        }
+    }
+</div>

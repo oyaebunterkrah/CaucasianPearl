@@ -1,0 +1,93 @@
+@model IEnumerable<Feedback>
+
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Models
+@using CaucasianPearl.Models.EDM;
+@using PagedList
+@using PagedList.Mvc
+@using Resources.Feedback
+@using Resources.Shared
+
+@{
+    ViewBag.Title = FeedbackViewRes.Feedback;
+}
+
+<h2>@FeedbackViewRes.Feedback</h2>
+
+<p>
+    @Html.ActionLink(
+        FeedbackViewRes.AddComment,
+        Consts.Actions.Create
+    )
+</p>
+
+@foreach (var feedback in Model)
+{
+    <div>
+        @feedback.Name, @feedback.City, @String.Format("{0:g}", feedback.FeedbackDateTime)
+
+        <div>
+            <span class="display-label">@FeedbackModelRes.Comment:</span>
+            <div class="display-field">
+                @(feedback.Comment.Length < 100 ? feedback.Comment : feedback.Comment.Substring(0, 150) + "...")
+            </div>
+
+            @if (!string.IsNullOrWhiteSpace(feedback.Suggestion))
+            {
+                <span class="display-label">@FeedbackModelRes.Suggestion:</span>
+                <div class="display-field">
+                    @(feedback.Suggestion.Length < 100 ? feedback.Suggestion : feedback.Suggestion.Substring(0, 150) + "...")
+                </div>
+            }
+
+            @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+            {
+                <span class="display-label">@FeedbackModelRes.IsApproved:</span>@Html.DisplayFor(m => feedback.IsApproved)
+            }
+
+            @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+            {
+                <p>
+                    @Html.ActionLink(
+                        linkText: SharedViewRes.Edit,
+                        actionName: Consts.Actions.Edit,
+                        routeValues: new {id = feedback.ID}
+                         ) |
+                    @Html.ActionLink(
+                        linkText: SharedViewRes.Delete,
+                        actionName: Consts.Actions.Delete,
+                        routeValues: new {id = feedback.ID}
+                         )
+                </p>
+            }
+        </div>
+        
+        @Html.ActionLink(
+            linkText: @FeedbackViewRes.Details,
+            actionName: Consts.Actions.Details,
+            routeValues: new {id = feedback.ID})
+    </div>
+    
+    if (feedback != Model.Last())
+    {
+        <hr />
+    }
+}
+
+<br /><br />
+
+<div class="paginator">
+    @Html.Partial(
+        Consts.UserControlsPaths.Paginator,
+        (Paginator.GetLinks(
+            DependencyResolverHelper<IBaseService<Feedback>>.GetService().Count(Request.QueryString),
+            Consts.Paginator.FeedbackLinksPerPage,
+            Consts.Paginator.FeedbackNumberOfVisibleLinks)
+        )
+    )
+</div>
+
+@*@Html.PagedListPager(list: (IPagedList)ViewBag.OnePageOfProducts, generatePageUrl: page => Url.Action("Index", new { page }) )*@
