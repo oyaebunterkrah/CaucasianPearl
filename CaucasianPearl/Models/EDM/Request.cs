@@ -22,6 +22,6 @@ namespace CaucasianPearl.Models.EDM
         public string City { get; set; }
         public System.DateTime RequestDateTime { get; set; }
         public string Comment { get; set; }
-        public string Status { get; set; }
+        public int Status { get; set; }
     }
 }

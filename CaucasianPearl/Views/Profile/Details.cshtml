@@ -1,0 +1,110 @@
+@model CaucasianPearl.Models.EDM.Profile
+
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.Helpers
+@using Resources.Profile
+@using Resources.Shared
+
+@{
+    ViewBag.Title = string.Format("{0} {1} | {2}", Model.FirstName, Model.LastName, Consts.Title);
+}
+
+<h2>@ProfileViewRes.Profile: @Model.FirstName @Model.LastName</h2>
+
+<p>
+    @* На домашнюю страницу *@
+    @Html.ActionLink(
+        SharedViewRes.ToHomePage,
+        actionName: Consts.Actions.Index,
+        controllerName: Consts.Controllers.Home.Name,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" }
+         )
+    @Consts.BreadcrumbsSeparator
+    @* Все новости *@
+    @Html.ActionLink(
+        ProfileViewRes.AllProfiles,
+        actionName: Consts.Actions.Index,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" }
+         )
+    @Consts.BreadcrumbsSeparator
+    @Model.FirstName @Model.LastName
+</p>
+
+@if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
+{
+    <p>
+        @* Редактировать *@
+        @Html.ActionLink(
+            SharedViewRes.Edit,
+            actionName: Consts.Actions.Edit,
+            controllerName: Consts.Controllers.Profile.Name,
+            routeValues: new { id = Model.ID },
+            htmlAttributes: new { @class = "link" }
+        )
+        @Consts.MenuSeparator
+        @* Удалить *@
+        @Html.ActionLink(
+            SharedViewRes.Delete,
+            actionName: Consts.Actions.Delete,
+            controllerName: Consts.Controllers.Profile.Name,
+            routeValues: new { id = Model.ID },
+            htmlAttributes: new { @class = "link" }
+        )
+    </p>
+}
+
+<div class="model-image">
+    <img src='@string.Format("{0}/{1}/{2}",
+                             (Url.Content(Consts.EntityImagesFolder)),
+                             (Consts.Controllers.Profile.ProfileImagesFolder),
+                             ImageHelper.GetImageName(Model))' alt="@Model.FirstName @Model.LastName"/>
+</div>
+
+<fieldset>
+    <legend>@Model.FirstName @Model.LastName</legend>
+    
+    <div class="display-form">
+        <div class="display-property">
+            <div class="display-label">@Html.LabelFor(model => model.UserName)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.UserName)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.Email)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Email)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.FirstName)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.FirstName)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.LastName)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.LastName)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.Group)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Group)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.ImageExt)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.ImageExt)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.ShortName)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.ShortName)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.Sequence)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Sequence)</div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</fieldset>
+
+<p>
+    @if (WebSecurity.IsAuthenticated && Roles.IsUserInRole(Consts.Roles.Admin)) {
+        @Html.ActionLink(SharedViewRes.Edit, Consts.Actions.Edit, new { id = Model.ID }) @:|
+    }
+    @Html.ActionLink(ProfileViewRes.BackToList, Consts.Actions.Index)
+</p>

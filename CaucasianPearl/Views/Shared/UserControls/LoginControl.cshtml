@@ -1,0 +1,54 @@
+﻿@using CaucasianPearl.Core.Constants
+@using Resources.Account
+
+@if (WebSecurity.IsAuthenticated) {
+    <text>
+        Добро пожаловать, @Html.ActionLink(@* Управление профилем *@
+                              linkText: User.Identity.Name,
+                              actionName: Consts.Controllers.Account.Actions.Manage,
+                              controllerName: Consts.Controllers.Account.Name,
+                              routeValues: null,
+                              htmlAttributes: new {
+                                  @class = "username",
+                                  title = AccountViewRes.Manage })!
+        @* Выход *@
+        @using (Html.BeginForm(
+            Consts.Controllers.Account.Actions.LogOff,
+            Consts.Controllers.Account.Name,
+            routeValues: new { returnUrl = ViewContext.HttpContext == null
+                                    ? string.Empty
+                                    : HttpUtility.HtmlEncode(ViewContext.HttpContext.Request.RawUrl) },
+            method: FormMethod.Post,
+            htmlAttributes: new {id = "logoutForm"}))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ActionLink(
+                linkText: AccountViewRes.LoginPartial_LogOff,
+                actionName: Consts.Controllers.Account.Actions.LogOff,
+                controllerName: Consts.Controllers.Account.Name,
+                routeValues: null,
+                htmlAttributes: new {href = "javascript:document.getElementById('logoutForm').submit()"})
+        }
+    </text>
+} else {
+    <ul>
+        <li>
+            @* Регистрация *@
+            @Html.ActionLink(
+                linkText: AccountViewRes.Login_Register,
+                actionName: Consts.Controllers.Account.Actions.Register,
+                controllerName: Consts.Controllers.Account.Name,
+                routeValues: null,
+                htmlAttributes: new { id = "registerLink" })
+        </li>
+        <li>
+            @* Вход *@
+            @Html.ActionLink(
+                linkText: AccountViewRes.LoginPartial_Login,
+                actionName: Consts.Controllers.Account.Actions.Login,
+                controllerName: Consts.Controllers.Account.Name,
+                routeValues: null,
+                htmlAttributes: new { id = "loginLink" })
+        </li>
+    </ul>
+}

@@ -23,8 +23,8 @@ namespace CaucasianPearl.Models.EDM
         public Nullable<System.TimeSpan> LastUpdatedTime { get; set; }
         public string LastUpdatedUser { get; set; }
         public string Content { get; set; }
-        public string ShortName { get; set; }
         public string ImageExt { get; set; }
+        public string ShortName { get; set; }
         public Nullable<int> Sequence { get; set; }
     }
 }

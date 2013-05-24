@@ -1,4 +1,4 @@
-﻿using CaucasianPearl.Models.Interface;
+﻿using CaucasianPearl.Core.DAL.Interface;
 
 namespace CaucasianPearl.Core.EntityServices.Interface
 {

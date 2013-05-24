@@ -54,3 +54,15 @@
 2013-05-10 18:04:37.2682|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
 2013-05-10 18:04:56.3463|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
 2013-05-10 18:43:58.7833|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
+2013-05-10 19:54:36.8617|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
+2013-05-10 20:05:17.8683|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
+2013-05-10 20:24:14.3164|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
+2013-05-10 20:32:42.8384|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
+2013-05-10 20:33:46.4981|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
+2013-05-10 20:39:40.8303|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
+2013-05-10 20:43:06.2821|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
+2013-05-10 20:43:21.5630|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
+2013-05-10 20:43:50.9246|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
+2013-05-10 20:44:03.2844|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
+2013-05-10 21:31:00.0825|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error
+2013-05-10 21:31:00.4945|ERROR|CaucasianPearl.Core.Services.Logging.LogFacade|Application_Error

@@ -117,7 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccessDenied" xml:space="preserve">
+    <value>Доступ запрещён</value>
+  </data>
+  <data name="DeleteForbidden" xml:space="preserve">
+    <value>Удаление запрещено</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="NotAuthorized" xml:space="preserve">
+    <value>Вы не авторизованы</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>Объект не найден</value>
+  </data>
+  <data name="UnexpectedError" xml:space="preserve">
+    <value>Возникла неожиданная ошибка</value>
+  </data>
   <data name="YouDidNotSelectAFile" xml:space="preserve">
     <value>Вы не выбрали файл</value>
+  </data>
+  <data name="YouDoNotHaveCreatePermissionsOnTheFlickrSite" xml:space="preserve">
+    <value>У Вас нет прав на СОЗДАНИЕ на сайте Flickr</value>
   </data>
 </root>

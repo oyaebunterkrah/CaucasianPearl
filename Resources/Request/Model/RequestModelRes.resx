@@ -132,8 +132,14 @@
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
   </data>
+  <data name="NotProcessed" xml:space="preserve">
+    <value>Не обработано</value>
+  </data>
   <data name="Phone" xml:space="preserve">
     <value>Телефон</value>
+  </data>
+  <data name="Processed" xml:space="preserve">
+    <value>Обработано</value>
   </data>
   <data name="RequestDateTime" xml:space="preserve">
     <value>Дата и время</value>

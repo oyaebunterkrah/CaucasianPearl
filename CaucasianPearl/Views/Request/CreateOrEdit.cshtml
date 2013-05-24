@@ -1,8 +1,15 @@
+@using CaucasianPearl.Core.Constants
+@using Resources.Request
+
 @model CaucasianPearl.Models.EDM.Request
 
-@using CaucasianPearl.Core.Constants
-
-@* This partial view defines form fields that will appear when creating and editing entities *@
+@{
+    var statuses = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "0", Text = RequestModelRes.NotProcessed, Selected = true },
+            new SelectListItem { Value = "1", Text = RequestModelRes.Processed }
+        };
+}
 
 <div class="editor-label">
     @Html.LabelFor(model => model.Name)
@@ -52,13 +59,13 @@
     @Html.ValidationMessageFor(model => model.Comment)
 </div>
 
-@if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+@if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
 {
     <div class="editor-label">
         @Html.LabelFor(model => model.Status)
     </div>
     <div class="editor-field">
-        @Html.EditorFor(model => model.Status)
+        @Html.DropDownListFor(model => model.Status, new SelectList(statuses, "Value", "Text", statuses.First(s => s.Selected).Value))
         @Html.ValidationMessageFor(model => model.Status)
     </div>
 }

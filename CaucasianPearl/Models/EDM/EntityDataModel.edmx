@@ -6,11 +6,25 @@
     <edmx:StorageModels>
     <Schema Namespace="caucasianpearldbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="caucasianpearldbModelStoreContainer">
+          <EntitySet Name="ContentBlock" EntityType="caucasianpearldbModel.Store.ContentBlock" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Event" EntityType="caucasianpearldbModel.Store.Event" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Feedback" EntityType="caucasianpearldbModel.Store.Feedback" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OneNews" EntityType="caucasianpearldbModel.Store.OneNews" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Profile" EntityType="caucasianpearldbModel.Store.Profile" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Request" EntityType="caucasianpearldbModel.Store.Request" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
+        <EntityType Name="ContentBlock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BlockId" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlaceHolderId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsPublished" Type="bit" Nullable="false" />
+          <Property Name="Sequence" Type="int" />
+        </EntityType>
         <EntityType Name="Event">
           <Key>
             <PropertyRef Name="ID" />
@@ -25,8 +39,8 @@
           <Property Name="Place" Type="nvarchar" MaxLength="256" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="CreatedBy" Type="int" />
-          <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
           <Property Name="ImageExt" Type="nchar" MaxLength="10" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
           <Property Name="Sequence" Type="int" />
         </EntityType>
         <EntityType Name="Feedback">
@@ -54,8 +68,22 @@
           <Property Name="LastUpdatedTime" Type="time" />
           <Property Name="LastUpdatedUser" Type="nvarchar" MaxLength="50" />
           <Property Name="Content" Type="nvarchar(max)" />
-          <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
           <Property Name="ImageExt" Type="nchar" MaxLength="10" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sequence" Type="int" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Group" Type="int" />
+          <Property Name="ImageExt" Type="nchar" MaxLength="10" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
           <Property Name="Sequence" Type="int" />
         </EntityType>
         <EntityType Name="Request">
@@ -70,17 +98,19 @@
           <Property Name="City" Type="nvarchar" MaxLength="20" />
           <Property Name="RequestDateTime" Type="datetime2" Nullable="false" />
           <Property Name="Comment" Type="nvarchar" MaxLength="500" />
-          <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="caucasianpearldbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="EntityDataModel" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CaucasianPearlContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Events" EntityType="caucasianpearldbModel.Event" />
           <EntitySet Name="Feedbacks" EntityType="caucasianpearldbModel.Feedback" />
           <EntitySet Name="News" EntityType="caucasianpearldbModel.OneNews" />
           <EntitySet Name="Requests" EntityType="caucasianpearldbModel.Request" />
+          <EntitySet Name="Profiles" EntityType="caucasianpearldbModel.Profile" />
+          <EntitySet Name="ContentBlocks" EntityType="caucasianpearldbModel.ContentBlock" />
         </EntityContainer>
         <EntityType Name="Event">
           <Key>
@@ -96,8 +126,8 @@
           <Property Name="Place" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="CreatedBy" Type="Int32" />
-          <Property Name="ShortName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="ImageExt" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="ShortName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Sequence" Type="Int32" />
         </EntityType>
         <EntityType Name="Feedback">
@@ -125,8 +155,8 @@
           <Property Name="LastUpdatedTime" Type="Time" Precision="7" />
           <Property Name="LastUpdatedUser" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Content" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="ShortName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="ImageExt" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="ShortName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Sequence" Type="Int32" />
         </EntityType>
         <EntityType Name="Request">
@@ -141,14 +171,40 @@
           <Property Name="City" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="RequestDateTime" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Comment" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Group" />
+          <Property Type="String" Name="ImageExt" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="ShortName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Sequence" />
+        </EntityType>
+        <EntityType Name="ContentBlock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BlockId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PlaceHolderId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Content" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsPublished" Nullable="false" />
+          <Property Type="Int32" Name="Sequence" Nullable="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="caucasianpearldbModelStoreContainer" CdmEntityContainer="EntityDataModel">
+        <EntityContainerMapping StorageEntityContainer="caucasianpearldbModelStoreContainer" CdmEntityContainer="CaucasianPearlContext">
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="caucasianpearldbModel.Event">
               <MappingFragment StoreEntitySet="Event">
@@ -211,6 +267,34 @@
                 <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="caucasianpearldbModel.Profile">
+              <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="ImageExt" ColumnName="ImageExt" />
+                <ScalarProperty Name="Group" ColumnName="Group" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContentBlocks">
+            <EntityTypeMapping TypeName="caucasianpearldbModel.ContentBlock">
+              <MappingFragment StoreEntitySet="ContentBlock">
+                <ScalarProperty Name="PlaceHolderId" ColumnName="PlaceHolderId" />
+                <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

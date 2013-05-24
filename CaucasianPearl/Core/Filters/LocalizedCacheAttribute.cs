@@ -66,6 +66,7 @@ namespace CaucasianPearl.Core.Filters
             }
 
             lang = value;
+
             return false;
         }
     }

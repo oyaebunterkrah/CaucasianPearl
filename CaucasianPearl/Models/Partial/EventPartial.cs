@@ -4,7 +4,7 @@ using CaucasianPearl.Models.Metadata;
 
 namespace CaucasianPearl.Models.EDM
 {
-    [MetadataType(typeof (EventMetadata))]
+    [MetadataType(typeof(EventMetadata))]
     public partial class Event : IUrlFriendly
     {
         bool IBase.CanBeDeleted()

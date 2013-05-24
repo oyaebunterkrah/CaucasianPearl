@@ -1,0 +1,94 @@
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Core.Services.FlickrNet
+@using CaucasianPearl.Core.UserControls
+@using Resources.Shared
+@using Resources.Gallery
+
+@model CaucasianPearl.Models.FlickrModel
+
+@{
+    ViewBag.Title = SharedRes.ProjectTitle;
+}
+
+<link type="text/css" href="@Url.Content("~/content/css/cp/photos.css")" rel="stylesheet" media="all" />
+
+<h2>@GalleryViewRes.Photosets</h2>
+
+@if (Model.Photosets.Count == 0)
+{
+    <span>@GalleryViewRes.NoPhotosetsFound</span>
+}
+else
+{
+    <div class="wrapper">
+        <div class="photo-content">
+            <ul class="photo-area" style="height: 238px;">
+                @foreach (var photoset in Model.Photosets)
+                {
+                    <li class="photo-item">
+                        <div>
+                            <span class="image-block">
+                                <a class="image-zoom" href="@Url.Action(
+                                                                actionName: Consts.Controllers.Gallery.Actions.Preview,
+                                                                controllerName: Consts.Controllers.Gallery.Name,
+                                                                routeValues: new
+                                                                    {
+                                                                        photoId = photoset.PrimaryPhoto.PhotoId,
+                                                                        photosetId = photoset.PhotosetId
+                                                                    })" title="@photoset.Title">
+                                    <img src="@photoset.PrimaryPhoto.Medium640Url" alt="@photoset.Title" title="@photoset.Title">
+                                </a>
+                            </span>
+                            <div class="photo-text">
+                                <h2 class="photo-title">
+                                    <a href="@Url.Action(actionName: Consts.Controllers.Gallery.Actions.Preview,
+                                                         controllerName: Consts.Controllers.Gallery.Name,
+                                                         routeValues: new
+                                                             {
+                                                                 photoId = photoset.PrimaryPhoto.PhotoId,
+                                                                 photosetId = photoset.PhotosetId
+                                                             })" title="@photoset.Title">@photoset.Title</a>
+                                </h2>
+                                @{
+                                    var i = Math.Abs(photoset.Photos.Count);
+                                    while (i >= 10)
+                                    {
+                                        i /= 10;
+                                    }
+
+                                    if (i == 1)
+                                    {
+                                        <p class="photo-count">@i фотография</p>
+                                    }
+                                    else if (i > 1 && i < 5)
+                                    {
+                                        <p class="photo-count">@i фотографии</p>
+                                    }
+                                    else if (i >= 5 && i < 5)
+                                    {
+                                        <p class="photo-count">@i фотографий</p>
+                                    }
+                                }
+                                <p class="photo-date">@photoset.DateCreated</p>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+<br /><br />
+
+<div class="paginator">
+    @Html.Partial(
+        Consts.UserControlsPaths.Paginator,
+        (PaginatorControl.GetLinks(
+            DependencyResolverHelper<IFlickrService>.GetService().PhotosetsCount(),
+            Consts.PaginatorControl.FlickrItemsPerPage,
+            Consts.PaginatorControl.FlickrNumberOfVisibleLinks)
+        )
+    )
+</div>

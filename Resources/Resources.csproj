@@ -49,11 +49,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Account\Error\AccountErrorRes.ru.Designer.cs">
-      <DependentUpon>AccountErrorRes.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Account\View\AccountViewRes.Designer.cs">
       <DependentUpon>AccountViewRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -64,8 +59,123 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Account\View\AccountViewRes.ru.Designer.cs">
-      <DependentUpon>AccountViewRes.ru.resx</DependentUpon>
+    <Compile Include="ContentBlock\Error\ContentBlockErrorRes.Designer.cs">
+      <DependentUpon>ContentBlockErrorRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ContentBlock\Error\ContentBlockErrorRes.hy.Designer.cs">
+      <DependentUpon>ContentBlockErrorRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ContentBlock\Model\ContentBlockModelRes.Designer.cs">
+      <DependentUpon>ContentBlockModelRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ContentBlock\Model\ContentBlockModelRes.hy.Designer.cs">
+      <DependentUpon>ContentBlockModelRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ContentBlock\Validation\ContentBlockValidationRes.Designer.cs">
+      <DependentUpon>ContentBlockValidationRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ContentBlock\Validation\ContentBlockValidationRes.hy.Designer.cs">
+      <DependentUpon>ContentBlockValidationRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ContentBlock\View\ContentBlockViewRes.Designer.cs">
+      <DependentUpon>ContentBlockViewRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ContentBlock\View\ContentBlockViewRes.hy.Designer.cs">
+      <DependentUpon>ContentBlockViewRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Gallery\Error\GalleryErrorRes.Designer.cs">
+      <DependentUpon>GalleryErrorRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Gallery\Error\GalleryErrorRes.hy.Designer.cs">
+      <DependentUpon>GalleryErrorRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Gallery\Model\GalleryModelRes.Designer.cs">
+      <DependentUpon>GalleryModelRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Gallery\Model\GalleryModelRes.hy.Designer.cs">
+      <DependentUpon>GalleryModelRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Gallery\Validation\GalleryValidationRes.Designer.cs">
+      <DependentUpon>GalleryValidationRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Gallery\Validation\GalleryValidationRes.hy.Designer.cs">
+      <DependentUpon>GalleryValidationRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Gallery\View\GalleryViewRes.Designer.cs">
+      <DependentUpon>GalleryViewRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Gallery\View\GalleryViewRes.hy.Designer.cs">
+      <DependentUpon>GalleryViewRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Profile\Error\ProfileErrorRes.Designer.cs">
+      <DependentUpon>ProfileErrorRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Profile\Error\ProfileErrorRes.hy.Designer.cs">
+      <DependentUpon>ProfileErrorRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Profile\Model\ProfileModelRes.Designer.cs">
+      <DependentUpon>ProfileModelRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Profile\Model\ProfileModelRes.hy.Designer.cs">
+      <DependentUpon>ProfileModelRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Profile\Validation\ProfileValidationRes.Designer.cs">
+      <DependentUpon>ProfileValidationRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Profile\Validation\ProfileValidationRes.hy.Designer.cs">
+      <DependentUpon>ProfileValidationRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Profile\View\ProfileViewRes.Designer.cs">
+      <DependentUpon>ProfileViewRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Profile\View\ProfileViewRes.hy.Designer.cs">
+      <DependentUpon>ProfileViewRes.hy.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -79,11 +189,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Request\Error\RequestErrorRes.ru.Designer.cs">
-      <DependentUpon>RequestErrorRes.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Request\Model\RequestModelRes.Designer.cs">
       <DependentUpon>RequestModelRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -91,11 +196,6 @@
     </Compile>
     <Compile Include="Request\Model\RequestModelRes.hy.Designer.cs">
       <DependentUpon>RequestModelRes.hy.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Request\Model\RequestModelRes.ru.Designer.cs">
-      <DependentUpon>RequestModelRes.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -109,11 +209,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Request\Validation\RequestValidationRes.ru.Designer.cs">
-      <DependentUpon>RequestValidationRes.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Request\View\RequestViewRes.Designer.cs">
       <DependentUpon>RequestViewRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -121,11 +216,6 @@
     </Compile>
     <Compile Include="Request\View\RequestViewRes.hy.Designer.cs">
       <DependentUpon>RequestViewRes.hy.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Request\View\RequestViewRes.ru.Designer.cs">
-      <DependentUpon>RequestViewRes.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -139,11 +229,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Event\Error\EventErrorRes.ru.Designer.cs">
-      <DependentUpon>EventErrorRes.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Event\Model\EventModelRes.Designer.cs">
       <DependentUpon>EventModelRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -151,11 +236,6 @@
     </Compile>
     <Compile Include="Event\Model\EventModelRes.hy.Designer.cs">
       <DependentUpon>EventModelRes.hy.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Event\Model\EventModelRes.ru.Designer.cs">
-      <DependentUpon>EventModelRes.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -169,11 +249,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Event\Validation\EventValidationRes.ru.Designer.cs">
-      <DependentUpon>EventValidationRes.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Event\View\EventViewRes.Designer.cs">
       <DependentUpon>EventViewRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -181,11 +256,6 @@
     </Compile>
     <Compile Include="Event\View\EventViewRes.hy.Designer.cs">
       <DependentUpon>EventViewRes.hy.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Event\View\EventViewRes.ru.Designer.cs">
-      <DependentUpon>EventViewRes.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -199,11 +269,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="News\Error\NewsErrorRes.ru.Designer.cs">
-      <DependentUpon>NewsErrorRes.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="News\Model\NewsModelRes.Designer.cs">
       <DependentUpon>NewsModelRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -211,11 +276,6 @@
     </Compile>
     <Compile Include="News\Model\NewsModelRes.hy.Designer.cs">
       <DependentUpon>NewsModelRes.hy.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="News\Model\NewsModelRes.ru.Designer.cs">
-      <DependentUpon>NewsModelRes.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -229,11 +289,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="News\Validation\NewsValidationRes.ru.Designer.cs">
-      <DependentUpon>NewsValidationRes.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="News\View\NewsViewRes.Designer.cs">
       <DependentUpon>NewsViewRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -241,11 +296,6 @@
     </Compile>
     <Compile Include="News\View\NewsViewRes.hy.Designer.cs">
       <DependentUpon>NewsViewRes.hy.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="News\View\NewsViewRes.ru.Designer.cs">
-      <DependentUpon>NewsViewRes.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -259,11 +309,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Feedback\Error\FeedbackErrorRes.ru.Designer.cs">
-      <DependentUpon>FeedbackErrorRes.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Feedback\Model\FeedbackModelRes.Designer.cs">
       <DependentUpon>FeedbackModelRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -271,11 +316,6 @@
     </Compile>
     <Compile Include="Feedback\Model\FeedbackModelRes.hy.Designer.cs">
       <DependentUpon>FeedbackModelRes.hy.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Feedback\Model\FeedbackModelRes.ru.Designer.cs">
-      <DependentUpon>FeedbackModelRes.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -289,11 +329,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Feedback\Validation\FeedbackValidationRes.ru.Designer.cs">
-      <DependentUpon>FeedbackValidationRes.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Feedback\View\FeedbackViewRes.Designer.cs">
       <DependentUpon>FeedbackViewRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -301,11 +336,6 @@
     </Compile>
     <Compile Include="Feedback\View\FeedbackViewRes.hy.Designer.cs">
       <DependentUpon>FeedbackViewRes.hy.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Feedback\View\FeedbackViewRes.ru.Designer.cs">
-      <DependentUpon>FeedbackViewRes.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -320,11 +350,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Account\Model\AccountModelRes.ru.Designer.cs">
-      <DependentUpon>AccountModelRes.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Account\Validation\AccountValidationRes.Designer.cs">
       <DependentUpon>AccountValidationRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -332,11 +357,6 @@
     </Compile>
     <Compile Include="Account\Validation\AccountValidationRes.hy.Designer.cs">
       <DependentUpon>AccountValidationRes.hy.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Account\Validation\AccountValidationRes.ru.Designer.cs">
-      <DependentUpon>AccountValidationRes.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -350,11 +370,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Shared\Error\SharedErrorRes.ru.Designer.cs">
-      <DependentUpon>SharedErrorRes.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Shared\SharedRes.Designer.cs">
       <DependentUpon>SharedRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -362,11 +377,6 @@
     </Compile>
     <Compile Include="Shared\SharedRes.hy.Designer.cs">
       <DependentUpon>SharedRes.hy.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Shared\SharedRes.ru.Designer.cs">
-      <DependentUpon>SharedRes.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -380,11 +390,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Shared\View\SharedViewRes.ru.Designer.cs">
-      <DependentUpon>SharedViewRes.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="TopMenu\TopMenuRes.Designer.cs">
       <DependentUpon>TopMenuRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -395,11 +400,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="TopMenu\TopMenuRes.ru.Designer.cs">
-      <DependentUpon>TopMenuRes.ru.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Shared\Validation\SharedValidationRes.Designer.cs">
       <DependentUpon>SharedValidationRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -407,11 +407,6 @@
     </Compile>
     <Compile Include="Shared\Validation\SharedValidationRes.hy.Designer.cs">
       <DependentUpon>SharedValidationRes.hy.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Shared\Validation\SharedValidationRes.ru.Designer.cs">
-      <DependentUpon>SharedValidationRes.ru.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -428,10 +423,6 @@
       <CustomToolNamespace>Resources.Account</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\Model\AccountModelRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AccountModelRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Account\Error\AccountErrorRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountErrorRes.hy.Designer.cs</LastGenOutput>
@@ -442,10 +433,6 @@
       <LastGenOutput>AccountErrorRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Account</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\Error\AccountErrorRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AccountErrorRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Account\Validation\AccountValidationRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountValidationRes.hy.Designer.cs</LastGenOutput>
@@ -454,10 +441,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountValidationRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Account</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Account\Validation\AccountValidationRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AccountValidationRes.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\View\AccountViewRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -470,9 +453,124 @@
       <CustomToolNamespace>Resources.Account</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\View\AccountViewRes.ru.resx">
+    <EmbeddedResource Include="ContentBlock\Error\ContentBlockErrorRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AccountViewRes.ru.Designer.cs</LastGenOutput>
+      <LastGenOutput>ContentBlockErrorRes.hy.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContentBlock\Error\ContentBlockErrorRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContentBlockErrorRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.ContentBlock</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContentBlock\Model\ContentBlockModelRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContentBlockModelRes.hy.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContentBlock\Model\ContentBlockModelRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContentBlockModelRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.ContentBlock</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContentBlock\Validation\ContentBlockValidationRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContentBlockValidationRes.hy.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContentBlock\Validation\ContentBlockValidationRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContentBlockValidationRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.ContentBlock</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContentBlock\View\ContentBlockViewRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContentBlockViewRes.hy.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContentBlock\View\ContentBlockViewRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ContentBlockViewRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.ContentBlock</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gallery\Error\GalleryErrorRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GalleryErrorRes.hy.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gallery\Error\GalleryErrorRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GalleryErrorRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Gallery</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gallery\Model\GalleryModelRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GalleryModelRes.hy.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gallery\Model\GalleryModelRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GalleryModelRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Gallery</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gallery\Validation\GalleryValidationRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GalleryValidationRes.hy.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gallery\Validation\GalleryValidationRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GalleryValidationRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Gallery</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gallery\View\GalleryViewRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GalleryViewRes.hy.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gallery\View\GalleryViewRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GalleryViewRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Gallery</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile\Error\ProfileErrorRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileErrorRes.hy.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile\Error\ProfileErrorRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileErrorRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Profile</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile\Model\ProfileModelRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileModelRes.hy.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile\Model\ProfileModelRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileModelRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Profile</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile\Validation\ProfileValidationRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileValidationRes.hy.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile\Validation\ProfileValidationRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileValidationRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Profile</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile\View\ProfileViewRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileViewRes.hy.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profile\View\ProfileViewRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfileViewRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Profile</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Request\Error\RequestErrorRes.hy.resx">
@@ -485,10 +583,6 @@
       <LastGenOutput>RequestErrorRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Request</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Request\Error\RequestErrorRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RequestErrorRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Request\Model\RequestModelRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RequestModelRes.hy.Designer.cs</LastGenOutput>
@@ -500,10 +594,6 @@
       <CustomToolNamespace>Resources.Request</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Request\Model\RequestModelRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RequestModelRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Request\Validation\RequestValidationRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RequestValidationRes.hy.Designer.cs</LastGenOutput>
@@ -512,10 +602,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RequestValidationRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Request</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Request\Validation\RequestValidationRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RequestValidationRes.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Request\View\RequestViewRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -527,10 +613,6 @@
       <CustomToolNamespace>Resources.Request</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Request\View\RequestViewRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RequestViewRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Event\Error\EventErrorRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EventErrorRes.hy.Designer.cs</LastGenOutput>
@@ -540,10 +622,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EventErrorRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Event</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Event\Error\EventErrorRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>EventErrorRes.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Event\Model\EventModelRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -556,10 +634,6 @@
       <CustomToolNamespace>Resources.Event</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Event\Model\EventModelRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>EventModelRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Event\Validation\EventValidationRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EventValidationRes.hy.Designer.cs</LastGenOutput>
@@ -569,10 +643,6 @@
       <LastGenOutput>EventValidationRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Event</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Event\Validation\EventValidationRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>EventValidationRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Event\View\EventViewRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EventViewRes.hy.Designer.cs</LastGenOutput>
@@ -581,11 +651,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EventViewRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Event</CustomToolNamespace>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Event\View\EventViewRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>EventViewRes.ru.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="News\Error\NewsErrorRes.hy.resx">
@@ -598,10 +663,6 @@
       <LastGenOutput>NewsErrorRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.News</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="News\Error\NewsErrorRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewsErrorRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="News\Model\NewsModelRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NewsModelRes.hy.Designer.cs</LastGenOutput>
@@ -613,10 +674,6 @@
       <CustomToolNamespace>Resources.News</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="News\Model\NewsModelRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewsModelRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="News\Validation\NewsValidationRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NewsValidationRes.hy.Designer.cs</LastGenOutput>
@@ -625,10 +682,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>NewsValidationRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.News</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="News\Validation\NewsValidationRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewsValidationRes.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="News\View\NewsViewRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -640,10 +693,6 @@
       <CustomToolNamespace>Resources.News</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="News\View\NewsViewRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewsViewRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Feedback\Error\FeedbackErrorRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FeedbackErrorRes.hy.Designer.cs</LastGenOutput>
@@ -653,10 +702,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FeedbackErrorRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Feedback</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Feedback\Error\FeedbackErrorRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>FeedbackErrorRes.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Feedback\Model\FeedbackModelRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -669,10 +714,6 @@
       <CustomToolNamespace>Resources.Feedback</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feedback\Model\FeedbackModelRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>FeedbackModelRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Feedback\Validation\FeedbackValidationRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FeedbackValidationRes.hy.Designer.cs</LastGenOutput>
@@ -681,10 +722,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FeedbackValidationRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Feedback</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Feedback\Validation\FeedbackValidationRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>FeedbackValidationRes.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Feedback\View\FeedbackViewRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -696,10 +733,6 @@
       <CustomToolNamespace>Resources.Feedback</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feedback\View\FeedbackViewRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>FeedbackViewRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Shared\Error\SharedErrorRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedErrorRes.hy.Designer.cs</LastGenOutput>
@@ -708,10 +741,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedErrorRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Shared</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Shared\Error\SharedErrorRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SharedErrorRes.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Shared\SharedRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -722,10 +751,6 @@
       <LastGenOutput>SharedRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Shared</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Shared\SharedRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SharedRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Shared\View\SharedViewRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedViewRes.hy.Designer.cs</LastGenOutput>
@@ -734,10 +759,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedViewRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Shared</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Shared\View\SharedViewRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SharedViewRes.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="TopMenu\TopMenuRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -747,10 +769,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TopMenuRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.TopMenu</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TopMenu\TopMenuRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>TopMenuRes.ru.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Shared\Validation\SharedValidationRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -761,12 +780,7 @@
       <LastGenOutput>SharedValidationRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.Shared</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Shared\Validation\SharedValidationRes.ru.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SharedValidationRes.ru.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

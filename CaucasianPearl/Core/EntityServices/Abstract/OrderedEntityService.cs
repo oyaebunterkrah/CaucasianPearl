@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using System.Linq;
-using CaucasianPearl.Core.DAL;
 using CaucasianPearl.Core.DAL.Interface;
 using CaucasianPearl.Core.EntityServices.Interface;
-using CaucasianPearl.Models.Interface;
 
 namespace CaucasianPearl.Core.EntityServices.Abstract
 {
@@ -33,14 +30,14 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
         // Получение ближайшего объекта с меньшим Sequence
         public virtual T GetPrevious(T dataObject)
         {
-            return Repository.DbSet.OrderByDescending(obj => obj.Sequence)
+            return _repository.DbSet.OrderByDescending(obj => obj.Sequence)
                                     .FirstOrDefault(obj => obj.Sequence < dataObject.Sequence);
         }
 
         // Получение ближайшего объекта с большим Sequence
         public virtual T GetNext(T dataObject)
         {
-            return Repository.DbSet.OrderBy(obj => obj.Sequence)
+            return _repository.DbSet.OrderBy(obj => obj.Sequence)
                                     .FirstOrDefault(obj => obj.Sequence > dataObject.Sequence);
         }
         

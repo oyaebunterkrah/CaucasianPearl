@@ -2,8 +2,8 @@
 
 @using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Core.UserControls
-@using CaucasianPearl.Core.Extensions
 @using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Models
 @using CaucasianPearl.Models.EDM
@@ -11,7 +11,7 @@
 @using Resources.Shared
 
 @{
-    ViewBag.Title = Consts.Title;
+    ViewBag.Title = string.Format("{0} - {1}", SharedRes.ProjectTitle, NewsViewRes.News);
 }
 
 <p>
@@ -21,10 +21,12 @@
         controllerName: Consts.Controllers.Home.Name,
         routeValues: null,
         htmlAttributes: new { @class = "link" }
-    )
+         )
+    @Consts.BreadcrumbsSeparator
+    @NewsViewRes.News
 </p>
 
-@if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+@if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
 {
     <p>
         @Html.ActionLink(
@@ -63,7 +65,7 @@
                 |
             </td>
 
-            @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+            @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
             {
                 <td>
                     <!-- Вверх -->
@@ -91,10 +93,10 @@
 <div class="paginator">
     @Html.Partial(
         Consts.UserControlsPaths.Paginator,
-        (Paginator.GetLinks(
+        (PaginatorControl.GetLinks(
             DependencyResolverHelper<IUrlFriendlyService<OneNews>>.GetService().Count(Request.QueryString),
-            Consts.Paginator.NewsLinksPerPage,
-            Consts.Paginator.NewsNumberOfVisibleLinks)
+            Consts.PaginatorControl.NewsItemsPerPage,
+            Consts.PaginatorControl.NewsNumberOfVisibleLinks)
         )
     )
 </div>

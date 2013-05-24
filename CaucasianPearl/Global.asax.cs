@@ -10,7 +10,6 @@ using CaucasianPearl.App_Start;
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.Filters;
 using CaucasianPearl.Core.Helpers;
-using CaucasianPearl.Core.Services;
 using CaucasianPearl.Core.Services.Logging;
 
 namespace CaucasianPearl
@@ -20,7 +19,7 @@ namespace CaucasianPearl
 
     public class MvcApplication : HttpApplication
     {
-        private static readonly ILogFacade LogFacade = DependencyResolverHelper<ILogFacade>.GetService();
+        private static readonly ILogService LogFacade = DependencyResolverHelper<ILogService>.GetService();
 
         protected void Application_Start()
         {
@@ -32,6 +31,7 @@ namespace CaucasianPearl
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
+            // initialize database connection
             Initializer.Initialize();
         }
 
@@ -45,30 +45,17 @@ namespace CaucasianPearl
 
         protected void Application_Error()
         {
-            LogFacade.Error("Application_Error");
+            var exception = Server.GetLastError();
+            if (exception is ThreadAbortException)
+                return;
+
+            LogFacade.Error(exception);
+            //Response.Redirect(Consts.Controllers.Error.Actions.Unexpected);
         }
 
         protected void Application_AcquireRequestState(object sender, EventArgs e)
         {
-            // очень важно проверять готовность объекта сессии.
-            if (HttpContext.Current.Session != null)
-            {
-                var ci = (CultureInfo)Session[Consts.SessionKeys.Culture];
-
-                if (ci == null)
-                {
-                    var culture = Consts.Culture.Ru;
-
-                    if (HttpContext.Current.Request.UserLanguages != null && HttpContext.Current.Request.UserLanguages.Length != 0)
-                        culture = HttpContext.Current.Request.UserLanguages[0].Substring(0, 2);
-
-                    ci = new CultureInfo(culture);
-                    Session[Consts.SessionKeys.Culture] = ci;
-                }
-
-                Thread.CurrentThread.CurrentUICulture = ci;
-                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);
-            }
+            CultureHelper.Initialize();
         }
     }
 }

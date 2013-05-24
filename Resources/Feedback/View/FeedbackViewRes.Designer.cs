@@ -104,5 +104,14 @@ namespace Resources.Feedback {
                 return ResourceManager.GetString("Feedback", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редактирование отзыва.
+        /// </summary>
+        public static string FeedbackEditing {
+            get {
+                return ResourceManager.GetString("FeedbackEditing", resourceCulture);
+            }
+        }
     }
 }

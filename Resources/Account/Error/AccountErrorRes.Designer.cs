@@ -61,7 +61,7 @@ namespace Resources.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Произошла неизвестная ошибка. Пожалуйста, проверьте введённые данные и попробуйте снова. Если проблема не устранена, пожалуйста, обратитесь к системному администратору.
+        ///   Looks up a localized string similar to Произошла неизвестная ошибка. Пожалуйста, проверьте введённые данные и попробуйте снова. Если проблема не устранена, пожалуйста, обратитесь к системному администратору..
         /// </summary>
         public static string MembershipCreateStatus_Default {
             get {
@@ -70,7 +70,7 @@ namespace Resources.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Пользователь с таким адресом электронной почты уже существует. Пожалуйста, введите другой адрес электронной почты.
+        ///   Looks up a localized string similar to Пользователь с таким адресом электронной почты уже существует. Пожалуйста, введите другой адрес электронной почты..
         /// </summary>
         public static string MembershipCreateStatus_DuplicateEmail {
             get {
@@ -79,7 +79,7 @@ namespace Resources.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Пользователь с таким именем уже существует. Пожалуйста, введите другое имя.
+        ///   Looks up a localized string similar to Пользователь с таким именем уже существует. Пожалуйста, введите другое имя..
         /// </summary>
         public static string MembershipCreateStatus_DuplicateUserName {
             get {
@@ -88,7 +88,7 @@ namespace Resources.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ответ для восстановления пароля является недействительным. Пожалуйста, проверьте значение и попробуйте снова.
+        ///   Looks up a localized string similar to Ответ для восстановления пароля является недействительным. Пожалуйста, проверьте значение и попробуйте снова..
         /// </summary>
         public static string MembershipCreateStatus_InvalidAnswer {
             get {
@@ -97,7 +97,7 @@ namespace Resources.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Адрес электронной почты является недействительным. Пожалуйста, проверьте значение и попробуйте снова.
+        ///   Looks up a localized string similar to Адрес электронной почты является недействительным. Пожалуйста, проверьте значение и попробуйте снова..
         /// </summary>
         public static string MembershipCreateStatus_InvalidEmail {
             get {
@@ -106,7 +106,7 @@ namespace Resources.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Введённый пароль недопустим. Пожалуйста, введите допустимый пароль.
+        ///   Looks up a localized string similar to Введённый пароль недопустим. Пожалуйста, введите допустимый пароль..
         /// </summary>
         public static string MembershipCreateStatus_InvalidPassword {
             get {
@@ -115,7 +115,7 @@ namespace Resources.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вопрос для восстановления пароля является недействительным. Пожалуйста, проверьте значение и попробуйте снова.
+        ///   Looks up a localized string similar to Вопрос для восстановления пароля является недействительным. Пожалуйста, проверьте значение и попробуйте снова..
         /// </summary>
         public static string MembershipCreateStatus_InvalidQuestion {
             get {
@@ -124,7 +124,7 @@ namespace Resources.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Имя пользователя является недействительным. Пожалуйста, проверьте значение и попробуйте снова.
+        ///   Looks up a localized string similar to Имя пользователя является недействительным. Пожалуйста, проверьте значение и попробуйте снова..
         /// </summary>
         public static string MembershipCreateStatus_InvalidUserName {
             get {
@@ -133,7 +133,7 @@ namespace Resources.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Провайдер аутентификации вернул ошибку. Пожалуйста, проверьте ваш ввод и попробуйте снова. Если проблема не устранена, пожалуйста, обратитесь к системному администратору.
+        ///   Looks up a localized string similar to Провайдер аутентификации вернул ошибку. Пожалуйста, проверьте ваш ввод и попробуйте снова. Если проблема не устранена, пожалуйста, обратитесь к системному администратору..
         /// </summary>
         public static string MembershipCreateStatus_ProviderError {
             get {
@@ -142,11 +142,47 @@ namespace Resources.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Запрос на регистрацию пользователя был отменён. Пожалуйста, проверьте введённые данные и попробуйте снова. Если проблема не устранена, пожалуйста, обратитесь к системному администратору.
+        ///   Looks up a localized string similar to Запрос на регистрацию пользователя был отменён. Пожалуйста, проверьте введённые данные и попробуйте снова. Если проблема не устранена, пожалуйста, обратитесь к системному администратору..
         /// </summary>
         public static string MembershipCreateStatus_UserRejected {
             get {
                 return ResourceManager.GetString("MembershipCreateStatus_UserRejected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неправильный текущий пароль или новый пароль некорректен..
+        /// </summary>
+        public static string TheCurrentPasswordIsIncorrectOrTheNewPasswordIsInvalid {
+            get {
+                return ResourceManager.GetString("TheCurrentPasswordIsIncorrectOrTheNewPasswordIsInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неправильный логин или пароль..
+        /// </summary>
+        public static string TheUserNameOrPasswordProvidedIsIncorrect {
+            get {
+                return ResourceManager.GetString("TheUserNameOrPasswordProvidedIsIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Аккаунт с таким именем уже существует. Выберете другое имя..
+        /// </summary>
+        public static string UnableToCreateLocalAccountAnAccountWithTheNameMayAlreadyExist {
+            get {
+                return ResourceManager.GetString("UnableToCreateLocalAccountAnAccountWithTheNameMayAlreadyExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Такое имя пользователя уже существует. Выберете другое имя..
+        /// </summary>
+        public static string UserNameAlreadyExistsPleaseEnterADifferentUserName {
+            get {
+                return ResourceManager.GetString("UserNameAlreadyExistsPleaseEnterADifferentUserName", resourceCulture);
             }
         }
     }

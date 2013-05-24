@@ -5,9 +5,13 @@ namespace CaucasianPearl.Core.Constants
     public static class Consts
     {
         public const string Title = "Жемчужина Кавказа";
-
-        public const string DefaultConnectionName = "DefaultConnection";
-
+        
+        public static class Connections
+        {
+            public const string Default = "DefaultConnection";
+            public const string CaucasianPearlContext = "CaucasianPearlContext";
+        }
+        
         public const string AdminLoginName = "admin";
         public const string AdminPassword = "Eekoogh4";
 
@@ -25,32 +29,49 @@ namespace CaucasianPearl.Core.Constants
         public const string BreadcrumbsSeparator = " / ";
         public const string MenuSeparator = " | ";
 
-        public static class Paginator
+        public const string RootPath = "/";
+
+        public static class PaginatorControl
         {
             // Количество объектов на одной странице по умолчанию.
-            public const int DefaultLinksPerPage = 1;
+            public const int DefaultItemsPerPage = 1;
             // Количество отображаемых страниц перед многоточием по умолчанию.
             public const int DefaultNumberOfVisibleLinks = 1;
 
             // Количество объектов на одной странице для событий.
-            public const int EventLinksPerPage = 3;
+            public const int EventItemsPerPage = 3;
             // Количество отображаемых страниц перед многоточием для событий.
             public const int EventNumberOfVisibleLinks = 3;
 
             // Количество объектов на одной странице для новостей.
-            public const int NewsLinksPerPage = 3;
+            public const int NewsItemsPerPage = 3;
             // Количество отображаемых страниц перед многоточием для новостей.
             public const int NewsNumberOfVisibleLinks = 3;
 
             // Количество объектов на одной странице для отзывов и предложений.
-            public const int FeedbackLinksPerPage = 5;
+            public const int FeedbackItemsPerPage = 5;
             // Количество отображаемых страниц перед многоточием для отзывов и предложений.
             public const int FeedbackNumberOfVisibleLinks = 5;
 
             // Количество объектов на одной странице для заявок.
-            public const int RequestLinksPerPage = 5;
-            // Количество отображаемых страниц перед многоточием для отзывов и предложений.
+            public const int RequestItemsPerPage = 5;
+            // Количество отображаемых страниц перед многоточием для заявок.
             public const int RequestNumberOfVisibleLinks = 5;
+
+            // Количество объектов на одной странице для профилей пользователей.
+            public const int ProfileItemsPerPage = 5;
+            // Количество отображаемых страниц перед многоточием для профилей пользователей.
+            public const int ProfileNumberOfVisibleLinks = 5;
+
+            // Количество объектов на одной странице для блоков контента.
+            public const int ContentBlockItemsPerPage = 20;
+            // Количество отображаемых страниц перед многоточием для блоков контента.
+            public const int ContentBlockNumberOfVisibleLinks = 1;
+
+            // Количество объектов на одной странице для фотоальбомов.
+            public const int FlickrItemsPerPage = 20;
+            // Количество отображаемых страниц перед многоточием для фотоальбомов.
+            public const int FlickrNumberOfVisibleLinks = 1;
         }
 
         public const int OutputCacheDuration = 3600;
@@ -90,7 +111,7 @@ namespace CaucasianPearl.Core.Constants
 
         #region Папки
         
-        public const string EntityImagesFolder = "~/content/img/cp/";
+        public const string EntityImagesFolder = "~/content/img/cp";
         
         #endregion
 
@@ -218,6 +239,67 @@ namespace CaucasianPearl.Core.Constants
                 {
                     // Request actions.
                     public const string Requests = "requests";
+                    public const string Thanks = "thanks";
+                }
+            }
+
+            // User.
+            public static class Profile
+            {
+                public const string Name = "profile";
+
+                // Размеры картинок для раздела Профили.
+                public const int ProfileImagesHeight = 320;
+                public const int ProfileImagesWidth = 240;
+
+                // Количество мини-изображений профилей в одной строке на странице списка.
+                public const int ProfileNumberInRow = 3;
+
+                // Папки для загрузки картинок для раздела Мероприятия.
+                public const string ProfileImagesFolder = "profile";
+                
+                // Actions.
+                public static class Actions
+                {
+                    // User actions.
+                    public const string Profiles = "profiles";
+                    public const string UploadImage = "uploadimage";
+                }
+            }
+
+            // Gallery.
+            public static class Gallery
+            {
+                public const string Name = "gallery";
+
+                // Actions.
+                public static class Actions
+                {
+                    // Request actions.
+                    public const string Gallery = "gallery";
+                    public const string GetLastPhotos = "getlastphotos";
+                    public const string GetPhotosets = "getphotosets";
+                    public const string Preview = "preview";
+                    public const string Photo = "photo";
+                }
+
+                // Views.
+                public static class Views
+                {
+                    public const string GetPhotosets = "getphotosets";
+                }
+            }
+
+            // ContentBlock.
+            public static class ContentBlock
+            {
+                public const string Name = "contentblock";
+
+                // Actions.
+                public static class Actions
+                {
+                    // ContentBlock actions.
+                    public const string ContentBlocks = "contentblocks";
                 }
             }
 
@@ -230,17 +312,32 @@ namespace CaucasianPearl.Core.Constants
                 public static class Actions
                 {
                     // Error actions.
-                    public const string NotFound = "notfound";
                     public const string AccessDenied = "accessdenied";
+                    public const string NotAuthorized = "notauthorized";
+                    public const string NotFound = "notfound";
+                    public const string Unexpected = "unexpected";
+                }
+
+                // Views.
+                public static class Views
+                {
+                    public const string ViewPathPrefix = "Error/";
+
+                    public const string AccessDenied = ViewPathPrefix + "AccessDenied";
+                    public const string DeleteFail = ViewPathPrefix + "DeleteFail";
+                    public const string NotAuthorized = ViewPathPrefix + "NotAuthorized";
+                    public const string NotFound = ViewPathPrefix + "NotFound";
+                    public const string Unexpected = ViewPathPrefix + "Unexpected";
                 }
             }
         }
 
-        // Actions.
+        // Common actions.
         public static class Actions
         {
             public const string Index = "index";
             public const string Create = "create";
+            public const string CreateOrEdit = "createoredit";
             public const string Edit = "edit";
             public const string Delete = "delete";
             public const string Details = "details";
@@ -258,9 +355,12 @@ namespace CaucasianPearl.Core.Constants
             public const string CreateOrEdit = "CreateOrEdit";
             public const string Delete = "Delete";
             public const string Details = "Details";
-            public const string Error = "Error";
-            public const string NotFound = "NotFound";
-            public const string DeleteFail = "DeleteFail";
+
+            // Shared.
+            public static class Shared
+            {
+                
+            }
         }
         
         public enum DataType
@@ -426,14 +526,27 @@ namespace CaucasianPearl.Core.Constants
         {
             private const string PathPrefix = "UserControls/";
 
-            public const string CulturePartial = PathPrefix + "CulturePartial";
-            public const string LoginPartial = PathPrefix + "LoginPartial";
-            public const string Paginator = PathPrefix + "Paginator";
+            public const string Culture = PathPrefix + "CultureControl";
+            public const string Login = PathPrefix + "LoginControl";
+            public const string Paginator = PathPrefix + "PaginatorControl";
         }
 
         public static class QueryStringParameters
         {
             public const string Page = "page";
+        }
+
+        public static class JsPaths
+        {
+            private const string PluginsPrefixPath = "~/content/js/plugins/";
+            private const string CpPrefixPath = "~/content/js/cp/";
+            private const string SysPrefixPath = "~/content/js/sys/";
+
+            public const string CKEditor = PluginsPrefixPath + "ckeditor/ckeditor.js";
+            //public const string CKEditorConfig = PluginsPrefixPath + "ckeditor/ckeditor_config.js";
+            public const string CKEditorConfig = PluginsPrefixPath + "ckeditor/config.js";
+            public const string Galleria = PluginsPrefixPath + "galleria/galleria-1.2.9.min.js";
+            public const string GalleriaClassicTheme = PluginsPrefixPath + "galleria/themes/classic/galleria.classic.min.js";
         }
     }
 }

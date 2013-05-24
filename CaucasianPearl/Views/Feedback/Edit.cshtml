@@ -1,31 +1,31 @@
+@using CaucasianPearl.Core.Constants
+@using Resources.Feedback
+@using Resources.Shared
+
 @model CaucasianPearl.Models.EDM.Feedback
 
-@using CaucasianPearl.Core.Constants
-
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = SharedViewRes.Edit;
 }
 
-<script src="@Url.Content("~/content/scripts/sys/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/content/scripts/sys/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/js/sys/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/js/sys/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
-<h2>Edit</h2>
+<h2>@FeedbackViewRes.FeedbackEditing</h2>
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Feedback</legend>
+        <legend>@FeedbackViewRes.Feedback</legend>
 
         @Html.HiddenFor(model => model.ID)
-		@Html.Partial("CreateOrEdit", Model)
+		@Html.Partial(Consts.Views.CreateOrEdit, Model)
 
-        <p>
-            <input type="submit" value="Save" />
-        </p>
+        <input type="submit" value="@SharedViewRes.Save" />
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(@FeedbackViewRes.BackToList, Consts.Actions.Index)
 </div>

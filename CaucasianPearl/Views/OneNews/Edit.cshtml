@@ -1,31 +1,27 @@
-﻿@model CaucasianPearl.Models.EDM.OneNews
-
-@using CaucasianPearl.Core.Constants
+﻿@using CaucasianPearl.Core.Constants
 @using Resources.News
 @using Resources.Shared
 
+@model CaucasianPearl.Models.EDM.OneNews
+
 @{
-    ViewBag.Title = string.Format("{0} | {1}", NewsViewRes.NewsEdition, Consts.Title);
+    ViewBag.Title = string.Format("{0} | {1}", NewsViewRes.NewsEditing, Consts.Title);
 }
 
-<script src="@Url.Content("~/content/scripts/sys/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/content/scripts/sys/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/ckeditor/ckeditor.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/js/sys/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/js/sys/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content(Consts.JsPaths.CKEditor)" type="text/javascript"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
-        CKEDITOR.config.customConfig = '@Url.Content("~/ckeditor/ckeditor_config.js")';
-        CKEDITOR.replace('Content');
-        CKEDITOR.instances['Content'].setData($('#Content').val());
-
-        $('#submit').click(function () {
-            $('#Content').val(CKEDITOR.instances['Content'].getData());
-        });
+        replaceByCKEditor('@Url.Content(Consts.JsPaths.CKEditorConfig)', 'Content', 'submit');
     });
 </script>
 
 <p>
-    @Html.ActionLink(SharedViewRes.Cancel,
+    @* Отмена *@
+    @Html.ActionLink(
+        SharedViewRes.Cancel,
         actionName: Consts.Actions.GetByShortName,
         controllerName: Consts.Controllers.OneNews.Name,
         routeValues: new
@@ -39,7 +35,7 @@
             })
 </p>
 
-<h2>@NewsViewRes.NewsEdition</h2>
+<h2>@NewsViewRes.NewsEditing</h2>
 
 <h3>@NewsViewRes.ImageForNews</h3>
 
@@ -48,10 +44,10 @@
         controllerName: Consts.Controllers.OneNews.Name,
         method: FormMethod.Post,
         htmlAttributes: new
-            {
-                enctype = "multipart/form-data",
-                id = Model.ID
-            })
+        {
+            enctype = "multipart/form-data",
+            id = Model.ID
+        })
         )
 {
     @Html.Hidden("oneNewsId", Model.ID)
@@ -60,9 +56,9 @@
         <tr>
             <td>
                 @{
-                    var filename = string.IsNullOrWhiteSpace(Model.ImageExt)
-                                       ? Consts.NoImage
-                                       : string.Format("{0}{1}", Model.ID, Model.ImageExt.TrimEnd());
+    var filename = string.IsNullOrWhiteSpace(Model.ImageExt)
+                       ? Consts.NoImage
+                       : string.Format("{0}{1}", Model.ID, Model.ImageExt.TrimEnd());
                 }
 
                 <div class="model-image">
@@ -80,7 +76,13 @@
 
 @using (Html.BeginForm())
 {
-    @Html.EditorForModel()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@NewsViewRes.News</legend>
 
-    <input id="submit" type="submit" class="submit" value="@SharedViewRes.Save" />
+        @Html.HiddenFor(model => model.ID)
+		@Html.Partial(Consts.Views.CreateOrEdit, Model)
+
+        <input id="submit" type="submit" value="@SharedViewRes.Save" />
+    </fieldset>
 }

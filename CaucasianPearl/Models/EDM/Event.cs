@@ -24,8 +24,8 @@ namespace CaucasianPearl.Models.EDM
         public string Place { get; set; }
         public string Description { get; set; }
         public Nullable<int> CreatedBy { get; set; }
-        public string ShortName { get; set; }
         public string ImageExt { get; set; }
+        public string ShortName { get; set; }
         public Nullable<int> Sequence { get; set; }
     }
 }

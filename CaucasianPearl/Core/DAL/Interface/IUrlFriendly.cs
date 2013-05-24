@@ -1,6 +1,4 @@
-﻿using CaucasianPearl.Models.Interface;
-
-namespace CaucasianPearl.Core.DAL.Interface
+﻿namespace CaucasianPearl.Core.DAL.Interface
 {
     public interface IUrlFriendly : IOrdered
     {

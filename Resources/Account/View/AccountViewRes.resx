@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccountCreationWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
+  <data name="AccountCreatingWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
     <value>Аккаунт не был создан. Пожалуйста, исправьте ошибки и попробуйте снова</value>
   </data>
   <data name="AccountInformation" xml:space="preserve">
@@ -147,7 +147,7 @@
   <data name="Login" xml:space="preserve">
     <value>Вход</value>
   </data>
-  <data name="LogOn_Register" xml:space="preserve">
+  <data name="Login_Register" xml:space="preserve">
     <value>Зарегистрируйтесь</value>
   </data>
   <data name="NewPasswordAreRequiredToBeAminimumOf" xml:space="preserve">
@@ -171,10 +171,10 @@
   <data name="YourPasswordHasBeenChangedSuccessfully" xml:space="preserve">
     <value>Ваш пароль был успешно изменён</value>
   </data>
-  <data name="LogOnPartial_LogOff" xml:space="preserve">
+  <data name="LoginPartial_LogOff" xml:space="preserve">
     <value>Выход</value>
   </data>
-  <data name="LogOnPartial_Login" xml:space="preserve">
+  <data name="LoginPartial_Login" xml:space="preserve">
     <value>Вход</value>
   </data>
   <data name="PasswordChanging" xml:space="preserve">

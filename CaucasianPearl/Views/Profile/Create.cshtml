@@ -1,0 +1,29 @@
+@using CaucasianPearl.Models.EDM
+@using CaucasianPearl.Core.Constants
+@using Resources.Profile
+@using Resources.Shared
+
+@model Profile
+
+@{
+    ViewBag.Title = ProfileViewRes.ProfileCreating;
+}
+
+<h2>@ProfileViewRes.ProfileCreating</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@ProfileViewRes.Profile</legend>
+
+		@Html.Partial(Consts.Views.CreateOrEdit, Model)
+
+        <p>
+            <input id="submit" type="submit" value="@SharedViewRes.Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink(ProfileViewRes.BackToList, Consts.Actions.Index)
+</div>

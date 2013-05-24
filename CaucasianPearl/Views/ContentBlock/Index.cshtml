@@ -1,0 +1,129 @@
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
+@using CaucasianPearl.Models
+@using CaucasianPearl.Models.EDM;
+@using Resources.ContentBlock
+@using Resources.Shared
+
+@model IEnumerable<ContentBlock>
+
+@{
+    ViewBag.Title = string.Format("{0} - {1}", SharedRes.ProjectTitle, ContentBlockViewRes.ContentBlocks);
+}
+
+<p>
+    @Html.ActionLink(
+        SharedViewRes.ToHomePage,
+        actionName: Consts.Actions.Index,
+        controllerName: Consts.Controllers.Home.Name,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" }
+    )
+    @Consts.BreadcrumbsSeparator
+    @ContentBlockViewRes.ContentBlocks
+</p>
+
+<h2>@ContentBlockViewRes.ContentBlocks</h2>
+
+<p>
+    @Html.ActionLink(
+        linkText: ContentBlockViewRes.CreateContentBlock,
+        actionName: Consts.Actions.Create)
+</p>
+
+@foreach (var contentBlock in Model)
+{
+    <div>
+        <div>
+            <span class="display-label">@ContentBlockModelRes.BlockId:</span>
+            <div class="display-field">
+                @contentBlock.BlockId
+            </div>
+            
+            <span class="display-label">@ContentBlockModelRes.PlaceHolderId:</span>
+            <div class="display-field">
+                @contentBlock.PlaceHolderId
+            </div>
+
+            <span class="display-label">@ContentBlockModelRes.Content:</span>
+            <div id="@string.Format("contentBlockContent{0}", contentBlock.ID)" class="display-field">
+                @Html.Raw(contentBlock.Content)
+            </div>
+
+            <span class="display-label">@ContentBlockModelRes.Description:</span>
+            <div class="display-field">
+                @contentBlock.Description
+            </div>
+            
+            <span class="display-label">@ContentBlockModelRes.IsPublished:</span>
+            <div class="display-field">
+                @Html.DisplayFor(m => contentBlock.IsPublished)
+            </div>
+
+            <br />
+
+            @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
+            {
+                <div>
+                    @Html.ActionLink(
+                        linkText: SharedViewRes.Edit,
+                        actionName: Consts.Actions.Edit,
+                        routeValues: new {id = contentBlock.ID}) |
+
+                    @Html.ActionLink(
+                        linkText: SharedViewRes.Delete,
+                        actionName: Consts.Actions.Delete,
+                        routeValues: new {id = contentBlock.ID})
+                </div>
+                
+                <br />
+            }
+            
+            <div>
+                @Html.ActionLink(
+                    linkText: @ContentBlockViewRes.ContentBlockDetails,
+                    actionName: Consts.Actions.Details,
+                    routeValues: new {id = contentBlock.ID})
+            </div>
+
+            <br />
+
+            @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
+            {
+                <div>
+                    <!-- Вверх -->
+                    @Html.ActionLink(
+                        SharedViewRes.Up,
+                        Consts.Actions.Up,
+                        new { id = contentBlock.ID }) |
+                    <!-- Вниз -->
+                    @Html.ActionLink(
+                        SharedViewRes.Down,
+                        Consts.Actions.Down,
+                        new { id = contentBlock.ID })
+                </div>
+            }
+        </div>
+    </div>
+    
+    if (contentBlock != Model.Last())
+    {
+        <hr />
+    }
+}
+
+<br /><br />
+
+<div class="paginator">
+    @Html.Partial(
+        Consts.UserControlsPaths.Paginator,
+        (PaginatorControl.GetLinks(
+            DependencyResolverHelper<IOrderedService<ContentBlock>>.GetService().Count(Request.QueryString),
+            Consts.PaginatorControl.ContentBlockItemsPerPage,
+            Consts.PaginatorControl.ContentBlockNumberOfVisibleLinks)
+        )
+    )
+</div>

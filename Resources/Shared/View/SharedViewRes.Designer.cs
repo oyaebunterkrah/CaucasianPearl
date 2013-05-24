@@ -79,6 +79,24 @@ namespace Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Авторизоваться.
+        /// </summary>
+        public static string Authorize {
+            get {
+                return ResourceManager.GetString("Authorize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вернуться на главную страницу.
+        /// </summary>
+        public static string BackToHomePage {
+            get {
+                return ResourceManager.GetString("BackToHomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Отмена.
         /// </summary>
         public static string Cancel {
@@ -151,6 +169,24 @@ namespace Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Спасибо.
+        /// </summary>
+        public static string Thanks {
+            get {
+                return ResourceManager.GetString("Thanks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Спасибо! Мы с Вами обязательно свяжемся!.
+        /// </summary>
+        public static string ThankYouWeWillCertainlyContactYou {
+            get {
+                return ResourceManager.GetString("ThankYouWeWillCertainlyContactYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to На главную.
         /// </summary>
         public static string ToHomePage {
@@ -165,6 +201,15 @@ namespace Resources.Shared {
         public static string Up {
             get {
                 return ResourceManager.GetString("Up", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Загрузить.
+        /// </summary>
+        public static string Upload {
+            get {
+                return ResourceManager.GetString("Upload", resourceCulture);
             }
         }
         

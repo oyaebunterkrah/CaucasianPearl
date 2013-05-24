@@ -4,11 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9621c7baaa884121abb3f5928e2ba1a8" Name="Diagram1">
+      <Diagram DiagramId="b8594058d80f41e8ad42d0d1badec24e" Name="Diagram1">
         <EntityTypeShape EntityType="caucasianpearldbModel.Event" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="caucasianpearldbModel.Feedback" Width="1.5" PointX="2.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="caucasianpearldbModel.OneNews" Width="1.5" PointX="4.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="caucasianpearldbModel.Request" Width="1.5" PointX="6.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="caucasianpearldbModel.Profile" Width="1.5" PointX="8.5" PointY="0.5" />
+        <EntityTypeShape EntityType="caucasianpearldbModel.ContentBlock" Width="1.5" PointX="0.5" PointY="4.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

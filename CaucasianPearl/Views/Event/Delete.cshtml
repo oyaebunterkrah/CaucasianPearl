@@ -5,7 +5,7 @@
 @using Resources.Shared
 
 @{
-    ViewBag.Title = string.Format("{0} | {1}", EventViewRes.EventDeletion, Consts.Title);
+    ViewBag.Title = string.Format("{0} | {1}", EventViewRes.EventDeleting, Consts.Title);
 }
 
 <p>
@@ -20,9 +20,9 @@
     )
 </p>
 
-<h2 style="color: Red">Вы уверены, что хотите удалить это событие?</h2>
+<h2 style="color: Red">@EventViewRes.AreYouSureThatYouWantDeleteThisEvent</h2>
 
 @using (Html.BeginForm())
 {
-    <input type="submit" value="Удалить" />
+    <input type="submit" value="@SharedViewRes.Delete" />
 }

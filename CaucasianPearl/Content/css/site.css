@@ -6,7 +6,6 @@
 
 body {
     background-color: #fff;
-    border-top: solid 10px #000;
     color: #333;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
@@ -179,7 +178,8 @@ footer {
 
 /* menu
 ----------------------------------------------------------*/
-ul#menu {
+ul.menu {
+    float: left;
     font-size: 1.3em;
     font-weight: 600;
     margin: 0 0 5px;
@@ -187,19 +187,19 @@ ul#menu {
     text-align: right;
 }
 
-    ul#menu li {
+    ul.menu li {
         display: inline;
         list-style: none;
         padding-left: 15px;
     }
 
-        ul#menu li a {
+        ul.menu li a {
             background: none;
             color: #999;
             text-decoration: none;
         }
 
-        ul#menu li a:hover {
+        ul.menu li a:hover {
             color: #333;
             text-decoration: none;
         }
@@ -641,13 +641,13 @@ tr.pager td {
         margin-bottom: 5px;
     }
 
-    ul#menu {
+    ul.menu {
         margin: 0;
         padding: 0;
         text-align: center;
     }
 
-        ul#menu li {
+        ul.menu li {
             margin: 0;
             padding: 0;
         }
@@ -788,44 +788,47 @@ html {
 
 /* Display
 ----------------------------------------------------------*/
-.display-form .object-display-property {
-    border-bottom: 1px #ddd solid;
+.display-form .display-property {
     height: 20px;
     margin-bottom: 10px;
 }
 
-.display-form .object-display-property .display-label, .display-form .object-display-property .display-field {
+.display-label {
+    font-weight: bold;
+}
+
+.display-form .display-property .display-label, .display-form .display-property .display-field {
     float: left;
 }
 
-.display-form .object-display-property .display-label {
+.display-form .display-property .display-label {
     width: 250px; 
 }
 
-.display-form .object-display-property .display-field {
+.display-form .display-property .display-field {
     width: auto; 
 }
 
 
 /* Editor
 ----------------------------------------------------------*/
-.editor-form .object-editor-property {
+.editor-form .editor-property {
     padding: 10px 0;
 }
 
-.editor-form .object-editor-property .editor-label {
+.editor-form .editor-property .editor-label {
     margin-bottom: 5px;
 }
 
-.editor-form .object-editor-property .editor-field {
+.editor-form .editor-property .editor-field {
     float: left;
 }
 
-.editor-form .object-editor-property .editor-field input[type=text] {
+.editor-form .editor-property .editor-field input[type=text] {
     width: 400px;
 }
 
-.editor-form .object-editor-property .editor-validation-warn {
+.editor-form .editor-property .editor-validation-warn {
     color: #f00;
     display: inline-block;
     float: left;
@@ -890,7 +893,7 @@ html {
 }
 
 
-/* Paginator
+/* PaginatorControl
 ----------------------------------------------------------*/
 .paginator {
     

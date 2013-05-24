@@ -9,9 +9,9 @@ namespace CaucasianPearl.Core.EntityServices
     public class OneNewsEntityService : UrlFriendlyEntityService<OneNews>
     {
         // Количество объектов на одной странице.
-        protected override int LinksPerPage { get { return Consts.Paginator.NewsLinksPerPage; } }
+        protected override int LinksPerPage { get { return Consts.PaginatorControl.NewsItemsPerPage; } }
 
         // Количество отображаемых страниц перед многоточием.
-        protected override int NumberOfVisibleLinks { get { return Consts.Paginator.NewsNumberOfVisibleLinks; } }
+        protected override int NumberOfVisibleLinks { get { return Consts.PaginatorControl.NewsNumberOfVisibleLinks; } }
     }
 }

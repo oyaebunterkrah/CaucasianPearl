@@ -1,0 +1,48 @@
+﻿@using CaucasianPearl.Core.Constants
+@using Resources.ContentBlock
+@using Resources.Shared
+
+@model CaucasianPearl.Models.EDM.ContentBlock
+
+@{
+    ViewBag.Title = string.Format("{0} | {1}", ContentBlockViewRes.ContentBlockCreating, Consts.Title);
+}
+
+<script src="@Url.Content("~/content/js/sys/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/content/js/sys/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content(Consts.JsPaths.CKEditor)" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        replaceByCKEditor('@Url.Content(Consts.JsPaths.CKEditorConfig)', 'Content', 'submit');
+    });
+</script>
+
+<p>
+    @Html.ActionLink(
+        linkText: SharedViewRes.Cancel,
+        actionName: Consts.Actions.Index,
+        controllerName: Consts.Controllers.ContentBlock.Name,
+        routeValues: new { page = Request.QueryString["page"] },
+        htmlAttributes: new { @class = "link" })
+</p>
+
+<h2>@ContentBlockViewRes.ContentBlockCreating</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@ContentBlockViewRes.ContentBlocks</legend>
+
+		@Html.Partial(Consts.Views.CreateOrEdit, Model)
+
+        <p>
+            <input id="submit" type="submit" value="@SharedViewRes.Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink(ContentBlockViewRes.BackToList, Consts.Actions.Index)
+</div>

@@ -1,8 +1,6 @@
-@model CaucasianPearl.Models.EDM.Feedback
-
 @using CaucasianPearl.Core.Constants
 
-@* This partial view defines form fields that will appear when creating and editing entities *@
+@model CaucasianPearl.Models.EDM.Feedback
 
 <div class="editor-label">
     @Html.LabelFor(model => model.Name)
@@ -36,7 +34,7 @@
     @Html.ValidationMessageFor(model => model.Suggestion)
 </div>
 
-@if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+@if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
 {
     <div class="editor-label">
         @Html.LabelFor(model => model.IsApproved)

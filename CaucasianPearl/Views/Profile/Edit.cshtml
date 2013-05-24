@@ -1,0 +1,87 @@
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Models.EDM
+@using Resources.Profile
+@using Resources.Shared
+
+@model Profile
+
+@{
+    ViewBag.Title = ProfileViewRes.ProfileEditing;
+}
+
+<p>
+    @* Отмена *@
+    @Html.ActionLink(
+        SharedViewRes.Cancel,
+        actionName: Consts.Actions.GetByShortName,
+        controllerName: Consts.Controllers.Profile.Name,
+        routeValues: new
+            {
+                shortname = Model.ShortName,
+                page = Request.QueryString["page"]
+            },
+        htmlAttributes: new
+            {
+                @class = "link"
+            })
+</p>
+
+<h2>@ProfileViewRes.ProfileEditing</h2>
+
+<h3>@ProfileViewRes.ImageForProfile</h3>
+
+@using (Html.BeginForm(
+            actionName: Consts.Controllers.Profile.Actions.UploadImage,
+            controllerName: Consts.Controllers.Profile.Name,
+            method: FormMethod.Post,
+            htmlAttributes: new
+            {
+                enctype = "multipart/form-data",
+                id = string.Format("uploadForm{0}", Model.ID)
+            }))
+{
+    @Html.Hidden("profileId", Model.ID)
+
+    <table>
+        <tr>
+            <td>
+                @{
+    var filename = string.IsNullOrWhiteSpace(Model.ImageExt)
+                       ? Consts.NoImage
+                       : string.Format("{0}{1}", Model.ID, Model.ImageExt.TrimEnd());
+                }
+
+                <div class="model-image">
+                    <img src='@(Url.Content(Consts.EntityImagesFolder))/@(Consts.Controllers.Profile.ProfileImagesFolder)/@(filename)' />
+                </div>
+            </td>
+            <td style="padding-left: 20px">
+                <input type="file" name="imagefile" />
+                <br />
+                <input id="upload" type="submit" value="@SharedViewRes.Upload" />
+            </td>
+        </tr>
+    </table>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@ProfileViewRes.Profile</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        @Html.Hidden("hiddendata", "hello")
+
+        @Html.Partial(Consts.Views.CreateOrEdit, Model)
+
+        <p>
+            <input id="submit" type="submit" value="@SharedViewRes.Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink(ProfileViewRes.BackToList, Consts.Actions.Index)
+</div>

@@ -4,8 +4,8 @@ using System.Web.Mvc;
 using CaucasianPearl.Controllers.Abstract;
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.EntityServices.Interface;
-using CaucasianPearl.Core.Extensions;
 using CaucasianPearl.Core.Helpers;
+using CaucasianPearl.Core.Helpers.HtmlHelpers;
 using CaucasianPearl.Models.EDM;
 using Resources.Shared;
 
@@ -18,11 +18,6 @@ namespace CaucasianPearl.Controllers
         {
         }
 
-        public EventController() :
-            this(DependencyResolverHelper<IUrlFriendlyService<Event>>.GetService())
-        {
-        }
-
         // Включаем постраничный вывод.
         protected override bool IsPageable { get { return true; } }
 
@@ -30,10 +25,13 @@ namespace CaucasianPearl.Controllers
         [HttpPost]
         public ActionResult UploadImage(int eventId)
         {
+            if (!ModelState.IsValid)
+                return RedirectToAction(Consts.Actions.Edit);
+
             // Получаем объект, для которого загружаем картинку
             var @event = _service.Get(eventId);
             if (@event == null)
-                return View(viewName: Consts.Views.NotFound);
+                return View(Consts.Controllers.Error.Views.NotFound);
 
             var httpPostedFileBase = Request.Files[0];
             if (httpPostedFileBase != null &&
@@ -44,7 +42,7 @@ namespace CaucasianPearl.Controllers
                 if (HttpContext.Request.UrlReferrer != null)
                     ViewBag.RedirectedUrl = HttpContext.Request.UrlReferrer.AbsolutePath;
 
-                return View(viewName: Consts.Views.Error);
+                return View(Consts.Controllers.Error.Views.Unexpected);
             }
 
             try
@@ -56,8 +54,11 @@ namespace CaucasianPearl.Controllers
                     // Определяем название и полный путь полноразмерной картинки и миниатюры
                     var extension = Path.GetExtension(imageFile.FileName);
                     var fileName = eventId + extension;
-                    var fileSavePath = Path.Combine(Server.MapPath(Url.Content(Consts.EntityImagesFolder)),
-                                                       Consts.Controllers.Event.EventImagesFolder, fileName);
+                    var fileSavePath = Path.Combine(
+                        Server.MapPath(Url.Content(Consts.EntityImagesFolder)),
+                        Consts.Controllers.Event.EventImagesFolder,
+                        "/",
+                        fileName);
 
                     // Если файлы с такими названиями уже имеются, удаляем их
                     if (System.IO.File.Exists(fileSavePath))
@@ -81,7 +82,7 @@ namespace CaucasianPearl.Controllers
                             "EventController.UploadImage() exception. Exception Message: {0}. Inner Exception Message{1}",
                             errorMessage, exception.InnerException.Message);
                 ViewBag.ErrorMessage = errorMessage;
-                return View(viewName: Consts.Views.Error);
+                return View(Consts.Controllers.Error.Views.Unexpected);
             }
 
             return ReturnToObject(@event);
@@ -97,13 +98,6 @@ namespace CaucasianPearl.Controllers
                 fs.Write(buffer, 0, buffer.Length);
             }
             return Json(new { message = "chunk uploaded", name = name }); }*/
-        }
-
-        public override ActionResult Create(Event obj)
-        {
-            AddValuesOnCreate(obj);
-
-            return base.Create(obj);
         }
     }
 }

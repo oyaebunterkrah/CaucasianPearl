@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<Favorites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <folders />
+  <favorites>
+    <Favorite>
+      <name>AccountController.cs</name>
+      <path>CaucasianPearl\Controllers\AccountController.cs</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Controllers\AccountController.cs</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>BaseController.cs</name>
+      <path>CaucasianPearl\Controllers\Abstract\BaseController.cs</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Controllers\Abstract\BaseController.cs</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>EntityDataModel.edmx [Diagram1]</name>
+      <path>CaucasianPearl\Models\EDM\EntityDataModel.edmx</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Models\EDM\EntityDataModel.edmx</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>Constants.cs</name>
+      <path>CaucasianPearl\Core\Constants\Constants.cs</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Constants\Constants.cs</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>_Layout.cshtml</name>
+      <path>CaucasianPearl\Views\Shared\_Layout.cshtml</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Views\Shared\_Layout.cshtml</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>Repository.cs</name>
+      <path>CaucasianPearl\Core\DAL\Repository.cs</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\DAL\Repository.cs</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>Global.asax.cs</name>
+      <path>CaucasianPearl\Global.asax.cs</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Global.asax.cs</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>Web.config</name>
+      <path>CaucasianPearl\Web.config</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Web.config</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>NinjectWebCommon.cs</name>
+      <path>CaucasianPearl\App_Start\NinjectWebCommon.cs</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\App_Start\NinjectWebCommon.cs</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>RouteConfig.cs</name>
+      <path>CaucasianPearl\App_Start\RouteConfig.cs</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\App_Start\RouteConfig.cs</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>Settings.settings</name>
+      <path>CaucasianPearl\Properties\Settings.settings</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Properties\Settings.settings</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>site.css</name>
+      <path>CaucasianPearl\Content\css\site.css</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Content\css\site.css</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>main.js</name>
+      <path>CaucasianPearl\Content\js\cp\main.js</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Content\js\cp\main.js</absolutePath>
+    </Favorite>
+  </favorites>
+</Favorites>

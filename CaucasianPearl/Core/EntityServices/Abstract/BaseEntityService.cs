@@ -4,8 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using CaucasianPearl.Core.Constants;
-using CaucasianPearl.Core.DAL;
 using CaucasianPearl.Core.DAL.Interface;
+using CaucasianPearl.Core.DAL.Repository;
 using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Helpers;
 using Ninject;
@@ -14,33 +14,19 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
 {
     public abstract class BaseEntityService<T> : IBaseService<T> where T : class, IBase, new()
     {
-        //protected IRepository<T> _repository;
         [Inject]
-        public IRepository<T> Repository { get; set; }
-
-
-        //protected BaseEntityService() : this(repository: new Repository<T>())
-        //{
-        //}
-
-        //protected BaseEntityService(IRepository<T> repository)
-        //{
-        //    if (repository == null)
-        //        throw new ArgumentNullException("repository");
-
-        //    _repository = repository;
-        //}
+        public IRepository<T> _repository { get; set; }
 
         // Количество объектов на одной странице.
-        protected virtual int LinksPerPage { get { return Consts.Paginator.DefaultLinksPerPage; } }
+        protected virtual int LinksPerPage { get { return Consts.PaginatorControl.DefaultItemsPerPage; } }
 
         // Количество отображаемых страниц перед многоточием.
-        protected virtual int NumberOfVisibleLinks { get { return Consts.Paginator.DefaultNumberOfVisibleLinks; } }
+        protected virtual int NumberOfVisibleLinks { get { return Consts.PaginatorControl.DefaultNumberOfVisibleLinks; } }
 
         // Получение полного списка объектов.
         public virtual IQueryable<T> Get()
         {
-            return Repository.DbSet.Select(obj => obj);
+            return _repository.DbSet.Select(obj => obj);
         }
 
         // Получение списка выбранных объектов Pageble.
@@ -76,7 +62,7 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
         // Получение объекта по его ID.
         public virtual T Get(int id)
         {
-            return Repository.DbSet.FirstOrDefault(obj => obj.ID == id);
+            return _repository.DbSet.FirstOrDefault(obj => obj.ID == id);
         }
 
         // Получение неполного списка объекта
@@ -95,22 +81,22 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
         // Добавление объекта.
         public virtual void Create(T obj)
         {
-            Repository.DbSet.Add(obj);
-            Repository.Context.SaveChanges();
+            _repository.DbSet.Add(obj);
+            _repository.Context.SaveChanges();
         }
 
         // Сохранение изменений в объекте.
         public virtual void Update(T obj)
         {
-            Repository.Context.Entry(obj).State = EntityState.Modified;
-            Repository.Context.SaveChanges();
+            _repository.Context.Entry(obj).State = EntityState.Modified;
+            _repository.Context.SaveChanges();
         }
 
         // Удаление объекта.
         public virtual void Delete(T obj)
         {
-            Repository.DbSet.Remove(obj);
-            Repository.Context.SaveChanges();
+            _repository.DbSet.Remove(obj);
+            _repository.Context.SaveChanges();
         }
     }
 }

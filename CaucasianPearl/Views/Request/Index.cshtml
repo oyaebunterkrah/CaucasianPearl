@@ -1,5 +1,3 @@
-@model IEnumerable<Request>
-
 @using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.EntityServices.Interface
 @using CaucasianPearl.Core.UserControls
@@ -9,17 +7,30 @@
 @using Resources.Request
 @using Resources.Shared
 
-@{
-    ViewBag.Title = RequestViewRes.Request;
-}
+@model IEnumerable<Request>
 
-<h2>@RequestViewRes.Request</h2>
+@{
+    ViewBag.Title = string.Format("{0} - {1}", SharedRes.ProjectTitle, RequestViewRes.Requests);
+}
 
 <p>
     @Html.ActionLink(
-        RequestViewRes.AddComment,
-        Consts.Actions.Create
+        SharedViewRes.ToHomePage,
+        actionName: Consts.Actions.Index,
+        controllerName: Consts.Controllers.Home.Name,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" }
     )
+    @Consts.BreadcrumbsSeparator
+    @RequestViewRes.Requests
+</p>
+
+<h2>@RequestViewRes.Requests</h2>
+
+<p>
+    @Html.ActionLink(
+        linkText: RequestViewRes.AddRequest,
+        actionName: Consts.Actions.Create)
 </p>
 
 @foreach (var request in Model)
@@ -39,21 +50,21 @@
             </div>
 
             <span class="display-label">@RequestModelRes.Content:</span>
-            <div class="display-field">
-                @(request.Content.Length < 100 ? request.Content : request.Content.Substring(0, 150) + "...")
+            <div id="@string.Format("requestContent{0}", request.ID)" class="display-field">
+                @request.Content
             </div>
 
             <span class="display-label">@RequestModelRes.Status:</span>
-            <div class="display-field">
+            <div id="@string.Format("requestStatus{0}", request.ID)" class="display-field">
                 @request.Status
             </div>
             
             <span class="display-label">@RequestModelRes.Comment:</span>
-            <div class="display-field">
-                @(request.Comment.Length < 100 ? request.Comment : request.Comment.Substring(0, 150) + "...")
+            <div id="@string.Format("requestComment{0}", request.ID)" class="display-field">
+                @request.Comment
             </div>
 
-            @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+            @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
             {
                 <p>
                     @Html.ActionLink(
@@ -71,7 +82,7 @@
         </div>
         
         @Html.ActionLink(
-            linkText: @RequestViewRes.Details,
+            linkText: @RequestViewRes.RequestDetails,
             actionName: Consts.Actions.Details,
             routeValues: new {id = request.ID})
     </div>
@@ -87,10 +98,10 @@
 <div class="paginator">
     @Html.Partial(
         Consts.UserControlsPaths.Paginator,
-        (Paginator.GetLinks(
+        (PaginatorControl.GetLinks(
             DependencyResolverHelper<IBaseService<Request>>.GetService().Count(Request.QueryString),
-            Consts.Paginator.RequestLinksPerPage,
-            Consts.Paginator.RequestNumberOfVisibleLinks)
+            Consts.PaginatorControl.RequestItemsPerPage,
+            Consts.PaginatorControl.RequestNumberOfVisibleLinks)
         )
     )
 </div>

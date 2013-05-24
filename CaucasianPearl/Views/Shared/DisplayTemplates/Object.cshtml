@@ -1,5 +1,9 @@
 ﻿@model object
 
+@using CaucasianPearl;
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.Helpers
+
 <div class="display-form">
     @if (Model == null) {
         @ViewData.ModelMetadata.NullDisplayText
@@ -10,7 +14,7 @@
             if (property.HideSurroundingHtml) {
                 @Html.Display(property.PropertyName)
             } else {
-                <div class="object-display-property">
+                <div class="display-property">
                     <div class="display-label">@property.GetDisplayName()</div>
                     <div class="display-field">@Html.Display(property.PropertyName)</div>
                 </div>

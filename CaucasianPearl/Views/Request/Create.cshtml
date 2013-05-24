@@ -5,18 +5,18 @@
 @using Resources.Shared
 
 @{
-    ViewBag.Title = RequestViewRes.Request;
+    ViewBag.Title = RequestViewRes.Requests;
 }
 
-<h2>@RequestViewRes.AddComment</h2>
+<h2>@RequestViewRes.AddingRequest</h2>
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>@RequestViewRes.Request</legend>
+        <legend>@RequestViewRes.Requests</legend>
 
-		@Html.Partial("CreateOrEdit", Model)
+		@Html.Partial(Consts.Views.CreateOrEdit, Model)
 
         <p>
             <input type="submit" value="@SharedViewRes.Create" />
@@ -24,8 +24,8 @@
     </fieldset>
 }
 
-<div>
-    @Html.ActionLink(@RequestViewRes.BackToList, Consts.Actions.Index)
-</div>
-
-
+@if (WebSecurity.IsAuthenticated && User.IsInRole(Consts.Roles.AdminContentManager)) {
+    <div>
+        @Html.ActionLink(@RequestViewRes.BackToList, Consts.Actions.Index)
+    </div>
+}

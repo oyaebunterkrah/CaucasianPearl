@@ -9,7 +9,7 @@
     ViewBag.Title = FeedbackViewRes.Feedback;
 }
 
-<h2>@FeedbackViewRes.Feedback</h2>
+<h2>@FeedbackViewRes.Feedback: @Model.Name</h2>
 
 <p>
     @Html.ActionLink(
@@ -30,13 +30,13 @@
             <div class="display-field">@Model.Suggestion</div>
         }
 
-        @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+        @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
         {
             <span class="display-label">@FeedbackModelRes.IsApproved:</span>
             <div class="display-field">@Model.IsApproved</div>
         }
 
-        @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+        @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
         {
             <p>
                 @Html.ActionLink(

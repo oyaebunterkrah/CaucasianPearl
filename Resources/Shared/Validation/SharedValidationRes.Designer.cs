@@ -59,5 +59,41 @@ namespace Resources.Shared {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неправильный формат.
+        /// </summary>
+        public static string FormatIncorrect {
+            get {
+                return ResourceManager.GetString("FormatIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поле обязательно для заполнения.
+        /// </summary>
+        public static string Required {
+            get {
+                return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поле &quot;{0}&quot; должно содержать не более {2} символов.
+        /// </summary>
+        public static string StringLengthMax {
+            get {
+                return ResourceManager.GetString("StringLengthMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поле &quot;{0}&quot; должно содержать не менее {2} символов.
+        /// </summary>
+        public static string StringLengthMin {
+            get {
+                return ResourceManager.GetString("StringLengthMin", resourceCulture);
+            }
+        }
     }
 }

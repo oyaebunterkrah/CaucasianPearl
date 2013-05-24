@@ -2,8 +2,11 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using CaucasianPearl.Core.DAL;
 using CaucasianPearl.Core.DAL.Interface;
+using CaucasianPearl.Core.DAL.Repository;
 using CaucasianPearl.Core.EntityServices;
 using CaucasianPearl.Core.EntityServices.Interface;
+using CaucasianPearl.Core.Services;
+using CaucasianPearl.Core.Services.FlickrNet;
 using CaucasianPearl.Core.Services.Logging;
 using CaucasianPearl.Models.EDM;
 using Ninject.Parameters;
@@ -50,11 +53,13 @@ namespace CaucasianPearl.App_Start
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
+
             kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
             DependencyResolver.SetResolver(new NinjectDependancyResolver(kernel: kernel));
             RegisterServices(kernel);
+
             return kernel;
         }
 
@@ -69,8 +74,10 @@ namespace CaucasianPearl.App_Start
             kernel.Bind<IUrlFriendlyService<Event>>().To<EventEntityService>();
             kernel.Bind<IUrlFriendlyService<OneNews>>().To<OneNewsEntityService>();
             kernel.Bind<IBaseService<Feedback>>().To<FeedbackEntityService>();
-            kernel.Bind<IBaseService<Request>>().To<RequestEntityService>(); 
-
+            kernel.Bind<IBaseService<Request>>().To<RequestEntityService>();
+            kernel.Bind<IUrlFriendlyService<Profile>>().To<UserProfileEntityService>();
+            kernel.Bind<IOrderedService<ContentBlock>>().To<ContentBlockEntityService>(); 
+            
             #endregion
 
             #region Repository
@@ -79,12 +86,15 @@ namespace CaucasianPearl.App_Start
             kernel.Bind<IRepository<OneNews>>().To<Repository<OneNews>>();
             kernel.Bind<IRepository<Feedback>>().To<Repository<Feedback>>();
             kernel.Bind<IRepository<Request>>().To<Repository<Request>>();
-
+            kernel.Bind<IRepository<Profile>>().To<Repository<Profile>>();
+            kernel.Bind<IRepository<ContentBlock>>().To<Repository<ContentBlock>>();
+            
             #endregion
 
             #region Services
 
-            kernel.Bind<ILogFacade>().To<LogFacade>().InSingletonScope();
+            kernel.Bind<ILogService>().To<LogService>();
+            kernel.Bind<IFlickrService>().To<FlickrService>();
 
             #endregion
         }

@@ -61,11 +61,74 @@ namespace Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Доступ запрещён.
+        /// </summary>
+        public static string AccessDenied {
+            get {
+                return ResourceManager.GetString("AccessDenied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удаление запрещено.
+        /// </summary>
+        public static string DeleteForbidden {
+            get {
+                return ResourceManager.GetString("DeleteForbidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ошибка.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вы не авторизованы.
+        /// </summary>
+        public static string NotAuthorized {
+            get {
+                return ResourceManager.GetString("NotAuthorized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Объект не найден.
+        /// </summary>
+        public static string NotFound {
+            get {
+                return ResourceManager.GetString("NotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Возникла неожиданная ошибка.
+        /// </summary>
+        public static string UnexpectedError {
+            get {
+                return ResourceManager.GetString("UnexpectedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вы не выбрали файл.
         /// </summary>
         public static string YouDidNotSelectAFile {
             get {
                 return ResourceManager.GetString("YouDidNotSelectAFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to У Вас нет прав на СОЗДАНИЕ на сайте Flickr.
+        /// </summary>
+        public static string YouDoNotHaveCreatePermissionsOnTheFlickrSite {
+            get {
+                return ResourceManager.GetString("YouDoNotHaveCreatePermissionsOnTheFlickrSite", resourceCulture);
             }
         }
     }

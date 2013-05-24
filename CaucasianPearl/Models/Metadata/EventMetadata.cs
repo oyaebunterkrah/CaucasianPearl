@@ -18,13 +18,6 @@ namespace CaucasianPearl.Models.Metadata
         [StringLength(50, ErrorMessage = "Не более 50 символов")]
         public string Name { get; set; }
 
-        [DataType(DataType.Text)]
-        [Show(ShowForDisplay = true, ShowForEdit = true)]
-        [Display(Name = "Название отображаемое в URL")]
-        [Required(ErrorMessage = "Название обязательно")]
-        [RegularExpression("[a-z0-9_]+", ErrorMessage = "Только маленькие латинские буквы, цифры и подчёркивание")]
-        public string ShortName { get; set; }
-
         [DataType(DataType.Date)]
         [Show(ShowForDisplay = true, ShowForEdit = true)]
         [Display(Name = "Дата начала события")]
@@ -51,13 +44,13 @@ namespace CaucasianPearl.Models.Metadata
 
         [DataType(DataType.Text)]
         [Show(ShowForDisplay = true, ShowForEdit = true)]
-        [Display(Name = "Место")]
-        public string Place { get; set; }
+        [Display(Name = "Тип")]
+        public string Type { get; set; }
 
         [DataType(DataType.Text)]
         [Show(ShowForDisplay = true, ShowForEdit = true)]
-        [Display(Name = "Тип")]
-        public string Type { get; set; }
+        [Display(Name = "Место")]
+        public string Place { get; set; }
 
         [DataType(DataType.Html)]
         [Show(ShowForDisplay = true, ShowForEdit = true)]
@@ -65,10 +58,20 @@ namespace CaucasianPearl.Models.Metadata
         [AllowHtml]
         public string Description { get; set; }
 
+        [Show(ShowForDisplay = false, ShowForEdit = true)]
+        public string CreatedBy { get; set; }
+
         [DataType(DataType.Text)]
         [Show(ShowForDisplay = false, ShowForEdit = false)]
         [Display(Name = "Формат изображения")]
         public string ImageExt { get; set; }
+
+        [DataType(DataType.Text)]
+        [Show(ShowForDisplay = true, ShowForEdit = true)]
+        [Display(Name = "Название отображаемое в URL")]
+        [Required(ErrorMessage = "Название обязательно")]
+        [RegularExpression("[a-z0-9_]+", ErrorMessage = "Только маленькие латинские буквы, цифры и подчёркивание")]
+        public int? ShortName { get; set; }
 
         [DataType(DataType.Text)]
         [Show(ShowForDisplay = false, ShowForEdit = true)]

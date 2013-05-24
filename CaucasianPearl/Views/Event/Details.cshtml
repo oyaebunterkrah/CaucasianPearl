@@ -10,12 +10,14 @@
 }
 
 <p>
+    @* На домашнюю страницу *@
     @Html.ActionLink(SharedViewRes.ToHomePage,
         Consts.Actions.Index,
         controllerName: Consts.Controllers.Home.Name,
         routeValues: null,
         htmlAttributes: new { @class = "link" }
     )
+    @* Все события *@
     @Consts.BreadcrumbsSeparator
     @Html.ActionLink(
         EventViewRes.AllEvents,
@@ -27,9 +29,10 @@
     @Model.Name
 </p>
 
-@if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+@if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
 {
     <p>
+        @* Редактировать *@
         @Html.ActionLink(
             SharedViewRes.Edit,
             Consts.Actions.Edit,
@@ -38,6 +41,7 @@
             htmlAttributes: new { @class = "link" }
         )
         @Consts.MenuSeparator
+        @* Удалить *@
         @Html.ActionLink(
             SharedViewRes.Delete, actionName: Consts.Actions.Delete,
             controllerName: Consts.Controllers.Event.Name,
@@ -47,10 +51,70 @@
     </p>
 }
 
-<h2>@Model.Name</h2>
+<h2>@EventViewRes.Event: @Model.Name</h2>
+
+<br />
 
 <div class="model-image">
-    <img src='@(Url.Content(Consts.EntityImagesFolder))/@(Consts.Controllers.Event.EventImagesFolder)/@ImageHelper.GetImageName(Model)' alt='@Model.Name' />
+    <img src='@string.Format("{0}/{1}/{2}",
+                             (Url.Content(Consts.EntityImagesFolder)),
+                             (Consts.Controllers.Event.EventImagesFolder),
+                             ImageHelper.GetImageName(Model))' alt="@Model.Name"/>
 </div>
 
-@Html.DisplayForModel()
+<fieldset>
+    <legend>@Model.Name</legend>
+    
+    <div class="display-form">
+        <div class="display-property">
+            @Html.HiddenFor(model => model.ID)
+            
+            <div class="display-label">@Html.LabelFor(model => model.Name)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Name)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.StartDate)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.StartDate)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.EndDate)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.EndDate)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.StartTime)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.StartTime)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.EndTime)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.EndTime)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.Type)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Type)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.Place)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Place)</div>
+            <div class="clear"></div>
+    
+            <div class="display-label">@Html.LabelFor(model => model.Description)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Description)</div>
+            <div class="clear"></div>
+    
+            <div class="display-label">@Html.LabelFor(model => model.ShortName)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.ShortName)</div>
+            <div class="clear"></div>
+    
+            @Html.HiddenFor(model => model.CreatedBy)
+            @Html.HiddenFor(model => model.ImageExt)
+            @Html.HiddenFor(model => model.Sequence)
+        </div>
+    </div>
+</fieldset>
+
+<p>
+    @if (WebSecurity.IsAuthenticated && Roles.IsUserInRole(Consts.Roles.Admin)) {
+        @Html.ActionLink(SharedViewRes.Edit, Consts.Actions.Edit, new { id = Model.ID }) @:|
+    }
+    @Html.ActionLink(EventViewRes.BackToList, Consts.Actions.Index)
+</p>

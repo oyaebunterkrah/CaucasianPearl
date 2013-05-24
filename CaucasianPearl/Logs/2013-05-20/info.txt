@@ -1,0 +1,1 @@
+2013-05-20 23:30:15.7720|INFO|CaucasianPearl.Core.Services.LogService|C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Temp\FlickerCache\

@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
+﻿using System.Text;
 using System.Web.Mvc;
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.Filters;
 using CaucasianPearl.Models;
+using Contact = CaucasianPearl.Models.Contact;
 
 namespace CaucasianPearl.Controllers
 {
     public class HomeController : Controller
     {
-        [LocalizedCache(Duration = Consts.OutputCacheDuration)]
+        //[LocalizedCache(Duration = Consts.OutputCacheDuration)]
         public ActionResult Index()
         {
             var wrapperModel = new WrapperModel();
@@ -26,6 +23,7 @@ namespace CaucasianPearl.Controllers
             return View();
         }
 
+        //[LocalizedCacheAttribute(Duration = Consts.OutputCacheDuration)]
         public ActionResult Contact()
         {
             return View();
@@ -41,7 +39,7 @@ namespace CaucasianPearl.Controllers
                 msg = "Спасибо! Мы скоро Вам ответим.";
 
             if (Request.IsAjaxRequest())
-                return new JsonResult { ContentEncoding = Encoding.UTF8, Data = new { success = true, message = msg } };
+                return new JsonResult {ContentEncoding = Encoding.UTF8, Data = new {success = true, message = msg}};
 
             TempData["Message"] = msg;
 

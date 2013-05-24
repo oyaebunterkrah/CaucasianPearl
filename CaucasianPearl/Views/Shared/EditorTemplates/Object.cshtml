@@ -15,7 +15,7 @@
                     @Html.Editor(property.PropertyName)
                 }
                 else {
-                    <div class="object-editor-property">
+                    <div class="editor-property">
                         <div class="editor-label">@Html.Label(property.PropertyName)</div>
                         <div class="editor-field @GetInputClass(property.DataTypeName)">@Html.Editor(property.PropertyName)</div>
                         @if (property.IsRequired) {

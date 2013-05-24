@@ -59,6 +59,6 @@ namespace CaucasianPearl.Models.Metadata
 
         [Display(Name = "Status", ResourceType = typeof(RequestModelRes))]
         [Show(ShowForDisplay = true, ShowForEdit = false)]
-        public string Status { get; set; }
+        public int Status { get; set; }
     }
 }

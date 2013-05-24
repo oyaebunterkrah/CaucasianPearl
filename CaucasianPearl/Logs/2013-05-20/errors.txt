@@ -1,0 +1,434 @@
+2013-05-20 22:36:58.7222|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /gallery
+Raw Url: /gallery
+Message: Ссылка на объект не указывает на экземпляр объекта.
+Source: CaucasianPearl
+Stack Trace:    в CaucasianPearl.Core.Services.FlickrService.GetInstance() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 52
+   в CaucasianPearl.Core.Services.FlickrService..ctor() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 37
+   в DynamicInjector2c44ddfd3e8d4887baa9929ecb15bfa1(Object[] )
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 97
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: FlickrNet.Flickr GetInstance()
+2013-05-20 22:36:59.5222|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /favicon.ico
+Raw Url: /favicon.ico
+Message: The controller for path '/favicon.ico' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-05-20 22:38:07.0811|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /gallery
+Raw Url: /gallery
+Message: Ссылка на объект не указывает на экземпляр объекта.
+Source: CaucasianPearl
+Stack Trace:    в CaucasianPearl.Core.Services.FlickrService.GetInstance() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 52
+   в CaucasianPearl.Core.Services.FlickrService..ctor() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 37
+   в DynamicInjector2c44ddfd3e8d4887baa9929ecb15bfa1(Object[] )
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 97
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: FlickrNet.Flickr GetInstance()
+2013-05-20 22:38:07.3231|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /favicon.ico
+Raw Url: /favicon.ico
+Message: The controller for path '/favicon.ico' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-05-20 22:49:20.2556|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /gallery
+Raw Url: /gallery
+Message: Ссылка на объект не указывает на экземпляр объекта.
+Source: CaucasianPearl
+Stack Trace:    в CaucasianPearl.Core.Services.FlickrService.GetInstance() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 53
+   в CaucasianPearl.Core.Services.FlickrService..ctor() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 37
+   в DynamicInjectorc972d5ed37184fa898e7780a536a61a9(Object[] )
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 97
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: FlickrNet.Flickr GetInstance()
+2013-05-20 22:49:20.5736|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /favicon.ico
+Raw Url: /favicon.ico
+Message: The controller for path '/favicon.ico' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-05-20 22:50:55.4030|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /gallery
+Raw Url: /gallery
+Message: Ссылка на объект не указывает на экземпляр объекта.
+Source: CaucasianPearl
+Stack Trace:    в CaucasianPearl.Core.Services.FlickrService.GetInstance() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 53
+   в CaucasianPearl.Core.Services.FlickrService..ctor() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 37
+   в DynamicInjector3456900c2c474cda91791c02229fc54e(Object[] )
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 97
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: FlickrNet.Flickr GetInstance()
+2013-05-20 22:50:55.7140|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /favicon.ico
+Raw Url: /favicon.ico
+Message: The controller for path '/favicon.ico' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-05-20 22:59:56.9590|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /gallery
+Raw Url: /gallery
+Message: Ссылка на объект не указывает на экземпляр объекта.
+Source: CaucasianPearl
+Stack Trace:    в CaucasianPearl.Core.Services.FlickrService.GetInstance() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 53
+   в CaucasianPearl.Core.Services.FlickrService..ctor() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 37
+   в DynamicInjector4c98055f73ca4e0a9b6f3ae442bb309b(Object[] )
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 97
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: FlickrNet.Flickr GetInstance()
+2013-05-20 22:59:57.9070|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /favicon.ico
+Raw Url: /favicon.ico
+Message: The controller for path '/favicon.ico' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-05-20 23:03:11.1011|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /gallery
+Raw Url: /gallery
+Message: Ссылка на объект не указывает на экземпляр объекта.
+Source: CaucasianPearl
+Stack Trace:    в CaucasianPearl.Core.Services.FlickrService.GetInstance() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 53
+   в CaucasianPearl.Core.Services.FlickrService..ctor() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 37
+   в DynamicInjectore460501f6cbe4aad9f34757eb2ab62ec(Object[] )
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 97
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: FlickrNet.Flickr GetInstance()
+2013-05-20 23:03:11.3161|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /favicon.ico
+Raw Url: /favicon.ico
+Message: The controller for path '/favicon.ico' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-05-20 23:15:09.4512|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /gallery
+Raw Url: /gallery
+Message: Ссылка на объект не указывает на экземпляр объекта.
+Source: CaucasianPearl
+Stack Trace:    в CaucasianPearl.Core.Services.FlickrService.GetInstance() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 53
+   в CaucasianPearl.Core.Services.FlickrService..ctor() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 37
+   в DynamicInjectorc3ff98fbd9f743589f611fdf34890657(Object[] )
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 97
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: FlickrNet.Flickr GetInstance()
+2013-05-20 23:15:09.6622|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /favicon.ico
+Raw Url: /favicon.ico
+Message: The controller for path '/favicon.ico' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-05-20 23:18:12.9967|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /gallery
+Raw Url: /gallery
+Message: Ссылка на объект не указывает на экземпляр объекта.
+Source: CaucasianPearl
+Stack Trace:    в CaucasianPearl.Core.Services.FlickrService.GetInstance() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 53
+   в CaucasianPearl.Core.Services.FlickrService..ctor() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 37
+   в DynamicInjector69f157a17df043e0980e06caf7c9aabc(Object[] )
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 97
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: FlickrNet.Flickr GetInstance()
+2013-05-20 23:18:13.6297|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /favicon.ico
+Raw Url: /favicon.ico
+Message: The controller for path '/favicon.ico' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-05-20 23:19:01.9075|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /gallery
+Raw Url: /gallery
+Message: Ссылка на объект не указывает на экземпляр объекта.
+Source: CaucasianPearl
+Stack Trace:    в CaucasianPearl.Core.Services.FlickrService.GetInstance() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 53
+   в CaucasianPearl.Core.Services.FlickrService..ctor() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 37
+   в DynamicInjector69f157a17df043e0980e06caf7c9aabc(Object[] )
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 97
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: FlickrNet.Flickr GetInstance()
+2013-05-20 23:19:02.2105|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /favicon.ico
+Raw Url: /favicon.ico
+Message: The controller for path '/favicon.ico' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-05-20 23:31:19.7807|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /gallery
+Raw Url: /gallery
+Message: Ссылка на объект не указывает на экземпляр объекта.
+Source: CaucasianPearl
+Stack Trace:    в CaucasianPearl.Core.Services.FlickrService.PhotosetsCount() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Core\Services\FlickrService.cs:строка 206
+   в ASP._Page_Views_gallery_Index_cshtml.Execute() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Views\Gallery\Index.cshtml:строка 87
+   в System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   в System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   в System.Web.WebPages.StartPage.RunPage()
+   в System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   в System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   в System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   в System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   в System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   в System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   в System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   в System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   в System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   в System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   в System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   в System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   в System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   в System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   в System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   в System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   в System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   в System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   в System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   в System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: Int32 PhotosetsCount()
+2013-05-20 23:31:20.7927|ERROR|CaucasianPearl.Core.Services.LogService|
+Error in Path: /favicon.ico
+Raw Url: /favicon.ico
+Message: The controller for path '/favicon.ico' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)

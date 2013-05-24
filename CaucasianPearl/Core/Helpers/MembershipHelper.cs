@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
+﻿using System.Web.Security;
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.Services.Logging;
 using Ninject;
 using WebMatrix.WebData;
-using NLog;
 
 namespace CaucasianPearl.Core.Helpers
 {
     public class MembershipHelper
     {
         [Inject]
-        private static ILogFacade LogFacade { get; set; }
+        private static ILogService LogService { get; set; }
 
         public static void AddAdmin()
         {
@@ -35,7 +30,7 @@ namespace CaucasianPearl.Core.Helpers
                 }
                 catch (MembershipCreateUserException exeption)
                 {
-                    LogFacade.Error("MembershipHelper.AddAdmin() MembershipCreateUserException", exeption);
+                    LogService.Error(exeption);
                 }
             }
 

@@ -1,7 +1,9 @@
-﻿@model CaucasianPearl.Models.LoginModel
+﻿@using Resources.Account
+
+@model CaucasianPearl.Models.LoginModel
 
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = AccountViewRes.Login;
 }
 
 <hgroup class="title">
@@ -10,7 +12,8 @@
 
 <section id="loginForm">
 <h2>Use a local account to log in.</h2>
-@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+@using (Html.BeginForm(new { returnUrl = ViewBag.ReturnUrl }))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
@@ -42,7 +45,7 @@
 
 <section class="social" id="socialLoginForm">
     <h2>Use another service to log in.</h2>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+    @Html.Action("ExternalLoginsList", new { returnUrl = ViewBag.ReturnUrl })
 </section>
 
 @section Scripts {

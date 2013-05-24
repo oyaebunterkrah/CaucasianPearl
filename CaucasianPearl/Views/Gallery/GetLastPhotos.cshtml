@@ -1,0 +1,14 @@
+﻿@using CaucasianPearl.Core.Constants
+
+@model CaucasianPearl.Models.FlickrModel
+
+@{
+    Layout = null;
+}
+
+@foreach (var photo in Model.LastPhotos)
+{ 
+    <a href="@Url.Action(Consts.Controllers.Gallery.Actions.Photo, new { controller = Consts.Controllers.Gallery.Name, id = @photo.PhotoId })">
+        <img class="flow-img" title="@photo.Title" src="@photo.ThumbnailUrl"/>
+    </a>
+}

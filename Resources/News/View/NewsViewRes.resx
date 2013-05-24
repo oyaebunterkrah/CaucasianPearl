@@ -141,13 +141,16 @@
   <data name="News" xml:space="preserve">
     <value>Новости</value>
   </data>
-  <data name="NewsCreation" xml:space="preserve">
+  <data name="NewsCreating" xml:space="preserve">
     <value>Создание новости</value>
   </data>
-  <data name="NewsDeletion" xml:space="preserve">
+  <data name="NewsDeleting" xml:space="preserve">
     <value>Удаление новости</value>
   </data>
-  <data name="NewsEdition" xml:space="preserve">
+  <data name="NewsEditing" xml:space="preserve">
     <value>Редактирование новости</value>
+  </data>
+  <data name="OneNews" xml:space="preserve">
+    <value>Новость</value>
   </data>
 </root>

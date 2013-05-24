@@ -63,9 +63,9 @@ namespace Resources.Account {
         /// <summary>
         ///   Looks up a localized string similar to Аккаунт не был создан. Пожалуйста, исправьте ошибки и попробуйте снова.
         /// </summary>
-        public static string AccountCreationWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain {
+        public static string AccountCreatingWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain {
             get {
-                return ResourceManager.GetString("AccountCreationWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain", resourceCulture);
+                return ResourceManager.GetString("AccountCreatingWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain", resourceCulture);
             }
         }
         
@@ -133,6 +133,33 @@ namespace Resources.Account {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Зарегистрируйтесь.
+        /// </summary>
+        public static string Login_Register {
+            get {
+                return ResourceManager.GetString("Login_Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вход.
+        /// </summary>
+        public static string LoginPartial_Login {
+            get {
+                return ResourceManager.GetString("LoginPartial_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выход.
+        /// </summary>
+        public static string LoginPartial_LogOff {
+            get {
+                return ResourceManager.GetString("LoginPartial_LogOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вход не выполнен. Пожалуйста, исправьте ошибки и попробуйте снова.
         /// </summary>
         public static string LoginWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain {
@@ -147,33 +174,6 @@ namespace Resources.Account {
         public static string LogOff {
             get {
                 return ResourceManager.GetString("LogOff", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Зарегистрируйтесь.
-        /// </summary>
-        public static string LogOn_Register {
-            get {
-                return ResourceManager.GetString("LogOn_Register", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Вход.
-        /// </summary>
-        public static string LogOnPartial_Login {
-            get {
-                return ResourceManager.GetString("LogOnPartial_Login", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Выход.
-        /// </summary>
-        public static string LogOnPartial_LogOff {
-            get {
-                return ResourceManager.GetString("LogOnPartial_LogOff", resourceCulture);
             }
         }
         

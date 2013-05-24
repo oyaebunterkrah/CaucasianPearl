@@ -20,9 +20,9 @@ namespace CaucasianPearl.Controllers.Abstract
         protected UrlFriendlyController(S service) : base(service) { }
 
         // Количество объектов на одной странице по умолчанию.
-        public virtual int PagerLinksPerPage { get { return Consts.Paginator.DefaultLinksPerPage; } }
+        public virtual int PagerLinksPerPage { get { return Consts.PaginatorControl.DefaultItemsPerPage; } }
         // Количество отображаемых страниц перед многоточием по умолчанию.
-        public virtual int NumberOfVisibleLinks  { get { return Consts.Paginator.DefaultNumberOfVisibleLinks; } }
+        public virtual int NumberOfVisibleLinks  { get { return Consts.PaginatorControl.DefaultNumberOfVisibleLinks; } }
 
         // Отображение объекта с указанным ShortName
         public ActionResult GetByShortName(string shortName)
@@ -37,7 +37,7 @@ namespace CaucasianPearl.Controllers.Abstract
             var obj = _service.Get(shortName);
 
             return obj == null
-                ? View(Consts.Views.NotFound)
+                ? View(Consts.Controllers.Error.Views.NotFound)
                 : View(Consts.Views.Details, obj);
         }
 
@@ -46,18 +46,18 @@ namespace CaucasianPearl.Controllers.Abstract
         // При создании или сохранении объекта:
         // если свойство ShortName пустое, формируем его из значения shortNameSource
         // затем проверяем его свойство ShortName и приводим его к уникальному виду
-        protected override void ChangeFormCollectionValues(dynamic obj)
+        protected override void ChangeValuesOnEdit(T model)
         {
-            base.ChangeFormCollectionValues((T)obj);
+            base.ChangeValuesOnEdit(model);
 
-            if (string.IsNullOrWhiteSpace(obj.ShortName))
+            if (string.IsNullOrWhiteSpace(model.ShortName))
             {
-                var shortNameSource = GetShortNameSource(obj);
+                var shortNameSource = GetShortNameSource(model);
                 if (!string.IsNullOrWhiteSpace(shortNameSource))
-                    obj.ShortName = Transliterate(shortNameSource);
+                    model.ShortName = Transliterate(shortNameSource);
             }
 
-            obj.ShortName = _service.CreateUniqueShortName(obj.ID, obj.ShortName);
+            model.ShortName = _service.CreateUniqueShortName(model.ID, model.ShortName);
         }
 
         #endregion

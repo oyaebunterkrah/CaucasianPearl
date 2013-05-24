@@ -126,17 +126,26 @@
   <data name="Contacts" xml:space="preserve">
     <value>Контакты</value>
   </data>
+  <data name="ContentBlock" xml:space="preserve">
+    <value>Контент-блоки</value>
+  </data>
   <data name="Events" xml:space="preserve">
     <value>События</value>
   </data>
   <data name="Feedbacks" xml:space="preserve">
     <value>Оставить отзыв</value>
   </data>
+  <data name="Gallery" xml:space="preserve">
+    <value>Галерея</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Домашняя</value>
   </data>
   <data name="News" xml:space="preserve">
     <value>Новости</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>Наш коллектив</value>
   </data>
   <data name="Requests" xml:space="preserve">
     <value>Отправить заявку</value>

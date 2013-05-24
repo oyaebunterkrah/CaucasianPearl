@@ -1,0 +1,55 @@
+﻿@using CaucasianPearl.Core.Constants
+
+@model CaucasianPearl.Models.FlickrModel
+
+@{
+    ViewBag.Title = @Html.Raw(Model.CurrentPhoto.Title);
+}
+
+<style type="text/css">
+    html, body { height: 100%; overflow: hidden; margin:0; padding:0;  }
+    #container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-Index: 10000 }
+    #galleria { position: relative;  width: 100%; height: 100%; background:#000 }
+</style>
+
+<script src="@Url.Content(@Url.Content(Consts.JsPaths.Galleria))"></script>
+<script type="text/javascript">
+    var data = @Html.Raw(Model.PhotosJson);
+
+    Galleria.loadTheme('@Url.Content(Consts.JsPaths.GalleriaClassicTheme)');
+    var elem = $('#galleria');
+    var galleria;
+    Galleria.run('#galleria', {
+        show: @Model.IndexOfCurrentPhoto,
+        transition: 'slide',
+        initialTransition: 'fade',
+        dataSource: data });
+
+    Galleria.ready(function () {
+
+        this.bind("image", function () {
+            document.title = galleria.getData().title;
+
+            $('#div-fblike').html('<fb:like href="' + data[galleria.getIndex()].url + '" layout="button_count" send="false" show_faces="false" colorscheme="dark" />');
+            $('#div-twitter').html('<a href="https://twitter.com/share" class="twitter-share-button" data-url="' + data[galleria.getIndex()].url + '" data-text="' + galleria.getData().title + '">Tweet</a>');
+            try {
+                window.FB.XFBML.parse(document.getElementById('div-fblike'));
+                window.twttr.widgets.load();
+            } catch(ex) {}
+        });
+        
+        galleria = this;
+        this.attachKeyboard({
+            right: this.next,
+            left: this.prev,
+        });
+
+        window.onresize = function() {
+            galleria.resize();
+        };
+    });
+</script>
+
+<div id="container">
+    <div id="galleria"></div>
+</div>

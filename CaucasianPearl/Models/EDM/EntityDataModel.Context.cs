@@ -13,10 +13,10 @@ namespace CaucasianPearl.Models.EDM
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EntityDataModel : DbContext
+    public partial class CaucasianPearlContext : DbContext
     {
-        public EntityDataModel()
-            : base("name=EntityDataModel")
+        public CaucasianPearlContext()
+            : base("name=CaucasianPearlContext")
         {
         }
     
@@ -29,5 +29,7 @@ namespace CaucasianPearl.Models.EDM
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<OneNews> News { get; set; }
         public DbSet<Request> Requests { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<ContentBlock> ContentBlocks { get; set; }
     }
 }

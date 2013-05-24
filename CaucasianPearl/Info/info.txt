@@ -1,0 +1,106 @@
+Контакты - contact
+Отзывы - feedback
+Заявки - request
+Профили пользователей - users
+Галерея - gallery
+Новости проекта (технические новшества) - innovations
+
+ПОЛЯ, КОТОРЫЕ МОЖНО ПРАВИТЬ
+captcha
+
+проверить все TODO
+валидация
+длина полей, обязательность, типы - в базе
+логирование
+проверку всех данных
+html.encode
+ресурсники
+запрет просмотра папок
+
+Скаффолдинг:
+	get-scaffolder
+
+	Scaffold IRepository ModelName
+	Scaffold MvcScaffolding.Controller ContentBlock
+
+	
+страница коллектива
+	http://alliance-ptz.ru/staff/
+
+профили
+	http://dotnetnsqlcorner.blogspot.ru/2012/05/implementing-custom-profile-in-aspnet.html
+	http://blog.osbornm.com/2010/07/21/using-simplemembership-with-asp.net-webpages
+
+локализация
+	http://habrahabr.ru/post/86331/
+	http://afana.me/post/aspnet-mvc-internationalization-part-2.aspx
+
+страница мероприятий
+	http://www.experimentanium.ru/events/
+
+feedback form
+	http://www.frederikvig.com/2010/05/creating-a-contact-form-with-asp-net-mvc/
+
+captcha
+	http://captcha.biz/doc/aspnet/samples/csharp/asp.net-mvc-captcha-sample.html
+	http://devlicio.us/blogs/derik_whittaker/archive/2008/12/02/using-recaptcha-with-asp-net-mvc.aspx
+	http://www.codeproject.com/Articles/313153/ASP-NET-MVC-reCAPTCHA-and-Email-Confirmation
+
+asp.net mvc 4 уроки
+	http://habrahabr.ru/post/175999/
+	непутёвые заметки - http://habrahabr.ru/post/143024/
+
+Общие сведения о жизненном цикле приложения ASP.NET для служб IIS 7.0
+	http://msdn.microsoft.com/ru-ru/library/bb470252(v=vs.100).aspx
+
+templates
+	http://bradwilson.typepad.com/blog/2009/10/aspnet-mvc-2-templates-part-1-introduction.html
+
+ckeditor
+	http://peterkeating.co.uk/using-ckeditor-with-razor-for-net-mvc3/
+
+rating
+	http://dotnet.dzone.com/news/building-star-rating-system
+
+примеры сайтов
+	http://rukivverh.ru/
+	http://www.dancing-studio.ru/news.html
+
+Непутевые заметки о ASP.NET MVC. Часть 1 (и единственная)
+	http://habrahabr.ru/post/143024/
+
+
+Получение token'a flickr {
+
+	[HttpPost]
+	public ActionResult Index(string id)
+	{
+		Flickr.CacheDisabled = true;
+
+		var apikey = Settings.Default.FlickrKey;
+		var secret = Settings.Default.FlickrSecret;
+
+		var flickr = new Flickr(apikey, secret);
+		var frob = flickr.AuthGetFrob() // всё примерно написано, надо вспоминать
+		flickr.AuthGetToken(Settings.Default.FlickrAuthToken);
+            
+		var photoid = flickr.UploadPicture("c:\\Users\\днс\\Desktop\\test.jpg", "fileName", "title", "description",  false, false, false);
+
+		return View();
+	}
+
+	public ActionResult Autentificate(string frob)
+	{
+		Flickr.CacheDisabled = true;
+
+		var apikey = Settings.Default.FlickrKey;
+		var secret = Settings.Default.FlickrSecret;
+
+		var flickr = new Flickr(apikey, secret);
+		var auth = flickr.AuthGetToken(frob);
+            
+		var photoid = flickr.UploadPicture("c:\\Users\\днс\\Desktop\\test.jpg", "fileName", "title", "description",  false, false, false);
+
+		return View();
+	}
+}

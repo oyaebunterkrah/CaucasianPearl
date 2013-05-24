@@ -5,7 +5,6 @@ using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.DAL.Interface;
 using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Filters;
-using CaucasianPearl.Models.Interface;
 
 namespace CaucasianPearl.Controllers.Abstract
 {
@@ -18,12 +17,6 @@ namespace CaucasianPearl.Controllers.Abstract
         where T : class, IBase, new()
         where S : IBaseService<T>
     {
-        #region QueryString parameters
-
-        private const string PageQs = "page";
-
-        #endregion
-
         // Объект для для работы с данными.
         protected readonly S _service;
 
@@ -44,6 +37,9 @@ namespace CaucasianPearl.Controllers.Abstract
         {
             var models = _service.Get(IsPageable);
 
+            foreach (var model in models)
+                ModifyValuesOnDetails(model);
+
             return View(models);
         }
 
@@ -51,8 +47,12 @@ namespace CaucasianPearl.Controllers.Abstract
         public virtual ActionResult Details(int id)
         {
             var model = _service.Get(id);
+
             if (model == null)
-                return View(Consts.Views.NotFound);
+                return View(Consts.Controllers.Error.Views.NotFound);
+
+            ModifyValuesOnDetails(model);
+
             return View(model);
         }
 
@@ -83,9 +83,8 @@ namespace CaucasianPearl.Controllers.Abstract
         public virtual ActionResult Edit(int id)
         {
             var model = _service.Get(id);
-            if (model == null)
-                return View(Consts.Views.NotFound);
-            return View(model);
+
+            return model == null ? View(Consts.Controllers.Error.Views.NotFound) : View(model);
         }
 
         // Обработка формы редактирования объекта
@@ -96,9 +95,9 @@ namespace CaucasianPearl.Controllers.Abstract
             {
                 if (TryUpdateModel(obj))
                 {
-                    ChangeFormCollectionValues(obj);
                     var old = _service.Get(id);
                     UpdateModel(old);
+                    ChangeValuesOnEdit(old);
                     _service.Update(old);
 
                     return OnEdited(obj);
@@ -114,7 +113,7 @@ namespace CaucasianPearl.Controllers.Abstract
         {
             var model = _service.Get(id);
             if (model == null)
-                return View(Consts.Views.NotFound);
+                return View(Consts.Controllers.Error.Views.NotFound);
             return View(model);
         }
 
@@ -124,10 +123,10 @@ namespace CaucasianPearl.Controllers.Abstract
         {
             var model = _service.Get(id);
             if (model == null)
-                return View(Consts.Views.NotFound);
+                return View(Consts.Controllers.Error.Views.NotFound);
 
             if (!model.CanBeDeleted())
-                return View(Consts.Views.DeleteFail, model);
+                return View(Consts.Controllers.Error.Views.DeleteFail, model);
 
             var onDeleted = OnDeleted(model);
 
@@ -142,7 +141,7 @@ namespace CaucasianPearl.Controllers.Abstract
         {
             var model = _service.Get(id);
             if (model == null)
-                return View(Consts.Views.NotFound);
+                return View(Consts.Controllers.Error.Views.NotFound);
 
             var onDeleted = OnDeleted(model);
 
@@ -158,13 +157,15 @@ namespace CaucasianPearl.Controllers.Abstract
         // Перенаправление к странице списка объектов.
         protected virtual ActionResult ReturnToList(T model)
         {
-            return RedirectToAction(Consts.Actions.Index, new { page = Request.QueryString[PageQs] });
+            return RedirectToAction(Consts.Actions.Index,
+                                    new { page = Request.QueryString[Consts.QueryStringParameters.Page] });
         }
 
         // Перенаправление к странице объекта.
         protected virtual ActionResult ReturnToObject(T model)
         {
-            return RedirectToAction(Consts.Actions.Details, new { id = model.ID, page = Request.QueryString[PageQs] });
+            return RedirectToAction(Consts.Actions.Details,
+                                    new { id = model.ID, page = Request.QueryString[Consts.QueryStringParameters.Page] });
         }
 
         // Перенаправление после создания объекта.
@@ -185,11 +186,14 @@ namespace CaucasianPearl.Controllers.Abstract
             return ReturnToList(model);
         }
 
-        // Изменение значений, полученных с формы создания/редактирования.
-        protected virtual void ChangeFormCollectionValues(dynamic obj) { }
-
         // Автоматическое добавление свойств объекта, не получаемых с формы создания объекта.
         protected virtual void AddValuesOnCreate(T model) { }
+
+        // Изменение значений, полученных с формы создания/редактирования.
+        protected virtual void ChangeValuesOnEdit(T model) { }
+
+        // Изменение значений перед отображением.
+        protected virtual void ModifyValuesOnDetails(T model) { }
 
         // Действия при удалении объекта
         protected virtual void OnDelete(T model) { }

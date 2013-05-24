@@ -123,6 +123,12 @@
   <data name="AddComment" xml:space="preserve">
     <value>Добавить отзыв</value>
   </data>
+  <data name="Authorize" xml:space="preserve">
+    <value>Авторизоваться</value>
+  </data>
+  <data name="BackToHomePage" xml:space="preserve">
+    <value>Вернуться на главную страницу</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Отмена</value>
   </data>
@@ -147,11 +153,20 @@
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="Thanks" xml:space="preserve">
+    <value>Спасибо</value>
+  </data>
+  <data name="ThankYouWeWillCertainlyContactYou" xml:space="preserve">
+    <value>Спасибо! Мы с Вами обязательно свяжемся!</value>
+  </data>
   <data name="ToHomePage" xml:space="preserve">
     <value>На главную</value>
   </data>
   <data name="Up" xml:space="preserve">
     <value>Вверх</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Загрузить</value>
   </data>
   <data name="YouSureYouWantToDeleteThis" xml:space="preserve">
     <value>Вы уверены,что хотите удалить?</value>

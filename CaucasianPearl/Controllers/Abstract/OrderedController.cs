@@ -1,9 +1,8 @@
 ﻿using System.Web.Mvc;
 using CaucasianPearl.Controllers.Interface;
 using CaucasianPearl.Core.Constants;
+using CaucasianPearl.Core.DAL.Interface;
 using CaucasianPearl.Core.EntityServices.Interface;
-using CaucasianPearl.Core.Filters;
-using CaucasianPearl.Models.Interface;
 
 namespace CaucasianPearl.Controllers.Abstract
 {
@@ -12,7 +11,7 @@ namespace CaucasianPearl.Controllers.Abstract
     /// </summary>
     /// <typeparam name="T">entity</typeparam>
     /// <typeparam name="S">service</typeparam>
-    public abstract class OrderedController<T, S> : BaseController<T, S>,  IOrderedController<T>
+    public abstract class OrderedController<T, S> : BaseController<T, S>,  IOrderedController
         where T : class, IOrdered, new()
         where S : IOrderedService<T>
     {
@@ -20,15 +19,21 @@ namespace CaucasianPearl.Controllers.Abstract
 
         #region Actions
 
+        public override ActionResult Create(T obj)
+        {
+            AddValuesOnCreate(obj);
+
+            return base.Create(obj);
+        }
+
         // Перемещение объекта вверх.
-        
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
         public ActionResult Up(int id)
         {
             var obj = _service.Get(id);
 
             if (obj == null)
-                return View(Consts.Views.NotFound);
+                return View(Consts.Controllers.Error.Views.NotFound);
             
             if (obj.Sequence.HasValue)
             {
@@ -56,7 +61,7 @@ namespace CaucasianPearl.Controllers.Abstract
         {
             var obj = _service.Get(id);
 
-            if (obj == null) return View(Consts.Views.NotFound);
+            if (obj == null) return View(Consts.Controllers.Error.Views.NotFound);
             
             if (obj.Sequence.HasValue)
             {

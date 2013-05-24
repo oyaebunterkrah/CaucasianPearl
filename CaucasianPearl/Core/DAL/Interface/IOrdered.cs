@@ -1,6 +1,4 @@
-﻿using CaucasianPearl.Core.DAL.Interface;
-
-namespace CaucasianPearl.Models.Interface
+﻿namespace CaucasianPearl.Core.DAL.Interface
 {
     public interface IOrdered : IBase
     {

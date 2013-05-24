@@ -106,11 +106,29 @@ namespace Resources.Request {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Не обработано.
+        /// </summary>
+        public static string NotProcessed {
+            get {
+                return ResourceManager.GetString("NotProcessed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Телефон.
         /// </summary>
         public static string Phone {
             get {
                 return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обработано.
+        /// </summary>
+        public static string Processed {
+            get {
+                return ResourceManager.GetString("Processed", resourceCulture);
             }
         }
         

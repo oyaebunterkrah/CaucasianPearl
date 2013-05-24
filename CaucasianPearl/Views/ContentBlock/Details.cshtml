@@ -1,0 +1,67 @@
+﻿@using CaucasianPearl.Core.Constants
+@using Resources.ContentBlock
+@using Resources.Shared
+
+@model CaucasianPearl.Models.EDM.ContentBlock
+
+@{
+    ViewBag.Title = ContentBlockViewRes.ContentBlocks;
+}
+
+<h2>@ContentBlockViewRes.ContentBlock: @Model.BlockId</h2>
+
+<p>
+    @Html.ActionLink(
+        linkText: @ContentBlockViewRes.BackToList,
+        actionName: Consts.Actions.Index)
+</p>
+
+<div>
+    <div>
+        <span class="display-label">@ContentBlockModelRes.BlockId:</span>
+        <div class="display-field">
+            @Model.BlockId
+        </div>
+            
+        <span class="display-label">@ContentBlockModelRes.PlaceHolderId:</span>
+        <div class="display-field">
+            @Model.PlaceHolderId
+        </div>
+
+        <span class="display-label">@ContentBlockModelRes.Content:</span>
+        <div id="@string.Format("contentBlockContent{0}", Model.ID)" class="display-field">
+            @Html.Raw(Model.Content)
+        </div>
+
+        <span class="display-label">@ContentBlockModelRes.Description:</span>
+        <div class="display-field">
+            @Model.Description
+        </div>
+            
+        <span class="display-label">@ContentBlockModelRes.IsPublished:</span>
+        <div class="display-field">
+            @Html.DisplayFor(m => Model.IsPublished)
+        </div>
+
+        @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
+        {
+            <p>
+                @Html.ActionLink(
+                    linkText: SharedViewRes.Edit,
+                    actionName: Consts.Actions.Edit,
+                    routeValues: new { id = Model.ID }
+                        ) |
+                @Html.ActionLink(
+                    linkText: SharedViewRes.Delete,
+                    actionName: Consts.Actions.Delete,
+                    routeValues: new { id = Model.ID }
+                        )
+            </p>
+        }
+    </div>
+        
+    @Html.ActionLink(
+        linkText: @ContentBlockViewRes.ContentBlockDetails,
+        actionName: Consts.Actions.Details,
+        routeValues: new {id = Model.ID})
+</div>

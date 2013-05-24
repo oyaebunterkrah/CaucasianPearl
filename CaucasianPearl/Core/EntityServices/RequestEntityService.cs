@@ -6,12 +6,12 @@ using CaucasianPearl.Models.EDM;
 
 namespace CaucasianPearl.Core.EntityServices
 {
-    public class RequestEntityService : BaseEntityService<Request>
+    public class UserProfileEntityService : UrlFriendlyEntityService<Profile>
     {
         // Количество объектов на одной странице.
-        protected override int LinksPerPage { get { return Consts.Paginator.RequestLinksPerPage; } }
+        protected override int LinksPerPage { get { return Consts.PaginatorControl.RequestItemsPerPage; } }
 
         // Количество отображаемых страниц перед многоточием.
-        protected override int NumberOfVisibleLinks { get { return Consts.Paginator.RequestNumberOfVisibleLinks; } }
+        protected override int NumberOfVisibleLinks { get { return Consts.PaginatorControl.RequestNumberOfVisibleLinks; } }
     }
 }

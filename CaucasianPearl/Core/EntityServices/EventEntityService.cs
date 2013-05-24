@@ -9,9 +9,9 @@ namespace CaucasianPearl.Core.EntityServices
     public class EventEntityService : UrlFriendlyEntityService<Event>
     {
         // Количество объектов на одной странице.
-        protected override int LinksPerPage { get { return Consts.Paginator.EventLinksPerPage; } }
+        protected override int LinksPerPage { get { return Consts.PaginatorControl.EventItemsPerPage; } }
 
         // Количество отображаемых страниц перед многоточием.
-        protected override int NumberOfVisibleLinks { get { return Consts.Paginator.EventNumberOfVisibleLinks; } }
+        protected override int NumberOfVisibleLinks { get { return Consts.PaginatorControl.EventNumberOfVisibleLinks; } }
     }
 }

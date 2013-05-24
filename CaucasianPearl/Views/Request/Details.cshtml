@@ -1,14 +1,14 @@
-@model CaucasianPearl.Models.EDM.Request
-
 @using CaucasianPearl.Core.Constants
 @using Resources.Request
 @using Resources.Shared
 
+@model CaucasianPearl.Models.EDM.Request
+
 @{
-    ViewBag.Title = RequestViewRes.Request;
+    ViewBag.Title = RequestViewRes.Requests;
 }
 
-<h2>@RequestViewRes.Request</h2>
+<h2>@RequestViewRes.Requests</h2>
 
 <p>
     @Html.ActionLink(
@@ -45,18 +45,18 @@
             @(Model.Comment.Length < 100 ? Model.Comment : Model.Comment.Substring(0, 150) + "...")
         </div>
 
-        @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+        @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
         {
             <p>
                 @Html.ActionLink(
                     linkText: SharedViewRes.Edit,
                     actionName: Consts.Actions.Edit,
-                    routeValues: new {id = Model.ID}
+                    routeValues: new { id = Model.ID }
                         ) |
                 @Html.ActionLink(
                     linkText: SharedViewRes.Delete,
                     actionName: Consts.Actions.Delete,
-                    routeValues: new {id = Model.ID}
+                    routeValues: new { id = Model.ID }
                         )
             </p>
         }

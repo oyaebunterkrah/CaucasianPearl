@@ -120,16 +120,22 @@
   <data name="Actions" xml:space="preserve">
     <value>Действия</value>
   </data>
-  <data name="AddComment" xml:space="preserve">
+  <data name="AddingRequest" xml:space="preserve">
+    <value>Добавление заявки</value>
+  </data>
+  <data name="AddRequest" xml:space="preserve">
     <value>Добавить заявку</value>
   </data>
   <data name="BackToList" xml:space="preserve">
     <value>Назад к списку</value>
   </data>
-  <data name="Details" xml:space="preserve">
+  <data name="RequestDetails" xml:space="preserve">
     <value>Подробности заявки</value>
   </data>
-  <data name="Request" xml:space="preserve">
+  <data name="Requests" xml:space="preserve">
     <value>Заявки</value>
+  </data>
+  <data name="RequestEditing" xml:space="preserve">
+    <value>Редактирование заявки</value>
   </data>
 </root>

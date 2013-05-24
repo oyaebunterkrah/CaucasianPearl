@@ -1,0 +1,13 @@
+﻿@using CaucasianPearl.Core.Constants
+@using Resources.Shared
+
+@{
+    ViewBag.Title = string.Format("{0} | {1}", SharedErrorRes.NotAuthorized, Consts.Title);
+}
+
+<h2 style="color: Red">@SharedErrorRes.NotAuthorized</h2>
+<br />
+<a href="/account/login">@SharedViewRes.Authorize</a>
+<br />
+<br />
+<a href="@Consts.RootPath">@SharedViewRes.BackToHomePage</a>

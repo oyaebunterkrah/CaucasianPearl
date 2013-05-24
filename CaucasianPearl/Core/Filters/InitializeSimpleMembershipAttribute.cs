@@ -3,8 +3,9 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
+using CaucasianPearl.Core.Constants;
+using CaucasianPearl.Models.EDM;
 using WebMatrix.WebData;
-using CaucasianPearl.Models;
 
 namespace CaucasianPearl.Core.Filters
 {
@@ -21,15 +22,15 @@ namespace CaucasianPearl.Core.Filters
             LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
         }
 
-        private class SimpleMembershipInitializer
+        private abstract class SimpleMembershipInitializer
         {
-            public SimpleMembershipInitializer()
+            protected SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<CaucasianPearlContext>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    using (var context = new CaucasianPearlContext())
                     {
                         if (!context.Database.Exists())
                         {
@@ -38,7 +39,12 @@ namespace CaucasianPearl.Core.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection(
+                        Consts.Connections.Default,
+                        "Profile",
+                        "ID",
+                        "UserName", autoCreateTables: true
+                    );
                 }
                 catch (Exception ex)
                 {

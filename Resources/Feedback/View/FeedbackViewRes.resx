@@ -132,4 +132,7 @@
   <data name="Feedback" xml:space="preserve">
     <value>Отзывы и предложения</value>
   </data>
+  <data name="FeedbackEditing" xml:space="preserve">
+    <value>Редактирование отзыва</value>
+  </data>
 </root>

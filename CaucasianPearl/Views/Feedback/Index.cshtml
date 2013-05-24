@@ -1,6 +1,5 @@
-@model IEnumerable<Feedback>
-
 @using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.EntityServices
 @using CaucasianPearl.Core.EntityServices.Interface
 @using CaucasianPearl.Core.UserControls
 @using CaucasianPearl.Core.Helpers
@@ -11,70 +10,167 @@
 @using Resources.Feedback
 @using Resources.Shared
 
+@model IEnumerable<Feedback>
+
 @{
-    ViewBag.Title = FeedbackViewRes.Feedback;
+    ViewBag.Title = string.Format("{0} - {1}", SharedRes.ProjectTitle, FeedbackViewRes.Feedback);
 }
+
+<p>
+    @Html.ActionLink(
+        SharedViewRes.ToHomePage,
+        actionName: Consts.Actions.Index,
+        controllerName: Consts.Controllers.Home.Name,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" }
+         )
+    @Consts.BreadcrumbsSeparator
+    @FeedbackViewRes.Feedback
+</p>
+
+@Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+    var feedbackEntity = {
+        
+        slideUpDuration: 500,
+        slideDownDuration: 500,
+
+        onSuccess: function onSuccess(response) {
+            $('#editBlock' + response.id).slideUp({ duration: feedbackEntity.slideUpDuration });
+            $('#result')
+                .text('Изменения сохранены')
+                .slideDown(feedbackEntity.slideDownDuration);
+            //
+            setTimeout(function() {
+                $('#result').slideUp({ duration: feedbackEntity.slideUpDuration });
+            }, 3000);
+            //
+            $('#feedbackSuggestion' + response.id).text(response.suggestion);
+            $('#feedbackComment' + response.id).text(response.comment);
+            $('#displayBlock' + response.id).slideDown({ duration: feedbackEntity.slideDownDuration });
+        },
+        
+        onFailure: function onFailure() {
+            alert("Упс, что-то пошло не так!");
+        },
+        
+        onComplete: function onComplete() {
+            return false;
+        }
+    };
+</script>
 
 <h2>@FeedbackViewRes.Feedback</h2>
 
 <p>
     @Html.ActionLink(
         FeedbackViewRes.AddComment,
-        Consts.Actions.Create
-    )
+        Consts.Actions.Create)
 </p>
 
 @foreach (var feedback in Model)
 {
-    <div>
-        @feedback.Name, @feedback.City, @String.Format("{0:g}", feedback.FeedbackDateTime)
+    <div id="@string.Format("ajaxForm{0}", feedback.ID)">
+        @using (Ajax.BeginForm(
+            Consts.Actions.Edit,
+            Consts.Controllers.Feedback.Name,
+            new {id = feedback.ID},
+            new AjaxOptions
+                {
+                    HttpMethod = "Post",
+                    OnSuccess = "feedbackEntity.onSuccess",
+                    OnFailure = "feedbackEntity.onFailure",
+                    OnComplete = "feedbackEntity.onComplete"
+                },
+            new { id = string.Format("form{0}", feedback.ID) }))
+        {
+            @* Display block *@
+            <div id="@string.Format("displayBlock{0}", feedback.ID)">
+                <span id="title">
+                    @feedback.Name, @feedback.City, @String.Format("{0:g}", feedback.FeedbackDateTime)
+                </span>
+                <div>
+                    <span class="display-label">@FeedbackModelRes.Comment:</span>
+                    <div id="@string.Format("feedbackComment{0}", feedback.ID)" class="display-field">
+                        @feedback.Comment
+                    </div>
 
-        <div>
-            <span class="display-label">@FeedbackModelRes.Comment:</span>
-            <div class="display-field">
-                @(feedback.Comment.Length < 100 ? feedback.Comment : feedback.Comment.Substring(0, 150) + "...")
+                    @if (!string.IsNullOrWhiteSpace(feedback.Suggestion))
+                    {
+                        <span class="display-label">@FeedbackModelRes.Suggestion:</span>
+                        <div id="@string.Format("feedbackSuggestion{0}", feedback.ID)" class="display-field">
+                            @feedback.Suggestion
+                        </div>
+                    }
+
+                    @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
+                    {
+                        <span class="display-label">@FeedbackModelRes.IsApproved:</span>
+                        @Html.DisplayFor(m => feedback.IsApproved)
+                    }
+
+                    @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
+                    {
+                        <p>
+                            @*  Редактировать *@
+                            @Html.ActionLink(
+                                linkText: SharedViewRes.Edit,
+                                actionName: Consts.Actions.Edit,
+                                routeValues: new {id = feedback.ID},
+                                htmlAttributes: new
+                                    {
+                                        id = string.Format("btnEdit{0}", feedback.ID),
+                                        onclick = "javascript:$(this).closest('#" + string.Format("displayBlock{0}", feedback.ID) + "').slideUp({ duration: feedbackEntity.slideUpDuration }); $('#" + string.Format("editBlock{0}", feedback.ID) + "').slideDown({ duration: feedbackEntity.slideDownDuration }); $('#result').slideUp({ duration: feedbackEntity.slideUpDuration }); return false;"
+                                    })|
+                            @*  Удалить *@
+                            @Html.ActionLink(
+                                linkText: SharedViewRes.Delete,
+                                actionName: Consts.Actions.Delete,
+                                routeValues: new {id = feedback.ID},
+                                htmlAttributes: new {id = string.Format("btnDelete{0}", feedback.ID)})
+                        </p>
+                    }
+                </div>
+        
+                @*  Подробности *@
+                @Html.ActionLink(
+                    linkText: @FeedbackViewRes.Details,
+                    actionName: Consts.Actions.Details,
+                    routeValues: new {id = feedback.ID},
+                    htmlAttributes: new {id = string.Format("btnDetails{0}", feedback.ID)})
             </div>
 
-            @if (!string.IsNullOrWhiteSpace(feedback.Suggestion))
+            @* Edit block *@
+            if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
             {
-                <span class="display-label">@FeedbackModelRes.Suggestion:</span>
-                <div class="display-field">
-                    @(feedback.Suggestion.Length < 100 ? feedback.Suggestion : feedback.Suggestion.Substring(0, 150) + "...")
+                <div id="@string.Format("editBlock{0}", feedback.ID)" style="display: none;">
+                    @Html.HiddenFor(model => feedback.ID)
+		            @Html.Partial("CreateOrEdit", feedback)
+            
+                    @* Сохранить *@
+                    <input
+                        id="@string.Format("btnSubmit{0}", feedback.ID)"
+                        type="submit"
+                        value="@SharedViewRes.Save" />
+
+                    @* Редактировать *@
+                    <input
+                        id="@string.Format("btnEdit{0}", feedback.ID)"
+                        type="submit"
+                        value="@SharedViewRes.Cancel"
+                        onclick="javascript:$(this).closest('#@string.Format("editBlock{0}", feedback.ID)').slideUp({ duration: feedbackEntity.slideUpDuration }); $('#@string.Format("displayBlock{0}", feedback.ID)').slideDown({ duration: feedbackEntity.slideDownDuration }); return false;" />
                 </div>
             }
+            
+            <p id="result" style="background-color: #cef7be; display: none;"></p>
 
-            @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
+            if (feedback != Model.Last())
             {
-                <span class="display-label">@FeedbackModelRes.IsApproved:</span>@Html.DisplayFor(m => feedback.IsApproved)
+                <hr />
             }
-
-            @if (WebSecurity.IsAuthenticated && (User.IsInRole(Consts.Roles.Admin) || User.IsInRole(Consts.Roles.ContentManager)))
-            {
-                <p>
-                    @Html.ActionLink(
-                        linkText: SharedViewRes.Edit,
-                        actionName: Consts.Actions.Edit,
-                        routeValues: new {id = feedback.ID}
-                         ) |
-                    @Html.ActionLink(
-                        linkText: SharedViewRes.Delete,
-                        actionName: Consts.Actions.Delete,
-                        routeValues: new {id = feedback.ID}
-                         )
-                </p>
-            }
-        </div>
-        
-        @Html.ActionLink(
-            linkText: @FeedbackViewRes.Details,
-            actionName: Consts.Actions.Details,
-            routeValues: new {id = feedback.ID})
+        }
     </div>
-    
-    if (feedback != Model.Last())
-    {
-        <hr />
-    }
 }
 
 <br /><br />
@@ -82,12 +178,10 @@
 <div class="paginator">
     @Html.Partial(
         Consts.UserControlsPaths.Paginator,
-        (Paginator.GetLinks(
+        (PaginatorControl.GetLinks(
             DependencyResolverHelper<IBaseService<Feedback>>.GetService().Count(Request.QueryString),
-            Consts.Paginator.FeedbackLinksPerPage,
-            Consts.Paginator.FeedbackNumberOfVisibleLinks)
-        )
-    )
+            Consts.PaginatorControl.FeedbackItemsPerPage,
+            Consts.PaginatorControl.FeedbackNumberOfVisibleLinks)))
 </div>
 
 @*@Html.PagedListPager(list: (IPagedList)ViewBag.OnePageOfProducts, generatePageUrl: page => Url.Action("Index", new { page }) )*@

@@ -123,6 +123,9 @@
   <data name="AllEvents" xml:space="preserve">
     <value>Все события</value>
   </data>
+  <data name="AreYouSureThatYouWantDeleteThisEvent" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить это событие?</value>
+  </data>
   <data name="BackToList" xml:space="preserve">
     <value>Назад к списку</value>
   </data>
@@ -132,16 +135,22 @@
   <data name="Details" xml:space="preserve">
     <value>Подробности событие</value>
   </data>
-  <data name="EventCreation" xml:space="preserve">
+  <data name="Event" xml:space="preserve">
+    <value>Событие</value>
+  </data>
+  <data name="EventCreating" xml:space="preserve">
     <value>Создание события</value>
   </data>
-  <data name="EventDeletion" xml:space="preserve">
+  <data name="EventDeleting" xml:space="preserve">
     <value>Удаление события</value>
   </data>
-  <data name="EventEdition" xml:space="preserve">
+  <data name="EventEditing" xml:space="preserve">
     <value>Редактирование события</value>
   </data>
   <data name="Events" xml:space="preserve">
     <value>События</value>
+  </data>
+  <data name="ImageForEvent" xml:space="preserve">
+    <value>Изображение для события</value>
   </data>
 </root>
