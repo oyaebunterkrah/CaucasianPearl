@@ -125,6 +125,7 @@ namespace CaucasianPearl.Core.Constants
             public const string Editor = "Editor";
         }
 
+        public const string DateTimeFormat = @"{0:dd.MM.yyyy, 0:hh\:mm}";
         public const string DateFormat = "{0:dd.MM.yyyy}";
         public const string TimeFormat = @"{0:hh\:mm}";
 

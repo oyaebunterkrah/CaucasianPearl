@@ -16,41 +16,13 @@ namespace CaucasianPearl.Models.Metadata
         [Display(Name = "Название")]
         [Required(ErrorMessage = "Название обязательно")]
         [StringLength(50, ErrorMessage = "Не более 50 символов")]
-        public string Name { get; set; }
+        public string Title { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         [Show(ShowForDisplay = true, ShowForEdit = true)]
-        [Display(Name = "Дата начала события")]
-        [DisplayFormat(DataFormatString = Consts.DateFormat, ApplyFormatInEditMode = true)]
-        public DateTime StartDate { get; set; }
-
-        [DataType(DataType.Date)]
-        [Show(ShowForDisplay = true, ShowForEdit = true)]
-        [Display(Name = "Дата окончания события")]
-        [DisplayFormat(DataFormatString = Consts.DateFormat, ApplyFormatInEditMode = true)]
-        public DateTime EndDate { get; set; }
-
-        [DataType(DataType.Time)]
-        [Show(ShowForDisplay = true, ShowForEdit = true)]
-        [Display(Name = "Время начала события")]
-        [DisplayFormat(DataFormatString = Consts.TimeFormat, ApplyFormatInEditMode = true)]
-        public DateTime StartTime { get; set; }
-
-        [DataType(DataType.Time)]
-        [Show(ShowForDisplay = true, ShowForEdit = true)]
-        [Display(Name = "Время окончания события")]
-        [DisplayFormat(DataFormatString = Consts.TimeFormat, ApplyFormatInEditMode = true)]
-        public DateTime EndTime { get; set; }
-
-        [DataType(DataType.Text)]
-        [Show(ShowForDisplay = true, ShowForEdit = true)]
-        [Display(Name = "Тип")]
-        public string Type { get; set; }
-
-        [DataType(DataType.Text)]
-        [Show(ShowForDisplay = true, ShowForEdit = true)]
-        [Display(Name = "Место")]
-        public string Place { get; set; }
+        [Display(Name = "Дата события")]
+        [DisplayFormat(DataFormatString = Consts.DateTimeFormat, ApplyFormatInEditMode = true)]
+        public DateTime EventDate { get; set; }
 
         [DataType(DataType.Html)]
         [Show(ShowForDisplay = true, ShowForEdit = true)]
@@ -58,13 +30,15 @@ namespace CaucasianPearl.Models.Metadata
         [AllowHtml]
         public string Description { get; set; }
 
-        [Show(ShowForDisplay = false, ShowForEdit = true)]
-        public string CreatedBy { get; set; }
+        [DataType(DataType.Html)]
+        [Show(ShowForDisplay = true, ShowForEdit = true)]
+        [Display(Name = "Содержание")]
+        [DisplayFormat(HtmlEncode = true)]
+        [AllowHtml]
+        public string Content { get; set; }
 
-        [DataType(DataType.Text)]
         [Show(ShowForDisplay = false, ShowForEdit = false)]
-        [Display(Name = "Формат изображения")]
-        public string ImageExt { get; set; }
+        public int Cover { get; set; }
 
         [DataType(DataType.Text)]
         [Show(ShowForDisplay = true, ShowForEdit = true)]

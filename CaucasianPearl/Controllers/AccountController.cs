@@ -353,7 +353,7 @@ namespace CaucasianPearl.Controllers
             if (Url.IsLocalUrl(returnUrl))
                 return Redirect(returnUrl);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction(Consts.Actions.Index, Consts.Controllers.Home.Name);
         }
 
         public enum ManageMessageId

@@ -17,7 +17,7 @@ namespace CaucasianPearl.Controllers
     {
         public GalleryController(IFlickrService flickrService)
         {
-            flickrService.IsPageble = true;
+            flickrService.IsPageable = true;
             flickrService.PerPage = Consts.PaginatorControl.FlickrItemsPerPage;
             
             _flickrService = flickrService;

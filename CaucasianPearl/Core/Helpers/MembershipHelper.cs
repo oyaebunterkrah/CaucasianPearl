@@ -28,9 +28,9 @@ namespace CaucasianPearl.Core.Helpers
                         Consts.AdminPassword
                     );
                 }
-                catch (MembershipCreateUserException exeption)
+                catch (MembershipCreateUserException exception)
                 {
-                    LogService.Error(exeption);
+                    LogService.Error(exception);
                 }
             }
 

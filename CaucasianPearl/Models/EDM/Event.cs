@@ -15,16 +15,11 @@ namespace CaucasianPearl.Models.EDM
     public partial class Event
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public Nullable<System.DateTime> StartDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
-        public Nullable<System.TimeSpan> StartTime { get; set; }
-        public Nullable<System.TimeSpan> EndTime { get; set; }
-        public string Type { get; set; }
-        public string Place { get; set; }
+        public string Title { get; set; }
+        public Nullable<System.DateTime> EventDate { get; set; }
         public string Description { get; set; }
-        public Nullable<int> CreatedBy { get; set; }
-        public string ImageExt { get; set; }
+        public string Content { get; set; }
+        public Nullable<byte> Cover { get; set; }
         public string ShortName { get; set; }
         public Nullable<int> Sequence { get; set; }
     }

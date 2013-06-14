@@ -36,8 +36,152 @@
         <legend>@EventViewRes.Events</legend>
 
         @Html.HiddenFor(model => model.ID)
+        @Html.Hidden("mediaJson")
+
 		@Html.Partial(Consts.Views.CreateOrEdit, Model)
 
-        <input id="submit" type="submit" value="@SharedViewRes.Create" />
+        <input id="submit" type="submit" value="@SharedViewRes.Create" onclick="toJson();" />
     </fieldset>
 }
+
+<br />
+
+<div id="media-block">
+    <div id="eventMediaBlock"></div>
+    
+    <input id="btnPhotosets" type="button" value="Выбрать фотоальбомы" />
+
+    <div id="addMediaBlock">
+        <div id="photosetsBlock">
+        
+        </div>
+        <div id="photosBlock">
+        
+        </div>
+    </div>
+</div>
+
+<script type="text/ecmascript">
+    var mediaDict = {};
+
+    $(document).ready(function () {
+        $('#btnPhotosets').click(function () {
+            getPhotosets();
+        });
+    });
+
+    function toJson() {
+        var photoArray = [];
+        
+        $.each(mediaDict, function (key, value) {
+            photoArray.push(mediaDict[key]);
+        });
+
+        $('#mediaJson').val(JSON.stringify(photoArray));
+    }
+
+    // событие при нажатии на фотоальбом
+    onPhotosetClick = function (photoset) {
+        if (photoset.is('.photoset-thumbnail-selected'))
+            return;
+
+        $('.photoset-thumbnail-selected').removeClass('photoset-thumbnail-selected');
+        photoset.addClass('photoset-thumbnail-selected');
+
+        getPhotos(photoset.data("photosetid")); // получаем фотографии
+        mediaDict = {}; // очищаем все выбранные объекты
+    }
+    
+    onPhotosetSuccess = function (photosetsJson) {
+        var photosets = jQuery.parseJSON(photosetsJson);
+
+        for (i = 0; i < photosets.length; i++) {
+            $('<img/>')
+                .attr({
+                    id: 'photoset' + i,
+                    src: photosets[i].PhotosetThumbnailUrl,
+                    'data-photosetid': photosets[i].PhotosetId
+                })
+                .addClass('photoset')
+                .click(function () { onPhotosetClick($(this)) })
+                .appendTo($('#photosetsBlock'));
+        }
+
+        $('#btnPhotosets').hide();
+    }
+
+    onPhotoSuccess = function (photosJson) {
+        $('#photosBlock').html('');
+
+        var photos = jQuery.parseJSON(photosJson);
+
+        for (i = 0; i < photos.length; i++) {
+            var img = $('<img/>')
+                .attr({
+                    id: 'photo' + i,
+                    src: photos[i].thumbnailurl,
+                    'data-photoid': photos[i].photoid,
+                    'data-thumbnailurl': photos[i].thumbnailurl,
+                    'data-mediumurl': photos[i].mediumurl,
+                    'data-largeurl': photos[i].largeurl,
+                    'data-videourl': photos[i].videourl,
+                    'data-mediatype': photos[i].mediatype,
+                })
+                .addClass('photo')
+                .click(function () { onPhotoClick($(this)) })
+                .appendTo($('#photosBlock'));
+        }
+    }
+
+    // событие при нажатии на фотографию
+    onPhotoClick = function (photo) {
+        if (photo.is('.photo-thumbnail-selected')) {
+            photo.removeClass('photo-thumbnail-selected')
+            delete mediaDict[photo.attr('id')];
+        } else {
+            photo.addClass('photo-thumbnail-selected');
+
+            var photoObj = {};
+            photoObj['photoid'] = photo.data('photoid');
+            photoObj['thumbnailurl'] = photo.data('thumbnailurl');
+            photoObj['mediumurl'] = photo.data('mediumurl');
+            photoObj['largeurl'] = photo.data('largeurl');
+            photoObj['videourl'] = photo.data('videourl');
+            photoObj['mediatype'] = photo.data('mediatype');
+
+            mediaDict[photo.attr('id')] = photoObj;
+        }
+    }
+
+    // получаем фотоальбомы
+    function getPhotosets() {
+        $.ajax({
+            url: '/event/getphotosets',
+            success: function (photosetsJson) { onPhotosetSuccess(photosetsJson) },
+            statusCode: {
+                404: function (content) { alert('Ошибка 404: Ресурс не найден.'); },
+                505: function (content) { alert('Ошибка 505: Внутренняя ошибка сервера.'); }
+            },
+            error: function (request, status, error) {
+                alert(error);
+            }
+        });
+    }
+    
+    // получаем фотографии
+    function getPhotos(photosetId) {
+        $.ajax({
+            url: '/event/getphotos',
+            type: 'POST',
+            data: { photosetId: photosetId },
+            success: function (photosJson) { onPhotoSuccess(photosJson) },
+            statusCode: {
+                404: function (content) { alert('Ошибка 404: Ресурс не найден.'); },
+                505: function (content) { alert('Ошибка 505: Внутренняя ошибка сервера.'); }
+            },
+            error: function (request, status, error) {
+                alert(error);
+            }
+        });
+    }
+</script>

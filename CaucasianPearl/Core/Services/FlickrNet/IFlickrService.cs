@@ -9,7 +9,7 @@ namespace CaucasianPearl.Core.Services.FlickrNet
     {
         Flickr Flickr { get; }
 
-        bool IsPageble { get; set; }
+        bool IsPageable { get; set; }
 
         int PerPage { get; set; }
 
@@ -35,14 +35,20 @@ namespace CaucasianPearl.Core.Services.FlickrNet
 
         List<Photoset> GetPhotosets(string lang);
 
+        PhotosetCollection PhotosetsGetList();
+
         int PhotosetsCount();
 
         PhotosetPhotoCollection GetPhotosetPhotos(string photosetId, string lang);
+
+        IEnumerable<FlickrObject> GetPhotosetPhotos(string photosetId);
 
         PhotoCollection GetLastPhotos(int limit, string lang, int page);
 
         string GetTitle(string title, string language);
 
         string GetDescription(string description, string lang);
+
+        SizeCollection GetPhotoSizes(string photoId);
     }
 }

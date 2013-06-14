@@ -6,7 +6,7 @@
 @using Resources.Shared
 
 @{
-    ViewBag.Title = string.Format("{0} | {1}", Model.Name, Consts.Title);
+    ViewBag.Title = string.Format("{0} | {1}", Model.Title, Consts.Title);
 }
 
 <p>
@@ -26,7 +26,7 @@
         htmlAttributes: new { @class = "link" }
     )
     @Consts.BreadcrumbsSeparator
-    @Model.Name
+    @Model.Title
 </p>
 
 @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
@@ -51,62 +51,48 @@
     </p>
 }
 
-<h2>@EventViewRes.Event: @Model.Name</h2>
+<h2>@EventViewRes.Event: @Model.Title</h2>
 
 <br />
 
-<div class="model-image">
+@*<div class="model-image">
     <img src='@string.Format("{0}/{1}/{2}",
                              (Url.Content(Consts.EntityImagesFolder)),
                              (Consts.Controllers.Event.EventImagesFolder),
-                             ImageHelper.GetImageName(Model))' alt="@Model.Name"/>
-</div>
+                             ImageHelper.GetImageName(Model))' alt="@Model.Title"/>
+</div>*@
 
 <fieldset>
-    <legend>@Model.Name</legend>
+    <legend>@Model.Title</legend>
     
     <div class="display-form">
         <div class="display-property">
             @Html.HiddenFor(model => model.ID)
             
-            <div class="display-label">@Html.LabelFor(model => model.Name)</div>
-            <div class="display-field">@Html.DisplayFor(model => model.Name)</div>
-            <div class="clear"></div>
-
-            <div class="display-label">@Html.LabelFor(model => model.StartDate)</div>
-            <div class="display-field">@Html.DisplayFor(model => model.StartDate)</div>
-            <div class="clear"></div>
-
-            <div class="display-label">@Html.LabelFor(model => model.EndDate)</div>
-            <div class="display-field">@Html.DisplayFor(model => model.EndDate)</div>
-            <div class="clear"></div>
-
-            <div class="display-label">@Html.LabelFor(model => model.StartTime)</div>
-            <div class="display-field">@Html.DisplayFor(model => model.StartTime)</div>
-            <div class="clear"></div>
-
-            <div class="display-label">@Html.LabelFor(model => model.EndTime)</div>
-            <div class="display-field">@Html.DisplayFor(model => model.EndTime)</div>
-            <div class="clear"></div>
-
-            <div class="display-label">@Html.LabelFor(model => model.Type)</div>
-            <div class="display-field">@Html.DisplayFor(model => model.Type)</div>
-            <div class="clear"></div>
-
-            <div class="display-label">@Html.LabelFor(model => model.Place)</div>
-            <div class="display-field">@Html.DisplayFor(model => model.Place)</div>
+            <div class="display-label">@Html.LabelFor(model => model.Title)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Title)</div>
             <div class="clear"></div>
     
+            <div class="display-label">@Html.LabelFor(model => model.EventDate)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.EventDate)</div>
+            <div class="clear"></div>
+
             <div class="display-label">@Html.LabelFor(model => model.Description)</div>
             <div class="display-field">@Html.DisplayFor(model => model.Description)</div>
             <div class="clear"></div>
     
+            <div class="display-label">@Html.LabelFor(model => model.Content)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Content)</div>
+            <div class="clear"></div>
+            
+            <div class="display-label">@Html.LabelFor(model => model.Cover)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Cover)</div>
+            <div class="clear"></div>
+
             <div class="display-label">@Html.LabelFor(model => model.ShortName)</div>
             <div class="display-field">@Html.DisplayFor(model => model.ShortName)</div>
             <div class="clear"></div>
-    
-            @Html.HiddenFor(model => model.CreatedBy)
-            @Html.HiddenFor(model => model.ImageExt)
+
             @Html.HiddenFor(model => model.Sequence)
         </div>
     </div>

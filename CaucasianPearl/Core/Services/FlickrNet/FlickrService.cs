@@ -8,6 +8,7 @@ using System.Web.Hosting;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Services.FlickrNet;
 using CaucasianPearl.Core.Services.Logging;
+using Newtonsoft.Json;
 using Resources.Shared;
 using CaucasianPearl.Properties;
 using FlickrNet;
@@ -23,7 +24,7 @@ namespace CaucasianPearl.Core.Services.FlickrNet
         [Inject]
         public ILogService LogService { get; set; }
 
-        public bool IsPageble { get; set; }
+        public bool IsPageable { get; set; }
 
         public int PerPage { get; set; }
 
@@ -116,12 +117,12 @@ namespace CaucasianPearl.Core.Services.FlickrNet
             try
             {
                 var photoId = Flickr.UploadPicture(fileName,
-                                                    title,
-                                                    description,
-                                                    tags,
-                                                    isPublic,
-                                                    isFamily,
-                                                    isFriend);
+                                                   title,
+                                                   description,
+                                                   tags,
+                                                   isPublic,
+                                                   isFamily,
+                                                   isFriend);
 
                 return photoId;
             }
@@ -165,17 +166,13 @@ namespace CaucasianPearl.Core.Services.FlickrNet
         }
 
         /// <summary>
-        /// 
+        /// Возвращает список объектов Photoset.
         /// </summary>
         /// <param name="lang"></param>
-        /// <returns></returns>
+        /// <returns>Photoset list</returns>
         public List<Photoset> GetPhotosets(string lang)
         {
-            var context = HttpContext.Current;
-            if (context == null)
-                throw new Exception("context");
-
-            var flickrPhotosets = IsPageble
+            var flickrPhotosets = IsPageable
                                       ? Flickr.PhotosetsGetList(Settings.Default.FlickrUserId,
                                                                  ControllerHelper.GetCurrentPageNumber(),
                                                                  PerPage)
@@ -203,6 +200,15 @@ namespace CaucasianPearl.Core.Services.FlickrNet
         }
 
         /// <summary>
+        /// Возвращает список фотоальбомов.
+        /// </summary>
+        /// <returns>PhotosetCollection</returns>
+        public PhotosetCollection PhotosetsGetList()
+        {
+            return Flickr.PhotosetsGetList(Settings.Default.FlickrUserId);
+        }
+
+        /// <summary>
         /// Возвращает кол-во альбомов (Photosets).
         /// </summary>
         /// <returns>Количество альбомов.</returns>
@@ -224,8 +230,7 @@ namespace CaucasianPearl.Core.Services.FlickrNet
             foreach (var photo in photos)
             {
                 photo.Title = GetTitle(photo.Title, lang);
-                //replace with Description later, when major release with correction will be published
-                photo.OriginalFormat = GetDescription(photo.Description, lang);
+                photo.Description = GetDescription(photo.Description, lang);
             }
 
             return photos;
@@ -282,7 +287,7 @@ namespace CaucasianPearl.Core.Services.FlickrNet
         }
 
         /// <summary>
-        /// 
+        /// Возвращает описание на указанном языке.
         /// </summary>
         /// <param name="description"></param>
         /// <param name="lang"></param>
@@ -302,6 +307,62 @@ namespace CaucasianPearl.Core.Services.FlickrNet
                             : regexDescriptionEn.Match(description);
 
             return match.Success ? match.Groups[1].Value.Trim() : description;
+        }
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+        /// <summary>
+        /// Возвращает все размеры фотографии/видео.
+        /// </summary>
+        /// <param name="photoId">ID фотографии</param>
+        public SizeCollection GetPhotoSizes(string photoId)
+        {
+            return Flickr.PhotosGetSizes(photoId);
+        }
+
+        /// <summary>
+        /// TODO: xxx
+        /// </summary>
+        /// <param name="photosetId"></param>
+        /// <returns></returns>
+        public IEnumerable<FlickrObject> GetPhotosetPhotos(string photosetId)
+        {
+            var photos = Flickr.PhotosetsGetPhotos(photosetId).Select(p => new FlickrObject(p));
+
+            return photos;
+        }
+
+        /// <summary>
+        /// xxx.
+        /// </summary>
+        /// <returns></returns>
+        public void GetMedia()
+        {
+            var options = new PhotoSearchOptions
+            {
+                UserId = Settings.Default.FlickrUserId,
+                SortOrder = PhotoSearchSortOrder.DatePostedDescending,
+                MediaType = MediaType.All,
+                Extras = PhotoSearchExtras.All,
+                PerPage = 0,
+                Page = 0
+            };
+
+            var mediaCollection = Flickr.PhotosSearch(options);
+
+            if (mediaCollection.Count != 0)
+            {
+                var mediaSizeCollection = new List<Size>();
+
+                foreach (var mediaItem in mediaCollection)
+                    mediaSizeCollection.Add(Flickr.PhotosGetSizes(mediaItem.PhotoId).First(s => s.Label == "Thumbnail"));
+            }
+
+            var videoInfo = Flickr.PhotosGetInfo(mediaCollection[0].PhotoId);
+
+            //<iframe width="560" height="315" src="http://www.flickr.com/apps/video/stewart.swf?v=109786&photo_id=8967366843&photo_secret=9722cb1cbb" frameborder="0" allowfullscreen></iframe>
+
+            //<object width="560" height="315"><param name="movie" value="http://www.flickr.com/apps/video/stewart.swf?v=109786&photo_id=8967366843&photo_secret=9722cb1cbb"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.flickr.com/apps/video/stewart.swf?v=109786&photo_id=8967366843&photo_secret=9722cb1cbb" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object>
         }
 
         #endregion

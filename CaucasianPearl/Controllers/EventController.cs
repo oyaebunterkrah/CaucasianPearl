@@ -1,13 +1,21 @@
-﻿using System;
+﻿using CaucasianPearl.Core.Services.Logging;
+using FlickrNet;
+using Newtonsoft.Json;
+using Resources.Shared;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using CaucasianPearl.Controllers.Abstract;
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Helpers.HtmlHelpers;
+using CaucasianPearl.Core.Services.FlickrNet;
 using CaucasianPearl.Models.EDM;
-using Resources.Shared;
+using CaucasianPearl.Properties;
 
 namespace CaucasianPearl.Controllers
 {
@@ -18,8 +26,73 @@ namespace CaucasianPearl.Controllers
         {
         }
 
+        #region Properties
+
+        private static ILogService LogService
+        {
+            get { return DependencyResolverHelper<ILogService>.GetService(); }
+        }
+
+        private static IFlickrService FlickrService
+        {
+            get
+            {
+                var flickrService = DependencyResolverHelper<IFlickrService>.GetService();
+                flickrService.IsPageable = true;
+                flickrService.PerPage = Consts.PaginatorControl.FlickrItemsPerPage;
+
+                return flickrService;
+            }
+        }
+
         // Включаем постраничный вывод.
         protected override bool IsPageable { get { return true; } }
+
+        #endregion
+
+        #region Constants
+
+        private const string MediaJsonKey = "mediaJson";
+
+        #endregion
+
+        #region Actions
+
+        [HttpPost]
+        [Authorize(Roles = Consts.Roles.AdminContentManager)]
+        public override ActionResult Create(Event @event)
+        {
+            //if (ModelState.IsValid)
+            //{
+            //    _service.Create(@event);
+
+            //    return base.OnCreated(@event);
+            //}
+
+            if (!HttpContext.Request.Form.AllKeys.Contains(MediaJsonKey))
+                RedirectToAction(Consts.Controllers.Error.Actions.Unexpected, Consts.Controllers.Error.Name);
+
+            var mediaJson = HttpContext.Request.Form[MediaJsonKey];
+            var photo = JsonHelper.Deserialize<List<FlickrObject>>(mediaJson);
+
+            return View();
+        }
+
+        // Возвращает фотоальбомы.
+        public string GetPhotoSets()
+        {
+            var photosets = FlickrService.PhotosetsGetList();
+
+            return JsonConvert.SerializeObject(photosets);
+        }
+
+        // Возвращает фотографии из фотоальбома.
+        public string GetPhotos(string photosetId)
+        {
+            var photos = FlickrService.GetPhotosetPhotos(photosetId);
+
+            return JsonConvert.SerializeObject(photos);
+        }
 
         // Обработка загрузки картинки
         [HttpPost]
@@ -69,7 +142,7 @@ namespace CaucasianPearl.Controllers
                                             maxWidth: Consts.Controllers.Event.EventImagesWidth, strSavePath: fileSavePath);
 
                     // Расширение файла записываем в базу данных в поле ImageExt
-                    @event.ImageExt = extension;
+                    //@event.ImageExt = extension;
                     _service.Update(dataObject: @event);
                 }
             }
@@ -99,5 +172,7 @@ namespace CaucasianPearl.Controllers
             }
             return Json(new { message = "chunk uploaded", name = name }); }*/
         }
+        
+        #endregion
     }
 }

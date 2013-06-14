@@ -8,6 +8,7 @@
         <EntityContainer Name="caucasianpearldbModelStoreContainer">
           <EntitySet Name="ContentBlock" EntityType="caucasianpearldbModel.Store.ContentBlock" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Event" EntityType="caucasianpearldbModel.Store.Event" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EventMedia" EntityType="caucasianpearldbModel.Store.EventMedia" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Feedback" EntityType="caucasianpearldbModel.Store.Feedback" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="OneNews" EntityType="caucasianpearldbModel.Store.OneNews" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Profile" EntityType="caucasianpearldbModel.Store.Profile" store:Type="Tables" Schema="dbo" />
@@ -30,18 +31,24 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="StartDate" Type="date" />
-          <Property Name="EndDate" Type="date" />
-          <Property Name="StartTime" Type="time" />
-          <Property Name="EndTime" Type="time" />
-          <Property Name="Type" Type="nvarchar" MaxLength="50" />
-          <Property Name="Place" Type="nvarchar" MaxLength="256" />
-          <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="CreatedBy" Type="int" />
-          <Property Name="ImageExt" Type="nchar" MaxLength="10" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="EventDate" Type="datetime" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Content" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Cover" Type="tinyint" />
           <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
           <Property Name="Sequence" Type="int" />
+        </EntityType>
+        <EntityType Name="EventMedia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="int" />
+          <Property Name="Url" Type="nvarchar" MaxLength="256" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+          <Property Name="Content" Type="nvarchar" MaxLength="2048" />
+          <Property Name="MediaType" Type="tinyint" />
         </EntityType>
         <EntityType Name="Feedback">
           <Key>
@@ -111,22 +118,18 @@
           <EntitySet Name="Requests" EntityType="caucasianpearldbModel.Request" />
           <EntitySet Name="Profiles" EntityType="caucasianpearldbModel.Profile" />
           <EntitySet Name="ContentBlocks" EntityType="caucasianpearldbModel.ContentBlock" />
+          <EntitySet Name="EventMedias" EntityType="caucasianpearldbModel.EventMedia" />
         </EntityContainer>
         <EntityType Name="Event">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="StartDate" Type="DateTime" Precision="0" />
-          <Property Name="EndDate" Type="DateTime" Precision="0" />
-          <Property Name="StartTime" Type="Time" Precision="7" />
-          <Property Name="EndTime" Type="Time" Precision="7" />
-          <Property Name="Type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Place" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="CreatedBy" Type="Int32" />
-          <Property Name="ImageExt" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EventDate" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="2048" Unicode="true" FixedLength="false" />
+          <Property Type="String" Name="Content" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="Cover" />
           <Property Name="ShortName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Sequence" Type="Int32" />
         </EntityType>
@@ -199,6 +202,17 @@
           <Property Type="Boolean" Name="IsPublished" Nullable="false" />
           <Property Type="Int32" Name="Sequence" Nullable="true" />
         </EntityType>
+        <EntityType Name="EventMedia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="EventId" />
+          <Property Type="String" Name="Url" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Content" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="MediaType" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -208,18 +222,13 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="caucasianpearldbModel.Event">
               <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Place" ColumnName="Place" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="ImageExt" ColumnName="ImageExt" />
                 <ScalarProperty Name="Sequence" ColumnName="Sequence" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -294,6 +303,18 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventMedias">
+            <EntityTypeMapping TypeName="caucasianpearldbModel.EventMedia">
+              <MappingFragment StoreEntitySet="EventMedia">
+                <ScalarProperty Name="MediaType" ColumnName="MediaType" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

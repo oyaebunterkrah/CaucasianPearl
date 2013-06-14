@@ -54,19 +54,19 @@
                         <tr>
                             <td style="text-align: center;">
                                 <div class="event-image">
-                                    @Html.ActionImage(
+                                    @*@Html.ActionImage(
                                         action: Consts.Actions.GetByShortName,
                                         controller: Consts.Controllers.Event.Name,
                                         routeValues: new { shortname = @event.ShortName },
                                         imagePath: ImageHelper.GetImageUrl(
                                             @event, Consts.Controllers.Event.EventImagesFolder),
-                                        alt: @event.Name
-                                         )
+                                        alt: @event.Title
+                                    )*@
                                 </div>
                             </td>
                             <td style="text-align: center;">
                                 @Html.ActionLink(
-                                    @event.Name,
+                                    @event.Title,
                                     actionName: Consts.Actions.GetByShortName,
                                     controllerName: Consts.Controllers.Event.Name,
                                     routeValues: new { shortname = @event.ShortName },

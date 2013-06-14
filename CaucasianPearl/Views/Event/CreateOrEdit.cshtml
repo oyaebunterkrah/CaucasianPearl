@@ -7,61 +7,23 @@
 @Html.HiddenFor(model => model.ID)
 
 <div class="editor-label">
-    @Html.LabelFor(model => model.Name)
+    @Html.LabelFor(model => model.Title)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.Name)
-    @Html.ValidationMessageFor(model => model.Name)
+    @Html.EditorFor(model => model.Title)
+    @Html.ValidationMessageFor(model => model.Title)
 </div>
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.StartDate)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.StartDate)
-    @Html.ValidationMessageFor(model => model.StartDate)
-</div>
+@Html.HiddenFor(model => model.EventDate)
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.EndDate)
+@*<div class="editor-label">
+    @Html.LabelFor(model => model.EventDate)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.EndDate)
-    @Html.ValidationMessageFor(model => model.EndDate)
-</div>
+    @Html.EditorFor(model => model.EventDate)
+    @Html.ValidationMessageFor(model => model.EventDate)
+</div>*@
 
-<div class="editor-label">
-    @Html.LabelFor(model => model.StartTime)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.StartTime)
-    @Html.ValidationMessageFor(model => model.StartTime)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.EndTime)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.EndTime)
-    @Html.ValidationMessageFor(model => model.EndTime)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.Type)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Type)
-    @Html.ValidationMessageFor(model => model.Type)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.Place)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Place)
-    @Html.ValidationMessageFor(model => model.Place)
-</div>
-    
 <div class="editor-label">
     @Html.LabelFor(model => model.Description)
 </div>
@@ -69,9 +31,23 @@
     @Html.EditorFor(model => model.Description)
     @Html.ValidationMessageFor(model => model.Description)
 </div>
-    
-@Html.HiddenFor(model => model.CreatedBy)
-    
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Content)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Content)
+    @Html.ValidationMessageFor(model => model.Content)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Cover)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Cover)
+    @Html.ValidationMessageFor(model => model.Cover)
+</div>
+
 <div class="editor-label">
     @Html.LabelFor(model => model.ShortName)
 </div>
@@ -79,7 +55,5 @@
     @Html.EditorFor(model => model.ShortName)
     @Html.ValidationMessageFor(model => model.ShortName)
 </div>
-    
-@Html.HiddenFor(model => model.ImageExt)
 
 @Html.HiddenFor(model => model.Sequence)
