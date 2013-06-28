@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using CaucasianPearl.Controllers.Abstract;
 using CaucasianPearl.Core.Constants;
-using CaucasianPearl.Core.Services.Logging;
+using CaucasianPearl.Core.Services.LoggingService;
 using Ninject;
 
 namespace CaucasianPearl.Controllers

@@ -6,7 +6,7 @@ using System.Web.Script.Serialization;
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.Filters;
 using CaucasianPearl.Core.Helpers;
-using CaucasianPearl.Core.Services.FlickrNet;
+using CaucasianPearl.Core.Services.FlickrNetService;
 using CaucasianPearl.Models;
 using CaucasianPearl.Properties;
 using FlickrNet;

@@ -6,10 +6,13 @@ namespace CaucasianPearl.Models
 {
     public class Photoset
     {
+        public string PhotosetId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string DateCreated { get; set; }
-        public string PhotosetId { get; set; }
+        public string ThumbnailUrl { get; set; }
+        public string SmallUrl { get; set; }
+        public string FlickrUrl { get; set; }
         public Photo PrimaryPhoto;
         public PhotosetPhotoCollection Photos;
     }

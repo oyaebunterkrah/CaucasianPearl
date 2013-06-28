@@ -108,8 +108,7 @@ namespace CaucasianPearl.Controllers.Abstract
         {
             base.AddValuesOnCreate(obj);
 
-            var maxSequence = _service.GetMaxSequence();
-            obj.Sequence = maxSequence.HasValue ? maxSequence.Value + 1 : 1;
+            _service.AddValuesOnCreate(obj);
         }
 
         #endregion

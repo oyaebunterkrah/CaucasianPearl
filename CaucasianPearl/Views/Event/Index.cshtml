@@ -1,6 +1,4 @@
-﻿@model IEnumerable<Event>
-
-@using CaucasianPearl.Core.Constants
+﻿@using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.EntityServices.Interface
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Core.UserControls
@@ -9,6 +7,8 @@
 @using CaucasianPearl.Models.EDM;
 @using Resources.Event
 @using Resources.Shared
+
+@model IEnumerable<Event>
 
 @{
     ViewBag.Title = string.Format("{0} - {1}", SharedRes.ProjectTitle, EventViewRes.Events);
@@ -29,13 +29,13 @@
 @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
 {
     <p>
+        <!-- Создать -->
         @Html.ActionLink(
             EventViewRes.CreateEvent,
             actionName: Consts.Actions.Create,
             controllerName: Consts.Controllers.Event.Name,
             routeValues: null,
-            htmlAttributes: new { @class = "link" }
-        )
+            htmlAttributes: new { @class = "link" })
     </p>
 }
 
@@ -44,14 +44,15 @@
     {
         <tr>
             <td style="text-align: center;">
-                <div class="model-image">
-                    @*@Html.ActionImage(
-                        Consts.Actions.GetByShortName,
-                        Consts.Controllers.Event.Name,
-                        routeValues: new { shortname = @event.ShortName },
-                        imagePath: ImageHelper.GetImageUrl(@event, Consts.Controllers.Event.EventImagesFolder), alt: @event.Name
-                    )*@
-                </div>
+                @{
+                    var eventMedia = @event.EventMedia.FirstOrDefault(em => em.PhotoId == @event.Cover);
+                    var imageUrl = eventMedia != null ? eventMedia.ThumbnailUrl : ImageHelper.GetDefaultImageUrl();
+                }
+                @Html.ActionImage(
+                    Consts.Actions.GetByShortName,
+                    Consts.Controllers.Event.Name,
+                    routeValues: new { shortname = @event.ShortName },
+                    imagePath: imageUrl, alt: @event.Title)
             </td>
             <td style="text-align: center;">
                 @Html.ActionLink(
@@ -59,8 +60,7 @@
                     Consts.Actions.GetByShortName,
                     controllerName: Consts.Controllers.Event.Name,
                     routeValues: new { shortname = @event.ShortName },
-                    htmlAttributes: new { @class = "link" }
-                )
+                    htmlAttributes: new { @class = "link" })
             </td>
             
             @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
@@ -70,16 +70,31 @@
                     @Html.ActionLink(
                         SharedViewRes.Up,
                         Consts.Actions.Up,
-                        new { id = @event.ID }
-                         ) |
+                        new { id = @event.ID })
                 </td>
                 <td>
                     <!-- Вниз -->
                     @Html.ActionLink(
                         SharedViewRes.Down,
                         Consts.Actions.Down,
-                        new { id = @event.ID }
-                    )
+                        new { id = @event.ID })
+                </td>
+                <td>
+                    <!-- Редактировать -->
+                    @Html.ActionLink(
+                        SharedViewRes.Edit,
+                        Consts.Actions.Edit,
+                        controllerName: Consts.Controllers.Event.Name,
+                        routeValues: new { id = @event.ID },
+                        htmlAttributes: new { @class = "link" })
+                </td>
+                <td>
+                    <!-- Удалить -->
+                    @Html.ActionLink(
+                        SharedViewRes.Delete, actionName: Consts.Actions.Delete,
+                        controllerName: Consts.Controllers.Event.Name,
+                        routeValues: new { id = @event.ID },
+                        htmlAttributes: new { @class = "link" })
                 </td>
             }
         </tr>
@@ -94,7 +109,5 @@
         (PaginatorControl.GetLinks(
             DependencyResolverHelper<IUrlFriendlyService<Event>>.GetService().Count(Request.QueryString),
             Consts.PaginatorControl.EventItemsPerPage,
-            Consts.PaginatorControl.EventNumberOfVisibleLinks)
-        )
-    )
+            Consts.PaginatorControl.EventNumberOfVisibleLinks)))
 </div>

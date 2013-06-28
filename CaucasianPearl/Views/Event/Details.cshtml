@@ -1,9 +1,9 @@
-﻿@model CaucasianPearl.Models.EDM.Event
-
-@using CaucasianPearl.Core.Constants
+﻿@using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.Helpers
 @using Resources.Event
 @using Resources.Shared
+
+@model CaucasianPearl.Models.EDM.Event
 
 @{
     ViewBag.Title = string.Format("{0} | {1}", Model.Title, Consts.Title);
@@ -32,35 +32,34 @@
 @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
 {
     <p>
-        @* Редактировать *@
+        <!-- Редактировать -->
         @Html.ActionLink(
             SharedViewRes.Edit,
             Consts.Actions.Edit,
             controllerName: Consts.Controllers.Event.Name,
             routeValues: new { id = Model.ID },
-            htmlAttributes: new { @class = "link" }
-        )
+            htmlAttributes: new { @class = "link" })
         @Consts.MenuSeparator
-        @* Удалить *@
+        <!-- Удалить -->
         @Html.ActionLink(
             SharedViewRes.Delete, actionName: Consts.Actions.Delete,
             controllerName: Consts.Controllers.Event.Name,
             routeValues: new { id = Model.ID },
-            htmlAttributes: new { @class = "link" }
-        )
+            htmlAttributes: new { @class = "link" })
+        @Consts.MenuSeparator
+        <!-- Создать -->
+        @Html.ActionLink(
+            EventViewRes.CreateEvent,
+            actionName: Consts.Actions.Create,
+            controllerName: Consts.Controllers.Event.Name,
+            routeValues: null,
+            htmlAttributes: new { @class = "link" })
     </p>
 }
 
 <h2>@EventViewRes.Event: @Model.Title</h2>
 
 <br />
-
-@*<div class="model-image">
-    <img src='@string.Format("{0}/{1}/{2}",
-                             (Url.Content(Consts.EntityImagesFolder)),
-                             (Consts.Controllers.Event.EventImagesFolder),
-                             ImageHelper.GetImageName(Model))' alt="@Model.Title"/>
-</div>*@
 
 <fieldset>
     <legend>@Model.Title</legend>
@@ -98,9 +97,15 @@
     </div>
 </fieldset>
 
-<p>
-    @if (WebSecurity.IsAuthenticated && Roles.IsUserInRole(Consts.Roles.Admin)) {
-        @Html.ActionLink(SharedViewRes.Edit, Consts.Actions.Edit, new { id = Model.ID }) @:|
+<div class="photosBlock" style="display: block;">
+    @foreach (var flickrObj in Model.EventMedia)
+    {
+        <div class="photoContainer">
+            <img class="@(flickrObj.MediaType == "photos" ? "flickrObj photo" : "flickrObj video")" src='@flickrObj.ThumbnailUrl' alt="@Model.Title"/>
+        </div>
     }
+</div>
+
+<p>
     @Html.ActionLink(EventViewRes.BackToList, Consts.Actions.Index)
 </p>

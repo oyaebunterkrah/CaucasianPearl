@@ -30,7 +30,7 @@ namespace CaucasianPearl.Controllers
 
             foreach (var profile in profiles)
                 profile.ImageUrl = string.Format("{0}/{1}/{2}",
-                                                 Url.Content(Consts.EntityImagesFolder),
+                                                 Url.Content(Consts.FoldersPathes.EntityImagesFolder),
                                                  Consts.Controllers.Profile.ProfileImagesFolder,
                                                  ImageHelper.GetImageName(profile));
 
@@ -80,7 +80,7 @@ namespace CaucasianPearl.Controllers
                     var extension = Path.GetExtension(postedImage.FileName);
                     var fileName = profileId + extension;
                     var fileSavePath = Path.Combine(
-                        Server.MapPath(Url.Content(Consts.EntityImagesFolder)),
+                        Server.MapPath(Url.Content(Consts.FoldersPathes.EntityImagesFolder)),
                         Consts.Controllers.Profile.ProfileImagesFolder,
                         "/",
                         fileName);

@@ -12,5 +12,8 @@ namespace CaucasianPearl.Core.EntityServices.Interface
 
         // Получение максимального значения Sequence из всех объектов
         int? GetMaxSequence();
+
+        // Добавление дополнительных значение при создании объекта.
+        void AddValuesOnCreate(T obj);
     }
 }

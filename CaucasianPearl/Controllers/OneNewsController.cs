@@ -53,7 +53,7 @@ namespace CaucasianPearl.Controllers
                     var extension = Path.GetExtension(imageFile.FileName);
                     var fileName = oneNewsId + extension;
                     var fileSavePath = Path.Combine(
-                        Server.MapPath(Url.Content(Consts.EntityImagesFolder)),
+                        Server.MapPath(Url.Content(Consts.FoldersPathes.EntityImagesFolder)),
                         Consts.Controllers.OneNews.OneNewsImagesFolder,
                         "/",
                         fileName);

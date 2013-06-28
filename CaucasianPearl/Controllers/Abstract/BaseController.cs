@@ -114,6 +114,7 @@ namespace CaucasianPearl.Controllers.Abstract
             var model = _service.Get(id);
             if (model == null)
                 return View(Consts.Controllers.Error.Views.NotFound);
+
             return View(model);
         }
 
@@ -132,6 +133,7 @@ namespace CaucasianPearl.Controllers.Abstract
 
             OnDelete(model);
             _service.Delete(model);
+
             return onDeleted;
         }
 
@@ -147,6 +149,7 @@ namespace CaucasianPearl.Controllers.Abstract
 
             OnDelete(model);
             _service.Delete(model);
+
             return onDeleted;
         }
 

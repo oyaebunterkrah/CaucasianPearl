@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CaucasianPearl.Core.Services.Logging
+namespace CaucasianPearl.Core.Services.LoggingService
 {
     public interface ILogService
     {

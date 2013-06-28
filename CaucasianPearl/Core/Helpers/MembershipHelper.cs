@@ -1,6 +1,6 @@
 ﻿using System.Web.Security;
 using CaucasianPearl.Core.Constants;
-using CaucasianPearl.Core.Services.Logging;
+using CaucasianPearl.Core.Services.LoggingService;
 using Ninject;
 using WebMatrix.WebData;
 

@@ -48,5 +48,12 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
                         .Select(obj => obj.Sequence)
                         .FirstOrDefault();
         }
+
+        // При создании объекта автоматически задаём ему значение Sequence, равное следующему после наибольшего.
+        public virtual void AddValuesOnCreate(T obj)
+        {
+            var maxSequence = GetMaxSequence();
+            obj.Sequence = maxSequence.HasValue ? maxSequence.Value + 1 : 1;
+        }
     }
 }

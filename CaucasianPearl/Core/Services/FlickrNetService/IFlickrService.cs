@@ -3,7 +3,7 @@ using System.Web;
 using FlickrNet;
 using Photoset = CaucasianPearl.Models.Photoset;
 
-namespace CaucasianPearl.Core.Services.FlickrNet
+namespace CaucasianPearl.Core.Services.FlickrNetService
 {
     public interface IFlickrService
     {
@@ -12,6 +12,8 @@ namespace CaucasianPearl.Core.Services.FlickrNet
         bool IsPageable { get; set; }
 
         int PerPage { get; set; }
+
+        int PhotosetsCount { get; }
 
         string UploadPhoto(HttpPostedFile file,
                            string fileName,
@@ -36,8 +38,6 @@ namespace CaucasianPearl.Core.Services.FlickrNet
         List<Photoset> GetPhotosets(string lang);
 
         PhotosetCollection PhotosetsGetList();
-
-        int PhotosetsCount();
 
         PhotosetPhotoCollection GetPhotosetPhotos(string photosetId, string lang);
 

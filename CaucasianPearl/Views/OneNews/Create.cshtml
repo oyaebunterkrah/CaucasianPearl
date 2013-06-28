@@ -36,7 +36,6 @@
     <fieldset>
         <legend>@NewsViewRes.News</legend>
 
-        @Html.HiddenFor(model => model.ID)
 		@Html.Partial(Consts.Views.CreateOrEdit, Model)
 
         <input id="submit" type="submit" value="@SharedViewRes.Create" />

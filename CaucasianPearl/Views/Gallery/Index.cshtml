@@ -1,6 +1,6 @@
 ﻿@using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.Helpers
-@using CaucasianPearl.Core.Services.FlickrNet
+@using CaucasianPearl.Core.Services.FlickrNetService
 @using CaucasianPearl.Core.UserControls
 @using Resources.Shared
 @using Resources.Gallery
@@ -86,7 +86,7 @@ else
     @Html.Partial(
         Consts.UserControlsPaths.Paginator,
         (PaginatorControl.GetLinks(
-            DependencyResolverHelper<IFlickrService>.GetService().PhotosetsCount(),
+            DependencyResolverHelper<IFlickrService>.GetService().PhotosetsCount,
             Consts.PaginatorControl.FlickrItemsPerPage,
             Consts.PaginatorControl.FlickrNumberOfVisibleLinks)
         )

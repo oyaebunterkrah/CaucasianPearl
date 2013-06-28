@@ -14,13 +14,20 @@ namespace CaucasianPearl.Models.EDM
     
     public partial class Event
     {
+        public Event()
+        {
+            this.EventMedia = new HashSet<EventMedia>();
+        }
+    
         public int ID { get; set; }
         public string Title { get; set; }
         public Nullable<System.DateTime> EventDate { get; set; }
         public string Description { get; set; }
         public string Content { get; set; }
-        public Nullable<byte> Cover { get; set; }
+        public string Cover { get; set; }
         public string ShortName { get; set; }
         public Nullable<int> Sequence { get; set; }
+    
+        public virtual ICollection<EventMedia> EventMedia { get; set; }
     }
 }

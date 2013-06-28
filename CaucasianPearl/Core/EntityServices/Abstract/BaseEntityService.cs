@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
@@ -29,6 +30,24 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
             return _repository.DbSet.Select(obj => obj);
         }
 
+        // Получение объекта по его ID.
+        public virtual T Get(int id)
+        {
+            return _repository.DbSet.FirstOrDefault(obj => obj.ID == id);
+        }
+
+        // Получение объекта по его ID.
+        public virtual List<T> Get(Func<T, bool> condition)
+        {
+            return Get().Where(condition).ToList();
+        }
+
+        // Получение списка выбранных объектов.
+        public virtual IQueryable<T> Get(NameValueCollection filter)
+        {
+            return Get();
+        }
+
         // Получение списка выбранных объектов Pageble.
         public virtual IQueryable<T> Get(bool isPageable)
         {
@@ -41,12 +60,6 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
                 : Get(context.Request.QueryString);
         }
 
-        // Получение списка выбранных объектов.
-        public virtual IQueryable<T> Get(NameValueCollection filter)
-        {
-            return Get();
-        }
-
         // Получение количества всех объектов.
         public virtual int Count()
         {
@@ -57,12 +70,6 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
         public virtual int Count(NameValueCollection filter)
         {
             return Get(filter).Count();
-        }
-
-        // Получение объекта по его ID.
-        public virtual T Get(int id)
-        {
-            return _repository.DbSet.FirstOrDefault(obj => obj.ID == id);
         }
 
         // Получение неполного списка объекта

@@ -2,7 +2,7 @@ using System.Web;
 using System.Web.Mvc;
 using CaucasianPearl.Controllers.Abstract;
 using CaucasianPearl.Core.EntityServices.Interface;
-using CaucasianPearl.Core.Services.Logging;
+using CaucasianPearl.Core.Services.LoggingService;
 using CaucasianPearl.Models.EDM;
 using Ninject;
 

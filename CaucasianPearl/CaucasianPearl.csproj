@@ -228,6 +228,7 @@
     <Compile Include="Controllers\OneNewsController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Core\EntityServices\EventMediaEntityService.cs" />
     <Compile Include="Core\EntityServices\EventEntityService.cs" />
     <Compile Include="Core\EntityServices\UserEntityService.cs" />
     <Compile Include="Core\Helpers\HtmlHelpers\ContentBlockHtmlHelper.cs" />
@@ -235,8 +236,8 @@
     <Compile Include="Core\Helpers\HtmlHelpers\PrincipalHtmlHelper.cs" />
     <Compile Include="Core\Helpers\CultureHelper.cs" />
     <Compile Include="Core\Helpers\JsonHelper.cs" />
-    <Compile Include="Core\Services\FlickrNet\FlickrData.cs" />
-    <Compile Include="Core\Services\FlickrNet\FlickrService.cs" />
+    <Compile Include="Core\Services\FlickrNetService\FlickrData.cs" />
+    <Compile Include="Core\Services\FlickrNetService\FlickrService.cs" />
     <Compile Include="Core\HttpModules\ServerHeaderModule.cs" />
     <Compile Include="App_Start\Initializer.cs" />
     <Compile Include="Core\Filters\LocalizedCacheAttribute.cs" />
@@ -270,9 +271,9 @@
     <Compile Include="Core\EntityServices\Interface\IUrlFriendlyService.cs" />
     <Compile Include="Core\EntityServices\OneNewsEntityService.cs" />
     <Compile Include="Core\EntityServices\RequestEntityService.cs" />
-    <Compile Include="Core\Services\FlickrNet\IFlickrService.cs" />
-    <Compile Include="Core\Services\Logging\ILogService.cs" />
-    <Compile Include="Core\Services\Logging\LogService.cs" />
+    <Compile Include="Core\Services\FlickrNetService\IFlickrService.cs" />
+    <Compile Include="Core\Services\LoggingService\ILogService.cs" />
+    <Compile Include="Core\Services\LoggingService\LogService.cs" />
     <Compile Include="Core\UserControls\CssJsRegControl.cs" />
     <Compile Include="Core\UserControls\PaginatorControl.cs" />
     <Compile Include="Core\Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -328,6 +329,7 @@
     <Compile Include="Models\Metadata\OneNewsMetadata.cs" />
     <Compile Include="Models\Metadata\RequestMetadata.cs" />
     <Compile Include="Models\Partial\AccountModelsPartial.cs" />
+    <Compile Include="Models\Partial\EventMediaPartial.cs" />
     <Compile Include="Models\Partial\RequestPartial.cs" />
     <Compile Include="Models\Partial\ProfilePartial.cs" />
     <Compile Include="Models\Partial\EventPartial.cs" />
@@ -347,11 +349,11 @@
     <Content Include="Content\audioplayer\player\uppod.swf" />
     <Content Include="Content\audioplayer\styles\audio164-471.txt" />
     <Content Include="Content\audioplayer\Три способа как вставить видео на сайт %282013-04-20 1-53-32%29.htm" />
-    <Content Include="Content\img\0.jpg" />
     <Content Include="Content\img\cp\event\0.jpg" />
-    <Content Include="Content\img\cp\event\1.jpg" />
-    <Content Include="Content\img\cp\event\2.jpg" />
-    <Content Include="Content\img\cp\event\6.jpg" />
+    <Content Include="Content\img\cp\event\close.png" />
+    <Content Include="Content\img\cp\event\delete.png" />
+    <Content Include="Content\img\cp\event\edit.png" />
+    <Content Include="Content\img\cp\event\primary.png" />
     <Content Include="Content\img\cp\news\0.jpg" />
     <Content Include="Content\img\cp\news\1.jpg" />
     <Content Include="Content\img\cp\news\2.jpg" />
@@ -359,6 +361,8 @@
     <Content Include="Content\img\cp\news\4.jpg" />
     <Content Include="Content\img\cp\profile\0.jpg" />
     <Content Include="Content\img\favicon.ico" />
+    <Content Include="Content\img\no-image.png" />
+    <Content Include="Content\img\preloader.gif" />
     <Content Include="Content\img\site\accent.png" />
     <Content Include="Content\img\site\bullet.png" />
     <Content Include="Content\img\site\heroAccent.png" />
@@ -736,6 +740,8 @@
     <Content Include="Views\ContentBlock\Details.cshtml" />
     <Content Include="Views\ContentBlock\Edit.cshtml" />
     <Content Include="Views\ContentBlock\Index.cshtml" />
+    <Content Include="Views\Event\SelectFlickrObjsOnCreate.cshtml" />
+    <Content Include="Views\Event\SelectFlickrObjsOnEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

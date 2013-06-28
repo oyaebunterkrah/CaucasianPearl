@@ -39,14 +39,14 @@ namespace CaucasianPearl.Core.Constants
             public const int DefaultNumberOfVisibleLinks = 1;
 
             // Количество объектов на одной странице для событий.
-            public const int EventItemsPerPage = 3;
+            public const int EventItemsPerPage = 10;
             // Количество отображаемых страниц перед многоточием для событий.
-            public const int EventNumberOfVisibleLinks = 3;
+            public const int EventNumberOfVisibleLinks = 10;
 
             // Количество объектов на одной странице для новостей.
-            public const int NewsItemsPerPage = 3;
+            public const int NewsItemsPerPage = 10;
             // Количество отображаемых страниц перед многоточием для новостей.
-            public const int NewsNumberOfVisibleLinks = 3;
+            public const int NewsNumberOfVisibleLinks = 10;
 
             // Количество объектов на одной странице для отзывов и предложений.
             public const int FeedbackItemsPerPage = 5;
@@ -109,14 +109,18 @@ namespace CaucasianPearl.Core.Constants
                 "onenews"
             };
 
-        #region Папки
-        
-        public const string EntityImagesFolder = "~/content/img/cp";
+        #region Пути к папкам
+
+        public static class FoldersPathes
+        {
+            public const string EntityImagesFolder = "~/content/img/cp";
+            public const string CommonImagesFolder = "~/content/img";
+        }
         
         #endregion
 
         // Изображение по умолчанию.
-        public const string NoImage = "0.jpg";
+        public const string NoImage = "no-image.png";
 
         // Templates.
         public static class Templates
@@ -192,7 +196,18 @@ namespace CaucasianPearl.Core.Constants
                 {
                     // Event actions.
                     public const string Events = "events";
+                    public const string SelectFlickrObjsOnCreate = "selectflickrobjsoncreate";
+                    public const string SelectFlickrObjsOnEdit = "selectflickrobjsonedit";
+
                     public const string UploadImage = "uploadimage";
+                }
+
+                // Views.
+                public static class Views
+                {
+                    // Event views.
+                    public const string SelectFlickrObjsOnCreate = "SelectFlickrObjsOnCreate";
+                    public const string SelectFlickrObjsOnEdit = "SelectFlickrObjsOnEdit";
                 }
             }
 
@@ -540,8 +555,8 @@ namespace CaucasianPearl.Core.Constants
         public static class JsPaths
         {
             private const string PluginsPrefixPath = "~/content/js/plugins/";
-            private const string CpPrefixPath = "~/content/js/cp/";
-            private const string SysPrefixPath = "~/content/js/sys/";
+            //private const string CpPrefixPath = "~/content/js/cp/";
+            //private const string SysPrefixPath = "~/content/js/sys/";
 
             public const string CKEditor = PluginsPrefixPath + "ckeditor/ckeditor.js";
             //public const string CKEditorConfig = PluginsPrefixPath + "ckeditor/ckeditor_config.js";

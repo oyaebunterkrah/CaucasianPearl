@@ -1,5 +1,5 @@
-﻿using CaucasianPearl.Core.Services.Logging;
-using FlickrNet;
+﻿using System.Collections.ObjectModel;
+using CaucasianPearl.Core.Services.LoggingService;
 using Newtonsoft.Json;
 using Resources.Shared;
 using System;
@@ -7,15 +7,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
 using CaucasianPearl.Controllers.Abstract;
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Helpers.HtmlHelpers;
-using CaucasianPearl.Core.Services.FlickrNet;
+using CaucasianPearl.Core.Services.FlickrNetService;
 using CaucasianPearl.Models.EDM;
-using CaucasianPearl.Properties;
 
 namespace CaucasianPearl.Controllers
 {
@@ -28,10 +26,10 @@ namespace CaucasianPearl.Controllers
 
         #region Properties
 
-        private static ILogService LogService
-        {
-            get { return DependencyResolverHelper<ILogService>.GetService(); }
-        }
+        //private static ILogService LogService
+        //{
+        //    get { return DependencyResolverHelper<ILogService>.GetService(); }
+        //}
 
         private static IFlickrService FlickrService
         {
@@ -62,36 +60,82 @@ namespace CaucasianPearl.Controllers
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
         public override ActionResult Create(Event @event)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    _service.Create(@event);
+            if (ModelState.IsValid)
+            {
+                _service.Create(@event);
 
-            //    return base.OnCreated(@event);
-            //}
+                var createdEvent = _service.Get(@event.ID);
 
+                CreateEventMedia(createdEvent);
+
+                return base.OnCreated(createdEvent);
+            }
+
+            return View();
+        }
+
+        private void CreateEventMedia(Event @event)
+        {
             if (!HttpContext.Request.Form.AllKeys.Contains(MediaJsonKey))
                 RedirectToAction(Consts.Controllers.Error.Actions.Unexpected, Consts.Controllers.Error.Name);
 
             var mediaJson = HttpContext.Request.Form[MediaJsonKey];
-            var photo = JsonHelper.Deserialize<List<FlickrObject>>(mediaJson);
 
-            return View();
+            if (string.IsNullOrWhiteSpace(mediaJson))
+                RedirectToAction(Consts.Controllers.Error.Actions.Unexpected, Consts.Controllers.Error.Name);
+
+            var selectedFlickrObjs = JsonHelper.Deserialize<List<FlickrObject>>(mediaJson);
+
+            if (selectedFlickrObjs.Count == 0)
+                RedirectToAction(Consts.Controllers.Error.Actions.Unexpected, Consts.Controllers.Error.Name);
+
+            var eventMedia = selectedFlickrObjs.Select(f => new EventMedia
+                {
+                    EventId = @event.ID,
+                    PhotoId = f.PhotoId,
+                    PhotosetId = f.PhotosetId,
+                    Description = f.Description,
+                    Content = f.Content,
+                    MediaType = f.MediaType,
+                    FlickrUrl = f.FlickrUrl,
+                    ThumbnailUrl = f.ThumbnailUrl,
+                    SmallUrl = f.SmallUrl,
+                    MediumUrl = f.MediumUrl,
+                    LargeUrl = f.LargeUrl,
+                    VideoUrl = f.VideoUrl,
+                    IsPrimary = f.IsPrimary
+                }).ToList();
+
+            var orderedService = DependencyResolverHelper<IOrderedService<EventMedia>>.GetService();
+            eventMedia.ForEach(orderedService.Create);
         }
 
         // Возвращает фотоальбомы.
         public string GetPhotoSets()
         {
-            var photosets = FlickrService.PhotosetsGetList();
+            var photosets = FlickrService.GetPhotosets(CultureHelper.CurrentCulture);
 
             return JsonConvert.SerializeObject(photosets);
         }
 
-        // Возвращает фотографии из фотоальбома.
+        // Возвращает фотографии из фотоальбома. Ппри создании.
         public string GetPhotos(string photosetId)
         {
             var photos = FlickrService.GetPhotosetPhotos(photosetId);
 
             return JsonConvert.SerializeObject(photos);
+        }
+
+        // Возвращает фотографии из фотоальбома.
+        public ActionResult SelectFlickrObjsOnCreate()
+        {
+            return View();
+        }
+
+        // Возвращает фотографии из фотоальбома. Ппри редактировании.
+        public ActionResult SelectFlickrObjsOnEdit(Event @event)
+        {
+            return View(@event);
         }
 
         // Обработка загрузки картинки
@@ -128,7 +172,7 @@ namespace CaucasianPearl.Controllers
                     var extension = Path.GetExtension(imageFile.FileName);
                     var fileName = eventId + extension;
                     var fileSavePath = Path.Combine(
-                        Server.MapPath(Url.Content(Consts.EntityImagesFolder)),
+                        Server.MapPath(Url.Content(Consts.FoldersPathes.EntityImagesFolder)),
                         Consts.Controllers.Event.EventImagesFolder,
                         "/",
                         fileName);

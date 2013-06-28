@@ -2,7 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using CaucasianPearl.Core.DAL.Repository;
-using CaucasianPearl.Core.Services.Logging;
+using CaucasianPearl.Core.Services.LoggingService;
 using CaucasianPearl.Models.EDM;
 
 namespace CaucasianPearl.Core.Helpers.HtmlHelpers

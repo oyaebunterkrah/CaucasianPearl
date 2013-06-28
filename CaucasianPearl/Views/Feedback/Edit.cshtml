@@ -20,6 +20,7 @@
         <legend>@FeedbackViewRes.Feedback</legend>
 
         @Html.HiddenFor(model => model.ID)
+
 		@Html.Partial(Consts.Views.CreateOrEdit, Model)
 
         <input type="submit" value="@SharedViewRes.Save" />

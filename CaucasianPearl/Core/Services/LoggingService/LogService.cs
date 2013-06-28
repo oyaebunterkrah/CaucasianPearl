@@ -2,7 +2,7 @@
 using CaucasianPearl.Core.Utilities;
 using NLog;
 
-namespace CaucasianPearl.Core.Services.Logging
+namespace CaucasianPearl.Core.Services.LoggingService
 {
     public class LogService : ILogService
     {

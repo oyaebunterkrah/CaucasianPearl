@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using CaucasianPearl.Core.DAL.Interface;
 using System.Collections.Specialized;
 
@@ -8,6 +10,12 @@ namespace CaucasianPearl.Core.EntityServices.Interface
     {
         // Получение всех записей из таблицы БД.
         IQueryable<T> Get();
+
+        // Получение одной записи с заданным ID.
+        T Get(int id);
+
+        // Получение записей по условию.
+        List<T> Get(Func<T, bool> condition);
 
         // Получение выбранных записей.
         IQueryable<T> Get(NameValueCollection filter);
@@ -20,9 +28,6 @@ namespace CaucasianPearl.Core.EntityServices.Interface
 
         // Получение количества выбранных записей.
         int Count(NameValueCollection filter);
-
-        // Получение одной записи с заданным ID.
-        T Get(int id);
 
         // Получение нескольких записей.
         // Параметр skip - сколько первых записей пропустить, параметр take - сколько записей получить.

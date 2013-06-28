@@ -16,7 +16,7 @@ body {
 a {
     color: #333;
     outline: none;
-    padding-left: 3px;
+    
     padding-right: 3px;
     text-decoration: underline;
 }
@@ -104,13 +104,13 @@ h5, h6 {
 }
 
     .main-content {
-        background: url("../img/site/accent.png") no-repeat;
+        background: url("/content/img/site/accent.png") no-repeat;
         padding-left: 10px;
         padding-top: 30px;
     }
 
     .featured + .main-content {
-        background: url("../img/site/heroAccent.png") no-repeat;
+        background: url("/content/img/site/heroAccent.png") no-repeat;
     }
 
 header .content-wrapper {
@@ -892,12 +892,181 @@ html {
 
 /* Attach media block
 ----------------------------------------------------------*/
-.photo-thumbnail-selected {
-    border: 3px solid #00ffb2;
+.addMediaBlock .title{
+    margin-left: 10px;
 }
 
-.photoset-thumbnail-selected {
-    border: 3px solid #ea3333;
+.photosetsBlock {
+    display: none;
+    margin-top: 10px;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.photosBlock {
+    display: none;
+    margin-top: 10px;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.photoContainer {
+    display: inline;
+    position: relative;
+    height: 100px;
+    width: 100px;
+}
+
+.setPrimary-btn {
+    background: transparent url('/content/img/cp/event/primary.png') no-repeat;
+    cursor: pointer;
+    display: none;
+    height: 24px;
+    position: absolute;
+    right: -6px;
+    top: -6px;
+    width: 24px;
+    z-index: 90;
+}
+
+.editInfo-btn {
+    background: transparent url('/content/img/cp/event/edit.png') no-repeat;
+    cursor: pointer;
+    display: none;
+    height: 24px;
+    position: absolute;
+    right: -10px;
+    top: -5px;
+    width: 24px;
+    z-index: 90;
+}
+
+.editInfo-btn:hover, .setPrimary-btn:hover {
+    background-color: transparent;
+}
+
+.flickrObjDescription textarea {
+    height: 50px;
+    width: 300px;
+}
+
+.flickrObjContent textarea {
+    height: 100px;
+    width: 300px;
+}
+
+.photosBlock .selected, .photosBlock .unselected {
+    display: none;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#selection {
+    display: none;
+}
+
+.addMediaBlock {
+    margin-left: -10px;
+}
+
+.photoset {
+    margin: 10px;
+}
+
+.photo {
+    margin: 10px;
+}
+
+.video {
+    margin: 10px;
+}
+
+.photoset-selected {
+    border: 3px solid #90c6c6;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 0 0 10px #005757;
+    margin: 7px;
+}
+
+.photo-selected {
+    border: 3px solid #c2b280;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 0 0 10px #3a2b00;
+    margin: 7px;
+}
+
+.video-selected {
+    border: 3px solid #ba7777;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 0 0 10px #5f0000;
+    margin: 7px;
+}
+
+/* Edit info box
+----------------------------------------------------------*/
+#editInfoBoxOverlay {
+	background: #000000;
+    cursor: pointer;
+    display: none;
+	height: 100%;
+	bottom: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 98;
+}
+
+#editInfoBox {
+    background: #fff;
+    display: none;
+    height: 320px;
+    padding: 40px 0 0 40px;
+    position: absolute;
+    width: 350px;
+    z-index: 99;
+}
+
+#editInfoBoxClose {
+    cursor: pointer;
+    background: url('/content/img/cp/event/close.png');
+    height: 16px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 16px;
+    z-index: 99;
+}
+
+.btn-block {
+    float: right;
+    margin-right: 30px;
+}
+
+
+/* Edit media block
+----------------------------------------------------------*/
+.delete-btn {
+    background: transparent url('/content/img/cp/event/delete.png') no-repeat;
+    cursor: pointer;
+    display: none;
+    height: 24px;
+    position: absolute;
+    right: -5px;
+    width: 24px;
+    z-index: 90;
+}
+
+.recover-btn {
+    cursor: pointer;
+    display: none;
+}
+
+.delete-btn:hover, .recover-btn:hover {
+    background-color: transparent;
 }
 
 /* PaginatorControl
@@ -905,3 +1074,10 @@ html {
 /*.paginator {
     
 }*/
+
+
+.loading {
+    background: url('/content/img/preloader.gif') 
+                50% 50% 
+                no-repeat;
+}

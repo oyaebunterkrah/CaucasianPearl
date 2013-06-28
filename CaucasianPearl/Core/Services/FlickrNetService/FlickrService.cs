@@ -6,23 +6,23 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Hosting;
 using CaucasianPearl.Core.Helpers;
-using CaucasianPearl.Core.Services.FlickrNet;
-using CaucasianPearl.Core.Services.Logging;
-using Newtonsoft.Json;
+using CaucasianPearl.Core.Services.LoggingService;
 using Resources.Shared;
 using CaucasianPearl.Properties;
 using FlickrNet;
 using Ninject;
 using Photoset = CaucasianPearl.Models.Photoset;
 
-namespace CaucasianPearl.Core.Services.FlickrNet
+namespace CaucasianPearl.Core.Services.FlickrNetService
 {
     public class FlickrService : IFlickrService
     {
         #region Properties
 
-        [Inject]
-        public ILogService LogService { get; set; }
+        private static ILogService LogService
+        {
+            get { return DependencyResolverHelper<ILogService>.GetService(); }
+        }
 
         public bool IsPageable { get; set; }
 
@@ -52,6 +52,15 @@ namespace CaucasianPearl.Core.Services.FlickrNet
                     throw new Exception("flickr is null");
                 }
             }
+        }
+
+        /// <summary>
+        /// Возвращает кол-во альбомов (Photosets).
+        /// </summary>
+        /// <returns>Количество альбомов.</returns>
+        public int PhotosetsCount
+        {
+            get { return Flickr.PhotosetsGetList().Count; }
         }
 
         #endregion
@@ -184,12 +193,16 @@ namespace CaucasianPearl.Core.Services.FlickrNet
             {
                 var photoset = new Photoset
                 {
+                    PhotosetId = flickrPhotoset.PhotosetId,
                     Title = flickrPhotoset.Title,
                     Description = GetDescription(flickrPhotoset.Description, lang),
                     DateCreated = flickrPhotoset.DateCreated.ToString(CultureInfo.CurrentCulture),
-                    PhotosetId = flickrPhotoset.PhotosetId,
+                    FlickrUrl = flickrPhotoset.Url,
+                    ThumbnailUrl = flickrPhotoset.PhotosetThumbnailUrl,
+                    SmallUrl = flickrPhotoset.PhotosetSmallUrl,
                     Photos = GetPhotosetPhotos(flickrPhotoset.PhotosetId, lang)
                 };
+                
                 photoset.PrimaryPhoto =
                     photoset.Photos.ToList().Find(photo => photo.PhotoId == flickrPhotoset.PrimaryPhotoId);
 
@@ -206,15 +219,6 @@ namespace CaucasianPearl.Core.Services.FlickrNet
         public PhotosetCollection PhotosetsGetList()
         {
             return Flickr.PhotosetsGetList(Settings.Default.FlickrUserId);
-        }
-
-        /// <summary>
-        /// Возвращает кол-во альбомов (Photosets).
-        /// </summary>
-        /// <returns>Количество альбомов.</returns>
-        public int PhotosetsCount()
-        {
-            return Flickr.PhotosetsGetList().Count;
         }
 
         /// <summary>
@@ -327,7 +331,7 @@ namespace CaucasianPearl.Core.Services.FlickrNet
         /// <returns></returns>
         public IEnumerable<FlickrObject> GetPhotosetPhotos(string photosetId)
         {
-            var photos = Flickr.PhotosetsGetPhotos(photosetId).Select(p => new FlickrObject(p));
+            var photos = Flickr.PhotosetsGetPhotos(photosetId).Select(p => new FlickrObject(p, photosetId));
 
             return photos;
         }

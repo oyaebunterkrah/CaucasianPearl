@@ -4,17 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
 using CaucasianPearl.Controllers;
-using CaucasianPearl.Core.Services.Logging;
+using CaucasianPearl.Core.Services.LoggingService;
 using Ninject;
 
 namespace CaucasianPearl.Core.Helpers
 {
     public static class JsonHelper
     {
-        [Inject]
-        private static ILogService LogService { get; set; }
+        private static ILogService LogService
+        {
+            get { return DependencyResolverHelper<ILogService>.GetService(); }
+        }
 
-        public static T Deserialize<T>(string json) where T: new()
+        public static T Deserialize<T>(string json) where T : new()
         {
             var deserializedObj = new T();
 

@@ -6,8 +6,8 @@ using CaucasianPearl.Core.DAL.Repository;
 using CaucasianPearl.Core.EntityServices;
 using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Services;
-using CaucasianPearl.Core.Services.FlickrNet;
-using CaucasianPearl.Core.Services.Logging;
+using CaucasianPearl.Core.Services.FlickrNetService;
+using CaucasianPearl.Core.Services.LoggingService;
 using CaucasianPearl.Models.EDM;
 using Ninject.Parameters;
 
@@ -72,17 +72,19 @@ namespace CaucasianPearl.App_Start
             #region EntityServices
 
             kernel.Bind<IUrlFriendlyService<Event>>().To<EventEntityService>();
+            kernel.Bind<IOrderedService<EventMedia>>().To<EventMediaEntityService>();
             kernel.Bind<IUrlFriendlyService<OneNews>>().To<OneNewsEntityService>();
             kernel.Bind<IBaseService<Feedback>>().To<FeedbackEntityService>();
             kernel.Bind<IBaseService<Request>>().To<RequestEntityService>();
             kernel.Bind<IUrlFriendlyService<Profile>>().To<UserProfileEntityService>();
-            kernel.Bind<IOrderedService<ContentBlock>>().To<ContentBlockEntityService>(); 
-            
+            kernel.Bind<IOrderedService<ContentBlock>>().To<ContentBlockEntityService>();
+
             #endregion
 
             #region Repository
 
             kernel.Bind<IRepository<Event>>().To<Repository<Event>>();
+            kernel.Bind<IRepository<EventMedia>>().To<Repository<EventMedia>>();
             kernel.Bind<IRepository<OneNews>>().To<Repository<OneNews>>();
             kernel.Bind<IRepository<Feedback>>().To<Repository<Feedback>>();
             kernel.Bind<IRepository<Request>>().To<Repository<Request>>();

@@ -9,7 +9,7 @@ namespace CaucasianPearl.Models.EDM
     {
         bool IBase.CanBeDeleted()
         {
-            return true;
+            return EventMedia.Count == 0;
         }
     }
 }

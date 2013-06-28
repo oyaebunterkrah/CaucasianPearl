@@ -1,0 +1,3 @@
+2013-06-27 00:14:33.9769|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+2013-06-27 00:14:43.2684|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+2013-06-27 22:39:16.4488|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|

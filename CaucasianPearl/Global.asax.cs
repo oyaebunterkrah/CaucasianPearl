@@ -10,7 +10,7 @@ using CaucasianPearl.App_Start;
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.Filters;
 using CaucasianPearl.Core.Helpers;
-using CaucasianPearl.Core.Services.Logging;
+using CaucasianPearl.Core.Services.LoggingService;
 
 namespace CaucasianPearl
 {

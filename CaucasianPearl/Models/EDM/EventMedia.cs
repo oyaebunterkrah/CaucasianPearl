@@ -16,9 +16,20 @@ namespace CaucasianPearl.Models.EDM
     {
         public int ID { get; set; }
         public Nullable<int> EventId { get; set; }
-        public string Url { get; set; }
+        public string PhotoId { get; set; }
+        public string PhotosetId { get; set; }
         public string Description { get; set; }
         public string Content { get; set; }
-        public Nullable<byte> MediaType { get; set; }
+        public string MediaType { get; set; }
+        public string FlickrUrl { get; set; }
+        public string ThumbnailUrl { get; set; }
+        public string SmallUrl { get; set; }
+        public string MediumUrl { get; set; }
+        public string LargeUrl { get; set; }
+        public string VideoUrl { get; set; }
+        public Nullable<bool> IsPrimary { get; set; }
+        public Nullable<int> Sequence { get; set; }
+    
+        public virtual Event Event { get; set; }
     }
 }

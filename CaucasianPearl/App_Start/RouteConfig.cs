@@ -21,23 +21,25 @@ namespace CaucasianPearl.App_Start
                         shortname = UrlParameter.Optional
                     });
 
-            routes.MapRoute(name: "News",
-                            url: "news",
-                            defaults: new
-                                {
-                                    controller = Consts.Controllers.OneNews.Name,
-                                    action = Consts.Actions.Index,
-                                    shortname = UrlParameter.Optional
-                                });
+            routes.MapRoute(
+                name: "News",
+                url: "news",
+                defaults: new
+                    {
+                        controller = Consts.Controllers.OneNews.Name,
+                        action = Consts.Actions.Index,
+                        shortname = UrlParameter.Optional
+                    });
 
-            routes.MapRoute(name: "Profiles",
-                            url: "profiles",
-                            defaults: new
-                                {
-                                    controller = Consts.Controllers.Profile.Name,
-                                    action = Consts.Actions.Index,
-                                    shortname = UrlParameter.Optional
-                                });
+            routes.MapRoute(
+                name: "Profiles",
+                url: "profiles",
+                defaults: new
+                    {
+                        controller = Consts.Controllers.Profile.Name,
+                        action = Consts.Actions.Index,
+                        shortname = UrlParameter.Optional
+                    });
 
             routes.MapRoute(
                 name: "Feedbacks",

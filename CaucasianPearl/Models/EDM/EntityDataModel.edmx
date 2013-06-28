@@ -13,6 +13,10 @@
           <EntitySet Name="OneNews" EntityType="caucasianpearldbModel.Store.OneNews" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Profile" EntityType="caucasianpearldbModel.Store.Profile" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Request" EntityType="caucasianpearldbModel.Store.Request" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_EventMedia_Event1" Association="caucasianpearldbModel.Store.FK_EventMedia_Event1">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="EventMedia" EntitySet="EventMedia" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ContentBlock">
           <Key>
@@ -35,7 +39,7 @@
           <Property Name="EventDate" Type="datetime" />
           <Property Name="Description" Type="nvarchar" MaxLength="2048" />
           <Property Name="Content" Type="nvarchar" MaxLength="2048" />
-          <Property Name="Cover" Type="tinyint" />
+          <Property Name="Cover" Type="nvarchar" MaxLength="50" />
           <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
           <Property Name="Sequence" Type="int" />
         </EntityType>
@@ -45,10 +49,19 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="EventId" Type="int" />
-          <Property Name="Url" Type="nvarchar" MaxLength="256" />
+          <Property Name="PhotoId" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhotosetId" Type="nvarchar" MaxLength="50" />
           <Property Name="Description" Type="nvarchar" MaxLength="256" />
           <Property Name="Content" Type="nvarchar" MaxLength="2048" />
-          <Property Name="MediaType" Type="tinyint" />
+          <Property Name="MediaType" Type="nvarchar" MaxLength="20" />
+          <Property Name="FlickrUrl" Type="nvarchar" MaxLength="256" />
+          <Property Name="ThumbnailUrl" Type="nvarchar" MaxLength="256" />
+          <Property Name="SmallUrl" Type="nvarchar" MaxLength="256" />
+          <Property Name="MediumUrl" Type="nvarchar" MaxLength="256" />
+          <Property Name="LargeUrl" Type="nvarchar" MaxLength="256" />
+          <Property Name="VideoUrl" Type="nvarchar" MaxLength="256" />
+          <Property Name="IsPrimary" Type="bit" />
+          <Property Name="Sequence" Type="int" />
         </EntityType>
         <EntityType Name="Feedback">
           <Key>
@@ -107,6 +120,18 @@
           <Property Name="Comment" Type="nvarchar" MaxLength="500" />
           <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_EventMedia_Event1">
+          <End Role="Event" Type="caucasianpearldbModel.Store.Event" Multiplicity="0..1" />
+          <End Role="EventMedia" Type="caucasianpearldbModel.Store.EventMedia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventMedia">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -119,6 +144,10 @@
           <EntitySet Name="Profiles" EntityType="caucasianpearldbModel.Profile" />
           <EntitySet Name="ContentBlocks" EntityType="caucasianpearldbModel.ContentBlock" />
           <EntitySet Name="EventMedias" EntityType="caucasianpearldbModel.EventMedia" />
+          <AssociationSet Name="FK_EventMedia_Event" Association="caucasianpearldbModel.FK_EventMedia_Event">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="EventMedia" EntitySet="EventMedias" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Event">
           <Key>
@@ -129,9 +158,10 @@
           <Property Type="DateTime" Name="EventDate" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="2048" Unicode="true" FixedLength="false" />
           <Property Type="String" Name="Content" MaxLength="2048" FixedLength="false" Unicode="true" />
-          <Property Type="Byte" Name="Cover" />
+          <Property Type="String" Name="Cover" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="ShortName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Sequence" Type="Int32" />
+          <NavigationProperty Name="EventMedia" Relationship="caucasianpearldbModel.FK_EventMedia_Event" FromRole="Event" ToRole="EventMedia" />
         </EntityType>
         <EntityType Name="Feedback">
           <Key>
@@ -208,11 +238,33 @@
           </Key>
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="EventId" />
-          <Property Type="String" Name="Url" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PhotoId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PhotosetId" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Description" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Content" MaxLength="2048" FixedLength="false" Unicode="true" />
-          <Property Type="Byte" Name="MediaType" />
+          <Property Type="String" Name="MediaType" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FlickrUrl" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ThumbnailUrl" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SmallUrl" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MediumUrl" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LargeUrl" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VideoUrl" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Event" Relationship="caucasianpearldbModel.FK_EventMedia_Event" FromRole="EventMedia" ToRole="Event" />
+          <Property Type="Boolean" Name="IsPrimary" />
+          <Property Type="Int32" Name="Sequence" />
         </EntityType>
+        <Association Name="FK_EventMedia_Event">
+          <End Type="caucasianpearldbModel.Event" Role="Event" Multiplicity="0..1" />
+          <End Type="caucasianpearldbModel.EventMedia" Role="EventMedia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EventMedia">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -310,10 +362,19 @@
           <EntitySetMapping Name="EventMedias">
             <EntityTypeMapping TypeName="caucasianpearldbModel.EventMedia">
               <MappingFragment StoreEntitySet="EventMedia">
+                <ScalarProperty Name="FlickrUrl" ColumnName="FlickrUrl" />
+                <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="VideoUrl" ColumnName="VideoUrl" />
+                <ScalarProperty Name="LargeUrl" ColumnName="LargeUrl" />
+                <ScalarProperty Name="MediumUrl" ColumnName="MediumUrl" />
+                <ScalarProperty Name="SmallUrl" ColumnName="SmallUrl" />
+                <ScalarProperty Name="ThumbnailUrl" ColumnName="ThumbnailUrl" />
                 <ScalarProperty Name="MediaType" ColumnName="MediaType" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="PhotosetId" ColumnName="PhotosetId" />
+                <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
                 <ScalarProperty Name="EventId" ColumnName="EventId" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
