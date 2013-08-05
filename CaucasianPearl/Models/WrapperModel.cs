@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
 using CaucasianPearl.Core.EntityServices.Interface;
+using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Models.EDM;
 
 namespace CaucasianPearl.Models
@@ -13,13 +13,11 @@ namespace CaucasianPearl.Models
 
         public WrapperModel()
         {
-            var eventService = DependencyResolver.Current.GetService(typeof(IUrlFriendlyService<Event>)) as IUrlFriendlyService<Event>;
-            if (eventService != null)
-                Events = eventService.Get().Take(3);
+            var eventService = DependencyResolverHelper<IEventService<Event>>.GetService();
+            Events = eventService.Get().Take(3);
 
-            var oneNewsService = DependencyResolver.Current.GetService(typeof(IUrlFriendlyService<OneNews>)) as IUrlFriendlyService<OneNews>;
-            if (oneNewsService != null)
-                OneNews = oneNewsService.Get().Take(3);
+            var oneNewsService = DependencyResolverHelper<IUrlFriendlyService<OneNews>>.GetService();
+            OneNews = oneNewsService.Get().Take(3);
         }
     }
 }

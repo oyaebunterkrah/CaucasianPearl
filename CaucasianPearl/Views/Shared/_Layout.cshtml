@@ -9,11 +9,14 @@
     <head>
         <title>@SharedRes.ProjectTitle</title>
         
-        <link href="@Url.Content("~/content/img/favicon.ico")" rel="site icon" type="image/x-icon" />
+        <link href="@Url.Content("~/content/img/site/favicon.ico")" rel="site icon" type="image/x-icon" />
 
-        @Styles.Render("~/content/styles")
+        @Styles.Render("~/bundles/styles")
         @Scripts.Render("~/bundles/modernizr")
         @Scripts.Render("~/bundles/jquery")
+
+        @Styles.Render("~/content/plugins/jqueryui/css")
+        @Scripts.Render("~/content/plugins/jqueryui/js")
         
         <script src="@Url.Content("~/content/js/cp/main.js")" type="text/javascript" charset="windows-1251"></script>
 

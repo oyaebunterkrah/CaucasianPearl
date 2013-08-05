@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Hosting;
+using CaucasianPearl.Core.DAL.Data;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Services.LoggingService;
 using Resources.Shared;
@@ -329,9 +330,9 @@ namespace CaucasianPearl.Core.Services.FlickrNetService
         /// </summary>
         /// <param name="photosetId"></param>
         /// <returns></returns>
-        public IEnumerable<FlickrObject> GetPhotosetPhotos(string photosetId)
+        public IEnumerable<MediaItem> GetPhotosetPhotos(string photosetId)
         {
-            var photos = Flickr.PhotosetsGetPhotos(photosetId).Select(p => new FlickrObject(p, photosetId));
+            var photos = Flickr.PhotosetsGetPhotos(photosetId).Select(p => new MediaItem(p, photosetId));
 
             return photos;
         }

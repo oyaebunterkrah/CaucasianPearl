@@ -1,0 +1,337 @@
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Models.EDM
+@using CaucasianPearl.Core.DAL.Data
+@using Resources.Event
+@using Resources.Shared
+
+@model IEnumerable<EventItem>
+
+@Styles.Render("~/content/plugins/orbit/css")
+@Scripts.Render("~/content/plugins/orbit/js")
+
+<!--[if IE]>
+		<style type="text/css">
+			.timer { display: none !important; }
+			div.caption { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);zoom: 1; }
+	</style>
+<![endif]-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        jQuery.noConflict();
+    });
+    
+    $(window).load(function () {
+        setSlider();
+    });
+    
+    $(window).resize(function () {
+        if ($(window).width() <= 940)
+            $('.container *').width($(window).width());
+    });
+
+    setSlider = function() {
+        $('#featured').orbit({
+            animation: 'fade',  // fade, horizontal-slide, vertical-slide, horizontal-push
+            animationSpeed: 1000,// how fast animtions are
+            timer: true, // true or false to have the timer
+            advanceSpeed: 4000, // if timer is enabled, time between transitions 
+            pauseOnHover: true, // if you hover pauses the slider
+            startClockOnMouseOut: false, // if clock should start on MouseOut
+            startClockOnMouseOutAfter: 1000, // how long after MouseOut should the timer start again
+            directionalNav: true, // manual advancing directional navs
+            captions: true, // do you want captions?
+            captionAnimation: 'fade', // fade, slideOpen, none
+            captionAnimationSpeed: 800, // if so how quickly should they animate in
+            bullets: false, // true or false to activate the bullet navigation
+            bulletThumbs: false, // thumbnails for the bullets
+            bulletThumbLocation: '', // location from this file where thumbs will be
+            afterSlideChange: function() { } // empty function 
+        });
+    };
+</script>
+
+@* медиа элементы текущего события *@
+@if (Model != null) {
+    var firstEvent = Model.FirstOrDefault();
+    if (firstEvent != null && firstEvent.EventMedia != null && firstEvent.EventMedia.Any()) {
+        <div class="container">
+            <div id="featured">
+                @foreach (var eventMediaItem in firstEvent.EventMedia) {
+                    if (eventMediaItem.MediaType == "photos") {
+                        <img
+                            src="@eventMediaItem.LargeUrl"
+                            ondblclick="openInNewTab('@eventMediaItem.FlickrUrl')"
+                            data-caption="#media_item_info_@eventMediaItem.ID" />
+                    }
+                    else {
+                        <embed
+                            src="@eventMediaItem.VideoUrl"
+                            type="application/x-shockwave-flash"
+                            width="940"
+                            height="350"
+                            allowfullscreen="true"
+                            flashvars="flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false"
+                            data-caption="#media_item_info_@eventMediaItem.ID">
+                    }
+
+                }
+            </div>
+
+            @* description/content *@
+            <div class="event_media_items_data">
+                @foreach (var eventMediaItem in firstEvent.EventMedia) {
+                    if (!string.IsNullOrWhiteSpace(eventMediaItem.Description) || !string.IsNullOrWhiteSpace(eventMediaItem.Content)) {
+                        <div id="media_item_info_@eventMediaItem.ID" class="orbit-caption">
+                            @if (!string.IsNullOrWhiteSpace(eventMediaItem.Description)) {
+                                <div class="description">@Html.Raw(eventMediaItem.Description)</div>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(eventMediaItem.Content)) {
+                                <div class="content">@Html.Raw(eventMediaItem.Content)</div>
+                            }
+                        </div>
+                    }
+
+                }
+            </div>
+        </div>
+    }
+}
+
+@* события *@
+<div id="events" class="events" style="margin-top: 10px;">
+    @foreach (var eventItem in Model)
+    {
+        <div class="event_item float_left">
+            <div class="image float_left">
+                <a data-eventid="@eventItem.ID" onclick="setEventMedia($(this)); return false;">
+                    <img src="@(DependencyResolverHelper<IEventService<Event>>.GetService().GetPrimaryPhoto(eventItem))" />
+                </a>
+            </div>
+            <div class="properties float_left">
+                <div class="title property">@eventItem.Title</div>
+                <div class="date property">@eventItem.EventDate.Value.ToShortDateString()</div>
+                <div class="description property">@eventItem.Description</div>
+                <div class="content property">@eventItem.Content</div>
+            </div>
+            
+            @{ // скрытые медиа файлы события
+        if (eventItem.EventMedia != null && eventItem.EventMedia.Any())
+        {
+                <div class="event_media_items">
+                    @foreach (var eventMediaItem in eventItem.EventMedia)
+                    {
+                        if (eventMediaItem.MediaType == "photos")
+                        {
+                            <img src="@eventMediaItem.LargeUrl"
+                                data-eventid="@eventItem.ID"
+                                data-flickrurl="@eventMediaItem.FlickrUrl"
+                                data-description="@eventMediaItem.Description"
+                                data-content="@eventMediaItem.Content"
+                                data-caption="#media_item_info_@eventMediaItem.ID"
+                                ondblclick="openInNewTab('@eventMediaItem.FlickrUrl')" />
+                        }
+                        else
+                        {
+                            <div class="video">
+                                <embed src="@eventMediaItem.VideoUrl&amp;flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false" type="application/x-shockwave-flash" width="940" height="350" scrolling="no" frameBorder="0" allowfullscreen="true"
+                                    data-eventid="@eventItem.ID"
+                                    data-flickrurl="@eventMediaItem.FlickrUrl"
+                                    data-description="@eventMediaItem.Description"
+                                    data-content="@eventMediaItem.Content"
+                                    data-caption="#media_item_info_@eventMediaItem.ID"
+                                    ondblclick="openInNewTab('@eventMediaItem.FlickrUrl')" />
+                            </div>
+                        }
+                    }
+                </div>
+            
+                @* описание/контент медиа файлов события *@
+                <div class="event_media_items_data">
+                    @foreach (var eventMediaItem in eventItem.EventMedia)
+                    {
+                        if (!string.IsNullOrWhiteSpace(eventMediaItem.Description) || !string.IsNullOrWhiteSpace(eventMediaItem.Content))
+                        {
+                            <div id="media_item_info_@eventMediaItem.ID" class="orbit-caption">
+                                @if (!string.IsNullOrWhiteSpace(eventMediaItem.Description))
+                                {
+                                    <div class="description">@Html.Raw(eventMediaItem.Description)</div>   
+                                }
+                                @if (!string.IsNullOrWhiteSpace(eventMediaItem.Content))
+                                {
+                                    <div class="content">@Html.Raw(eventMediaItem.Content)</div>
+                                }
+                            </div>
+                        }
+                    }
+                </div>
+            }
+        }
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    setEventMedia = function(self) {
+        var img = self.find('img');
+        var eventItem = img.parents('.event_item');
+
+        var event_media_items = eventItem.find('.event_media_items').children();
+        var event_media_itemsInfoBlocks = eventItem.find('.event_media_items_data');
+        var featured =
+            $('<div/>')
+                .attr({ id: 'featured' })
+                .html(event_media_items);
+        $('.container')
+            .empty()
+            .append(featured)
+            .append(event_media_itemsInfoBlocks);
+        
+        $('#featured img, #featured div.video').first().hide().fadeIn().show();
+        setSlider();
+        
+        getLastEvents(self.data(consts.ids.eventid));
+    };
+
+    getLastEvents = function (eventId) {
+        var options = {
+            url: '/event/getlasteventsbyid',
+            type: 'POST',
+            data: { eventId: eventId },
+            success: function (eventsJson) { onGetLastEventsSuccess(eventsJson); }
+        };
+        $.ajaxRequest(options);
+    };
+    
+    onGetLastEventsSuccess = function (eventsJson) {
+        var events = $.parseJSON(eventsJson);
+        if (!events)
+            return;
+
+        var eventItems = [];
+
+        // события
+        $.each(events, function (i, eventItem) {
+            var eventItemControl = $('.event_item_template').clone();
+
+            var eventPrimaryPhotoSrc = '';
+            $.each(eventItem.EventMedia, function () {
+                var self = $(this)[0];
+                if (self.IsPrimary == true)
+                    eventPrimaryPhotoSrc = self.ThumbnailUrl;
+            });
+
+            eventItemControl.find('.image img').attr('src', eventPrimaryPhotoSrc);
+            eventItemControl.find('a').data(consts.ids.eventid, eventItem.ID);
+
+            eventItemControl.find('.title').text(eventItem.Title);
+            eventItemControl.find('.date').text(new Date(eventItem.EventDate).toDate());
+            eventItemControl.find('.description').text(eventItem.Description);
+            eventItemControl.find('.content').text(eventItem.Content);
+
+            // div с медиа файлами события
+            var event_media_itemsControl = eventItemControl.find('.event_media_items');
+
+            // медиа файлы события
+            $.each(eventItem.EventMedia, function (k, eventMediaItem) {
+                var eventMediaItemControl =
+                    $('.event_media_item_template')
+                        .clone()
+                        .find('{0}'.f(eventMediaItem.MediaType == 'photos'
+                            ? 'img'
+                            : 'embed'));
+
+                eventMediaItemControl.data({
+                    eventid: eventMediaItem.EventId,
+                    flickrurl: eventMediaItem.FlickrUrl,
+                    description: eventMediaItem.Description,
+                    content: eventMediaItem.Content,
+                    caption: '#media_item_info_{0}'.f(eventMediaItem.ID)
+                });
+
+                eventMediaItemControl
+                    .attr({
+                        src: eventMediaItem.MediaType == 'photos'
+                            ? eventMediaItem.LargeUrl
+                            : eventMediaItem.VideoUrl + eventMediaItemControl.attr('src')
+                    })
+                    .dblclick(function () {
+                        openInNewTab(eventMediaItem.FlickrUrl);
+                    });
+
+                // если видео - оборачиваем в div
+                if (eventMediaItem.MediaType != 'photos')
+                    eventMediaItemControl = $('<div class="video"></div>').append($(eventMediaItemControl));
+
+                event_media_itemsControl.append(eventMediaItemControl);
+            });
+
+            // div с описанием/контентом для медиа файлов
+            var event_media_itemsInfosControl = eventItemControl.find('.event_media_items_data');
+
+            $.each(eventItem.EventMedia, function (k, eventMediaItem) {
+                if (eventMediaItem.Description != '' || eventMediaItem.Content != '') {
+                    var eventmedia_item_infoControl =
+                    $('.event_media_item_info_template')
+                        .find('.orbit-caption')
+                        .clone();
+
+                    eventmedia_item_infoControl.attr({ id: 'media_item_info_{0}'.f(eventMediaItem.ID) });
+
+                    eventmedia_item_infoControl.find('.description').html(eventMediaItem.Description);
+                    eventmedia_item_infoControl.find('.content').html(eventMediaItem.Content);
+
+                    event_media_itemsInfosControl.append(eventmedia_item_infoControl);
+                }
+            });
+
+            eventItems.push(eventItemControl);
+        });
+
+        $('#events .event_item').fadeOut(200, function () { $(this).remove() });
+
+        setTimeout(function () {
+            $.each(eventItems, function (index) {
+                $(this)
+                    .removeClass('event_item_template')
+                    .addClass('event_item')
+                    .fadeIn()
+                    .appendTo('#events');
+            });
+        }, 200);
+    };
+</script>
+
+@* шаблон - событие *@
+<div class="event_item_template float_left">
+	<div class="image float_left">
+		<a data-eventid="" onclick="setEventMedia($(this));">
+			<img src="#" />
+		</a>
+	</div>
+	<div class="properties float_left">
+		<div class="title property"></div>
+		<div class="date property"></div>
+		<div class="description property"></div>
+		<div class="content property"></div>
+	</div>
+	<div class="event_media_items"></div>
+	<div class="event_media_items_data"></div>
+</div>
+
+@* шаблон - скрытые медиа файлы события *@
+<div class="event_media_item_template">
+    <img />
+	<div class="video">
+		<embed src="&amp;flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false" type="application/x-shockwave-flash" width="940" height="350" scrolling="no" frameBorder="0" allowfullscreen="true" />
+    </div>
+</div>
+
+@* шаблон - описание/контент медиа файлов события *@
+<div class="event_media_item_info_template">
+    <div class="orbit-caption">
+        <div class="description"></div>   
+        <div class="content"></div>
+    </div>
+</div>

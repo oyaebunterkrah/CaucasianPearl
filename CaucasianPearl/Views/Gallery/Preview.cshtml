@@ -12,11 +12,11 @@
     #galleria { position: relative;  width: 100%; height: 100%; background:#000 }
 </style>
 
-<script src="@Url.Content(@Url.Content(Consts.JsPaths.Galleria))"></script>
+<script src="@Url.Content(@Url.Content(Consts.Paths.Galleria))"></script>
 <script type="text/javascript">
     var data = @Html.Raw(Model.PhotosJson);
 
-    Galleria.loadTheme('@Url.Content(Consts.JsPaths.GalleriaClassicTheme)');
+    Galleria.loadTheme('@Url.Content(Consts.Paths.GalleriaClassicTheme)');
     var elem = $('#galleria');
     var galleria;
     Galleria.run('#galleria', {

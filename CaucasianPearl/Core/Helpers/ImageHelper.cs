@@ -34,7 +34,7 @@ namespace CaucasianPearl.Core.Helpers
         // Возвращает url изображения по умолчанию.
         public static string GetDefaultImageUrl()
         {
-            return string.Format("{0}/{1}", VirtualPathUtility.ToAppRelative(Consts.FoldersPathes.CommonImagesFolder), Consts.NoImage);
+            return string.Format("{0}/{1}", Consts.FoldersPathes.CommonImagesFolder, Consts.NoImage);
         }
     }
 }

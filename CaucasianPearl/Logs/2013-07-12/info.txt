@@ -1,0 +1,2 @@
+2013-07-12 01:45:15.6798|INFO|CaucasianPearl.Core.Services.LoggingService.LogService|C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Temp\FlickerCache\
+2013-07-12 23:25:09.9463|INFO|DynamicInjector4ca297c029674141ade29465165dc0ee|C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Temp\FlickerCache\

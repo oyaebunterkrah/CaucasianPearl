@@ -11,9 +11,6 @@ namespace CaucasianPearl.App_Start
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/content/js/sys/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                "~/content/js/sys/jquery-ui-{version}.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                 "~/content/js/sys/jquery.unobtrusive*",
                 "~/content/js/sys/jquery.validate*"));
@@ -23,21 +20,27 @@ namespace CaucasianPearl.App_Start
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                 "~/content/js/sys/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/content/styles").Include("~/content/css/site.css"));
+            bundles.Add(new StyleBundle("~/bundles/styles").Include(
+                "~/content/css/site/site.css"));
 
-            bundles.Add(new StyleBundle("~/content/themes/base/css").Include(
-                "~/content/themes/base/jquery.ui.core.css",
-                "~/content/themes/base/jquery.ui.resizable.css",
-                "~/content/themes/base/jquery.ui.selectable.css",
-                "~/content/themes/base/jquery.ui.accordion.css",
-                "~/content/themes/base/jquery.ui.autocomplete.css",
-                "~/content/themes/base/jquery.ui.button.css",
-                "~/content/themes/base/jquery.ui.dialog.css",
-                "~/content/themes/base/jquery.ui.slider.css",
-                "~/content/themes/base/jquery.ui.tabs.css",
-                "~/content/themes/base/jquery.ui.datepicker.css",
-                "~/content/themes/base/jquery.ui.progressbar.css",
-                "~/content/themes/base/jquery.ui.theme.css"));
+            // jqueryui {
+            bundles.Add(new StyleBundle(Format(Consts.Paths.PluginsPrefix, "jqueryui/css")).Include(
+                Format(Consts.Paths.PluginsPrefix, "jqueryui/css/*.css")));
+            
+            bundles.Add(new ScriptBundle(Format(Consts.Paths.PluginsPrefix, "jqueryui/js")).Include(
+                Format(Consts.Paths.PluginsPrefix, "jqueryui/js/*.js"))); // }
+
+            // orbit {
+            bundles.Add(new StyleBundle(Format(Consts.Paths.PluginsPrefix, "orbit/css")).Include(
+                Format(Consts.Paths.PluginsPrefix, "orbit/*.css")));
+
+            bundles.Add(new ScriptBundle(Format(Consts.Paths.PluginsPrefix, "orbit/js")).Include(
+                Format(Consts.Paths.PluginsPrefix, "orbit/*.js"))); // }
+        }
+
+        private static string Format(string prefix, string path)
+        {
+            return string.Format("{0}/{1}", prefix, path);
         }
     }
 }

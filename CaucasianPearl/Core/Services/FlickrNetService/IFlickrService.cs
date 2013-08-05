@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web;
+using CaucasianPearl.Core.DAL.Data;
 using FlickrNet;
 using Photoset = CaucasianPearl.Models.Photoset;
 
@@ -41,7 +42,7 @@ namespace CaucasianPearl.Core.Services.FlickrNetService
 
         PhotosetPhotoCollection GetPhotosetPhotos(string photosetId, string lang);
 
-        IEnumerable<FlickrObject> GetPhotosetPhotos(string photosetId);
+        IEnumerable<MediaItem> GetPhotosetPhotos(string photosetId);
 
         PhotoCollection GetLastPhotos(int limit, string lang, int page);
 

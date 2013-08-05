@@ -1,0 +1,98 @@
+﻿@using CaucasianPearl.Core.Constants
+
+@model CaucasianPearl.Models.EDM.Event
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.photoContainer')
+            .mouseover(function() {
+                var self = $(this);
+                var mediaItem = self.find('.mediaItem');
+                var editInfo = self.find('.editInfo-btn');
+                var setPrimary = self.find('.setPrimary-btn');
+
+                if (!mediaItem.is('.deleted'))
+                    editInfo.show().css('top', -mediaItem.outerHeight() - 3 + 'px');
+                if (!mediaItem.is('.deleted, .primary'))
+                    setPrimary.show();
+            })
+            .mouseout(function() {
+                var self = $(this);
+                var mediaItem = self.find('.mediaItem');
+                var editInfo = self.find('.editInfo-btn');
+                var setPrimary = self.find('.setPrimary-btn');
+
+                editInfo.hide();
+                if (!mediaItem.is('.primary'))
+                    setPrimary.hide();
+
+            });
+    });
+    
+    var mode = '@ViewData["mode"]';
+    var mediaItemsForDeleteJson = {};
+    var mediaItemsForEditJson = {};
+
+    onDeleteClick = function (self) {
+        var editInfo = self.parent().find('.editInfo-btn');
+        var setPrimary = self.parent().find('.setPrimary-btn');
+
+        if (!self.is('.deleted')) {
+            self.addClass('deleted');
+            deleteMediaItemFromDict(self, mediaItemsForEditJson);
+            addMediaItemToDict(self, mediaItemsForDeleteJson);
+            
+            editInfo.hide();
+            setPrimary.hide();
+            
+            if (self.is('.primary'))
+                onSetPrimaryClick(self.parent().find('.setPrimary-btn'));
+        } else {
+            self.removeClass('deleted');
+            deleteMediaItemFromDict(self, mediaItemsForDeleteJson);
+            addMediaItemToDict(self, mediaItemsForEditJson);
+            
+            editInfo.show();
+            setPrimary.show();
+        }
+    };
+</script>
+
+<div class="photosBlock" style="display: block;">
+    @foreach (var mediaItem in Model.EventMedia)
+    {
+        <div class="photoContainer edit" data-mediaitemid="@mediaItem.PhotoId">
+            @* фотография/видео *@
+            <img id="@mediaItem.PhotoId"
+                 class="@(mediaItem.MediaType == "photos" ? "mediaItem photo" : "mediaItem video") @(mediaItem.IsPrimary ?? false ? "primary" : string.Empty)"
+                 src='@mediaItem.ThumbnailUrl'
+                 alt="@Model.Title"
+                 data-photoid="@mediaItem.PhotoId"
+                 data-photosetid="@mediaItem.PhotosetId"
+                 data-description="@mediaItem.Description"
+                 data-content="@mediaItem.Content"
+                 data-mediatype="@mediaItem.MediaType"
+                 data-flickrurl="@mediaItem.FlickrUrl"
+                 data-thumbnailurl="@mediaItem.ThumbnailUrl"
+                 data-smallurl="@mediaItem.SmallUrl"
+                 data-mediumurl="@mediaItem.MediumUrl"
+                 data-largeurl="@mediaItem.LargeUrl"
+                 data-videourl="@mediaItem.VideoUrl"
+                 data-isprimary="@mediaItem.IsPrimary"
+                 onclick="onDeleteClick($(this))"
+                 ondblclick="openInNewTab($(this).data('flickrurl'))" />
+            
+            @* кнопка "Редактировать инфо" *@
+            <a data-mediaitemid="@mediaItem.PhotoId" data-mode="edit" class="editInfo-btn" onclick="onEditInfoClick($(this))"></a>
+
+            @* кнопка "Сделать главной" *@
+            <a data-mediaitemid="@mediaItem.PhotoId" data-mode="edit" class="setPrimary-btn" onclick="onSetPrimaryClick($(this))" style="display: @(mediaItem.IsPrimary ?? false ? "inline" : "none")"></a>
+        </div>
+    }
+    
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('.photoContainer .mediaItem').each(function () { addMediaItemToDict($(this), mediaItemsForEditJson); });
+        });
+    </script> 
+</div>

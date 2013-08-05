@@ -37,13 +37,14 @@ namespace CaucasianPearl.Core.EntityServices.Interface
         IQueryable<T> Get(NameValueCollection filter, int skip, int take);
 
         // Добавление записи в таблицу.
-        void Create(T dataObject);
+        void Create(T obj);
 
         // Редактирование записи таблицы.
-        void Update(T dataObject);
+        void Update(T obj);
 
         // Удаление записи из таблицы.
-        void Delete(T dataObject);
+        void Delete(T obj);
+        void Delete(int id);
 
     }
 }

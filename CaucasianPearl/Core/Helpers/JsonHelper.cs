@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using CaucasianPearl.Controllers;
 using CaucasianPearl.Core.Services.LoggingService;
+using Newtonsoft.Json;
 using Ninject;
 
 namespace CaucasianPearl.Core.Helpers
@@ -14,6 +15,14 @@ namespace CaucasianPearl.Core.Helpers
         private static ILogService LogService
         {
             get { return DependencyResolverHelper<ILogService>.GetService(); }
+        }
+
+        public static string Serialize(object jsonObj)
+        {
+            return JsonConvert.SerializeObject(jsonObj, Formatting.None, new JsonSerializerSettings()
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                });
         }
 
         public static T Deserialize<T>(string json) where T : new()

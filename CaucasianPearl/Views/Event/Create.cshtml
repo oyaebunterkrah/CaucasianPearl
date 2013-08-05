@@ -12,6 +12,31 @@
 <script src="@Url.Content("~/content/js/sys/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 <script src="@Url.Content(Consts.JsPaths.CKEditor)" type="text/javascript"></script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#submitCreate').click(function () {
+            if (Object.keys(mediaItemsForCreateJson).length == 0) {
+                alert('Выберите фотографии или видео');
+                return false;
+            }
+            
+            var primaryPhotoWasSelected = false;
+            $.each(mediaItemsForCreateJson, function (key, value) {
+                if (mediaItemsForCreateJson[key].IsPrimary == true)
+                    primaryPhotoWasSelected = true;
+            });
+
+            if (primaryPhotoWasSelected) {
+                setJson('mediaItemsForCreate', mediaItemsForCreateJson);
+                return true;
+            } else {
+                alert('Выберите главную фотографию');
+                return false;
+            }
+        });
+    });
+</script>
+
 <p>
     @Html.ActionLink(
         linkText: SharedViewRes.Cancel,
@@ -30,16 +55,16 @@
     <fieldset>
         <legend>@EventViewRes.Events</legend>
 
-        @Html.Hidden("mediaJson")
+        @Html.Hidden("mediaItemsForCreate")
 
         @Html.Partial(Consts.Views.CreateOrEdit, Model)
 
-        <input id="submit" type="submit" value="@SharedViewRes.Create" onclick="toJson();" />
+        <input id="submitCreate" type="submit" value="@SharedViewRes.Create" />
     </fieldset>
 }
 
 <script type="text/javascript">
-    replaceByCKEditor('@Url.Content(Consts.JsPaths.CKEditorConfig)', 'Description', 'submit');
+    replaceByCKEditor('@Url.Content(Consts.JsPaths.CKEditorConfig)', 'Description', 'submitCreate');
 </script>
 
-@{ Html.RenderPartial(Consts.Controllers.Event.Views.SelectFlickrObjsOnCreate, new ViewDataDictionary { { "mode", "create" } }); }
+@{ Html.RenderPartial(Consts.Controllers.Event.Views.SelectMediaItemsOnCreate, new ViewDataDictionary { { "mode", "create" } }); }

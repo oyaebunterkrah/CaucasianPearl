@@ -114,7 +114,7 @@ namespace CaucasianPearl.Core.Constants
         public static class FoldersPathes
         {
             public const string EntityImagesFolder = "~/content/img/cp";
-            public const string CommonImagesFolder = "~/content/img";
+            public const string CommonImagesFolder = "/content/img/site";
         }
         
         #endregion
@@ -130,7 +130,7 @@ namespace CaucasianPearl.Core.Constants
         }
 
         public const string DateTimeFormat = @"{0:dd.MM.yyyy, 0:hh\:mm}";
-        public const string DateFormat = "{0:dd.MM.yyyy}";
+        public const string DateFormat = "{0:yyyy-MM-dd}";
         public const string TimeFormat = @"{0:hh\:mm}";
 
         // Controllers.
@@ -183,6 +183,8 @@ namespace CaucasianPearl.Core.Constants
             public static class Event
             {
                 public const string Name = "event";
+                public const int EventCount = 4;
+                public const int DifferenceCount = 2;
 
                 // Размеры картинок для раздела Товары.
                 public const int EventImagesHeight = 320;
@@ -196,8 +198,9 @@ namespace CaucasianPearl.Core.Constants
                 {
                     // Event actions.
                     public const string Events = "events";
-                    public const string SelectFlickrObjsOnCreate = "selectflickrobjsoncreate";
-                    public const string SelectFlickrObjsOnEdit = "selectflickrobjsonedit";
+                    public const string GetEvents = "getevents";
+                    public const string SelectMediaItemsOnCreate = "selectmediaitemsoncreate";
+                    public const string SelectMediaItemsOnEdit = "selectmediaitemsonedit";
 
                     public const string UploadImage = "uploadimage";
                 }
@@ -206,8 +209,8 @@ namespace CaucasianPearl.Core.Constants
                 public static class Views
                 {
                     // Event views.
-                    public const string SelectFlickrObjsOnCreate = "SelectFlickrObjsOnCreate";
-                    public const string SelectFlickrObjsOnEdit = "SelectFlickrObjsOnEdit";
+                    public const string SelectMediaItemsOnCreate = "SelectMediaItemsOnCreate";
+                    public const string SelectMediaItemsOnEdit = "SelectMediaItemsOnEdit";
                 }
             }
 
@@ -552,17 +555,16 @@ namespace CaucasianPearl.Core.Constants
             public const string Page = "page";
         }
 
-        public static class JsPaths
+        public static class Paths
         {
-            private const string PluginsPrefixPath = "~/content/js/plugins/";
+            public const string PluginsPrefix = "~/content/plugins";
             //private const string CpPrefixPath = "~/content/js/cp/";
             //private const string SysPrefixPath = "~/content/js/sys/";
 
-            public const string CKEditor = PluginsPrefixPath + "ckeditor/ckeditor.js";
-            //public const string CKEditorConfig = PluginsPrefixPath + "ckeditor/ckeditor_config.js";
-            public const string CKEditorConfig = PluginsPrefixPath + "ckeditor/config.js";
-            public const string Galleria = PluginsPrefixPath + "galleria/galleria-1.2.9.min.js";
-            public const string GalleriaClassicTheme = PluginsPrefixPath + "galleria/themes/classic/galleria.classic.min.js";
+            public const string CKEditor = PluginsPrefix + "/ckeditor/ckeditor.js";
+            public const string CKEditorConfig = PluginsPrefix + "/ckeditor/config.js";
+            public const string Galleria = PluginsPrefix + "/galleria/galleria-1.2.9.min.js";
+            public const string GalleriaClassicTheme = PluginsPrefix + "/galleria/themes/classic/galleria.classic.min.js";
         }
     }
 }

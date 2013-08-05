@@ -71,7 +71,7 @@ namespace CaucasianPearl.App_Start
         {
             #region EntityServices
 
-            kernel.Bind<IUrlFriendlyService<Event>>().To<EventEntityService>();
+            kernel.Bind<IEventService<Event>>().To<EventEntityService>();
             kernel.Bind<IOrderedService<EventMedia>>().To<EventMediaEntityService>();
             kernel.Bind<IUrlFriendlyService<OneNews>>().To<OneNewsEntityService>();
             kernel.Bind<IBaseService<Feedback>>().To<FeedbackEntityService>();

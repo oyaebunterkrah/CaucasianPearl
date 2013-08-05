@@ -16,6 +16,30 @@
 
 <link type="text/css" href="@Url.Content("~/content/css/cp/photos.css")" rel="stylesheet" media="all" />
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.image-block .photo').click(function () {
+            var clone = $(this).parents('.container').clone();
+            clone.dialog({
+                autoOpen: true,
+                modal: true,
+                close: function () {
+                    closeDialogs();
+                },
+                buttons:
+                    [
+                        {
+                            text: 'Закрыть',
+                            click: function () {
+                                closeDialogs();
+                            }
+                        }
+                    ]
+            });
+        });
+    });
+</script>
+
 <p>
     @Html.ActionLink(
         SharedViewRes.ToHomePage,
@@ -42,64 +66,69 @@
 </div>
 
 <div class="wrapper">
-        <div class="photo-content">
-            <ul class="photo-area" style="height: 238px;">
-                @foreach (var profile in Model)
-                {
-                    if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager) || WebSecurity.CurrentUserId == profile.ID))
-                    {
-                        Html.ActionLink(
-                            SharedViewRes.Edit,
-                            Consts.Actions.Edit,
-                            new { id = profile.ID });
-
-                        Html.ActionLink(
-                            SharedViewRes.Details,
-                            Consts.Actions.Details,
-                            new { id = profile.ID });
-
-                        Html.ActionLink(
-                            SharedViewRes.Delete,
-                            Consts.Actions.Delete,
-                            new { id = profile.ID });
-                    }
-
-                    <li class="photo-item">
-                        <div>
-                        
-                            <span class="image-block">
-                                <a class="image-zoom" href="@Url.Action(Consts.Actions.GetByShortName,
-                                                                        Consts.Controllers.Profile.Name,
-                                                                        new
-                                                                            {
-                                                                                shortname = profile.ShortName,
-                                                                                page = Request.QueryString["page"],
-                                                                                find = Request.QueryString["find"]
-                                                                            })" title="@profile.FirstName @profile.LastName">
-                                    <img src="@profile.ImageUrl" alt="@profile.FirstName @profile.LastName" title="@profile.FirstName @profile.LastName" />
-                                </a>
-                            </span>
-                            <div class="photo-text">
-                                <h2 class="photo-title">
-                                    <a href="@Url.Action(Consts.Actions.GetByShortName,
-                                                         Consts.Controllers.Profile.Name,
-                                                         new
-                                                             {
-                                                                 shortname = profile.ShortName,
-                                                                 page = Request.QueryString["page"],
-                                                                 find = Request.QueryString["find"]
-                                                             })" title="@profile.FirstName  @profile.LastName">@profile.FirstName  @profile.LastName</a>
-                                </h2>
-                                <span>Имя: @profile.FirstName @profile.LastName</span>
-                                <br />
-                                <span>Группа: @profile.Group</span>
-                            </div>
+    <div class="photo-content">
+        <ul class="photo-area" style="height: 238px;">
+            @foreach (var profile in Model)
+            {
+                <li class="photo-item">
+                    <div class="container">
+                        <span class="image-block">
+                            <a class="image-zoom" href="@Url.Action(Consts.Actions.GetByShortName,
+                                                                    Consts.Controllers.Profile.Name,
+                                                                    new
+                                                                        {
+                                                                            shortname = profile.ShortName,
+                                                                            page = Request.QueryString["page"],
+                                                                            find = Request.QueryString["find"]
+                                                                        })" title="@profile.FirstName @profile.LastName">
+                            </a>
+                                <img class="photo" src="@profile.ImageUrl" alt="@profile.FirstName @profile.LastName" title="@profile.FirstName @profile.LastName" />
+                            @*</a>*@
+                        </span>
+                        <div class="photo-text">
+                            <h2 class="photo-title">
+                                <a href="@Url.Action(Consts.Actions.GetByShortName,
+                                                     Consts.Controllers.Profile.Name,
+                                                     new
+                                                         {
+                                                             shortname = profile.ShortName,
+                                                             page = Request.QueryString["page"],
+                                                             find = Request.QueryString["find"]
+                                                         })" title="@profile.FirstName  @profile.LastName">@profile.FirstName @profile.LastName</a>
+                            </h2>
+                            <span>Имя: @profile.FirstName @profile.LastName</span>
+                            <br />
+                            <span>Группа: @profile.Group</span>
                         </div>
-                    </li>
-                }
-            </ul>
-        </div>
+                            
+                        @if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager) || WebSecurity.CurrentUserId == profile.ID))
+                        {
+                            <div class="photo-text">
+                                @Html.ActionLink(
+                                    SharedViewRes.Details,
+                                    Consts.Actions.Details,
+                                    new { id = profile.ID },
+                                    new { style = "display: block;" })
+
+                                @Html.ActionLink(
+                                    SharedViewRes.Edit,
+                                    Consts.Actions.Edit,
+                                    new { id = profile.ID },
+                                    new { style = "display: block;" })
+                    
+                                @Html.ActionLink(
+                                    SharedViewRes.Delete,
+                                    Consts.Actions.Delete,
+                                    new { id = profile.ID },
+                                    new { style = "display: block;" })
+                            </div>
+                        }
+                    </div>
+                </li>
+            }
+        </ul>
     </div>
+</div>
 
 <div class="paginator">
     @Html.Partial(

@@ -20,8 +20,7 @@
         actionName: Consts.Actions.Index,
         controllerName: Consts.Controllers.Home.Name,
         routeValues: null,
-        htmlAttributes: new { @class = "link" }
-         )
+        htmlAttributes: new { @class = "link" })
     @Consts.BreadcrumbsSeparator
     @EventViewRes.Events
 </p>
@@ -107,7 +106,7 @@
     @Html.Partial(
         Consts.UserControlsPaths.Paginator,
         (PaginatorControl.GetLinks(
-            DependencyResolverHelper<IUrlFriendlyService<Event>>.GetService().Count(Request.QueryString),
+            DependencyResolverHelper<IEventService<Event>>.GetService().Count(Request.QueryString),
             Consts.PaginatorControl.EventItemsPerPage,
             Consts.PaginatorControl.EventNumberOfVisibleLinks)))
 </div>

@@ -1,0 +1,496 @@
+﻿@using CaucasianPearl.Core.Constants
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // выбрать фотографии
+        $('#selectMediaItems').click(function (e) {
+            e.preventDefault();
+            $('#photosetsBlock').show();
+            getPhotosets();
+        });
+
+        $('#selection').click(function (e) {
+            e.preventDefault();
+
+            var self = $(this);
+
+            if (self.isData('state', 'unselected')) {
+                self.data('state', 'selected');
+                self.text('Отменить выделение');
+                
+                selectAll(self);
+            } else {
+                self.data('state', 'unselected');
+                self.text('Выделить все');
+
+                unselectAll(self);
+            }
+            
+            scrollToElement($('.photoBlock-selected'));
+        });
+
+        $("#editInfoBox").dialog({
+            autoOpen: false,
+            modal: true,
+            width: 350,
+            close: function () { closeDialogs(); },
+            buttons: [
+				{
+				    text: 'Ок',
+				    click: function () {
+				        btnOkClick();
+				        closeDialogs();
+				    }
+				},
+				{
+				    text: 'Отмена',
+				    click: function () {
+				        btnCancelClick();
+				        closeDialogs();
+				    }
+				}
+            ]
+        });
+    });
+    
+    var mode = '@ViewData["mode"]';
+    var mediaItemsForCreateJson = {};
+
+    // кнопка "Выделить все"
+    selectionSet = function() {
+        var selection = $('#selection');
+
+        if ($('.photoBlock-selected .mediaItem').length != $('.photoBlock-selected .mediaItem-selected').length) {
+            selection.text('Выделить все');
+            selection.data('state', 'unselected');
+        } else {
+            selection.text('Отменить выделение');
+            selection.data('state', 'selected');
+        }
+    };
+
+    selectAll = function() {
+        var photosetSelectedId = $('.photoset-selected').attr('id');
+
+        $('#photosBlock img[id*="{0}"]'.f(photosetSelectedId)).each(function() {
+            var self = $(this);
+            var objClass = self.isData(consts.fields.mediatype, 'photos')
+                ? 'photo-selected'
+                : 'video-selected';
+            self.removeClass(objClass);
+            self.removeClass('mediaItem-selected');
+            self.addClass(objClass);
+            self.addClass('mediaItem-selected');
+
+            addMediaItemToDict(self);
+        });
+    };
+
+    unselectAll = function() {
+        var photosetSelectedId = $('.photoset-selected').attr('id');
+
+        $('#photosBlock img[id*="{0}"]'.f(photosetSelectedId)).each(function() {
+            var self = $(this);
+            var objClass = self.isData(consts.fields.mediatype, 'photos')
+                ? 'photo-selected'
+                : 'video-selected';
+            self.removeClass(objClass);
+            self.removeClass('mediaItem-selected');
+            deleteMediaItemFromDict(self);
+        });
+    };
+    
+    // добавление объекта в результирующий массив
+    addMediaItemToDict = function (mediaItem, dict) {
+        if (!dict)
+            dict = mediaItemsForCreateJson;
+        
+        var photoObj = {};
+        photoObj[consts.fields.PhotoId] = mediaItem.data(consts.fields.photoid);
+        photoObj[consts.fields.PhotosetId] = mediaItem.data(consts.fields.photosetid);
+        photoObj[consts.fields.Description] = mediaItem.data(consts.fields.description);
+        photoObj[consts.fields.Content] = mediaItem.data(consts.fields.content);
+        photoObj[consts.fields.MediaType] = mediaItem.data(consts.fields.mediatype);
+        photoObj[consts.fields.FlickrUrl] = mediaItem.data(consts.fields.flickrurl);
+        photoObj[consts.fields.ThumbnailUrl] = mediaItem.data(consts.fields.thumbnailurl);
+        photoObj[consts.fields.SmallUrl] = mediaItem.data(consts.fields.smallurl);
+        photoObj[consts.fields.MediumUrl] = mediaItem.data(consts.fields.mediumurl);
+        photoObj[consts.fields.LargeUrl] = mediaItem.data(consts.fields.largeurl);
+        photoObj[consts.fields.VideoUrl] = mediaItem.data(consts.fields.videourl);
+        photoObj[consts.fields.IsPrimary] = mediaItem.data(consts.fields.isprimary);
+        
+        dict[mediaItem.data(consts.fields.photoid)] = photoObj;
+    };
+
+    // удаление объекта из результирующего массива
+    deleteMediaItemFromDict = function (mediaItem, dict) {
+        if (!dict)
+            dict = mediaItemsForCreateJson;
+        
+        delete dict[mediaItem.data(consts.fields.photoid)];
+    };
+
+    setJson = function(id, json) {
+        $('#{0}'.f(id)).val(JSON.stringify(toArray(json)));
+    };
+    
+    // событие при нажатии на фотоальбом
+    onPhotosetClick = function(photoset) {
+        if (photoset.is('.photoset-selected'))
+            return;
+        
+        $('.photoBlock').removeClass('photoBlock-selected');
+        $('.photoBlock').hide();
+
+        $('.photoset-selected').removeClass('photoset-selected');
+        photoset.addClass('photoset-selected');
+
+        var photoBlock = $('#photoBlock_{0}'.f(photoset.attr("id")));
+        if (photoBlock.length > 0) {
+            photoBlock.addClass('photoBlock-selected');
+            photoBlock.show();
+
+            selectionSet();
+            scrollToElement(photoBlock);
+
+            if (photoBlock.find('.mediaItem').length == 0) {
+                photoBlock.empty().append(
+                    $('<span/>')
+                        .addClass('mediaItemsNotFound')
+                        .text('Элементы не найдены или уже прикреплены к событию'));
+
+                $('#selection').hide();
+            } else
+                $('#selection').show();
+                
+            return;
+        }
+
+        getPhotos(photoset.data("photosetid"), photoset.attr('id')); // получаем фотографии
+        
+        $('#photosBlock').show();
+    };
+
+    // событие при нажатии на фотографию
+    onPhotoClick = function (mediaItem) {
+        var mediaItemClassSelected = mediaItem.isData(consts.fields.mediatype, 'photos')
+            ? 'photo-selected'
+            : 'video-selected';
+
+        if (!mediaItem.is('.' + mediaItemClassSelected)) {
+            mediaItem.addClass(mediaItemClassSelected);
+            mediaItem.addClass('mediaItem-selected');
+            mediaItem.parent().find('.editInfo-btn')
+                .show()
+                .css('top', -mediaItem.outerHeight() + 'px'); // отображаем кнопку "Редактировать инфо"
+            mediaItem.parent().find('.setPrimary-btn').show(); // отображаем кнопку "Сделать главной"
+
+            addMediaItemToDict(mediaItem);
+        } else {
+            mediaItem.removeClass(mediaItemClassSelected);
+            mediaItem.removeClass('mediaItem-selected');
+            mediaItem.parent().find('.editInfo-btn').hide(); // скрываем кнопку "Редактировать инфо"
+            mediaItem.data(consts.fields.isprimary, false);
+            mediaItem.parent().find('.setPrimary-btn').hide(); // скрываем кнопку "Сделать главной"
+
+            deleteMediaItemFromDict(mediaItem);
+        }
+
+        selectionSet();
+    };
+
+    onGetPhotosetsSuccess = function(photosetsJson) {
+        $('#selectMediaItems').hide();
+
+        var photosets = $.parseJSON(photosetsJson);
+
+        for (var i = 0; i < photosets.length; i++) {
+            $('<img/>')
+                .attr({
+                    id: 'photoset' + i,
+                    src: photosets[i].ThumbnailUrl,
+                    'data-photosetid': photosets[i].PhotosetId,
+                    'data-flickrurl': photosets[i].FlickrUrl,
+                    'data-photosetsmallurl': photosets[i].SmallUrl,
+                })
+                .addClass('photoset')
+                .click(function() {
+                    onPhotosetClick($(this));
+                })
+                .dblclick(function() {
+                    openInNewTab($(this).data('flickrurl'));
+                })
+                .appendTo($('#photosetsBlock'));
+        }
+    };
+
+    onGetPhotosSuccess = function(photosetId, photosetElemId, photosJson) {
+        var photoBlockId = 'photoBlock_' + photosetElemId;
+        var photoBlock = $('<div/>')
+            .attr({
+                id: photoBlockId
+            })
+            .addClass('photoBlock photoBlock-selected')
+            .appendTo($('#photosBlock'));
+
+        var photos = $.parseJSON(photosJson);
+
+        for (var i = 0; i < photos.length; i++) {
+            if (mode == 'edit' && eventMedia.indexOf(photos[i].PhotoId) > -1)
+                continue;
+            
+            var containerId = 'photo{0}_{1}'.f(i, photosetElemId);
+
+            // контейнер фото/видео
+            var photoContainer = $('<div/>')
+                .attr({
+                    'data-mediaitemid': containerId
+                })
+                .addClass('photoContainer create')
+                .mouseover(function() {
+                    var self = $(this);
+                    var mediaItem = self.find('.mediaItem');
+                    var setPrimary = self.find('.setPrimary-btn');
+                    var editInfo = self.find('.editInfo-btn');
+                    
+                    if (mediaItem.is('.mediaItem-selected')) {
+                        editInfo.show();
+
+                        if (!mediaItem.is('.primary'))
+                            setPrimary.show();
+                    }
+                })
+                .mouseout(function() {
+                    var self = $(this);
+                    var mediaItem = self.find('.mediaItem');
+                    var setPrimary = self.find('.setPrimary-btn');
+                    var editInfo = self.find('.editInfo-btn');
+                    
+                    if (mediaItem.is('.mediaItem-selected')) {
+                        editInfo.hide();
+
+                        if (!mediaItem.is('.primary'))
+                            setPrimary.hide();
+                    }
+                })
+                .appendTo(photoBlock);
+            
+            // фотография/видео
+            $('<img/>')
+                .attr({
+                    id: containerId,
+                    src: photos[i].ThumbnailUrl,
+                    'data-photoid': photos[i].PhotoId,
+                    'data-photosetid': photos[i].PhotosetId,
+                    'data-description': '',
+                    'data-content': '',
+                    'data-mediatype': photos[i].MediaType,
+                    'data-flickrurl': photos[i].FlickrUrl,
+                    'data-thumbnailurl': photos[i].ThumbnailUrl,
+                    'data-smallurl': photos[i].SmallUrl,
+                    'data-mediumurl': photos[i].MediumUrl,
+                    'data-largeurl': photos[i].LargeUrl,
+                    'data-videourl': photos[i].VideoUrl,
+                    'data-isprimary': false
+                })
+                .addClass(photos[i].mediatype == 'photos' ? 'mediaItem photo' : 'mediaItem video')
+                .click(function() {
+                    onPhotoClick($(this));
+                })
+                .dblclick(function() {
+                    openInNewTab($(this).data('flickrurl'));
+                })
+                .appendTo(photoContainer);
+
+            // кнопка "Редактировать инфо"
+            $('<a/>')
+                .attr({
+                    'data-mediaitemid': containerId,
+                    'data-mode': 'create',
+                })
+                .addClass('editInfo-btn')
+                .click(function () {
+                    onEditInfoClick($(this));
+                })
+                .appendTo(photoContainer);
+            
+            // кнопка "Сделать главной"
+            $('<a/>')
+                .attr({
+                    'data-mediaitemid': containerId,
+                    'data-mode': 'create',
+                })
+                .addClass('setPrimary-btn')
+                .click(function () {
+                    onSetPrimaryClick($(this));
+                })
+                .appendTo(photoContainer);
+        }
+
+        if ($('#photosBlock #{0} .mediaItem'.f(photoBlockId)).length == 0) {
+            photoBlock.empty().append(
+                $('<span/>')
+                    .addClass('mediaItemsNotFound')
+                    .text('Элементы не найдены или уже прикреплены к событию'));
+            
+            $('#selection').hide();
+        } else
+            $('#selection').show();
+
+        scrollToElement(photoBlock);
+    };
+
+    // получаем фотоальбомы
+    getPhotosets = function() {
+        $.ajax({
+            url: '/event/getphotosets',
+            success: function(photosetsJson) {
+                onGetPhotosetsSuccess(photosetsJson);
+            },
+            statusCode: {
+                404: function(content) {
+                    alert('Ошибка 404: Ресурс не найден.');
+                },
+                505: function(content) {
+                    alert('Ошибка 505: Внутренняя ошибка сервера.');
+                }
+            },
+            beforeSend: function() {
+                $('#photosetsBlock').addClass('loading');
+            },
+            complete: function() {
+                $('#photosetsBlock').removeClass('loading');
+            },
+            error: function(request, status, error) {
+                //alert(error);
+            }
+        });
+    };
+
+    // получаем фотографии
+    getPhotos = function(photosetId, photosetElemId) {
+        $.ajax({
+            url: '/event/getphotos',
+            type: 'POST',
+            data: {
+                photosetId: photosetId
+            },
+            success: function(photosJson) {
+                onGetPhotosSuccess(photosetId, photosetElemId, photosJson);
+            },
+            statusCode: {
+                404: function(content) {
+                    alert('Ошибка 404: Ресурс не найден.');
+                },
+                505: function(content) {
+                    alert('Ошибка 505: Внутренняя ошибка сервера.');
+                }
+            },
+            beforeSend: function() {
+                $('#photosBlock').addClass('loading');
+            },
+            complete: function() {
+                $('#photosBlock').removeClass('loading');
+                selectionSet();
+            },
+            error: function(request, status, error) {
+                //alert(error);
+            }
+        });
+    };
+
+    onEditInfoClick = function (self) {
+        $('#editInfoBox').data('mode', self.data('mode'));
+        $('#editInfoBox').data(consts.ids.mediaitemid, self.data(consts.ids.mediaitemid));
+
+        openEditBox();
+    };
+    
+    onSetPrimaryClick = function (self) {
+        var mediaItem = $('#{0}'.f(self.data('mediaitemid')));
+        var mediaItemPhotoId = mediaItem.data(consts.fields.photoid);
+        var dict = self.data('mode') == 'edit' ? mediaItemsForEditJson : mediaItemsForCreateJson;
+
+        if (mediaItem.is('.primary')) {
+            $('.mediaItem').removeClass('primary');
+            $('.mediaItem').data(consts.fields.isprimary, false);
+            $('.setPrimary-btn').hide();
+            $.each(mediaItemsForCreateJson, function (i) { mediaItemsForCreateJson[i].IsPrimary = false; });
+            $.each(mediaItemsForEditJson, function (i) { mediaItemsForEditJson[i].IsPrimary = false; });
+            $('#Cover').val('');
+        } else {
+            $('.mediaItem').removeClass('primary');
+            $('.mediaItem').data(consts.fields.isprimary, false);
+            $('.setPrimary-btn').hide();
+            $.each(mediaItemsForCreateJson, function (i) { mediaItemsForCreateJson[i].IsPrimary = false; });
+            $.each(mediaItemsForEditJson, function (i) { mediaItemsForEditJson[i].IsPrimary = false; });
+
+            mediaItem.addClass('primary');
+            mediaItem.data(consts.fields.isprimary, true);
+            self.show();
+            dict[mediaItemPhotoId].IsPrimary = true;
+            $('#Cover').val(mediaItem.data(consts.fields.photoid));
+        }
+    };
+    
+    btnOkClick = function () {
+        var editInfoBox = $('#editInfoBox');
+        var mediaItemId = editInfoBox.data(consts.ids.mediaitemid);
+        var mediaItem = $('#{0}'.f(mediaItemId));
+        var photoId = mediaItem.data(consts.fields.photoid);
+
+        var description = encodeScriptTags($('#mediaItemDescription').val());
+        var content = encodeScriptTags($('#mediaItemContent').val());
+
+        mediaItem.data(consts.fields.description, description);
+        mediaItem.data(consts.fields.content, content);
+
+        var dict = editInfoBox.data('mode') == 'edit' ? mediaItemsForEditJson : mediaItemsForCreateJson;
+        dict[photoId].Description = description;
+        dict[photoId].Content = content;
+    };
+
+    btnCancelClick = function () {
+        var editInfoBox = $('#editInfoBox');
+        editInfoBox.data(consts.ids.mediaitemid, '');
+    };
+
+    openEditBox = function (mediaItemId) {
+        var editInfoBox = $('#editInfoBox');
+        var mediaItem = $('#{0}'.f(editInfoBox.data(consts.ids.mediaitemid)));
+        var description = decodeScriptTags(mediaItem.data(consts.fields.description));
+        var content = decodeScriptTags(mediaItem.data(consts.fields.content));
+
+        $('#mediaItemDescription').val(description);
+        $('#mediaItemContent').val(content);
+
+        editInfoBox.dialog('open');
+    };
+</script>
+
+<div id="media-block">
+    <div id="eventMediaBlock"></div>
+
+    <a id="selectMediaItems" href="#">Выбрать фотографии</a>
+    
+    <div id="addMediaBlock" class="addMediaBlock">
+        <div id="photosetsBlock" class="photosetsBlock">
+            <div class="title">Выберите фотоальбом</div>
+        </div>
+        <div id="photosBlock" class="photosBlock">
+            <div class="title">Выберите фотографии или видео</div>
+            <a id="selection" class="unselected" href="#" data-state="unselected">Выделить все</a>
+        </div>
+        <div id="editInfoBox" class="dispay_none">
+            <div class="mediaItemDescription">
+                <label for="mediaItemDescription">Описание</label>
+                <textarea id="mediaItemDescription"></textarea>
+            </div>
+            <br />
+            <div class="mediaItemContent">
+                <label for="mediaItemContent">Контент</label>
+                <textarea id="mediaItemContent"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,10 +19,16 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
         public IRepository<T> _repository { get; set; }
 
         // Количество объектов на одной странице.
-        protected virtual int LinksPerPage { get { return Consts.PaginatorControl.DefaultItemsPerPage; } }
+        protected virtual int LinksPerPage
+        {
+            get { return Consts.PaginatorControl.DefaultItemsPerPage; }
+        }
 
         // Количество отображаемых страниц перед многоточием.
-        protected virtual int NumberOfVisibleLinks { get { return Consts.PaginatorControl.DefaultNumberOfVisibleLinks; } }
+        protected virtual int NumberOfVisibleLinks
+        {
+            get { return Consts.PaginatorControl.DefaultNumberOfVisibleLinks; }
+        }
 
         // Получение полного списка объектов.
         public virtual IQueryable<T> Get()
@@ -56,8 +62,9 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
                 throw new Exception("context");
 
             return isPageable
-                ? Get(context.Request.QueryString, (ControllerHelper.GetCurrentPageNumber() - 1) * LinksPerPage, LinksPerPage)
-                : Get(context.Request.QueryString);
+                       ? Get(context.Request.QueryString, (ControllerHelper.GetCurrentPageNumber() - 1)*LinksPerPage,
+                             LinksPerPage)
+                       : Get(context.Request.QueryString);
         }
 
         // Получение количества всех объектов.
@@ -104,6 +111,17 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
         {
             _repository.DbSet.Remove(obj);
             _repository.Context.SaveChanges();
+        }
+
+        // Удаление объекта по ID.
+        public virtual void Delete(int id)
+        {
+            var obj = _repository.DbSet.FirstOrDefault(i => i.ID == id);
+            if (obj != null)
+            {
+                _repository.DbSet.Remove(obj);
+                _repository.Context.SaveChanges();
+            }
         }
     }
 }

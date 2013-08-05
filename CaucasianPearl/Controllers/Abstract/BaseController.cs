@@ -5,6 +5,7 @@ using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.DAL.Interface;
 using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Filters;
+using WebMatrix.WebData;
 
 namespace CaucasianPearl.Controllers.Abstract
 {
@@ -120,7 +121,7 @@ namespace CaucasianPearl.Controllers.Abstract
 
         // Удаление объекта после подтверждения.
         [HttpPost]
-        public virtual ActionResult Delete(int id, FormCollection collection)
+        public virtual ActionResult Delete(int id, FormCollection formCollection)
         {
             var model = _service.Get(id);
             if (model == null)

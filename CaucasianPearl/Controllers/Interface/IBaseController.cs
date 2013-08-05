@@ -15,7 +15,7 @@ namespace CaucasianPearl.Controllers.Interface
         ActionResult Delete(int id);
 
         // Удаление объекта после подтверждения.
-        ActionResult Delete(int id, FormCollection collection);
+        ActionResult Delete(int id, FormCollection formCollection);
 
         // Получение объекта по его ID.
         ActionResult Details(int id);

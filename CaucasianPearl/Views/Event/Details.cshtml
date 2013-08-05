@@ -98,10 +98,14 @@
 </fieldset>
 
 <div class="photosBlock" style="display: block;">
-    @foreach (var flickrObj in Model.EventMedia)
+    @foreach (var mediaItem in Model.EventMedia)
     {
         <div class="photoContainer">
-            <img class="@(flickrObj.MediaType == "photos" ? "flickrObj photo" : "flickrObj video")" src='@flickrObj.ThumbnailUrl' alt="@Model.Title"/>
+            <img class="@(mediaItem.IsPrimary ?? false ? "primary-mediaItem" : string.Empty) @(mediaItem.MediaType == "photos" ? "photo" : "video-selected")"
+                 src="@mediaItem.ThumbnailUrl"
+                 alt="@Model.Title"
+                 data-flickrurl="@mediaItem.FlickrUrl"
+                 ondblclick="openInNewTab($(this).data('flickrurl'))" />
         </div>
     }
 </div>

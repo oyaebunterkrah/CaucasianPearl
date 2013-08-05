@@ -35,8 +35,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="EventDate" Type="datetime" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="EventDate" Type="date" />
           <Property Name="Description" Type="nvarchar" MaxLength="2048" />
           <Property Name="Content" Type="nvarchar" MaxLength="2048" />
           <Property Name="Cover" Type="nvarchar" MaxLength="50" />
@@ -154,8 +154,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="EventDate" Precision="3" />
+          <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EventDate" Precision="0" />
           <Property Name="Description" Type="String" MaxLength="2048" Unicode="true" FixedLength="false" />
           <Property Type="String" Name="Content" MaxLength="2048" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Cover" MaxLength="50" Unicode="true" FixedLength="false" />

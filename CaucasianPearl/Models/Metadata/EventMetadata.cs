@@ -18,10 +18,10 @@ namespace CaucasianPearl.Models.Metadata
         [StringLength(50, ErrorMessage = "Не более 50 символов")]
         public string Title { get; set; }
 
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date, ErrorMessage = "Неверный формат даты")]
         [Show(ShowForDisplay = true, ShowForEdit = true)]
         [Display(Name = "Дата события")]
-        [DisplayFormat(DataFormatString = Consts.DateTimeFormat, ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = Consts.DateFormat, ApplyFormatInEditMode = true)]
         public DateTime EventDate { get; set; }
 
         [DataType(DataType.Html)]
