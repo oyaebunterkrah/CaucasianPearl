@@ -33,7 +33,7 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
         // Получение полного списка объектов.
         public virtual IQueryable<T> Get()
         {
-            return _repository.DbSet.Select(obj => obj);
+            return _repository.DbSet.Select(obj => obj).OrderByDescending(obj => obj.ID);
         }
 
         // Получение объекта по его ID.
@@ -42,10 +42,16 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
             return _repository.DbSet.FirstOrDefault(obj => obj.ID == id);
         }
 
-        // Получение объекта по его ID.
+        // Получение списка объектов по условию.
         public virtual List<T> Get(Func<T, bool> condition)
         {
             return Get().Where(condition).ToList();
+        }
+
+        /// Получение объекта по условию.
+        public virtual T GetFirstByCondition(Func<T, bool> condition)
+        {
+            return Get().FirstOrDefault(condition);
         }
 
         // Получение списка выбранных объектов.
@@ -62,8 +68,7 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
                 throw new Exception("context");
 
             return isPageable
-                       ? Get(context.Request.QueryString, (ControllerHelper.GetCurrentPageNumber() - 1)*LinksPerPage,
-                             LinksPerPage)
+                       ? Get(context.Request.QueryString, (ControllerHelper.GetCurrentPageNumber() - 1) * LinksPerPage, LinksPerPage)
                        : Get(context.Request.QueryString);
         }
 
@@ -83,13 +88,13 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
         // skip - сколько первых записей пропустить, take - сколько записей получить.
         public virtual IQueryable<T> Get(int skip, int take)
         {
-            return Get().OrderBy(obj => obj.ID).Skip(skip).Take(take);
+            return Get().Skip(skip).Take(take);
         }
 
         // Получение неполного списка выбранных объектов.
         public virtual IQueryable<T> Get(NameValueCollection filter, int skip, int take)
         {
-            return Get(filter).OrderBy(obj => obj.ID).Skip(skip).Take(take);
+            return Get(filter).Skip(skip).Take(take);
         }
 
         // Добавление объекта.
@@ -117,6 +122,7 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
         public virtual void Delete(int id)
         {
             var obj = _repository.DbSet.FirstOrDefault(i => i.ID == id);
+
             if (obj != null)
             {
                 _repository.DbSet.Remove(obj);

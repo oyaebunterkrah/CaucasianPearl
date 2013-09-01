@@ -29,16 +29,11 @@ namespace CaucasianPearl.Controllers
 
         #region Properties
 
-        private static ILogService LogService
-        {
-            get { return DependencyResolverHelper<ILogService>.GetService(); }
-        }
-
         private static IFlickrService FlickrService
         {
             get
             {
-                var flickrService = DependencyResolverHelper<IFlickrService>.GetService();
+                var flickrService = ServiceHelper<IFlickrService>.GetService();
                 flickrService.IsPageable = true;
                 flickrService.PerPage = Consts.PaginatorControl.FlickrItemsPerPage;
 
@@ -104,7 +99,7 @@ namespace CaucasianPearl.Controllers
             // удаляем медиа файлы из базы
             if (eventMediaIdList.Count > 0)
             {
-                var orderedService = DependencyResolverHelper<IOrderedService<EventMedia>>.GetService();
+                var orderedService = ServiceHelper<IOrderedService<EventMedia>>.GetService();
                 foreach (var eventMediaId in eventMediaIdList)
                     orderedService.Delete(eventMediaId);
             }
@@ -149,9 +144,7 @@ namespace CaucasianPearl.Controllers
                 return View(Consts.Controllers.Error.Views.NotFound);
 
             var httpPostedFileBase = Request.Files[0];
-            if (httpPostedFileBase != null &&
-                (Equals(Request.Files.Count, 0) ||
-                 (Request.Files.Count > 0 && Equals(httpPostedFileBase.ContentLength, 0))))
+            if (httpPostedFileBase != null && (Request.Files.Count == 0 || (Request.Files.Count > 0 && httpPostedFileBase.ContentLength == 0)))
             {
                 ViewBag.ErrorMessage = SharedErrorRes.YouDidNotSelectAFile;
                 if (HttpContext.Request.UrlReferrer != null)
@@ -221,9 +214,26 @@ namespace CaucasianPearl.Controllers
         // если 1, то внизу отображается 2,3,4,5
         // если 2, то внизу отображается 1,3,4,5
         // если 4, то внизу отображается 2,3,5,6
-        public ActionResult GetEvents()
+        public ActionResult GetEvents(string id)
         {
-            var events = GetNeighborElements();
+            int eventId;
+            int.TryParse(id, out eventId);
+            var currentEvent = _service.Get(eventId);
+            var events = _service.GetLastEvents(Consts.Controllers.Event.EventCount);
+            var currentEventInfo = currentEvent != null ? new EventItem(currentEvent) : events.First();
+            ViewBag.CurrentEventInfo = currentEventInfo;
+
+            return View(events);
+        }
+
+        /// <summary>
+        /// Возвращает события для главной страницы.
+        /// </summary>
+        /// <returns></returns>
+        [ChildActionOnly]
+        public ActionResult GetHomePageEvents()
+        {
+            var events = _service.GetLastEventsInfo(Consts.Controllers.Event.EventCount);
 
             return View(events);
         }
@@ -274,7 +284,7 @@ namespace CaucasianPearl.Controllers
                 // удаляем медиа файлы из базы
                 if (eventMediaItemsForDeleteList.Count > 0)
                 {
-                    var orderedService = DependencyResolverHelper<IOrderedService<EventMedia>>.GetService();
+                    var orderedService = ServiceHelper<IOrderedService<EventMedia>>.GetService();
                     foreach (var eventMediaItemId in eventMediaItemsForDeleteList)
                         orderedService.Delete(eventMediaItemId);
                 }
@@ -348,7 +358,7 @@ namespace CaucasianPearl.Controllers
                 IsPrimary = smi.IsPrimary
             }).ToList();
 
-            var orderedService = DependencyResolverHelper<IOrderedService<EventMedia>>.GetService();
+            var orderedService = ServiceHelper<IOrderedService<EventMedia>>.GetService();
             eventMedia.ForEach(orderedService.Create);
         }
 
@@ -380,21 +390,28 @@ namespace CaucasianPearl.Controllers
 
             return JsonHelper.Deserialize<List<MediaItem>>(mediaItemsJson);
         }
-
-        // Возвращает список событий.
-        public IEnumerable<EventItem> GetNeighborElements()
+        
+        // Возвращает список событий на указанную дату.
+        public string GetEventsToDate(string date)
         {
-            var events = _service.GetNeighborElements();
+            DateTime passedDate;
 
-            return events;
+            if (DateTime.TryParse(date, out passedDate))
+            {
+                var events = _service.GetEventsToDate(passedDate);
+
+                return JsonHelper.Serialize(events);
+            }
+
+            return string.Empty;
         }
 
         // Возвращает список событий по отношению к указанному.
-        public string GetLastEventsById(int eventId)
+        public string GetNeighborEvents(int eventId)
         {
-            var eventsJson = _service.GetNeighborElements(eventId);
+            var eventsJson = _service.GetNeighborEvents(eventId);
 
-            return eventsJson;
+            return JsonHelper.Serialize(eventsJson);
         }
 
         #endregion

@@ -22,7 +22,7 @@ namespace CaucasianPearl.Core.Services.FlickrNetService
 
         private static ILogService LogService
         {
-            get { return DependencyResolverHelper<ILogService>.GetService(); }
+            get { return ServiceHelper<ILogService>.GetService(); }
         }
 
         public bool IsPageable { get; set; }

@@ -26,9 +26,9 @@ a {
         color: #333;
     }
 
-    a:hover {
+    /*a:hover {
         background-color: #c7d1d6;
-    }
+    }*/
 
 header, footer, hgroup,
 nav, section {
@@ -420,7 +420,7 @@ fieldset {
 
 label {
     display: block;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 600;
 }
 
@@ -440,7 +440,7 @@ input, textarea {
 
 textarea {
     font-family: inherit;
-    width: 500px;
+    width: 300px;
 }
 
     input:focus, textarea:focus {
@@ -503,7 +503,9 @@ textarea {
 /* styles for validation helpers */
 .field-validation-error {
     color: #e80c4d;
+    display: block;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .field-validation-valid {
@@ -823,25 +825,25 @@ html {
 }
 
 
-/* Editor
+/* Create or Edit
 ----------------------------------------------------------*/
-.editor-form .editor-property {
+.create_or_edit_form .create_or_edit_property {
     padding: 10px 0;
 }
 
-.editor-form .editor-property .editor-label {
+.create_or_edit_form .create_or_edit_property .create_or_edit_label {
     margin-bottom: 5px;
 }
 
-.editor-form .editor-property .editor-field {
+.create_or_edit_form .create_or_edit_property .create_or_edit_field {
     float: left;
 }
 
-.editor-form .editor-property .editor-field input[type=text] {
+.create_or_edit_form .create_or_edit_property .create_or_edit_field input[type=text] {
     width: 400px;
 }
 
-.editor-form .editor-property .editor-validation-warn {
+.create_or_edit_form .create_or_edit_property .create_or_edit_validation_warn {
     color: #f00;
     display: inline-block;
     float: left;
@@ -861,7 +863,7 @@ html {
     clear: both;
 }
 
-.editor-validation-warn {
+.create_or_edit_validation_warn {
     color: #f00;
     display: inline-block;
     float: left;
@@ -917,7 +919,19 @@ html {
     font-weight: bold;
 }
 
+.photosetBlock {
+    float: left;
+    margin-top: 20px;
+}
+
+.photosetBlockDescription {
+    display: block;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
 .photosBlock {
+    clear: both;
     display: none;
     margin-top: 10px;
     font-size: medium;
@@ -1021,6 +1035,13 @@ html {
     margin: 7px;
 }
 
+.deleted {
+    border: 3px solid #d42a51;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 0 0 10px #3a2b00;
+    margin: 7px;
+}
+
 /* Edit info box
 ----------------------------------------------------------*/
 
@@ -1059,11 +1080,11 @@ html {
 .event_item .properties, .event_item_template .properties {
 	overflow: hidden;
 	padding-left: 14px;
-	width: 126px;
+	width: 118px;
 }
 
 .event_item .property {
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 }
 
 .event_media_items {
@@ -1082,6 +1103,172 @@ html {
 }
 
 
+/* Афиша
+----------------------------------------------------------*/
+#datepicker .ui-datepicker { font-size: 30px; }
+#datepicker .ui-datepicker { width: 30em; }
+#datepicker .ui-datepicker .ui-datepicker-prev, #datepicker  .ui-datepicker .ui-datepicker-next { display: none; }
+#datepicker .ui-datepicker-header { display: none; }
+#datepicker .ui-datepicker-calendar thead { display: none; }
+#datepicker .ui-state-default { height: 90px; }
+#datepicker .ui-datepicker td span, #datepicker  .ui-datepicker td a { text-align: left; }
+#datepicker .ui-widget-content { border: 1px solid #aaaaaa; color: #222222; }
+
+#datepicker .ui-state-default {
+    background-color: #F5F5F5;
+	background-image: none;
+	color: #C9C9C9;
+	font-size: 45px;
+}
+#datepicker .ui-state-hover {
+    background-color: #EDEDED;
+	background-image: none;
+	color: #C9C9C9;
+	font-size: 45px;
+}
+#datepicker .ui-state-highlight {
+    background-color: #F5F5F5;
+    background-image: none;
+    border: none;
+    color: #C9C9C9;
+}
+#datepicker .ui-state-active{
+    color: #212121;
+    background-color: #F3F1E1;
+    font-weight: normal;
+}
+
+.highlight {
+    background-color: red !important;
+}
+.events {
+    margin-top: 15px;
+}
+.event_title {
+    clear: both;
+    display: block;
+    font-size: 10px;
+    text-decoration: none;
+}
+.have_events {
+    background-color: #F3EDC9 !important;
+    color: #4C495A !important;
+}
+
+
+/* Loading
+----------------------------------------------------------*/
+.overlay {
+    background-color: #fff;
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    filter: alpha(opacity = 50);
+    opacity: 0.5;
+    z-index: 99;
+}
+
+.loading {
+    background: url(/content/img/site/loading.gif) no-repeat center center;
+    display: none;
+    height: 75px;
+    width: 96px;
+    left: 50%;
+    top: 50%;
+    margin: -48px 0 0 -75px;
+    position: fixed;
+    z-index: 100;
+}
+
+/* Loading min
+----------------------------------------------------------*/
+.overlay_min {
+    background-color: #fff;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    filter: alpha(opacity = 50);
+    opacity: 0.5;
+    z-index: 99;
+    text-align: center;
+}
+
+.loading_min {
+    background: url(/content/img/site/loading-min.gif) no-repeat center center;
+    display: none;
+    height: 38px;
+    width: 48px;
+    top: 50%;
+    left: 50%;
+    margin: -24px 0 0 -38px;
+    position: absolute;
+    z-index: 100;
+}
+
+
+/* Captcha block
+----------------------------------------------------------*/
+.captchaImage {
+    height: 47px;
+}
+
+.captcha_reload {
+    clear: both;
+    display: block;
+}
+
+.captcha_error {
+    float: left;
+}
+
+
+/* Jquery ui dialog
+----------------------------------------------------------*/
+.ui-dialog .ui-dialog-buttonpane {
+    margin: 0 !important;
+}
+
+
+/* DatePicker
+----------------------------------------------------------*/
+#sendRequestForm .ui-datepicker {
+    width: 270px !important;
+}
+
+
+/* Social buttons
+----------------------------------------------------------*/
+.b-share-icon {
+    /*background-color: #5d6166!important;*/
+    /*Если будете использовать прозрачные картинки*/
+    cursor: pointer;
+    display: inline-block;
+    height: 40px;                /*Высота одиночной иконки*/
+    width: 40px;             /*Ширина одиночной иконки*/
+    margin-left: 3px;            /*Расстояние между иконками*/
+    overflow: hidden;
+    padding: 0 !important;
+    vertical-align: top;
+    background: url(/content/img/site/social-buttons.png) 0 0 no-repeat
+    /*Не забудьте указать путь к вашей картинке-спрайту*/
+}
+ 
+.b-share-icon_vkontakte{background-position:0 0}
+.b-share-icon_vkontakte:hover{background-position:0 -40px}
+.b-share-icon_facebook{background-position:-40px 0}
+.b-share-icon_facebook:hover{background-position:-40px -40px}
+.b-share-icon_twitter{background-position:-80px 0}
+.b-share-icon_twitter:hover{background-position:-80px -40px}
+
+
 /* PaginatorControl
 ----------------------------------------------------------*/
 /*.paginator {
@@ -1089,8 +1276,4 @@ html {
 }*/
 
 
-.loading {
-    background: url('/content/img/site/preloader.gif') 
-                50% 50% 
-                no-repeat;
-}
+

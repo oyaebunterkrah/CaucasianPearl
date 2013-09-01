@@ -10,9 +10,10 @@
         <EntityTypeShape EntityType="caucasianpearldbModel.OneNews" Width="1.5" PointX="4.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="caucasianpearldbModel.Request" Width="1.5" PointX="6.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="caucasianpearldbModel.Profile" Width="1.5" PointX="8.5" PointY="0.5" />
-        <EntityTypeShape EntityType="caucasianpearldbModel.ContentBlock" Width="1.5" PointX="4.5" PointY="4.5" />
-        <EntityTypeShape EntityType="caucasianpearldbModel.EventMedia" Width="1.5" PointX="0.5" PointY="4" />
+        <EntityTypeShape EntityType="caucasianpearldbModel.ContentBlock" Width="1.5" PointX="2.5" PointY="4.625" />
+        <EntityTypeShape EntityType="caucasianpearldbModel.EventMedia" Width="1.5" PointX="0.5" PointY="4.625" />
         <AssociationConnector Association="caucasianpearldbModel.FK_EventMedia_Event" />
+        <EntityTypeShape EntityType="caucasianpearldbModel.SiteSetting" Width="1.5" PointX="4.5" PointY="4.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

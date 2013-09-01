@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Web;
 using CaucasianPearl.Core.Constants;
+using System.Linq;
 
 namespace CaucasianPearl.Core.Helpers
 {
@@ -12,6 +13,14 @@ namespace CaucasianPearl.Core.Helpers
             get
             {
                 return Thread.CurrentThread.CurrentCulture.Name;
+            }
+        }
+
+        public static string CurrentCultureAbbr
+        {
+            get
+            {
+                return Thread.CurrentThread.CurrentCulture.Name.Split('-').FirstOrDefault();
             }
         }
 

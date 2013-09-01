@@ -19,7 +19,7 @@ namespace CaucasianPearl
 
     public class MvcApplication : HttpApplication
     {
-        private static readonly ILogService LogFacade = DependencyResolverHelper<ILogService>.GetService();
+        private static readonly ILogService LogFacade = ServiceHelper<ILogService>.GetService();
 
         protected void Application_Start()
         {

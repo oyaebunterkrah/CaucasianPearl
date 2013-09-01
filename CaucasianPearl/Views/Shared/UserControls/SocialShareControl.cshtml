@@ -1,0 +1,103 @@
+﻿@using CaucasianPearl;
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.UserControls
+     
+@*<meta name="description" content="Конструктор сайта - дизайн, структура, новости, статьи, товары и услуги, интернет-магазин, фотогалерея, гостевая, объявления, файловый менеджер, хостинг, домен бесплатно">
+<meta property="og:image" content="http://rutechdays.blob.core.windows.net/thumb/a056702f-6bb0-4320-9a5e-ddfe23792b8a/545x307.jpg">
+<link rel="image_src" type="image/jpeg" href="http://rutechdays.blob.core.windows.net/thumb/a056702f-6bb0-4320-9a5e-ddfe23792b8a/545x307.jpg">
+
+
+<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="odnoklassniki,vkontakte,facebook"></div>
+<style>
+    .yashare-auto-init {
+        text-align: right;
+    }
+    .b-share-icon {
+        cursor: pointer;
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        overflow: hidden;
+        padding: 0 !important;
+        vertical-align: top;
+        background: url(/content/img/site/social-share.png) 0 0 no-repeat
+    }
+
+    .b-share-icon_odnoklassniki {
+        background-position: 0 0;
+    }
+    .b-share-icon_odnoklassniki:hover {
+        background-position: 0 -40px;
+    }
+    .b-share-icon_vkontakte {
+        background-position: -40px 0;
+    }
+    .b-share-icon_vkontakte:hover {
+        background-position: -40px -40px;
+    }
+    .b-share-icon_facebook {
+        background-position: -80px 0;
+    }
+    .b-share-icon_facebook:hover {
+        background-position: -80px -40px;
+    }
+</style>
+
+<script type="text/javascript">
+    // создаем блок
+    var YaShareInstance = new Ya.share({
+        element: 'ya_share',
+        onready: function (instance) {
+            // в обработчик onready приходит тот же экземпляр блока,
+            // что возвращается из конструктора,
+            // т.е. instance === YaShareInstance
+
+
+            // После инициализации можно поменять ссылку или заголовок, которым требуется поделиться
+            //$('#test')
+            //    .click(function () {
+                // Ссылки и заголовок обновляются по щелчку на кнопке
+                // Параметры берутся из соответствующих полей
+                var parent = $(this).parent();
+                instance.updateShareLink(
+                    'http://ya.ru',
+                    'title',
+                    // В метод также можно передать serviceSpecific-блок
+                    // В данном примере переопределяются все ссылки в Twitter
+                    {
+                        odnoklassniki: {
+                            description: 'description: odnoklassniki',
+                            image: 'http://www.newayseurasia.com/assets/images/news/13.09.2011_seti/o.jpg'
+                        },
+                        vkontakte: {
+                            description: 'description: vkontakte',
+                            image: 'http://www.showmehow.ru/img/social/vkontakte.png'
+                        },
+                        facebook: {
+                            description: 'description: facebook',
+                            image: 'http://www.ruprom.ru/templates/images/fb_ico.png'
+                        }
+                    }
+                );
+            //});
+        }
+    });
+    // Блок еще не проинициализировался, поэтому ничего не произойдет
+    YaShareInstance.updateShareLink('http://api.yandex.ru', 'API');
+</script>
+
+<div id="ya_share"></div>
+<input id="test" type="button" value="test" />
+
+
+<script type="text/javascript" src="http://vkontakte.ru/js/api/share.js?9" charset="windows-1251"></script>
+<script type="text/javascript">
+    document.write(VK.Share.button({
+        url: 'http://mysite.com',
+        title: 'Хороший сайт',
+        description: 'Это мой собственный сайт, я его очень долго делал',
+        image: 'http://www.showmehow.ru/img/social/vkontakte.png',
+        noparse: true
+    }));
+</script>*@

@@ -1,0 +1,225 @@
+﻿@using CaucasianPearl;
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Properties
+
+@Html.Raw(CssJsRegControl.Render("recaptcha/js/recaptcha_ajax.js", Consts.Paths.PluginsPrefix))
+@Html.Raw(CssJsRegControl.Render("jquery.maskedinput.min.js", Consts.Paths.PluginsPrefix))
+
+<script type="text/javascript">
+    var requestFormLoadedSuccessful;
+
+    $(document).ready(function () {
+        // кнопка-триггер открытия формы заявки
+        $('@ViewData["elementId"]').click(function (e) {
+            openRequestForm();
+        });
+
+        // попап - форма заявки
+        $('#requestBlock').popup({
+            title: 'Подать заявку на выступление',
+            height: 610,
+            width: 500,
+            buttons:
+            [
+                {
+                    text: 'Отправить',
+                    id: 'btnSend',
+                    click: function () {
+                        btnSendRequestFormClick();
+                    }
+                },
+                {
+                    text: 'Отмена',
+                    id: 'btnCancel',
+                    click: function () {
+                        closeDialogs();
+                    }
+                }
+            ],
+        });
+
+        // попап - спасибо
+        $('#thanks').popup({
+            title: 'Спасибо!',
+            buttons:
+            [
+                {
+                    text: 'Закрыть',
+                    id: 'btnClose',
+                    click: function () { closeDialogs(); }
+                }
+            ],
+        });
+
+        // добавляем валидатор для даты для datepicker
+        $.validator.addMethod(
+            'date',
+            function (value, element, params) {
+                if (this.optional(element)) {
+                    return true;
+                };
+                var result;
+                try {
+                    $.datepicker.parseDate('dd.mm.yy', value);
+                    result = true;
+                } catch (err) {
+                    result = false;
+                }
+                return result;
+            },
+            ''
+        );
+
+        initializeRequestForm();
+    });
+
+    initializeRequestForm = function () {
+        $('#requestForm').load('@Url.Action(Consts.Actions.CreatePartial, Consts.Controllers.Request.Name)', function (responseText, textStatus, XMLHttpRequest) {
+            if (textStatus == "error") {
+                requestFormLoadedSuccessful = false;
+                return;
+            }
+
+            Recaptcha.create('@Settings.Default.ReCaptchaPublicKey', 'reCaptcha', { theme: 'red' });
+
+            // при нажатии на капчу
+            $('#captchaReload').click(function (e) {
+                e.preventDefault();
+                reloadCaptcha();
+            });
+
+            $('#captchaCode').keyup(function (e) {
+                $("#recaptcha_response_field").val($(this).val());
+            });
+
+            // инициализируем "нашу" капчу
+            initializeCaptcha();
+
+            // ставим маску на поле ввода номера телефона
+            $("#Phone").mask("+7 (999) 999-99-99");
+
+            // ставим datepicker на поле выбора даты
+            // убираем mvc'шный выбор даты
+            var dateField = $(this).find('#RequestDateTime');
+            dateField.get(0).type = 'text';
+            dateField.datepicker({
+                changeYear: true,
+                minDate: 0,
+                maxDate: '+6M',
+                dateFormat: 'dd.mm.yy'
+            });
+        });
+    };
+
+    // инициализация "нашей" капчи
+    initializeCaptcha = function () {
+        // таймаут, чтобы успела прогрузиться reCaptcha
+        setTimeout(function () {
+            var reCaptchaImageSrc = $('#recaptcha_image img').attr('src');
+            $('#captchaImage').attr('src', reCaptchaImageSrc);
+        }, 300);
+    };
+
+    // обновляем "нашу" капчу
+    reloadCaptcha = function (showError) {
+        var captchaCode = $('#captchaCode'),
+            captchaError = $('#captchaError');
+        Recaptcha.reload();
+        captchaCode.val('');
+        initializeCaptcha();
+        if (showError)
+            captchaError
+                .removeClass('field-validation-valid')
+                .addClass('field-validation-error');
+        else
+            captchaError
+                .removeClass('field-validation-error')
+                .addClass('field-validation-valid');
+
+        captchaCode.focus();
+    };
+
+    openRequestForm = function (date) {
+        if (requestFormLoadedSuccessful == false) {
+            alert('Возникла неожиданная ошибка');
+            return;
+        }
+
+        showLoading();
+        prepareRequestForm(date);
+        $('#requestBlock').dialog('open');
+        hideLoading();
+    };
+
+    prepareRequestForm = function (date) {
+        $('#requestForm')
+            .clearData()
+            .resetValidation()
+            .find('#RequestDateTime').val(date);
+
+        reloadCaptcha();
+        hideStatusInfo();
+    };
+
+    btnSendRequestFormClick = function () {
+        var form = $('#formCreateRequest');
+        if (form.isValid()) {
+            hideStatusInfo();
+            
+            form.submit();
+        }
+    };
+
+    hideStatusInfo = function () {
+        $('#thanks').hide();
+        $('#errorMessage').hide();
+        hideLoading(true);
+    };
+
+    onBeginSendRequest = function (success) {
+        showLoading(true);
+    };
+
+    onCompleteSendRequest = function (complete) {
+        hideLoading(true);
+    };
+    
+    onSuccessSendRequest = function (result) {
+        if (result.success) {
+            $('#requestBlock').dialog('close');
+            setTimeout(function () {
+                $('#thanks').dialog('open');
+            }, 500);
+        } else {
+            if (result.errorMessage != '')
+                $('#errorMessage')
+                    .html(result.errorMessage)
+                    .fadeIn();
+            reloadCaptcha(true);
+        }
+    };
+
+    onFailureSendRequest = function (error) {
+        reloadCaptcha();
+        $('#errorMessage').fadeIn();
+    };
+</script>
+
+<style type="text/css">
+    .send_request_response, .thanks, .error, .reCaptcha {
+        display: none;
+    }
+</style>
+
+<div id="requestBlock" class="send_request_response">
+    <span id="errorMessage" class="error">Во время отправки заявки возникла неожиданная ошибка. Пожалуйста, повторите попытку позднее.</span>
+
+    @* сюда подгружается форма заявки *@
+    <div id="requestForm" class="request_form"></div>
+    
+    <div class="overlay_min"></div>
+    <div class="loading_min"></div>
+</div>
+
+<div id="thanks" class="thanks">Спасибо за проявленный интерес! Мы обязательно с Вами свяжемся!</div>

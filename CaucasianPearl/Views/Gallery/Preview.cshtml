@@ -1,4 +1,5 @@
 ﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.UserControls
 
 @model CaucasianPearl.Models.FlickrModel
 
@@ -12,7 +13,9 @@
     #galleria { position: relative;  width: 100%; height: 100%; background:#000 }
 </style>
 
-<script src="@Url.Content(@Url.Content(Consts.Paths.Galleria))"></script>
+@*<script src="@Url.Content(@Url.Content(Consts.Paths.Galleria))"></script>*@
+@Html.Raw(CssJsRegControl.Render(Consts.Paths.Galleria))
+
 <script type="text/javascript">
     var data = @Html.Raw(Model.PhotosJson);
 

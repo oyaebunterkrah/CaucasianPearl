@@ -1,15 +1,17 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+using System.Linq;
 using System.Web.Mvc;
+using CaucasianPearl.Core.Helpers;
+using Ninject;
+using Recaptcha;
+
 using CaucasianPearl.Controllers.Abstract;
 using CaucasianPearl.Core.Constants;
+using CaucasianPearl.Core.DAL.Data;
+using CaucasianPearl.Core.EntityServices.Abstract;
 using CaucasianPearl.Core.EntityServices.Interface;
-using CaucasianPearl.Core.Filters;
-using CaucasianPearl.Core.Helpers;
+using CaucasianPearl.Core.Services.LoggingService;
 using CaucasianPearl.Models.EDM;
-using Resources.Request;
 
 namespace CaucasianPearl.Controllers
 {
@@ -31,12 +33,8 @@ namespace CaucasianPearl.Controllers
 
             foreach (var request in requests)
             {
-                request.Content = request.Content.Length < 100
-                                      ? request.Content
-                                      : request.Content.Substring(0, 150) + "...";
-                request.Comment = request.Comment.Length < 100
-                                      ? request.Comment
-                                      : request.Comment.Substring(0, 150) + "...";
+                request.Content = StringHelper.Substring(request.Content, 100);
+                request.Comment = StringHelper.Substring(request.Comment, 100);
             }
 
             return View(requests);
@@ -45,15 +43,30 @@ namespace CaucasianPearl.Controllers
         [AllowAnonymous]
         public override ActionResult Create()
         {
-            return View();
+            return base.Create();
         }
         
         [AllowAnonymous]
         public override ActionResult Create(Request obj)
         {
-            obj.RequestDateTime = DateTime.Now;
+            obj.RequestRegistrationDate = DateTime.Now;
 
             return base.Create(obj);
+        }
+
+        [AllowAnonymous]
+        public override ActionResult CreatePartial()
+        {
+            return base.CreatePartial();
+        }
+
+        [AllowAnonymous]
+        [HttpPost, RecaptchaControlMvc.CaptchaValidator]
+        public override ActionResult CreatePartialWithCaptcha(Request obj, bool captchaValid, string captchaErrorMessage)
+        {
+            obj.RequestRegistrationDate = DateTime.Now;
+
+            return base.CreatePartialWithCaptcha(obj, captchaValid, captchaErrorMessage);
         }
 
         [AllowAnonymous]
@@ -67,6 +80,14 @@ namespace CaucasianPearl.Controllers
         protected override ActionResult OnCreated(Request model)
         {
             return RedirectToAction(Consts.Controllers.Request.Actions.Thanks);
+        }
+
+        protected override void ModifyValuesOnDetails(Request request)
+        {
+            request.Content = StringHelper.Substring(request.Content, 100);
+            request.Comment = StringHelper.Substring(request.Comment, 100);
+
+            base.ModifyValuesOnDetails(request);
         }
     }
 }

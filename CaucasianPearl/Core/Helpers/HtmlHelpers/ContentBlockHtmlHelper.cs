@@ -16,12 +16,12 @@ namespace CaucasianPearl.Core.Helpers.HtmlHelpers
     {
         private static ILogService _logService
         {
-            get { return DependencyResolverHelper<ILogService>.GetService(); }
+            get { return ServiceHelper<ILogService>.GetService(); }
         }
 
         private static IRepository<ContentBlock> _repository
         {
-            get { return DependencyResolverHelper<IRepository<ContentBlock>>.GetService(); }
+            get { return ServiceHelper<IRepository<ContentBlock>>.GetService(); }
         }
 
         public static string ContentBlock(this HtmlHelper html, string blockId)

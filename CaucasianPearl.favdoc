@@ -58,14 +58,19 @@
       <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Properties\Settings.settings</absolutePath>
     </Favorite>
     <Favorite>
-      <name>site.css</name>
-      <path>CaucasianPearl\Content\css\site.css</path>
-      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Content\css\site.css</absolutePath>
-    </Favorite>
-    <Favorite>
       <name>main.js</name>
       <path>CaucasianPearl\Content\js\cp\main.js</path>
       <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Content\js\cp\main.js</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>BundleConfig.cs</name>
+      <path>CaucasianPearl\App_Start\BundleConfig.cs</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\App_Start\BundleConfig.cs</absolutePath>
+    </Favorite>
+    <Favorite>
+      <name>site.css</name>
+      <path>CaucasianPearl\Content\css\site\site.css</path>
+      <absolutePath>C:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Content\css\site\site.css</absolutePath>
     </Favorite>
   </favorites>
 </Favorites>

@@ -92,9 +92,9 @@
 
 <div class="paginator">
     @Html.Partial(
-        Consts.UserControlsPaths.Paginator,
+        Consts.UserControlsPaths.PaginatorControl,
         (PaginatorControl.GetLinks(
-            DependencyResolverHelper<IUrlFriendlyService<OneNews>>.GetService().Count(Request.QueryString),
+            ServiceHelper<IUrlFriendlyService<OneNews>>.GetService().Count(Request.QueryString),
             Consts.PaginatorControl.NewsItemsPerPage,
             Consts.PaginatorControl.NewsNumberOfVisibleLinks)
         )

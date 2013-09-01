@@ -4,7 +4,7 @@
 @using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.Helpers
 
-<div class="editor-form">
+<div class="create_or_edit_form">
     @if (ViewData.TemplateInfo.TemplateDepth > 1) {
         @ViewData.ModelMetadata.SimpleDisplayText
     }
@@ -15,15 +15,15 @@
                     @Html.Editor(property.PropertyName)
                 }
                 else {
-                    <div class="editor-property">
-                        <div class="editor-label">@Html.Label(property.PropertyName)</div>
+                    <div class="create_or_edit_property">
+                        <div class="create_or_edit_label">@Html.Label(property.PropertyName)</div>
                         <div class="editor-field @GetInputClass(property.DataTypeName)">@Html.Editor(property.PropertyName)</div>
                         @if (property.IsRequired) {
                             <span class="required">*</span>
                         } else {
                             @(string.Empty)
                         }                
-                        <span class="editor-validation-warn">@Html.ValidationMessage(property.PropertyName)</span>
+                        <span class="create_or_edit_validation_warn">@Html.ValidationMessage(property.PropertyName)</span>
                         <div class="clear"></div>
                     </div>
                 }

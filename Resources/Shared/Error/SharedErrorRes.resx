@@ -135,6 +135,9 @@
   <data name="UnexpectedError" xml:space="preserve">
     <value>Возникла неожиданная ошибка</value>
   </data>
+  <data name="WrongCaptchaCode" xml:space="preserve">
+    <value>Введён неправильный код с картинки</value>
+  </data>
   <data name="YouDidNotSelectAFile" xml:space="preserve">
     <value>Вы не выбрали файл</value>
   </data>

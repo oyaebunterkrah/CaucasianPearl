@@ -32,7 +32,7 @@ namespace CaucasianPearl.Models.Metadata
 
         [Display(Name = "ChangePasswordModel_ConfirmNewPassword", ResourceType = typeof(AccountModelRes))]
         [DataType(DataType.Password)]
-        [Compare("NewPassword", ErrorMessageResourceName = "ChangePasswordModel_PasswordAndConfirmationMismatch", ErrorMessageResourceType = typeof(AccountValidationRes))]
+        [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessageResourceName = "ChangePasswordModel_PasswordAndConfirmationMismatch", ErrorMessageResourceType = typeof(AccountValidationRes))]
         public string ConfirmPassword { get; set; }
     }
 
@@ -104,7 +104,7 @@ namespace CaucasianPearl.Models.Metadata
         [Display(Name = "RegisterModel_ConfirmPassword", ResourceType = typeof(AccountModelRes))]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(AccountValidationRes))]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessageResourceName = "RegisterModel_PasswordsMustMatch", ErrorMessageResourceType = typeof(AccountValidationRes))]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessageResourceName = "RegisterModel_PasswordsMustMatch", ErrorMessageResourceType = typeof(AccountValidationRes))]
         public string ConfirmPassword { get; set; }
     }
 

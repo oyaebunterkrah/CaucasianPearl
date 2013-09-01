@@ -14,13 +14,13 @@
     ViewBag.Title = string.Format("{0} - {1}", SharedRes.ProjectTitle, ProfileViewRes.Profiles);
 }
 
-<link type="text/css" href="@Url.Content("~/content/css/cp/photos.css")" rel="stylesheet" media="all" />
+@Html.Raw(CssJsRegControl.Render("photos.css", Consts.Paths.CpCssPrefixPath))
 
 <script type="text/javascript">
     $(document).ready(function () {
         $('.image-block .photo').click(function () {
             var clone = $(this).parents('.container').clone();
-            clone.dialog({
+            clone.popup({
                 autoOpen: true,
                 modal: true,
                 close: function () {
@@ -46,8 +46,7 @@
         actionName: Consts.Actions.Index,
         controllerName: Consts.Controllers.Home.Name,
         routeValues: null,
-        htmlAttributes: new { @class = "link" }
-    )
+        htmlAttributes: new { @class = "link" })
     @Consts.BreadcrumbsSeparator
     @ProfileViewRes.Profiles
 </p>
@@ -132,9 +131,9 @@
 
 <div class="paginator">
     @Html.Partial(
-        Consts.UserControlsPaths.Paginator,
+        Consts.UserControlsPaths.PaginatorControl,
         (PaginatorControl.GetLinks(
-            DependencyResolverHelper<IUrlFriendlyService<Profile>>.GetService().Count(Request.QueryString),
+            ServiceHelper<IUrlFriendlyService<Profile>>.GetService().Count(Request.QueryString),
             Consts.PaginatorControl.ProfileItemsPerPage,
             Consts.PaginatorControl.ProfileNumberOfVisibleLinks)))
 </div>

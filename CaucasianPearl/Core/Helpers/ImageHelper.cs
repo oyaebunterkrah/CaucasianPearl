@@ -9,18 +9,18 @@ namespace CaucasianPearl.Core.Helpers
         public static string GetImageName(dynamic model)
         {
             if (model == null)
-                return Consts.NoImage;
+                return Consts.DefaultImage;
 
             return string.Format("{0}{1}",
                                  model.ID,
-                                 string.IsNullOrWhiteSpace(model.ImageExt) ? Consts.NoImage : model.ImageExt.TrimEnd());
+                                 string.IsNullOrWhiteSpace(model.ImageExt) ? Consts.DefaultImage : model.ImageExt.TrimEnd());
         }
 
         // Возвращает url изображения.
         public static string GetImageUrl(dynamic model, string imageFolder)
         {
             var imageUrl = string.Format("{0}/{1}", VirtualPathUtility.ToAppRelative(Consts.FoldersPathes.EntityImagesFolder),
-                                         Consts.NoImage);
+                                         Consts.DefaultImage);
 
             if (model == null || string.IsNullOrWhiteSpace(imageFolder))
                 return imageUrl;
@@ -32,9 +32,9 @@ namespace CaucasianPearl.Core.Helpers
         }
 
         // Возвращает url изображения по умолчанию.
-        public static string GetDefaultImageUrl()
+        public static string GetDefaultImageUrl(string imagePath)
         {
-            return string.Format("{0}/{1}", Consts.FoldersPathes.CommonImagesFolder, Consts.NoImage);
+            return string.Format("{0}/{1}", imagePath, Consts.DefaultImage);
         }
     }
 }

@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>О нас</value>
   </data>
+  <data name="Affiche" xml:space="preserve">
+    <value>Афиша</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Написать нам</value>
   </data>
@@ -149,5 +152,8 @@
   </data>
   <data name="Requests" xml:space="preserve">
     <value>Отправить заявку</value>
+  </data>
+  <data name="SiteSettings" xml:space="preserve">
+    <value>Настройки сайта</value>
   </data>
 </root>

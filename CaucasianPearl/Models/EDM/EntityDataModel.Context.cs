@@ -32,5 +32,6 @@ namespace CaucasianPearl.Models.EDM
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<ContentBlock> ContentBlocks { get; set; }
         public DbSet<EventMedia> EventMedias { get; set; }
+        public DbSet<SiteSetting> SiteSettings { get; set; }
     }
 }

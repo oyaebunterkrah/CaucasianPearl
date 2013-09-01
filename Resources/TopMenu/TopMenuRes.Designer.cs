@@ -70,6 +70,15 @@ namespace Resources.TopMenu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Афиша.
+        /// </summary>
+        public static string Affiche {
+            get {
+                return ResourceManager.GetString("Affiche", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Написать нам.
         /// </summary>
         public static string Contact {
@@ -156,6 +165,15 @@ namespace Resources.TopMenu {
         public static string Requests {
             get {
                 return ResourceManager.GetString("Requests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Настройки сайта.
+        /// </summary>
+        public static string SiteSettings {
+            get {
+                return ResourceManager.GetString("SiteSettings", resourceCulture);
             }
         }
     }

@@ -47,12 +47,12 @@
             <td>
                 @{
     var filename = string.IsNullOrWhiteSpace(Model.ImageExt)
-                       ? Consts.NoImage
+                       ? Consts.DefaultImage
                        : string.Format("{0}{1}", Model.ID, Model.ImageExt.TrimEnd());
                 }
 
                 <div class="model-image">
-                    <img src='@(Url.Content(Consts.EntityImagesFolder))/@(Consts.Controllers.Profile.ProfileImagesFolder)/@(filename)' />
+                    <img src='@(Url.Content(Consts.FoldersPathes.EntityImagesFolder))/@(Consts.Controllers.Profile.ProfileImagesFolder)/@(filename)' />
                 </div>
             </td>
             <td style="padding-left: 20px">

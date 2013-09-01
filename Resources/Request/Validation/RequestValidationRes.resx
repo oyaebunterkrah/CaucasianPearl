@@ -120,7 +120,13 @@
   <data name="Required" xml:space="preserve">
     <value>Поле обязательно для заполнения</value>
   </data>
-  <data name="StringLengthMax" xml:space="preserve">
-    <value>Поле "{0}" должно содержать не более {2} символов</value>
+  <data name="StringLengthMinMax" xml:space="preserve">
+    <value>Поле "{0}" должно содержать от {2} до {1} символов</value>
+  </data>
+  <data name="WrongDateFormat" xml:space="preserve">
+    <value>Неверный формат даты</value>
+  </data>
+  <data name="WrongEmailFormat" xml:space="preserve">
+    <value>Неверный формат электронной почты</value>
   </data>
 </root>

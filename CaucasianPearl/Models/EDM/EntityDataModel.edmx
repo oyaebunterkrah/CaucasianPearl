@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="caucasianpearldbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="caucasianpearldbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="caucasianpearldbModelStoreContainer">
           <EntitySet Name="ContentBlock" EntityType="caucasianpearldbModel.Store.ContentBlock" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Event" EntityType="caucasianpearldbModel.Store.Event" store:Type="Tables" Schema="dbo" />
@@ -13,6 +13,7 @@
           <EntitySet Name="OneNews" EntityType="caucasianpearldbModel.Store.OneNews" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Profile" EntityType="caucasianpearldbModel.Store.Profile" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Request" EntityType="caucasianpearldbModel.Store.Request" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SiteSettings" EntityType="caucasianpearldbModel.Store.SiteSettings" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_EventMedia_Event1" Association="caucasianpearldbModel.Store.FK_EventMedia_Event1">
             <End Role="Event" EntitySet="Event" />
             <End Role="EventMedia" EntitySet="EventMedia" />
@@ -111,14 +112,25 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
           <Property Name="Email" Type="nvarchar" MaxLength="30" />
           <Property Name="Content" Type="nvarchar" Nullable="false" MaxLength="2000" />
-          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="20" />
-          <Property Name="City" Type="nvarchar" MaxLength="20" />
           <Property Name="RequestDateTime" Type="datetime2" Nullable="false" />
+          <Property Name="RequestRegistrationDate" Type="date" />
           <Property Name="Comment" Type="nvarchar" MaxLength="500" />
-          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="SiteSettings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DefaultValue" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <Association Name="FK_EventMedia_Event1">
           <End Role="Event" Type="caucasianpearldbModel.Store.Event" Multiplicity="0..1" />
@@ -135,8 +147,8 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="caucasianpearldbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="CaucasianPearlContext" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="caucasianpearldbModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CaucasianPearlContext" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="Events" EntityType="caucasianpearldbModel.Event" />
           <EntitySet Name="Feedbacks" EntityType="caucasianpearldbModel.Feedback" />
           <EntitySet Name="News" EntityType="caucasianpearldbModel.OneNews" />
@@ -148,12 +160,13 @@
             <End Role="Event" EntitySet="Events" />
             <End Role="EventMedia" EntitySet="EventMedias" />
           </AssociationSet>
+          <EntitySet Name="SiteSettings" EntityType="caucasianpearldbModel.SiteSetting" />
         </EntityContainer>
         <EntityType Name="Event">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="EventDate" Precision="0" />
           <Property Name="Description" Type="String" MaxLength="2048" Unicode="true" FixedLength="false" />
@@ -167,7 +180,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="City" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="Comment" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
@@ -179,7 +192,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="0" />
@@ -196,21 +209,22 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Email" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
           <Property Name="Content" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="City" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="RequestDateTime" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Comment" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Type="DateTime" Name="RequestRegistrationDate" Precision="0" />
         </EntityType>
         <EntityType Name="Profile">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="UserName" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Email" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -236,7 +250,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int32" Name="EventId" />
           <Property Type="String" Name="PhotoId" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PhotosetId" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -265,11 +279,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="SiteSetting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Value" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DefaultValue" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="caucasianpearldbModelStoreContainer" CdmEntityContainer="CaucasianPearlContext">
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="caucasianpearldbModel.Event">
@@ -319,6 +343,7 @@
           <EntitySetMapping Name="Requests">
             <EntityTypeMapping TypeName="caucasianpearldbModel.Request">
               <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="RequestRegistrationDate" ColumnName="RequestRegistrationDate" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -380,12 +405,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SiteSettings">
+            <EntityTypeMapping TypeName="caucasianpearldbModel.SiteSetting">
+              <MappingFragment StoreEntitySet="SiteSettings">
+                <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -400,6 +436,6 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams />
   </Designer>
 </edmx:Edmx>

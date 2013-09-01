@@ -10,9 +10,6 @@
     <projectUrl>http://flickrnet.codeplex.com/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The Flickr.Net API Library is a .Net Library for accessing the Flickr API.</description>
-    <releaseNotes />
-    <copyright />
-    <language />
     <tags>flickr photo photography social</tags>
   </metadata>
 </package>

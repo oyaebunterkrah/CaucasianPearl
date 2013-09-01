@@ -1,128 +1,42 @@
-﻿@model WrapperModel
-
-@using CaucasianPearl.Core.Constants
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.DAL.Data
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Core.UserControls
 @using CaucasianPearl.Models
 @using Resources.Shared
-@using Resources.Event
-@using Resources.News
-@using CaucasianPearl.Core.UserControls
 
 @{
     ViewBag.Title = SharedRes.ProjectTitle;
 }
 
-<div class="placeHolder1">
-    @Html.Raw(Html.PlaceHolder("placeHolder1"))
-</div>
+@model IEnumerable<EventItemInfo>
 
-<div class="player" style="display: none;">
-    <object id="audioplayer361" type="application/x-shockwave-flash" data="http://caucasianpearl/content/audioplayer/player/uppod.swf" width="350" height="50">
-        <param name="bgcolor" value="#ffffff" />
-        <param name="allowScriptAccess" value="always" />
-        <param name="movie" value="http://caucasianpearl/content/plugins/audioplayer/player/uppod.swf" />
-        <param name="flashvars" value="comment=Жемчужина Кавказа&amp;st=http://caucasianpearl/content/plugins/audioplayer/styles/audio164-471.txt&amp;file=http://cs1-26v4.vk.me/p35/6e11d4c8f5d0e2.mp3" />
-    </object>
-</div>
+@* проверяем режим: события/обложка *@
+@if (ViewBag.HomePageMode == SiteSettingsHelper.HomePageMode.Events && Model != null) {
+    { Html.RenderPartial("~/Views/Event/GetHomePageEvents.cshtml", Model); }
+} else {
+    <img src='@ViewBag.CoverImagePath' alt="Обложка" />
+}
 
-<div class="wrapper-table">
-    <table>
-        <tr>
-            <!-- Events -->
-            <td>
-                <div class="events-block">
-                    <h2>@EventViewRes.Events</h2>
-                </div>
+@* форма заявки *@
+@Html.Partial(Consts.UserControlsPaths.RequestFormControl, new ViewDataDictionary { { "elementId", "#sendRequest" } })
 
-                @if (Request.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
-                {
-                    <p>
-                        @Html.ActionLink(
-                            linkText: EventViewRes.CreateEvent,
-                            actionName: Consts.Actions.Create,
-                            controllerName: Consts.Controllers.Event.Name,
-                            routeValues: null,
-                            htmlAttributes: new { @class = "link" }
-                             )
-                    </p>
-                }
+<input id="sendRequest" type="button" value="Оставить заявку на выступление" />
 
-                <table>
-                    @foreach (var @event in Model.Events)
-                    {
-                        <tr>
-                            <td style="text-align: center;">
-                                <div class="event-image">
-                                    @*@Html.ActionImage(
-                                        action: Consts.Actions.GetByShortName,
-                                        controller: Consts.Controllers.Event.Name,
-                                        routeValues: new { shortname = @event.ShortName },
-                                        imagePath: ImageHelper.GetImageUrl(
-                                            @event, Consts.Controllers.Event.EventImagesFolder),
-                                        alt: @event.Title
-                                    )*@
-                                </div>
-                            </td>
-                            <td style="text-align: center;">
-                                @Html.ActionLink(
-                                    @event.Title,
-                                    actionName: Consts.Actions.GetByShortName,
-                                    controllerName: Consts.Controllers.Event.Name,
-                                    routeValues: new { shortname = @event.ShortName },
-                                    htmlAttributes: new { @class = "link" }
-                                     )
-                            </td>
-                        </tr>
-                    }
-                </table>
-            </td>
-            <!-- OneNews -->
-            <td>
-                <div class="news-block">
-                    <h2>@NewsViewRes.News</h2>
-                </div>
+@*
+    аудиоплеер
+    <div class="player" @* style="display: none;"
+        <object id="audioplayer361" type="application/x-shockwave-flash" data="http://caucasianpearl/content/audioplayer/player/uppod.swf" width="350" height="50">
+            <param name="bgcolor" value="#ffffff" />
+            <param name="allowScriptAccess" value="always" />
+            <param name="movie" value="http://caucasianpearl/content/plugins/audioplayer/player/uppod.swf" />
+            <param name="flashvars" value="comment=Жемчужина Кавказа&amp;st=http://caucasianpearl/content/plugins/audioplayer/styles/audio164-471.txt&amp;file=http://cs1-26v4.vk.me/p35/6e11d4c8f5d0e2.mp3" />
+        </object>
+    </div>
 
-                @if (Request.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
-                {
-                    <p>
-                        @Html.ActionLink(NewsViewRes.CreateNews,
-                                         actionName: Consts.Actions.Create,
-                                         controllerName: Consts.Controllers.OneNews.Name,
-                                         routeValues: null,
-                                         htmlAttributes: new { @class = "link" }
-                             )
-                    </p>
-                }
-
-                <table>
-                    @foreach (var oneNews in Model.OneNews)
-                    {
-                        <tr>
-                            <td style="text-align: center;">
-                                <div class="oneNews-image">
-                                    @Html.ActionImage(
-                                        Consts.Actions.GetByShortName,
-                                        controller: Consts.Controllers.OneNews.Name,
-                                        routeValues: new { shortname = oneNews.ShortName },
-                                        imagePath: ImageHelper.GetImageUrl(
-                                            oneNews, Consts.Controllers.OneNews.OneNewsImagesFolder),
-                                        alt: oneNews.Name
-                                         )
-                                </div>
-                            </td>
-                            <td style="text-align: center;">
-                                @Html.ActionLink(oneNews.Name,
-                                                 actionName: Consts.Actions.GetByShortName,
-                                                 controllerName: Consts.Controllers.OneNews.Name,
-                                                 routeValues: new { shortname = oneNews.ShortName },
-                                                 htmlAttributes: new { @class = "link" }
-                                     )
-                            </td>
-                        </tr>
-                    }
-                </table>
-            </td>
-        </tr>
-    </table>
-</div>
+    контент блок
+    <div class="placeHolder1">
+        @Html.Raw(Html.PlaceHolder("placeHolder1"))
+    </div>
+*@

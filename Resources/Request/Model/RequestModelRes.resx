@@ -142,7 +142,10 @@
     <value>Обработано</value>
   </data>
   <data name="RequestDateTime" xml:space="preserve">
-    <value>Дата и время</value>
+    <value>Желаемая дата</value>
+  </data>
+  <data name="RequestRegistrationDate" xml:space="preserve">
+    <value>Дата и время регистрации заявки</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Статус</value>

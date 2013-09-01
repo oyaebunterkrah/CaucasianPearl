@@ -1,0 +1,28 @@
+@using CaucasianPearl.Core.Constants
+@using Resources.Request
+@using Resources.Shared
+
+@model CaucasianPearl.Models.EDM.Request
+
+@using (Ajax.BeginForm(
+            Consts.Actions.CreatePartialWithCaptcha,
+            Consts.Controllers.Request.Name,
+            null,
+            new AjaxOptions
+                {
+                    HttpMethod = "Post",
+                    UpdateTargetId = "result",
+                    OnBegin = "onBeginSendRequest",
+                    OnComplete = "onCompleteSendRequest",
+                    OnSuccess = "onSuccessSendRequest",
+                    OnFailure = "onFailureSendRequest"
+                },
+            new { id = "formCreateRequest" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+		@Html.Partial(Consts.Views.CreateOrEdit, Model, new ViewDataDictionary { { "isAjaxRequest", true } })
+    </fieldset>
+    
+    <span id="result"></span>
+}

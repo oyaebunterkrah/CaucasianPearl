@@ -119,9 +119,9 @@
 
 <div class="paginator">
     @Html.Partial(
-        Consts.UserControlsPaths.Paginator,
+        Consts.UserControlsPaths.PaginatorControl,
         (PaginatorControl.GetLinks(
-            DependencyResolverHelper<IOrderedService<ContentBlock>>.GetService().Count(Request.QueryString),
+            ServiceHelper<IOrderedService<ContentBlock>>.GetService().Count(Request.QueryString),
             Consts.PaginatorControl.ContentBlockItemsPerPage,
             Consts.PaginatorControl.ContentBlockNumberOfVisibleLinks)
         )

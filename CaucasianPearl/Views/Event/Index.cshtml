@@ -39,27 +39,29 @@
 }
 
 <table>
-    @foreach (var @event in Model)
-    {
+    @foreach (var @eventItem in Model) {
         <tr>
             <td style="text-align: center;">
                 @{
-                    var eventMedia = @event.EventMedia.FirstOrDefault(em => em.PhotoId == @event.Cover);
-                    var imageUrl = eventMedia != null ? eventMedia.ThumbnailUrl : ImageHelper.GetDefaultImageUrl();
+                    var eventMedia = @eventItem.EventMedia.FirstOrDefault(em => em.IsPrimary ?? false);
+                    var primaryImageUrl = eventMedia != null ? eventMedia.ThumbnailUrl : ImageHelper.GetDefaultImageUrl(Consts.FoldersPathes.CommonImagesFolder);
                 }
                 @Html.ActionImage(
                     Consts.Actions.GetByShortName,
                     Consts.Controllers.Event.Name,
-                    routeValues: new { shortname = @event.ShortName },
-                    imagePath: imageUrl, alt: @event.Title)
+                    routeValues: new { shortname = @eventItem.ShortName },
+                    imagePath: primaryImageUrl, alt: @eventItem.Title)
             </td>
             <td style="text-align: center;">
                 @Html.ActionLink(
-                    @event.Title,
+                    @eventItem.Title,
                     Consts.Actions.GetByShortName,
                     controllerName: Consts.Controllers.Event.Name,
-                    routeValues: new { shortname = @event.ShortName },
+                    routeValues: new { shortname = @eventItem.ShortName },
                     htmlAttributes: new { @class = "link" })
+            </td>
+            <td style="text-align: center;">
+                @eventItem.EventDate
             </td>
             
             @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
@@ -69,14 +71,14 @@
                     @Html.ActionLink(
                         SharedViewRes.Up,
                         Consts.Actions.Up,
-                        new { id = @event.ID })
+                        new { id = @eventItem.ID })
                 </td>
                 <td>
                     <!-- Вниз -->
                     @Html.ActionLink(
                         SharedViewRes.Down,
                         Consts.Actions.Down,
-                        new { id = @event.ID })
+                        new { id = @eventItem.ID })
                 </td>
                 <td>
                     <!-- Редактировать -->
@@ -84,7 +86,7 @@
                         SharedViewRes.Edit,
                         Consts.Actions.Edit,
                         controllerName: Consts.Controllers.Event.Name,
-                        routeValues: new { id = @event.ID },
+                        routeValues: new { id = @eventItem.ID },
                         htmlAttributes: new { @class = "link" })
                 </td>
                 <td>
@@ -92,7 +94,7 @@
                     @Html.ActionLink(
                         SharedViewRes.Delete, actionName: Consts.Actions.Delete,
                         controllerName: Consts.Controllers.Event.Name,
-                        routeValues: new { id = @event.ID },
+                        routeValues: new { id = @eventItem.ID },
                         htmlAttributes: new { @class = "link" })
                 </td>
             }
@@ -104,9 +106,9 @@
 
 <div class="paginator">
     @Html.Partial(
-        Consts.UserControlsPaths.Paginator,
+        Consts.UserControlsPaths.PaginatorControl,
         (PaginatorControl.GetLinks(
-            DependencyResolverHelper<IEventService<Event>>.GetService().Count(Request.QueryString),
+            ServiceHelper<IEventService<Event>>.GetService().Count(Request.QueryString),
             Consts.PaginatorControl.EventItemsPerPage,
             Consts.PaginatorControl.EventNumberOfVisibleLinks)))
 </div>

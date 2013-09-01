@@ -1,0 +1,66 @@
+2013-08-23 00:45:01.2944|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /event/geteventsformonth
+Raw Url: /event/geteventsformonth
+Message: A public action method 'geteventsformonth' was not found on controller 'CaucasianPearl.Controllers.EventController'.
+Source: System.Web.Mvc
+Stack Trace:    â System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   â System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   â System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   â System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: Void HandleUnknownAction(System.String)
+2013-08-23 00:45:19.8515|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /event/geteventsformonth
+Raw Url: /event/geteventsformonth
+Message: A public action method 'geteventsformonth' was not found on controller 'CaucasianPearl.Controllers.EventController'.
+Source: System.Web.Mvc
+Stack Trace:    â System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   â System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   â System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   â System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: Void HandleUnknownAction(System.String)
+2013-08-23 23:10:08.8921|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /event/geteventsformonth
+Raw Url: /event/geteventsformonth
+Message: A public action method 'geteventsformonth' was not found on controller 'CaucasianPearl.Controllers.EventController'.
+Source: System.Web.Mvc
+Stack Trace:    â System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   â System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   â System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   â System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: Void HandleUnknownAction(System.String)

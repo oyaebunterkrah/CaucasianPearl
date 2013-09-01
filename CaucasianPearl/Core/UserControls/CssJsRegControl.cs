@@ -3,70 +3,67 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace CaucasianPearl.Core.UserControls
 {
-    public class CssJsRegistrationControl : WebControl
+    public static class CssJsRegControl
     {
+        private static readonly string Separator = Environment.NewLine;
+
         #region Templates
 
-        private const string CssTemplate = "<link href=\"{0}?rev={1}\" type=\"text/css\" />{2}";
-        private const string CssTemplateWithRel = "<link href=\"{0}?rev={1}\" rel=\"stylesheet\" type=\"text/css\" />{2}";
-        private const string JsTemplate = "<script type=\"text/javascript\" src=\"{0}?rev={1}\"></script>{2}";
-        private const string JsTemplateWithCharset = "<script type=\"text/javascript\" src=\"{0}?rev={1}\" charset=\"{3}\"></script>{2}";
-        private const string UnknownTypeTemplate = "<script type=\"text/javascript\" src=\"{0}\"></script>{1}";
-        private const string UnknownTypeTemplateWithCharset = "<script type=\"text/javascript\" src=\"{0}\" charset=\"{2}\"></script>{1}";
-        
-        private readonly string _separator = Environment.NewLine;
+        private const string CssTemplate = "<link href=\"{0}?rev={1}\" rel=\"stylesheet\" type=\"text/css\" />{2}";
+        private const string JsTemplate = "<script src=\"{0}?rev={1}\" charset=\"{3}\" type=\"text/javascript\"></script>{2}";
 
         #endregion
 
         // Типы файлов.
-        public enum FileTypes
+        private enum FileTypes
         {
             Css,
-            Js,
-            Unknown
+            Js
         }
 
         #region Properties
 
         // Тип файла (css/js).
-        public FileTypes FileType
+        private static FileTypes FileType
         {
             get
             {
                 var extension = Path.GetExtension(Src);
                 return extension != null
-                           ? ToEnum(extension.Replace(".", string.Empty), FileTypes.Unknown)
-                           : FileTypes.Unknown;
+                           ? ToEnum(extension.Replace(".", string.Empty), FileTypes.Js)
+                           : FileTypes.Js;
             }
         }
 
+        // Всегда загружать.
+        private static bool ForceLoad { get; set; }
         // Url-адрес файла.
-        public string Src { get; set; }
-        // Всегда загружать по-новому
-        public bool AlwaysLoad { get; set; }
+        private static string Src { get; set; }
         // Кодировка.
-        public string Charset { get; set; }
-        // rel.
-        public string Rel { get; set; }
-
+        private static string Charset { get; set; }
+        
         #endregion
 
         // Добавляет к Url'ам .css и .js файлов версию, например "?rev=yyyyMMddhhmmss".
         // Это нужно для того, чтобы после релиза браузер клиента запрашивал новые файлы, если они были изменены.
-        protected override void Render(HtmlTextWriter writer)
+        public static string Render(string src, string prefix = "", string charset = "", bool alwaysLoad = false)
         {
+            ForceLoad = alwaysLoad;
+            Src = VirtualPathUtility.ToAbsolute(string.Format("{0}{1}{2}", prefix, !string.IsNullOrWhiteSpace(prefix) ? "/" : string.Empty, src));
+            Charset = FileType == FileTypes.Js ? charset : string.Empty;
+
             try
             {
-                writer.Write(GetTemplate(FileType));
+                return GetTemplate(FileType);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
-                throw new Exception(ex.Message);
+                throw new Exception(exception.Message);
                 //LogFacade.LogWarning("CssJsRegistrationControl::Render (Src: {0}; ex.Message: {1}; ex.StackTrace: {2})", Src, ex, ex.StackTrace);
             }
         }
@@ -74,32 +71,19 @@ namespace CaucasianPearl.Core.UserControls
         #region Helpers
 
         // Возвращает шаблон на основе типа файла.
-        private string GetTemplate(FileTypes fileType)
+        private static string GetTemplate(FileTypes fileType)
         {
-            var revValue = fileType != FileTypes.Unknown && !AlwaysLoad
+            var revValue = !ForceLoad
                                ? GetLastWriteTime()
                                : Environment.TickCount.ToString(CultureInfo.InvariantCulture);
-            switch (fileType)
-            {
-                case FileTypes.Css:
-                    return string.IsNullOrEmpty(Rel)
-                               ? string.Format(CssTemplate, Src, revValue, _separator)
-                               : string.Format(CssTemplateWithRel, Src, revValue, _separator);
-                case FileTypes.Js:
-                    return string.IsNullOrEmpty(Charset)
-                               ? string.Format(JsTemplate, Src, revValue, _separator)
-                               : string.Format(JsTemplateWithCharset, Src, revValue, _separator, Charset);
-                case FileTypes.Unknown:
-                    return string.IsNullOrEmpty(Charset)
-                               ? string.Format(UnknownTypeTemplate, Src, _separator)
-                               : string.Format(UnknownTypeTemplateWithCharset, Src, _separator, Charset);
-            }
 
-            return string.Empty;
+            return fileType == FileTypes.Css
+                ? string.Format(CssTemplate, Src, revValue, Separator)
+                : string.Format(JsTemplate, Src, revValue, Separator, Charset);
         }
 
         // Возвращает версию для ?rev (версия = дата последнего изменения файла).
-        private string GetLastWriteTime()
+        private static string GetLastWriteTime()
         {
             var fileInfo = new FileInfo(HttpContext.Current.Server.MapPath(Src));
             return fileInfo.Exists ? fileInfo.LastWriteTime.ToString("yyyyMMddhhmmss") : Environment.TickCount.ToString(CultureInfo.InvariantCulture);

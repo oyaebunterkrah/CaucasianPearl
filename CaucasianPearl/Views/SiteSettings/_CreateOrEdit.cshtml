@@ -1,0 +1,36 @@
+@model CaucasianPearl.Models.EDM.SiteSetting
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="create_or_edit_label">
+    @Html.LabelFor(model => model.Name)
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(model => model.Name)
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+
+<div class="create_or_edit_label">
+    @Html.LabelFor(model => model.Value)
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(model => model.Value)
+    @Html.ValidationMessageFor(model => model.Value)
+</div>
+
+<div class="create_or_edit_label">
+    @Html.LabelFor(model => model.DefaultValue)
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(model => model.DefaultValue)
+    @Html.ValidationMessageFor(model => model.DefaultValue)
+</div>
+
+
+<div class="create_or_edit_label">
+    @Html.LabelFor(model => model.Description)
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(model => model.Description)
+    @Html.ValidationMessageFor(model => model.Description)
+</div>

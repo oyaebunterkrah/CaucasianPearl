@@ -32,6 +32,8 @@
         $("#editInfoBox").dialog({
             autoOpen: false,
             modal: true,
+            show: 'fade',
+            hide: 'fade',
             width: 350,
             close: function () { closeDialogs(); },
             buttons: [
@@ -205,6 +207,18 @@
         var photosets = $.parseJSON(photosetsJson);
 
         for (var i = 0; i < photosets.length; i++) {
+            $('<div/>')
+                .attr({
+                    id: 'photosetBlock' + i,
+                    'class': 'photosetBlock'
+                })
+                .appendTo($('#photosetsBlock'));
+
+            $('<span/>')
+                .attr({ 'class': 'photosetBlockDescription' })
+                .text(photosets[i].Description != '' ? photosets[i].Description : 'Без названия')
+                .appendTo($('#photosetBlock' + i));
+            
             $('<img/>')
                 .attr({
                     id: 'photoset' + i,
@@ -220,7 +234,7 @@
                 .dblclick(function() {
                     openInNewTab($(this).data('flickrurl'));
                 })
-                .appendTo($('#photosetsBlock'));
+                .appendTo($('#photosetBlock' + i));
         }
     };
 
@@ -342,61 +356,34 @@
 
     // получаем фотоальбомы
     getPhotosets = function() {
-        $.ajax({
+        var options = {
             url: '/event/getphotosets',
-            success: function(photosetsJson) {
-                onGetPhotosetsSuccess(photosetsJson);
-            },
-            statusCode: {
-                404: function(content) {
-                    alert('Ошибка 404: Ресурс не найден.');
-                },
-                505: function(content) {
-                    alert('Ошибка 505: Внутренняя ошибка сервера.');
-                }
-            },
-            beforeSend: function() {
-                $('#photosetsBlock').addClass('loading');
-            },
-            complete: function() {
-                $('#photosetsBlock').removeClass('loading');
-            },
-            error: function(request, status, error) {
-                //alert(error);
-            }
-        });
+            type: 'GET',
+            success: function (photosetsJson) { onGetPhotosetsSuccess(photosetsJson); },
+            beforeSend: function () { $('#photosetsBlock').addClass('loading'); },
+            complete: function () { $('#photosetsBlock').removeClass('loading'); },
+            error: function (request, status, error) { alert('Не удалось загрузить альбомы. Пожалуйста, повторите попытку...'); }
+        };
+
+        ajaxRequest(options);
     };
 
     // получаем фотографии
     getPhotos = function(photosetId, photosetElemId) {
-        $.ajax({
+        var options = {
             url: '/event/getphotos',
             type: 'POST',
-            data: {
-                photosetId: photosetId
-            },
-            success: function(photosJson) {
-                onGetPhotosSuccess(photosetId, photosetElemId, photosJson);
-            },
-            statusCode: {
-                404: function(content) {
-                    alert('Ошибка 404: Ресурс не найден.');
-                },
-                505: function(content) {
-                    alert('Ошибка 505: Внутренняя ошибка сервера.');
-                }
-            },
-            beforeSend: function() {
-                $('#photosBlock').addClass('loading');
-            },
-            complete: function() {
+            data: { photosetId: photosetId },
+            success: function (photosJson) { onGetPhotosSuccess(photosetId, photosetElemId, photosJson); },
+            beforeSend: function () { $('#photosBlock').addClass('loading'); },
+            complete: function () {
                 $('#photosBlock').removeClass('loading');
                 selectionSet();
             },
-            error: function(request, status, error) {
-                //alert(error);
-            }
-        });
+            error: function (request, status, error) { alert('Не удалось загрузить фотографии. Пожалуйста, повторите попытку...'); }
+        };
+        
+        ajaxRequest(options);
     };
 
     onEditInfoClick = function (self) {

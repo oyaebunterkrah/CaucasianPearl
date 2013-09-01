@@ -58,6 +58,11 @@ namespace CaucasianPearl.Core.Constants
             // Количество отображаемых страниц перед многоточием для заявок.
             public const int RequestNumberOfVisibleLinks = 5;
 
+            // Количество объектов на одной странице для настроек сайта.
+            public const int SiteSettingsItemsPerPage = 5;
+            // Количество отображаемых страниц перед многоточием для настроек сайта.
+            public const int SiteSettingsNumberOfVisibleLinks = 5;
+
             // Количество объектов на одной странице для профилей пользователей.
             public const int ProfileItemsPerPage = 5;
             // Количество отображаемых страниц перед многоточием для профилей пользователей.
@@ -120,7 +125,7 @@ namespace CaucasianPearl.Core.Constants
         #endregion
 
         // Изображение по умолчанию.
-        public const string NoImage = "no-image.png";
+        public const string DefaultImage = "default-image.png";
 
         // Templates.
         public static class Templates
@@ -146,6 +151,8 @@ namespace CaucasianPearl.Core.Constants
                 {
                     // О нас.
                     public const string About = "about";
+                    // Афиша.
+                    public const string Affiche = "affiche";
                     // Контакты.
                     public const string Contacts = "contacts";
                     // Отзывы и предложения.
@@ -185,6 +192,7 @@ namespace CaucasianPearl.Core.Constants
                 public const string Name = "event";
                 public const int EventCount = 4;
                 public const int DifferenceCount = 2;
+                public const string DefaultImagePath = "~/content/img/cp/event/";
 
                 // Размеры картинок для раздела Товары.
                 public const int EventImagesHeight = 320;
@@ -199,6 +207,7 @@ namespace CaucasianPearl.Core.Constants
                     // Event actions.
                     public const string Events = "events";
                     public const string GetEvents = "getevents";
+                    public const string GetHomePageEvents = "gethomepageevents";
                     public const string SelectMediaItemsOnCreate = "selectmediaitemsoncreate";
                     public const string SelectMediaItemsOnEdit = "selectmediaitemsonedit";
 
@@ -211,6 +220,7 @@ namespace CaucasianPearl.Core.Constants
                     // Event views.
                     public const string SelectMediaItemsOnCreate = "SelectMediaItemsOnCreate";
                     public const string SelectMediaItemsOnEdit = "SelectMediaItemsOnEdit";
+                    public const string GetHomePageEvents = "GetHomePageEvents";
                 }
             }
 
@@ -322,6 +332,21 @@ namespace CaucasianPearl.Core.Constants
                 }
             }
 
+            // SiteSettings.
+            public static class SiteSettings
+            {
+                public const string Name = "sitesettings";
+
+                // Actions.
+                public static class Actions
+                {
+                    // SiteSettings actions.
+                    public const string SiteSettings = "sitesettings";
+                    public const string GetCoverImages = "getcoverimages";
+                    public const string UploadCoverImage = "uploadcoverimage";
+                }
+            }
+
             // Error.
             public static class Error
             {
@@ -356,9 +381,16 @@ namespace CaucasianPearl.Core.Constants
         {
             public const string Index = "index";
             public const string Create = "create";
+            public const string CreatePartial = "createpartial";
+            public const string CreatePartialWithCaptcha = "createpartialwithcaptcha";
+            public const string CreateExpress = "createexpress";
             public const string CreateOrEdit = "createoredit";
             public const string Edit = "edit";
+            public const string EditPartial = "editpartial";
+            public const string EditExpress = "editexpress";
             public const string Delete = "delete";
+            public const string DeletePartial = "deletepartial";
+            public const string DeleteExpress = "deleteexpress";
             public const string Details = "details";
             public const string GetByShortName = "GetByShortName";
             public const string Up = "up";
@@ -382,6 +414,8 @@ namespace CaucasianPearl.Core.Constants
             }
         }
         
+        #region Enums
+
         public enum DataType
         {
             Text,
@@ -390,6 +424,8 @@ namespace CaucasianPearl.Core.Constants
             Date,
             Time
         }
+
+        #endregion
 
         #region Translit dictionary
 
@@ -545,9 +581,11 @@ namespace CaucasianPearl.Core.Constants
         {
             private const string PathPrefix = "UserControls/";
 
-            public const string Culture = PathPrefix + "CultureControl";
-            public const string Login = PathPrefix + "LoginControl";
-            public const string Paginator = PathPrefix + "PaginatorControl";
+            public const string CultureControl = PathPrefix + "CultureControl";
+            public const string LoginControl = PathPrefix + "LoginControl";
+            public const string PaginatorControl = PathPrefix + "PaginatorControl";
+            public const string RequestFormControl = PathPrefix + "RequestFormControl";
+            public const string SocialShareControl = PathPrefix + "SocialShareControl";
         }
 
         public static class QueryStringParameters
@@ -557,14 +595,32 @@ namespace CaucasianPearl.Core.Constants
 
         public static class Paths
         {
+            public const string CoversFolder = "~/content/img/cp/covers/";
             public const string PluginsPrefix = "~/content/plugins";
-            //private const string CpPrefixPath = "~/content/js/cp/";
-            //private const string SysPrefixPath = "~/content/js/sys/";
 
+            // js {
+            public const string CpJsPrefixPath = "~/content/js/cp";
+            public const string SysJsPrefixPath = "~/content/js/sys";
+            
             public const string CKEditor = PluginsPrefix + "/ckeditor/ckeditor.js";
             public const string CKEditorConfig = PluginsPrefix + "/ckeditor/config.js";
             public const string Galleria = PluginsPrefix + "/galleria/galleria-1.2.9.min.js";
-            public const string GalleriaClassicTheme = PluginsPrefix + "/galleria/themes/classic/galleria.classic.min.js";
+            public const string GalleriaClassicTheme = PluginsPrefix + "/galleria/themes/classic/galleria.classic.min.js"; // }
+
+            // css {
+            public const string CpCssPrefixPath = "~/content/css/cp";
+            public const string SiteCssPrefixPath = "~/content/css/site"; // }
         }
+
+        public static class SiteSettings
+        {
+            // режим главной страницы. Возможны два режима работы: cover (режим обложки) и events (режим событий)
+            public const string HomePageMode = "home_page_mode";
+
+            // название изображения главной страницы (обложки)
+            public const string CoverImageName = "cover_image_name";
+        }
+
+
     }
 }

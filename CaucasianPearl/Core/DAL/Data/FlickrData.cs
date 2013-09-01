@@ -17,7 +17,7 @@ namespace CaucasianPearl.Core.DAL.Data
     {
         private static IFlickrService FlickrService
         {
-            get { return DependencyResolverHelper<IFlickrService>.GetService(); }
+            get { return ServiceHelper<IFlickrService>.GetService(); }
         }
 
         public MediaItem()

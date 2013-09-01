@@ -32,7 +32,7 @@
         
         <span class="display-label">@RequestModelRes.Content:</span>
         <div class="display-field">
-            @(Model.Content.Length < 100 ? Model.Content : Model.Content.Substring(0, 150) + "...")
+            @Model.Content
         </div>
         
         <span class="display-label">@RequestModelRes.Status:</span>
@@ -42,7 +42,7 @@
         
         <span class="display-label">@RequestModelRes.Comment:</span>
         <div class="display-field">
-            @(Model.Comment.Length < 100 ? Model.Comment : Model.Comment.Substring(0, 150) + "...")
+            @Model.Comment
         </div>
 
         @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
@@ -63,7 +63,7 @@
     </div>
         
     @Html.ActionLink(
-        linkText: @RequestViewRes.Details,
+        linkText: @RequestViewRes.RequestDetails,
         actionName: Consts.Actions.Details,
         routeValues: new {id = Model.ID})
 </div>

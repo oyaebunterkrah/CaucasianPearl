@@ -1,6 +1,8 @@
 ﻿@using CaucasianPearl
 @using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
+@using CaucasianPearl.Core.UserControls
 @using Resources.Shared
 @using Resources.TopMenu
 
@@ -12,16 +14,19 @@
         <link href="@Url.Content("~/content/img/site/favicon.ico")" rel="site icon" type="image/x-icon" />
 
         @Styles.Render("~/bundles/styles")
-        @Scripts.Render("~/bundles/modernizr")
-        @Scripts.Render("~/bundles/jquery")
-
-        @Styles.Render("~/content/plugins/jqueryui/css")
-        @Scripts.Render("~/content/plugins/jqueryui/js")
         
-        <script src="@Url.Content("~/content/js/cp/main.js")" type="text/javascript" charset="windows-1251"></script>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jqueryval")
 
-        @*@RenderSection("Header")*@
+        @* jquery ui { *@
+        @Html.Raw(CssJsRegControl.Render("jqueryui/js/jquery-ui-1.9.2.custom.js", Consts.Paths.PluginsPrefix))
+        @Html.Raw(CssJsRegControl.Render("jqueryui/css/jquery-ui-1.9.2.custom.css", Consts.Paths.PluginsPrefix))
 
+        @Html.Raw(CssJsRegControl.Render("main.js", Consts.Paths.CpJsPrefixPath, "windows-1251"))
+        
+        @* язык для datepicker *@
+        @Html.Raw(CssJsRegControl.Render(string.Format("jqueryui/js/jquery.ui.datepicker-{0}.js", CultureHelper.CurrentCultureAbbr), Consts.Paths.PluginsPrefix))
     </head>
 
     <body>
@@ -38,8 +43,8 @@
                 </div>
                 <div class="float-right">
                     <section id="login">
-                        @Html.Partial(Consts.UserControlsPaths.Login)
-                        @Html.Partial(Consts.UserControlsPaths.Culture)
+                        @Html.Partial(Consts.UserControlsPaths.LoginControl)
+                        @Html.Partial(Consts.UserControlsPaths.CultureControl)
                     </section>
                     <nav>
                         <ul class="menu">
@@ -71,6 +76,12 @@
                                 @Html.ActionLink(
                                     linkText: TopMenuRes.About,
                                     actionName: Consts.Controllers.Home.Actions.About,
+                                    controllerName: Consts.Controllers.Home.Name)
+                            </li>
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: TopMenuRes.Affiche,
+                                    actionName: Consts.Controllers.Home.Actions.Affiche,
                                     controllerName: Consts.Controllers.Home.Name)
                             </li>
                         </ul>
@@ -105,6 +116,12 @@
                                     actionName: Consts.Controllers.Home.Actions.Contact,
                                     controllerName: Consts.Controllers.Home.Name)
                             </li>
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: TopMenuRes.SiteSettings,
+                                    actionName: Consts.Actions.Index,
+                                    controllerName: Consts.Controllers.SiteSettings.Name)
+                            </li>
                             @* TODO: убрать *@
                             @*@if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager)))
                             {*@
@@ -121,10 +138,20 @@
             </div>
         </header>
         <div id="body">
-            @RenderSection("featured", required: false)
+            @* social share *@
+            @Html.Partial(Consts.UserControlsPaths.SocialShareControl)
+            
+            @HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()
+            @HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()
+            @ViewContext.RouteData.Values["controller"]
+            @ViewContext.RouteData.Values["action"]
+
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
+
+            <div class="overlay"></div>
+            <div class="loading"></div>
         </div>
         <footer>
             <div class="content-wrapper">

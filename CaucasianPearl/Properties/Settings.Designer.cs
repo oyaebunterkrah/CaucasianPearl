@@ -13,7 +13,7 @@ namespace CaucasianPearl.Properties {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
@@ -52,7 +52,7 @@ namespace CaucasianPearl.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("^.*www\\.bongiozzo\\.ru.*$")]
+        [global::System.Configuration.DefaultSettingValueAttribute("^.*www\\.caucasian-pearl\\.ru.*$")]
         public string FooterToReplace {
             get {
                 return ((string)(this["FooterToReplace"]));
@@ -92,6 +92,24 @@ namespace CaucasianPearl.Properties {
         public string FlickrCacheLocation {
             get {
                 return ((string)(this["FlickrCacheLocation"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6Lf6puYSAAAAAPUewJm1qQRIF5zvGmQA1xJBGYqk")]
+        public string ReCaptchaPublicKey {
+            get {
+                return ((string)(this["ReCaptchaPublicKey"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6Lf6puYSAAAAAAj3RryDMaTsMfO6cW-cQWvOxn02")]
+        public string ReCaptchaPrivateKey {
+            get {
+                return ((string)(this["ReCaptchaPrivateKey"]));
             }
         }
     }

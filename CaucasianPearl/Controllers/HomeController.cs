@@ -1,9 +1,10 @@
 ﻿using System.Text;
 using System.Web.Mvc;
 using CaucasianPearl.Core.Constants;
-using CaucasianPearl.Core.Filters;
+using CaucasianPearl.Core.EntityServices.Interface;
+using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Models;
-using Contact = CaucasianPearl.Models.Contact;
+using CaucasianPearl.Models.EDM;
 
 namespace CaucasianPearl.Controllers
 {
@@ -12,14 +13,36 @@ namespace CaucasianPearl.Controllers
         //[LocalizedCache(Duration = Consts.OutputCacheDuration)]
         public ActionResult Index()
         {
-            var wrapperModel = new WrapperModel();
+            ViewBag.HomePageMode = SiteSettingsHelper.GetSiteSettingTyped(Consts.SiteSettings.HomePageMode, SiteSettingsHelper.HomePageMode.Events);
 
-            return View(wrapperModel);
+            if (ViewBag.HomePageMode == SiteSettingsHelper.HomePageMode.Events)
+            {
+                var events = ServiceHelper<IEventService<Event>>.GetService().GetLastEventsInfo(Consts.Controllers.Event.EventCount);
+
+                return View(events);
+            }
+
+            ViewBag.CoverImagePath = Url.Content(Consts.Paths.CoversFolder + SiteSettingsHelper.GetSiteSettingValueAsString(Consts.SiteSettings.CoverImageName));
+            
+            return View();
         }
-
+        
         //[LocalizedCacheAttribute(Duration = Consts.OutputCacheDuration)]
         public ActionResult About()
         {
+            return View();
+        }
+
+        //[LocalizedCacheAttribute(Duration = Consts.OutputCacheDuration)]
+        public ActionResult Affiche()
+        {
+            var eventEntityService = ServiceHelper<IEventService<Event>>.GetService();
+            if (eventEntityService != null)
+            {
+                var eventsForMonth = eventEntityService.GetEventsForMonth();
+                ViewBag.EventsForMonth = JsonHelper.Serialize(eventsForMonth);
+            }
+
             return View();
         }
 
@@ -28,7 +51,6 @@ namespace CaucasianPearl.Controllers
         {
             return View();
         }
-
 
         [HttpPost]
         public ActionResult Contact(Contact model)

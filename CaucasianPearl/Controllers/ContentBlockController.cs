@@ -17,7 +17,7 @@ namespace CaucasianPearl.Controllers
         }
 
         [Inject]
-        public ILogService LogService { get; set; }
+        public new ILogService LogService { get; set; }
 
         // ¬ключаем постраничный вывод.
         protected override bool IsPageable { get { return true; } }

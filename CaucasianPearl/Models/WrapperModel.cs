@@ -13,10 +13,10 @@ namespace CaucasianPearl.Models
 
         public WrapperModel()
         {
-            var eventService = DependencyResolverHelper<IEventService<Event>>.GetService();
+            var eventService = ServiceHelper<IEventService<Event>>.GetService();
             Events = eventService.Get().Take(3);
 
-            var oneNewsService = DependencyResolverHelper<IUrlFriendlyService<OneNews>>.GetService();
+            var oneNewsService = ServiceHelper<IUrlFriendlyService<OneNews>>.GetService();
             OneNews = oneNewsService.Get().Take(3);
         }
     }

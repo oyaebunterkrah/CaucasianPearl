@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.Helpers;
+using CaucasianPearl.Core.Helpers.EntityHelpers;
 using CaucasianPearl.Models.EDM;
 
 namespace CaucasianPearl.Core.DAL.Data
@@ -28,6 +30,32 @@ namespace CaucasianPearl.Core.DAL.Data
         public string Description { get; set; }
         public DateTime? EventDate { get; set; }
         public IEnumerable<EventMediaItem> EventMedia { get; set; }
+        public string Title { get; set; }
+    }
+
+    /// <summary>
+    /// Упрощённый вариант EventItem для главной страницы.
+    /// </summary>
+    public class EventItemInfo
+    {
+        public EventItemInfo()
+        {
+
+        }
+
+        public EventItemInfo(Event @event)
+        {
+            ID = @event.ID;
+            Description = @event.Description;
+            CoverImage = EventHelper.GetCoverImage(@event);
+            EventDate = @event.EventDate.HasValue ? @event.EventDate.Value.Date : new DateTime();
+            Title = @event.Title;
+        }
+
+        public int ID { get; set; }
+        public string Description { get; set; }
+        public string CoverImage { get; set; }
+        public DateTime? EventDate { get; set; }
         public string Title { get; set; }
     }
 

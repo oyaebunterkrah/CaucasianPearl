@@ -11,21 +11,18 @@
     ViewBag.Title = SharedRes.ProjectTitle;
 }
 
-<link type="text/css" href="@Url.Content("~/content/css/cp/photos.css")" rel="stylesheet" media="all" />
+@Html.Raw(CssJsRegControl.Render("photos.css", Consts.Paths.CpCssPrefixPath))
 
 <h2>@GalleryViewRes.Photosets</h2>
 
-@if (Model.Photosets.Count == 0)
-{
+@if (Model.Photosets.Count == 0) {
     <span>@GalleryViewRes.NoPhotosetsFound</span>
 }
-else
-{
+else {
     <div class="wrapper">
         <div class="photo-content">
             <ul class="photo-area" style="height: 238px;">
-                @foreach (var photoset in Model.Photosets)
-                {
+                @foreach (var photoset in Model.Photosets) {
                     <li class="photo-item">
                         <div>
                             <span class="image-block">
@@ -52,21 +49,17 @@ else
                                 </h2>
                                 @{
                                     var i = Math.Abs(photoset.Photos.Count);
-                                    while (i >= 10)
-                                    {
+                                    while (i >= 10) {
                                         i /= 10;
                                     }
 
-                                    if (i == 1)
-                                    {
+                                    if (i == 1) {
                                         <p class="photo-count">@i фотография</p>
                                     }
-                                    else if (i > 1 && i < 5)
-                                    {
+                                    else if (i > 1 && i < 5) {
                                         <p class="photo-count">@i фотографии</p>
                                     }
-                                    else if (i >= 5 && i < 5)
-                                    {
+                                    else if (i >= 5 && i < 5) {
                                         <p class="photo-count">@i фотографий</p>
                                     }
                                 }
@@ -84,9 +77,9 @@ else
 
 <div class="paginator">
     @Html.Partial(
-        Consts.UserControlsPaths.Paginator,
+        Consts.UserControlsPaths.PaginatorControl,
         (PaginatorControl.GetLinks(
-            DependencyResolverHelper<IFlickrService>.GetService().PhotosetsCount,
+            ServiceHelper<IFlickrService>.GetService().PhotosetsCount,
             Consts.PaginatorControl.FlickrItemsPerPage,
             Consts.PaginatorControl.FlickrNumberOfVisibleLinks)
         )

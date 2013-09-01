@@ -2,44 +2,44 @@
 
 @model CaucasianPearl.Models.EDM.Feedback
 
-<div class="editor-label">
+<div class="create_or_edit_label">
     @Html.LabelFor(model => model.Name)
 </div>
-<div class="editor-field">
+<div class="create_or_edit_field">
     @Html.EditorFor(model => model.Name)
     @Html.ValidationMessageFor(model => model.Name)
 </div>
 
-<div class="editor-label">
+<div class="create_or_edit_label">
     @Html.LabelFor(model => model.City)
 </div>
-<div class="editor-field">
+<div class="create_or_edit_field">
     @Html.EditorFor(model => model.City)
     @Html.ValidationMessageFor(model => model.City)
 </div>
 
-<div class="editor-label">
+<div class="create_or_edit_label">
     @Html.LabelFor(model => model.Comment)
 </div>
-<div class="editor-field">
+<div class="create_or_edit_field">
     @Html.EditorFor(model => model.Comment)
     @Html.ValidationMessageFor(model => model.Comment)
 </div>
 
-<div class="editor-label">
+<div class="create_or_edit_label">
     @Html.LabelFor(model => model.Suggestion)
 </div>
-<div class="editor-field">
+<div class="create_or_edit_field">
     @Html.EditorFor(model => model.Suggestion)
     @Html.ValidationMessageFor(model => model.Suggestion)
 </div>
 
 @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
 {
-    <div class="editor-label">
+    <div class="create_or_edit_label">
         @Html.LabelFor(model => model.IsApproved)
     </div>
-    <div class="editor-field">
+    <div class="create_or_edit_field">
         @Html.EditorFor(model => model.IsApproved)
         @Html.ValidationMessageFor(model => model.IsApproved)
     </div>

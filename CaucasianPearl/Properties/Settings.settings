@@ -12,7 +12,7 @@
       <Value Profile="(Default)">95741085@N05</Value>
     </Setting>
     <Setting Name="FooterToReplace" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">^.*www\.bongiozzo\.ru.*$</Value>
+      <Value Profile="(Default)">^.*www\.caucasian-pearl\.ru.*$</Value>
     </Setting>
     <Setting Name="SiteURL" Type="System.String" Scope="Application">
       <Value Profile="(Default)">http://localhost:29404/</Value>
@@ -25,6 +25,12 @@
     </Setting>
     <Setting Name="FlickrCacheLocation" Type="System.String" Scope="Application">
       <Value Profile="(Default)">~/Temp/FlickerCache/</Value>
+    </Setting>
+    <Setting Name="ReCaptchaPublicKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">6Lf6puYSAAAAAPUewJm1qQRIF5zvGmQA1xJBGYqk</Value>
+    </Setting>
+    <Setting Name="ReCaptchaPrivateKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">6Lf6puYSAAAAAAj3RryDMaTsMfO6cW-cQWvOxn02</Value>
     </Setting>
   </Settings>
 </SettingsFile>

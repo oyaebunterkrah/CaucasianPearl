@@ -1,0 +1,147 @@
+2013-08-19 22:32:41.6897|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /favicon.ico
+Raw Url: /favicon.ico
+Message: The controller for path '/favicon.ico' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    â System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   â System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   â System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   â System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   â System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   â System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   â System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   â System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-08-19 22:40:12.2684|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+2013-08-19 22:43:25.0505|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/asd
+Raw Url: /request/asd
+Message: A public action method 'asd' was not found on controller 'CaucasianPearl.Controllers.RequestController'.
+Source: System.Web.Mvc
+Stack Trace:    â System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   â System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   â System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   â System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: Void HandleUnknownAction(System.String)
+2013-08-19 22:52:29.1016|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/asd
+Raw Url: /request/asd
+Message: A public action method 'asd' was not found on controller 'CaucasianPearl.Controllers.RequestController'.
+Source: System.Web.Mvc
+Stack Trace:    â System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   â System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   â System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   â System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: Void HandleUnknownAction(System.String)
+2013-08-19 22:52:50.3268|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/asd
+Raw Url: /request/asd
+Message: A public action method 'asd' was not found on controller 'CaucasianPearl.Controllers.RequestController'.
+Source: System.Web.Mvc
+Stack Trace:    â System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   â System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   â System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   â System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: Void HandleUnknownAction(System.String)
+2013-08-19 22:53:17.6014|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/asd
+Raw Url: /request/asd
+Message: A public action method 'asd' was not found on controller 'CaucasianPearl.Controllers.RequestController'.
+Source: System.Web.Mvc
+Stack Trace:    â System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   â System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   â System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   â System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: Void HandleUnknownAction(System.String)
+2013-08-19 22:53:57.3136|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/asd
+Raw Url: /request/asd
+Message: A public action method 'asd' was not found on controller 'CaucasianPearl.Controllers.RequestController'.
+Source: System.Web.Mvc
+Stack Trace:    â System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   â System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   â System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   â System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: Void HandleUnknownAction(System.String)
+2013-08-19 23:05:27.8551|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/asd
+Raw Url: /request/asd
+Message: A public action method 'asd' was not found on controller 'CaucasianPearl.Controllers.RequestController'.
+Source: System.Web.Mvc
+Stack Trace:    â System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   â System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   â System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   â System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: Void HandleUnknownAction(System.String)

@@ -9,7 +9,7 @@ namespace CaucasianPearl.App_Start
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            //routes.IgnoreRoute("content/{*pathInfo}");
+            routes.IgnoreRoute("content/{*pathInfo}");
 
             routes.MapRoute(
                 name: "Events",
@@ -69,11 +69,38 @@ namespace CaucasianPearl.App_Start
                     });
 
             routes.MapRoute(
+                name: "Affiche",
+                url: "affiche",
+                defaults: new
+                    {
+                        controller = Consts.Controllers.Home.Name,
+                        action = Consts.Controllers.Home.Actions.Affiche
+                    });
+
+            routes.MapRoute(
+                name: "About",
+                url: "about",
+                defaults: new
+                    {
+                        controller = Consts.Controllers.Home.Name,
+                        action = Consts.Controllers.Home.Actions.About
+                    });
+
+            routes.MapRoute(
                 name: "ContentBlocks",
                 url: "contentblocks",
                 defaults: new
                     {
                         controller = Consts.Controllers.ContentBlock.Name,
+                        action = Consts.Actions.Index
+                    });
+
+            routes.MapRoute(
+                name: "SiteSettings",
+                url: "sitesettings",
+                defaults: new
+                    {
+                        controller = Consts.Controllers.SiteSettings.Name,
                         action = Consts.Actions.Index
                     });
 
@@ -108,9 +135,9 @@ namespace CaucasianPearl.App_Start
                     });
 
             routes.MapRoute(
-                "Default",
-                "{controller}/{action}/{id}",
-                new
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new
                     {
                         controller = Consts.Controllers.Home.Name,
                         action = Consts.Actions.Index,

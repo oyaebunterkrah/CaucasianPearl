@@ -76,6 +76,7 @@ namespace CaucasianPearl.App_Start
             kernel.Bind<IUrlFriendlyService<OneNews>>().To<OneNewsEntityService>();
             kernel.Bind<IBaseService<Feedback>>().To<FeedbackEntityService>();
             kernel.Bind<IBaseService<Request>>().To<RequestEntityService>();
+            kernel.Bind<IBaseService<SiteSetting>>().To<SiteSettingsEntityService>();
             kernel.Bind<IUrlFriendlyService<Profile>>().To<UserProfileEntityService>();
             kernel.Bind<IOrderedService<ContentBlock>>().To<ContentBlockEntityService>();
 
@@ -88,6 +89,7 @@ namespace CaucasianPearl.App_Start
             kernel.Bind<IRepository<OneNews>>().To<Repository<OneNews>>();
             kernel.Bind<IRepository<Feedback>>().To<Repository<Feedback>>();
             kernel.Bind<IRepository<Request>>().To<Repository<Request>>();
+            kernel.Bind<IRepository<SiteSetting>>().To<Repository<SiteSetting>>();
             kernel.Bind<IRepository<Profile>>().To<Repository<Profile>>();
             kernel.Bind<IRepository<ContentBlock>>().To<Repository<ContentBlock>>();
             

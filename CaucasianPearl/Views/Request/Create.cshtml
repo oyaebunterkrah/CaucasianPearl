@@ -10,7 +10,7 @@
 
 <h2>@RequestViewRes.AddingRequest</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(Consts.Actions.Create, Consts.Controllers.Request.Name, FormMethod.Post, new { id = "formCreateRequest" }))
 {
     @Html.ValidationSummary(true)
     <fieldset>

@@ -22,13 +22,12 @@
         actionName: Consts.Actions.Index,
         controllerName: Consts.Controllers.Home.Name,
         routeValues: null,
-        htmlAttributes: new { @class = "link" }
-         )
+        htmlAttributes: new { @class = "link" })
     @Consts.BreadcrumbsSeparator
     @FeedbackViewRes.Feedback
 </p>
 
-@Scripts.Render("~/bundles/jqueryval")
+@*@Scripts.Render("~/bundles/jqueryval")*@
 
 <script type="text/javascript">
     var feedbackEntity = {
@@ -75,7 +74,7 @@
         @using (Ajax.BeginForm(
             Consts.Actions.Edit,
             Consts.Controllers.Feedback.Name,
-            new {id = feedback.ID},
+            new { id = feedback.ID },
             new AjaxOptions
                 {
                     HttpMethod = "Post",
@@ -177,9 +176,9 @@
 
 <div class="paginator">
     @Html.Partial(
-        Consts.UserControlsPaths.Paginator,
+        Consts.UserControlsPaths.PaginatorControl,
         (PaginatorControl.GetLinks(
-            DependencyResolverHelper<IBaseService<Feedback>>.GetService().Count(Request.QueryString),
+            ServiceHelper<IBaseService<Feedback>>.GetService().Count(Request.QueryString),
             Consts.PaginatorControl.FeedbackItemsPerPage,
             Consts.PaginatorControl.FeedbackNumberOfVisibleLinks)))
 </div>

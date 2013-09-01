@@ -3,68 +3,68 @@
 
 @model Profile
 
-<div class="editor-label">
+<div class="create_or_edit_label">
     @Html.LabelFor(model => model.FirstName)
 </div>
-<div class="editor-field">
+<div class="create_or_edit_field">
     @Html.EditorFor(model => model.FirstName)
     @Html.ValidationMessageFor(model => model.FirstName)
 </div>
 
-<div class="editor-label">
+<div class="create_or_edit_label">
     @Html.LabelFor(model => model.LastName)
 </div>
-<div class="editor-field">
+<div class="create_or_edit_field">
     @Html.EditorFor(model => model.LastName)
     @Html.ValidationMessageFor(model => model.LastName)
 </div>
 
 @if (WebSecurity.IsAuthenticated && Roles.IsUserInRole(Consts.Roles.Admin))
 {
-    <div class="editor-label">
+    <div class="create_or_edit_label">
         @Html.LabelFor(model => model.UserName)
     </div>
-    <div class="editor-field">
+    <div class="create_or_edit_field">
         @Html.EditorFor(model => model.UserName)
         @Html.ValidationMessageFor(model => model.UserName)
     </div>
 
-    <div class="editor-label">
+    <div class="create_or_edit_label">
         @Html.LabelFor(model => model.Email)
     </div>
-    <div class="editor-field">
+    <div class="create_or_edit_field">
         @Html.EditorFor(model => model.Email)
         @Html.ValidationMessageFor(model => model.Email)
     </div>
 
-    <div class="editor-label">
+    <div class="create_or_edit_label">
         @Html.LabelFor(model => model.Group)
     </div>
-    <div class="editor-field">
+    <div class="create_or_edit_field">
         @Html.EditorFor(model => model.Group)
         @Html.ValidationMessageFor(model => model.Group)
     </div>
 
-    <div class="editor-label">
+    <div class="create_or_edit_label">
         @Html.LabelFor(model => model.ImageExt)
     </div>
-    <div class="editor-field">
+    <div class="create_or_edit_field">
         @Html.EditorFor(model => model.ImageExt)
         @Html.ValidationMessageFor(model => model.ImageExt)
     </div>
 
-    <div class="editor-label">
+    <div class="create_or_edit_label">
         @Html.LabelFor(model => model.ShortName)
     </div>
-    <div class="editor-field">
+    <div class="create_or_edit_field">
         @Html.EditorFor(model => model.ShortName)
         @Html.ValidationMessageFor(model => model.ShortName)
     </div>
 
-    <div class="editor-label">
+    <div class="create_or_edit_label">
         @Html.LabelFor(model => model.Sequence)
     </div>
-    <div class="editor-field">
+    <div class="create_or_edit_field">
         @Html.EditorFor(model => model.Sequence)
         @Html.ValidationMessageFor(model => model.Sequence)
     </div>

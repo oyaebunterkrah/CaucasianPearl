@@ -1,11 +1,24 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using System.Web.UI.WebControls;
+
+using Ninject;
+using WebMatrix.WebData;
+
 using CaucasianPearl.Controllers.Interface;
 using CaucasianPearl.Core;
 using CaucasianPearl.Core.Constants;
+using CaucasianPearl.Core.DAL.Data;
 using CaucasianPearl.Core.DAL.Interface;
 using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Filters;
-using WebMatrix.WebData;
+using CaucasianPearl.Core.Helpers;
+using CaucasianPearl.Core.Services.LoggingService;
+using CaucasianPearl.Properties;
+using Resources;
+using Resources.Shared;
 
 namespace CaucasianPearl.Controllers.Abstract
 {
@@ -18,19 +31,22 @@ namespace CaucasianPearl.Controllers.Abstract
         where T : class, IBase, new()
         where S : IBaseService<T>
     {
-        // Объект для для работы с данными.
-        protected readonly S _service;
-
-        // Свойство, определяющее, работает ли в списке объектов постраничный вывод.
-        // Если постраничный вывод нужен, то в классе-потомке этому свойству устанавливается значение TRUE.
-        protected virtual bool IsPageable { get { return false; } }
-
         // Параметризованный конструктор.
         protected BaseController(S service)
         {
             _service = service;
         }
 
+        // Сервис для для работы с данными.
+        protected readonly S _service;
+
+        // Свойство, определяющее, работает ли в списке объектов постраничный вывод.
+        // Если постраничный вывод нужен, то в классе-потомке этому свойству устанавливается значение TRUE.
+        protected virtual bool IsPageable { get { return false; } }
+
+        [Inject]
+        public ILogService LogService { get; set; }
+        
         #region Actions
 
         // Получение списка объектов.
@@ -79,6 +95,70 @@ namespace CaucasianPearl.Controllers.Abstract
             return View();
         }
 
+        // Обработка формы создания объекта без редиректа.
+        [HttpPost]
+        [Authorize(Roles = Consts.Roles.AdminContentManager)]
+        public virtual void CreateExpress(T obj)
+        {
+            if (ModelState.IsValid)
+                _service.Create(obj);
+        }
+
+        [Authorize(Roles = Consts.Roles.AdminContentManager)]
+        public virtual ActionResult CreatePartial()
+        {
+            return PartialView();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = Consts.Roles.AdminContentManager)]
+        public virtual ActionResult CreatePartial(T obj)
+        {
+            try
+            {
+                CreateExpress(obj);
+
+                return Json(true);
+            }
+            catch (Exception exception)
+            {
+                LogService.Error(exception);
+
+                return Json(false);
+            }
+        }
+
+        [HttpPost]
+        [Authorize(Roles = Consts.Roles.AdminContentManager)]
+        public virtual ActionResult CreatePartialWithCaptcha(T obj, bool captchaValid, string captchaErrorMessage)
+        {
+            if (!captchaValid)
+                ModelState.AddModelError("captcha", SharedErrorRes.WrongCaptchaCode);
+
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return Json(new CaptchaAjaxResultData
+                    {
+                        success = false,
+                        errorMessage = string.Join("<br />", ModelState.Values.SelectMany(v => v.Errors.Select(e => e.ErrorMessage))),
+                        captchaIsValid = captchaValid
+                    });
+                }
+
+                CreateExpress(obj);
+
+                return Json(new AjaxResultData { success = true });
+            }
+            catch (Exception exception)
+            {
+                LogService.Error(exception);
+
+                return Json(new AjaxResultData { success = false, errorMessage = SharedErrorRes.UnexpectedError });
+            }
+        }
+
         // Открытие формы редактирование объекта.
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
         public virtual ActionResult Edit(int id)
@@ -88,8 +168,9 @@ namespace CaucasianPearl.Controllers.Abstract
             return model == null ? View(Consts.Controllers.Error.Views.NotFound) : View(model);
         }
 
-        // Обработка формы редактирования объекта
+        // Обработка формы редактирования объекта.
         [HttpPost]
+        [Authorize(Roles = Consts.Roles.AdminContentManager)]
         public virtual ActionResult Edit(int id, T obj)
         {
             if (ModelState.IsValid)
@@ -99,6 +180,7 @@ namespace CaucasianPearl.Controllers.Abstract
                     var old = _service.Get(id);
                     UpdateModel(old);
                     ChangeValuesOnEdit(old);
+
                     _service.Update(old);
 
                     return OnEdited(obj);
@@ -106,6 +188,26 @@ namespace CaucasianPearl.Controllers.Abstract
             }
 
             return View(obj);
+        }
+
+        // Обработка формы редактирования объекта без редиректа.
+        [HttpPost]
+        [Authorize(Roles = Consts.Roles.AdminContentManager)]
+        public virtual void EditExpress(int id, T obj)
+        {
+            if (ModelState.IsValid)
+                if (TryUpdateModel(obj))
+                {
+                    var old = _service.Get(id);
+
+                    if (old != null)
+                    {
+                        UpdateModel(old);
+                        ChangeValuesOnEdit(old);
+
+                        _service.Update(old);
+                    }
+                }
         }
 
         // Открытие страницы с подтверждением удаления объекта.
@@ -121,6 +223,7 @@ namespace CaucasianPearl.Controllers.Abstract
 
         // Удаление объекта после подтверждения.
         [HttpPost]
+        [Authorize(Roles = Consts.Roles.AdminContentManager)]
         public virtual ActionResult Delete(int id, FormCollection formCollection)
         {
             var model = _service.Get(id);
@@ -133,9 +236,21 @@ namespace CaucasianPearl.Controllers.Abstract
             var onDeleted = OnDeleted(model);
 
             OnDelete(model);
+
             _service.Delete(model);
 
             return onDeleted;
+        }
+
+        // Удаление объекта после подтверждения без редиректа.
+        [HttpPost]
+        [Authorize(Roles = Consts.Roles.AdminContentManager)]
+        public virtual void DeleteExpress(int id, FormCollection formCollection)
+        {
+            var model = _service.Get(id);
+
+            if (model != null)
+                _service.Delete(model);
         }
 
         // Удаление объекта без перенаправления на страницу подтверждения.
@@ -143,15 +258,23 @@ namespace CaucasianPearl.Controllers.Abstract
         public virtual ActionResult DeleteExpress(int id)
         {
             var model = _service.Get(id);
+
             if (model == null)
                 return View(Consts.Controllers.Error.Views.NotFound);
 
             var onDeleted = OnDeleted(model);
 
             OnDelete(model);
+
             _service.Delete(model);
 
             return onDeleted;
+        }
+
+        // our custom server validator's validation method
+        public JsonResult RecaptchaValidate(string challengeValue, string responseValue)
+        {
+            return Json(ReCaptchaValidation.Validate(challengeValue, responseValue));
         }
 
         #endregion

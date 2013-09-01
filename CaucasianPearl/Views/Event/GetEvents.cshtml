@@ -1,6 +1,7 @@
 ﻿@using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.EntityServices.Interface
 @using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Core.UserControls
 @using CaucasianPearl.Models.EDM
 @using CaucasianPearl.Core.DAL.Data
 @using Resources.Event
@@ -8,8 +9,8 @@
 
 @model IEnumerable<EventItem>
 
-@Styles.Render("~/content/plugins/orbit/css")
-@Scripts.Render("~/content/plugins/orbit/js")
+@Html.Raw(CssJsRegControl.Render("orbit/jquery.orbit-1.2.3.js", Consts.Paths.PluginsPrefix))
+@Html.Raw(CssJsRegControl.Render("orbit/orbit-1.2.3.css", Consts.Paths.PluginsPrefix))
 
 <!--[if IE]>
 		<style type="text/css">
@@ -17,6 +18,7 @@
 			div.caption { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);zoom: 1; }
 	</style>
 <![endif]-->
+
 <script type="text/javascript">
     $(document).ready(function () {
         jQuery.noConflict();
@@ -54,45 +56,43 @@
 
 @* медиа элементы текущего события *@
 @if (Model != null) {
-    var firstEvent = Model.FirstOrDefault();
-    if (firstEvent != null && firstEvent.EventMedia != null && firstEvent.EventMedia.Any()) {
+    EventItem currentEvent = ViewBag.CurrentEventInfo;
+    if (currentEvent != null && currentEvent.EventMedia != null && currentEvent.EventMedia.Any()) {
         <div class="container">
+            @* event media *@
             <div id="featured">
-                @foreach (var eventMediaItem in firstEvent.EventMedia) {
+                @foreach (var eventMediaItem in currentEvent.EventMedia) {
                     if (eventMediaItem.MediaType == "photos") {
                         <img
                             src="@eventMediaItem.LargeUrl"
                             ondblclick="openInNewTab('@eventMediaItem.FlickrUrl')"
-                            data-caption="#media_item_info_@eventMediaItem.ID" />
+                            data-caption="#mediaItemInfo_@eventMediaItem.ID" />
                     }
                     else {
-                        <embed
-                            src="@eventMediaItem.VideoUrl"
-                            type="application/x-shockwave-flash"
-                            width="940"
-                            height="350"
-                            allowfullscreen="true"
-                            flashvars="flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false"
-                            data-caption="#media_item_info_@eventMediaItem.ID">
+                        <div class="video">
+                            <embed
+                                src="@eventMediaItem.VideoUrl"
+                                type="application/x-shockwave-flash"
+                                width="940"
+                                height="350"
+                                allowfullscreen="true"
+                                flashvars="flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false"
+                                data-caption="#mediaItemInfo_@eventMediaItem.ID">
+                        </div>
                     }
-
                 }
             </div>
 
             @* description/content *@
             <div class="event_media_items_data">
-                @foreach (var eventMediaItem in firstEvent.EventMedia) {
+                @foreach (var eventMediaItem in currentEvent.EventMedia) {
                     if (!string.IsNullOrWhiteSpace(eventMediaItem.Description) || !string.IsNullOrWhiteSpace(eventMediaItem.Content)) {
-                        <div id="media_item_info_@eventMediaItem.ID" class="orbit-caption">
+                        <div id="mediaItemInfo_@eventMediaItem.ID" class="orbit-caption">
                             @if (!string.IsNullOrWhiteSpace(eventMediaItem.Description)) {
                                 <div class="description">@Html.Raw(eventMediaItem.Description)</div>
                             }
-                            @if (!string.IsNullOrWhiteSpace(eventMediaItem.Content)) {
-                                <div class="content">@Html.Raw(eventMediaItem.Content)</div>
-                            }
                         </div>
                     }
-
                 }
             </div>
         </div>
@@ -105,42 +105,37 @@
     {
         <div class="event_item float_left">
             <div class="image float_left">
-                <a data-eventid="@eventItem.ID" onclick="setEventMedia($(this)); return false;">
-                    <img src="@(DependencyResolverHelper<IEventService<Event>>.GetService().GetPrimaryPhoto(eventItem))" />
+                <a class="event_link" data-eventid="@eventItem.ID" onclick="setEventMedia($(this))">
+                    <img src="@(ServiceHelper<IEventService<Event>>.GetService().GetPrimaryPhoto(eventItem))" />
                 </a>
             </div>
             <div class="properties float_left">
                 <div class="title property">@eventItem.Title</div>
-                <div class="date property">@eventItem.EventDate.Value.ToShortDateString()</div>
+                <div class="date property">@(eventItem.EventDate != null ? eventItem.EventDate.Value.ToShortDateString() : string.Empty)</div>
                 <div class="description property">@eventItem.Description</div>
-                <div class="content property">@eventItem.Content</div>
             </div>
             
             @{ // скрытые медиа файлы события
-        if (eventItem.EventMedia != null && eventItem.EventMedia.Any())
-        {
+            if (eventItem.EventMedia != null && eventItem.EventMedia.Any()) {
                 <div class="event_media_items">
-                    @foreach (var eventMediaItem in eventItem.EventMedia)
-                    {
-                        if (eventMediaItem.MediaType == "photos")
-                        {
+                    @foreach (var eventMediaItem in eventItem.EventMedia) {
+                        if (eventMediaItem.MediaType == "photos") {
                             <img src="@eventMediaItem.LargeUrl"
                                 data-eventid="@eventItem.ID"
                                 data-flickrurl="@eventMediaItem.FlickrUrl"
                                 data-description="@eventMediaItem.Description"
                                 data-content="@eventMediaItem.Content"
-                                data-caption="#media_item_info_@eventMediaItem.ID"
+                                data-caption="#mediaItemInfo_@eventMediaItem.ID"
                                 ondblclick="openInNewTab('@eventMediaItem.FlickrUrl')" />
                         }
-                        else
-                        {
+                        else {
                             <div class="video">
                                 <embed src="@eventMediaItem.VideoUrl&amp;flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false" type="application/x-shockwave-flash" width="940" height="350" scrolling="no" frameBorder="0" allowfullscreen="true"
                                     data-eventid="@eventItem.ID"
                                     data-flickrurl="@eventMediaItem.FlickrUrl"
                                     data-description="@eventMediaItem.Description"
                                     data-content="@eventMediaItem.Content"
-                                    data-caption="#media_item_info_@eventMediaItem.ID"
+                                    data-caption="#mediaItemInfo_@eventMediaItem.ID"
                                     ondblclick="openInNewTab('@eventMediaItem.FlickrUrl')" />
                             </div>
                         }
@@ -149,18 +144,11 @@
             
                 @* описание/контент медиа файлов события *@
                 <div class="event_media_items_data">
-                    @foreach (var eventMediaItem in eventItem.EventMedia)
-                    {
-                        if (!string.IsNullOrWhiteSpace(eventMediaItem.Description) || !string.IsNullOrWhiteSpace(eventMediaItem.Content))
-                        {
-                            <div id="media_item_info_@eventMediaItem.ID" class="orbit-caption">
-                                @if (!string.IsNullOrWhiteSpace(eventMediaItem.Description))
-                                {
+                    @foreach (var eventMediaItem in eventItem.EventMedia) {
+                        if (!string.IsNullOrWhiteSpace(eventMediaItem.Description) || !string.IsNullOrWhiteSpace(eventMediaItem.Content)) {
+                            <div id="thumbMediaItemInfo_@eventMediaItem.ID" class="orbit-caption">
+                                @if (!string.IsNullOrWhiteSpace(eventMediaItem.Description)) {
                                     <div class="description">@Html.Raw(eventMediaItem.Description)</div>   
-                                }
-                                @if (!string.IsNullOrWhiteSpace(eventMediaItem.Content))
-                                {
-                                    <div class="content">@Html.Raw(eventMediaItem.Content)</div>
                                 }
                             </div>
                         }
@@ -177,35 +165,34 @@
         var img = self.find('img');
         var eventItem = img.parents('.event_item');
 
-        var event_media_items = eventItem.find('.event_media_items').children();
-        var event_media_itemsInfoBlocks = eventItem.find('.event_media_items_data');
+        var eventMediaItems = eventItem.find('.event_media_items').children();
+        var eventMediaItemsInfoBlocks = eventItem.find('.event_media_items_data');
         var featured =
             $('<div/>')
                 .attr({ id: 'featured' })
-                .html(event_media_items);
+                .html(eventMediaItems);
         $('.container')
             .empty()
             .append(featured)
-            .append(event_media_itemsInfoBlocks);
+            .append(eventMediaItemsInfoBlocks);
         
         $('#featured img, #featured div.video').first().hide().fadeIn().show();
         setSlider();
         
-        getLastEvents(self.data(consts.ids.eventid));
+        getNeighborEvents(self.data(consts.ids.eventid));
     };
 
-    getLastEvents = function (eventId) {
+    getNeighborEvents = function (eventId) {
         var options = {
-            url: '/event/getlasteventsbyid',
+            url: '/event/getneighborevents',
             type: 'POST',
             data: { eventId: eventId },
-            success: function (eventsJson) { onGetLastEventsSuccess(eventsJson); }
+            success: function (events) { onGetNeighborEventsSuccess(events); }
         };
-        $.ajaxRequest(options);
+        ajaxRequest(options);
     };
     
-    onGetLastEventsSuccess = function (eventsJson) {
-        var events = $.parseJSON(eventsJson);
+    onGetNeighborEventsSuccess = function (events) {
         if (!events)
             return;
 
@@ -231,7 +218,7 @@
             eventItemControl.find('.content').text(eventItem.Content);
 
             // div с медиа файлами события
-            var event_media_itemsControl = eventItemControl.find('.event_media_items');
+            var eventMediaItemsControl = eventItemControl.find('.event_media_items');
 
             // медиа файлы события
             $.each(eventItem.EventMedia, function (k, eventMediaItem) {
@@ -247,7 +234,7 @@
                     flickrurl: eventMediaItem.FlickrUrl,
                     description: eventMediaItem.Description,
                     content: eventMediaItem.Content,
-                    caption: '#media_item_info_{0}'.f(eventMediaItem.ID)
+                    caption: '#mediaItemInfo_{0}'.f(eventMediaItem.ID)
                 });
 
                 eventMediaItemControl
@@ -264,32 +251,32 @@
                 if (eventMediaItem.MediaType != 'photos')
                     eventMediaItemControl = $('<div class="video"></div>').append($(eventMediaItemControl));
 
-                event_media_itemsControl.append(eventMediaItemControl);
+                eventMediaItemsControl.append(eventMediaItemControl);
             });
 
             // div с описанием/контентом для медиа файлов
-            var event_media_itemsInfosControl = eventItemControl.find('.event_media_items_data');
+            var eventMediaItemsInfosControl = eventItemControl.find('.event_media_items_data');
 
             $.each(eventItem.EventMedia, function (k, eventMediaItem) {
                 if (eventMediaItem.Description != '' || eventMediaItem.Content != '') {
-                    var eventmedia_item_infoControl =
+                    var eventmediaItemInfoControl =
                     $('.event_media_item_info_template')
                         .find('.orbit-caption')
                         .clone();
 
-                    eventmedia_item_infoControl.attr({ id: 'media_item_info_{0}'.f(eventMediaItem.ID) });
+                    eventmediaItemInfoControl.attr({ id: 'thumbMediaItemInfo_{0}'.f(eventMediaItem.ID) });
 
-                    eventmedia_item_infoControl.find('.description').html(eventMediaItem.Description);
-                    eventmedia_item_infoControl.find('.content').html(eventMediaItem.Content);
+                    eventmediaItemInfoControl.find('.description').html(eventMediaItem.Description);
+                    eventmediaItemInfoControl.find('.content').html(eventMediaItem.Content);
 
-                    event_media_itemsInfosControl.append(eventmedia_item_infoControl);
+                    eventMediaItemsInfosControl.append(eventmediaItemInfoControl);
                 }
             });
 
             eventItems.push(eventItemControl);
         });
 
-        $('#events .event_item').fadeOut(200, function () { $(this).remove() });
+        $('#events .event_item').fadeOut(200, function () { $(this).remove(); });
 
         setTimeout(function () {
             $.each(eventItems, function (index) {
@@ -306,15 +293,15 @@
 @* шаблон - событие *@
 <div class="event_item_template float_left">
 	<div class="image float_left">
-		<a data-eventid="" onclick="setEventMedia($(this));">
-			<img src="#" />
+		<a class="event_link" data-eventid="" onclick="setEventMedia($(this))">
+            <img src="~/content/img/site/1x1.png" />
 		</a>
 	</div>
 	<div class="properties float_left">
 		<div class="title property"></div>
 		<div class="date property"></div>
 		<div class="description property"></div>
-		<div class="content property"></div>
+		@*<div class="content property"></div>*@
 	</div>
 	<div class="event_media_items"></div>
 	<div class="event_media_items_data"></div>

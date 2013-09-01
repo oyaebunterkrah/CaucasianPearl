@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Script.Serialization;
-using CaucasianPearl.Controllers;
 using CaucasianPearl.Core.Services.LoggingService;
 using Newtonsoft.Json;
-using Ninject;
 
 namespace CaucasianPearl.Core.Helpers
 {
@@ -14,12 +9,22 @@ namespace CaucasianPearl.Core.Helpers
     {
         private static ILogService LogService
         {
-            get { return DependencyResolverHelper<ILogService>.GetService(); }
+            get { return ServiceHelper<ILogService>.GetService(); }
+        }
+
+        public static dynamic Encode(object jsonObj)
+        {
+            return System.Web.Helpers.Json.Encode(jsonObj);
+        }
+
+        public static dynamic Decode(string json)
+        {
+            return System.Web.Helpers.Json.Decode(json);
         }
 
         public static string Serialize(object jsonObj)
         {
-            return JsonConvert.SerializeObject(jsonObj, Formatting.None, new JsonSerializerSettings()
+            return JsonConvert.SerializeObject(jsonObj, Formatting.None, new JsonSerializerSettings
                 {
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                 });

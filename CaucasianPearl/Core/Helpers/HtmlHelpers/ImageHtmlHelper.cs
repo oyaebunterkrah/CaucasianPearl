@@ -25,6 +25,7 @@ namespace CaucasianPearl.Core.Helpers.HtmlHelpers
             // то уменьшаем её пропорционально до максимального размера.
             if ((maxHeight == 0 || maxHeight >= image.Height) && (maxWidth == 0 || maxWidth >= image.Width))
                 return image;
+
             if (maxHeight == 0 && maxWidth > 0)
             {
                 destWidth = maxWidth;

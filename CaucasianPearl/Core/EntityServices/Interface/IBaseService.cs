@@ -3,48 +3,85 @@ using System.Collections.Generic;
 using System.Linq;
 using CaucasianPearl.Core.DAL.Interface;
 using System.Collections.Specialized;
+using CaucasianPearl.Core.EntityServices.Abstract;
 
 namespace CaucasianPearl.Core.EntityServices.Interface
 {
     public interface IBaseService<T> where T : class, IBase, new()
     {
-        // Получение всех записей из таблицы БД.
+        /// <summary>
+        /// Получение всех записей из таблицы БД.
+        /// </summary>
         IQueryable<T> Get();
 
-        // Получение одной записи с заданным ID.
+        /// <summary>
+        /// Получение одной записи с заданным ID.
+        /// </summary>
         T Get(int id);
 
-        // Получение записей по условию.
+        /// <summary>
+        /// Получение списка записей по условию.
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
         List<T> Get(Func<T, bool> condition);
 
-        // Получение выбранных записей.
+        /// <summary>
+        /// Получение одной записи по условию.
+        /// </summary>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        T GetFirstByCondition(Func<T, bool> condition);
+
+        /// <summary>
+        /// Получение записей по условию.
+        /// </summary>
         IQueryable<T> Get(NameValueCollection filter);
 
-        // Получение выбранных записей Pageble.
+        /// <summary>
+        /// Получение выбранных записей Pageble.
+        /// </summary>
         IQueryable<T> Get(bool isPageable);
 
-        // Получение количества всех записей.
+        /// <summary>
+        /// Получение количества всех записей.
+        /// </summary>
         int Count();
 
-        // Получение количества выбранных записей.
+        /// <summary>
+        /// Получение количества выбранных записей по условию.
+        /// </summary>
         int Count(NameValueCollection filter);
 
-        // Получение нескольких записей.
-        // Параметр skip - сколько первых записей пропустить, параметр take - сколько записей получить.
+        /// <summary>
+        /// Получение нескольких записей.
+        /// Параметр skip - сколько первых записей пропустить, параметр take - сколько записей получить.
+        /// </summary>
         IQueryable<T> Get(int skip, int take);
 
-        // Получение нескольких выбранных записей.
+        /// <summary>
+        /// Получение нескольких выбранных записей.
+        /// </summary>
         IQueryable<T> Get(NameValueCollection filter, int skip, int take);
 
-        // Добавление записи в таблицу.
+        /// <summary>
+        /// Создание записи в таблице.
+        /// </summary>
         void Create(T obj);
 
-        // Редактирование записи таблицы.
+        /// <summary>
+        /// Редактирование записи таблицы.
+        /// </summary>
         void Update(T obj);
 
-        // Удаление записи из таблицы.
+        /// <summary>
+        /// Удаление записи из таблицы.
+        /// </summary>
         void Delete(T obj);
-        void Delete(int id);
 
+        /// <summary>
+        /// Удаление записи из таблицы по его ID.
+        /// </summary>
+        void Delete(int id);
     }
 }

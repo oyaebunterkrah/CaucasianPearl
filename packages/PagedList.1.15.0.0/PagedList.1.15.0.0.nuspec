@@ -10,9 +10,6 @@
     <projectUrl>http://github.com/TroyGoode/PagedList</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>PagedList makes it easier for .Net developers to write paging code. It allows you to take any IEnumerable(T) and by specifying the page size and desired page index, select only a subset of that list. PagedList also provides properties that are useful when building UI paging controls.</description>
-    <releaseNotes />
-    <copyright />
-    <language />
     <tags>paging pager page infinitescroll ajax mvc</tags>
   </metadata>
 </package>
