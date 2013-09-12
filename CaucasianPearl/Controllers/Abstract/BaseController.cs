@@ -18,7 +18,6 @@ using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Services.LoggingService;
 using CaucasianPearl.Properties;
 using Resources;
-using Resources.Shared;
 
 namespace CaucasianPearl.Controllers.Abstract
 {
@@ -87,6 +86,8 @@ namespace CaucasianPearl.Controllers.Abstract
         {
             if (ModelState.IsValid)
             {
+                ModifyValuesOnCreate(obj);
+
                 _service.Create(obj);
 
                 return OnCreated(obj);
@@ -101,7 +102,11 @@ namespace CaucasianPearl.Controllers.Abstract
         public virtual void CreateExpress(T obj)
         {
             if (ModelState.IsValid)
+            {
+                ModifyValuesOnCreate(obj);
+
                 _service.Create(obj);
+            }
         }
 
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
@@ -132,8 +137,9 @@ namespace CaucasianPearl.Controllers.Abstract
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
         public virtual ActionResult CreatePartialWithCaptcha(T obj, bool captchaValid, string captchaErrorMessage)
         {
-            if (!captchaValid)
-                ModelState.AddModelError("captcha", SharedErrorRes.WrongCaptchaCode);
+            if (!WebSecurity.IsAuthenticated)
+                if (!captchaValid)
+                    ModelState.AddModelError("captcha", ErrorRes.WrongCaptchaCode);
 
             try
             {
@@ -155,7 +161,7 @@ namespace CaucasianPearl.Controllers.Abstract
             {
                 LogService.Error(exception);
 
-                return Json(new AjaxResultData { success = false, errorMessage = SharedErrorRes.UnexpectedError });
+                return Json(new AjaxResultData { success = false, errorMessage = ErrorRes.UnexpectedError });
             }
         }
 
@@ -179,7 +185,7 @@ namespace CaucasianPearl.Controllers.Abstract
                 {
                     var old = _service.Get(id);
                     UpdateModel(old);
-                    ChangeValuesOnEdit(old);
+                    ModifyValuesOnEdit(old);
 
                     _service.Update(old);
 
@@ -203,7 +209,7 @@ namespace CaucasianPearl.Controllers.Abstract
                     if (old != null)
                     {
                         UpdateModel(old);
-                        ChangeValuesOnEdit(old);
+                        ModifyValuesOnEdit(old);
 
                         _service.Update(old);
                     }
@@ -314,15 +320,15 @@ namespace CaucasianPearl.Controllers.Abstract
         }
 
         // Автоматическое добавление свойств объекта, не получаемых с формы создания объекта.
-        protected virtual void AddValuesOnCreate(T model) { }
+        protected virtual void ModifyValuesOnCreate(T model) { }
 
         // Изменение значений, полученных с формы создания/редактирования.
-        protected virtual void ChangeValuesOnEdit(T model) { }
+        protected virtual void ModifyValuesOnEdit(T model) { }
 
         // Изменение значений перед отображением.
         protected virtual void ModifyValuesOnDetails(T model) { }
 
-        // Действия при удалении объекта
+        // Действия перед удалением объекта.
         protected virtual void OnDelete(T model) { }
 
         #endregion

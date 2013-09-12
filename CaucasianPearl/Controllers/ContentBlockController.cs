@@ -33,9 +33,9 @@ namespace CaucasianPearl.Controllers
         }
 
         // Кодируем Html-символы перед сохранением.
-        protected override void ChangeValuesOnEdit(ContentBlock contentBlock)
+        protected override void ModifyValuesOnEdit(ContentBlock contentBlock)
         {
-            base.ChangeValuesOnEdit(contentBlock);
+            base.ModifyValuesOnEdit(contentBlock);
 
             contentBlock.Content = HttpUtility.HtmlEncode(contentBlock.Content);
         }

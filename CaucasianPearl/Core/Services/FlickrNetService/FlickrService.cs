@@ -5,13 +5,15 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Hosting;
+
+using FlickrNet;
+using Ninject;
+
 using CaucasianPearl.Core.DAL.Data;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Services.LoggingService;
-using Resources.Shared;
 using CaucasianPearl.Properties;
-using FlickrNet;
-using Ninject;
+using Resources;
 using Photoset = CaucasianPearl.Models.Photoset;
 
 namespace CaucasianPearl.Core.Services.FlickrNetService
@@ -170,7 +172,7 @@ namespace CaucasianPearl.Core.Services.FlickrNetService
                 photosetId = set.PhotosetId;
             }
             else
-                throw new Exception(SharedErrorRes.YouDoNotHaveCreatePermissionsOnTheFlickrSite);
+                throw new Exception(ErrorRes.YouDoNotHaveCreatePermissionsOnTheFlickrSite);
 
             return photosetId;
         }
@@ -326,7 +328,7 @@ namespace CaucasianPearl.Core.Services.FlickrNetService
         }
 
         /// <summary>
-        /// TODO: xxx
+        /// Возвращает фотографии из альбома.
         /// </summary>
         /// <param name="photosetId"></param>
         /// <returns></returns>
@@ -335,39 +337,6 @@ namespace CaucasianPearl.Core.Services.FlickrNetService
             var photos = Flickr.PhotosetsGetPhotos(photosetId).Select(p => new MediaItem(p, photosetId));
 
             return photos;
-        }
-
-        /// <summary>
-        /// xxx.
-        /// </summary>
-        /// <returns></returns>
-        public void GetMedia()
-        {
-            var options = new PhotoSearchOptions
-            {
-                UserId = Settings.Default.FlickrUserId,
-                SortOrder = PhotoSearchSortOrder.DatePostedDescending,
-                MediaType = MediaType.All,
-                Extras = PhotoSearchExtras.All,
-                PerPage = 0,
-                Page = 0
-            };
-
-            var mediaCollection = Flickr.PhotosSearch(options);
-
-            if (mediaCollection.Count != 0)
-            {
-                var mediaSizeCollection = new List<Size>();
-
-                foreach (var mediaItem in mediaCollection)
-                    mediaSizeCollection.Add(Flickr.PhotosGetSizes(mediaItem.PhotoId).First(s => s.Label == "Thumbnail"));
-            }
-
-            var videoInfo = Flickr.PhotosGetInfo(mediaCollection[0].PhotoId);
-
-            //<iframe width="560" height="315" src="http://www.flickr.com/apps/video/stewart.swf?v=109786&photo_id=8967366843&photo_secret=9722cb1cbb" frameborder="0" allowfullscreen></iframe>
-
-            //<object width="560" height="315"><param name="movie" value="http://www.flickr.com/apps/video/stewart.swf?v=109786&photo_id=8967366843&photo_secret=9722cb1cbb"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.flickr.com/apps/video/stewart.swf?v=109786&photo_id=8967366843&photo_secret=9722cb1cbb" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object>
         }
 
         #endregion

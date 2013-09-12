@@ -117,43 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="City" xml:space="preserve">
+  <data name="Request_City" xml:space="preserve">
     <value>Город</value>
   </data>
-  <data name="Comment" xml:space="preserve">
+  <data name="Request_Comment" xml:space="preserve">
     <value>Комментарий</value>
   </data>
-  <data name="Content" xml:space="preserve">
+  <data name="Request_Content" xml:space="preserve">
     <value>Текст заявки</value>
   </data>
-  <data name="Email" xml:space="preserve">
-    <value>Электронная почта</value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>Имя</value>
-  </data>
-  <data name="NotProcessed" xml:space="preserve">
-    <value>Не обработано</value>
-  </data>
-  <data name="Phone" xml:space="preserve">
-    <value>Телефон</value>
-  </data>
-  <data name="Processed" xml:space="preserve">
-    <value>Обработано</value>
-  </data>
-  <data name="RequestDateTime" xml:space="preserve">
-    <value>Желаемая дата</value>
-  </data>
-  <data name="RequestRegistrationDate" xml:space="preserve">
+  <data name="Request_Created" xml:space="preserve">
     <value>Дата и время регистрации заявки</value>
   </data>
-  <data name="Status" xml:space="preserve">
+  <data name="Request_Email" xml:space="preserve">
+    <value>Электронная почта</value>
+  </data>
+  <data name="Request_Name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Request_NotProcessed" xml:space="preserve">
+    <value>Не обработано</value>
+  </data>
+  <data name="Request_Phone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="Request_Processed" xml:space="preserve">
+    <value>Обработано</value>
+  </data>
+  <data name="Request_RequestDate" xml:space="preserve">
+    <value>Желаемая дата</value>
+  </data>
+  <data name="Request_Status" xml:space="preserve">
     <value>Статус</value>
   </data>
-  <data name="YourCity" xml:space="preserve">
+  <data name="Request_YourCity" xml:space="preserve">
     <value>Ваш город</value>
   </data>
-  <data name="YourName" xml:space="preserve">
+  <data name="Request_YourName" xml:space="preserve">
     <value>Ваше имя</value>
   </data>
 </root>

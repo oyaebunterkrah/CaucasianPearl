@@ -117,25 +117,286 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Actions" xml:space="preserve">
+  <data name="Account_AccountCreatingWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
+    <value>Аккаунт не был создан. Пожалуйста, исправьте ошибки и попробуйте снова</value>
+  </data>
+  <data name="Account_AccountInformation" xml:space="preserve">
+    <value>Учётные данные</value>
+  </data>
+  <data name="Account_ChangePassword" xml:space="preserve">
+    <value>Изменить пароль</value>
+  </data>
+  <data name="Account_ChangingPasswordWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
+    <value>Пароль не изменён. Пожалуйста, исправьте ошибки и попробуйте снова</value>
+  </data>
+  <data name="Account_CharactersInLength" xml:space="preserve">
+    <value>символов в длину</value>
+  </data>
+  <data name="Account_CreateANewAccount" xml:space="preserve">
+    <value>Создание нового аккаунта</value>
+  </data>
+  <data name="Account_IfYouDontHaveAnAccount" xml:space="preserve">
+    <value>если у Вас нет аккаунта</value>
+  </data>
+  <data name="Account_Login" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="Account_LoginPartial_Login" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="Account_LoginPartial_LogOff" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="Account_LoginWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
+    <value>Вход не выполнен. Пожалуйста, исправьте ошибки и попробуйте снова</value>
+  </data>
+  <data name="Account_Login_Register" xml:space="preserve">
+    <value>Зарегистрируйтесь</value>
+  </data>
+  <data name="Account_LogOff" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="Account_Manage" xml:space="preserve">
+    <value>Редактировать профиль</value>
+  </data>
+  <data name="Account_NewPasswordAreRequiredToBeAminimumOf" xml:space="preserve">
+    <value>Новый пароль должен быть минимум</value>
+  </data>
+  <data name="Account_PasswordChanging" xml:space="preserve">
+    <value>Изменение пароля</value>
+  </data>
+  <data name="Account_PasswordsAreRequiredToBeAminimumOf" xml:space="preserve">
+    <value>Пароли должны быть минимум</value>
+  </data>
+  <data name="Account_PleaseEnterYourUserNameAndPassword" xml:space="preserve">
+    <value>Пожалуйста, введите имя пользователя и пароль</value>
+  </data>
+  <data name="Account_Register" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Account_UseTheFormBelowToChangeYourPassword" xml:space="preserve">
+    <value>Для изменения пароля используйте форму ниже</value>
+  </data>
+  <data name="Account_UseTheFormBelowToCreateANewAccount" xml:space="preserve">
+    <value>Для создания аккаунта используйте форму ниже</value>
+  </data>
+  <data name="Account_YourPasswordHasBeenChangedSuccessfully" xml:space="preserve">
+    <value>Ваш пароль был успешно изменён</value>
+  </data>
+  <data name="ContentBlock_Actions" xml:space="preserve">
     <value>Действия</value>
   </data>
-  <data name="AddingRequest" xml:space="preserve">
-    <value>Добавление заявки</value>
+  <data name="ContentBlock_AllContentBlocks" xml:space="preserve">
+    <value>Все контент-блоки</value>
   </data>
-  <data name="AddRequest" xml:space="preserve">
-    <value>Добавить заявку</value>
+  <data name="ContentBlock_AreYouSureThatYouWantDeleteThisContentBlock" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить этот контент-блок?</value>
   </data>
-  <data name="BackToList" xml:space="preserve">
+  <data name="ContentBlock_BackToList" xml:space="preserve">
     <value>Назад к списку</value>
   </data>
-  <data name="RequestDetails" xml:space="preserve">
-    <value>Подробности заявки</value>
+  <data name="ContentBlock_ContentBlock" xml:space="preserve">
+    <value>Контент-блок</value>
   </data>
-  <data name="Requests" xml:space="preserve">
-    <value>Заявки</value>
+  <data name="ContentBlock_ContentBlockCreating" xml:space="preserve">
+    <value>Создание контент-блока</value>
   </data>
-  <data name="RequestEditing" xml:space="preserve">
-    <value>Редактирование заявки</value>
+  <data name="ContentBlock_ContentBlockDeleting" xml:space="preserve">
+    <value>Удаление контент-блока</value>
+  </data>
+  <data name="ContentBlock_ContentBlockDetails" xml:space="preserve">
+    <value>Подробности контент-блока</value>
+  </data>
+  <data name="ContentBlock_ContentBlockEditing" xml:space="preserve">
+    <value>Редактирование контент-блока</value>
+  </data>
+  <data name="ContentBlock_ContentBlocks" xml:space="preserve">
+    <value>Контент-блоки</value>
+  </data>
+  <data name="ContentBlock_CreateContentBlock" xml:space="preserve">
+    <value>Создать контент-блок</value>
+  </data>
+  <data name="Event_Actions" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="Event_AllEvents" xml:space="preserve">
+    <value>Все события</value>
+  </data>
+  <data name="Event_AreYouSureThatYouWantDeleteThisEvent" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить это событие?</value>
+  </data>
+  <data name="Event_BackToList" xml:space="preserve">
+    <value>Назад к списку</value>
+  </data>
+  <data name="Event_CreateEvent" xml:space="preserve">
+    <value>Создать событие</value>
+  </data>
+  <data name="Event_Details" xml:space="preserve">
+    <value>Подробности событие</value>
+  </data>
+  <data name="Event_Event" xml:space="preserve">
+    <value>Событие</value>
+  </data>
+  <data name="Event_EventCreating" xml:space="preserve">
+    <value>Создание события</value>
+  </data>
+  <data name="Event_EventDeleting" xml:space="preserve">
+    <value>Удаление события</value>
+  </data>
+  <data name="Event_EventEditing" xml:space="preserve">
+    <value>Редактирование события</value>
+  </data>
+  <data name="Event_Events" xml:space="preserve">
+    <value>События</value>
+  </data>
+  <data name="Event_ImageForEvent" xml:space="preserve">
+    <value>Изображение для события</value>
+  </data>
+  <data name="Feedback_Actions" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="Feedback_AddComment" xml:space="preserve">
+    <value>Добавить отзыв</value>
+  </data>
+  <data name="Feedback_BackToList" xml:space="preserve">
+    <value>Назад к списку</value>
+  </data>
+  <data name="Feedback_Details" xml:space="preserve">
+    <value>Подробности отзыва</value>
+  </data>
+  <data name="Feedback_Feedback" xml:space="preserve">
+    <value>Отзывы и предложения</value>
+  </data>
+  <data name="Feedback_FeedbackEditing" xml:space="preserve">
+    <value>Редактирование отзыва</value>
+  </data>
+  <data name="Gallery_NoPhotosetsFound" xml:space="preserve">
+    <value>Не найдено ни одного фотоальбома.</value>
+  </data>
+  <data name="Gallery_Photosets" xml:space="preserve">
+    <value>Фотоальбомы</value>
+  </data>
+  <data name="Profile_Actions" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="Profile_AllProfiles" xml:space="preserve">
+    <value>Все профили</value>
+  </data>
+  <data name="Profile_AreYouSureThatYouWantDeleteThisProfile" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить свой профиль?</value>
+  </data>
+  <data name="Profile_BackToList" xml:space="preserve">
+    <value>Назад к списку</value>
+  </data>
+  <data name="Profile_CreateProfile" xml:space="preserve">
+    <value>Создать профиль</value>
+  </data>
+  <data name="Profile_ImageForProfile" xml:space="preserve">
+    <value>Изображение для профиля</value>
+  </data>
+  <data name="Profile_Profile" xml:space="preserve">
+    <value>Профиль пользователя</value>
+  </data>
+  <data name="Profile_ProfileCreating" xml:space="preserve">
+    <value>Создание профиля</value>
+  </data>
+  <data name="Profile_ProfileDeleting" xml:space="preserve">
+    <value>Удаление профиля</value>
+  </data>
+  <data name="Profile_ProfileDetails" xml:space="preserve">
+    <value>Подробности профиля</value>
+  </data>
+  <data name="Profile_ProfileEditing" xml:space="preserve">
+    <value>Редактирование профиля</value>
+  </data>
+  <data name="Profile_Profiles" xml:space="preserve">
+    <value>Профили пользователей</value>
+  </data>
+  <data name="Shared_Actions" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="Shared_AddComment" xml:space="preserve">
+    <value>Добавить отзыв</value>
+  </data>
+  <data name="Shared_Authorize" xml:space="preserve">
+    <value>Авторизоваться</value>
+  </data>
+  <data name="Shared_BackToHomePage" xml:space="preserve">
+    <value>Вернуться на главную страницу</value>
+  </data>
+  <data name="Shared_Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="Shared_Create" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="Shared_Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="Shared_Details" xml:space="preserve">
+    <value>Подробности</value>
+  </data>
+  <data name="Shared_Down" xml:space="preserve">
+    <value>Вниз</value>
+  </data>
+  <data name="Shared_Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="Shared_Feedback" xml:space="preserve">
+    <value>Отзывы и предложения</value>
+  </data>
+  <data name="Shared_Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="Shared_Thanks" xml:space="preserve">
+    <value>Спасибо</value>
+  </data>
+  <data name="Shared_ThankYouWeWillCertainlyContactYou" xml:space="preserve">
+    <value>Спасибо! Мы с Вами обязательно свяжемся!</value>
+  </data>
+  <data name="Shared_ToHomePage" xml:space="preserve">
+    <value>На главную</value>
+  </data>
+  <data name="Shared_Up" xml:space="preserve">
+    <value>Вверх</value>
+  </data>
+  <data name="Shared_Upload" xml:space="preserve">
+    <value>Загрузить</value>
+  </data>
+  <data name="Shared_YouSureYouWantToDeleteThis" xml:space="preserve">
+    <value>Вы уверены,что хотите удалить?</value>
+  </data>
+  <data name="Sponsor_Actions" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="Sponsor_AllSponsors" xml:space="preserve">
+    <value>Все новости</value>
+  </data>
+  <data name="Sponsor_AreYouSureThatYouWantDeleteThisSponsor" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить эту новость?</value>
+  </data>
+  <data name="Sponsor_BackToList" xml:space="preserve">
+    <value>Назад к списку</value>
+  </data>
+  <data name="Sponsor_CreateSponsor" xml:space="preserve">
+    <value>Создать новость</value>
+  </data>
+  <data name="Sponsor_Details" xml:space="preserve">
+    <value>Подробности новости</value>
+  </data>
+  <data name="Sponsor_ImageForSponsor" xml:space="preserve">
+    <value>Изображение для новости</value>
+  </data>
+  <data name="Sponsor_Sponsor" xml:space="preserve">
+    <value>Новость</value>
+  </data>
+  <data name="Sponsor_SponsorCreating" xml:space="preserve">
+    <value>Создание новости</value>
+  </data>
+  <data name="Sponsor_SponsorDeleting" xml:space="preserve">
+    <value>Удаление новости</value>
+  </data>
+  <data name="Sponsor_SponsorEditing" xml:space="preserve">
+    <value>Редактирование новости</value>
   </data>
 </root>

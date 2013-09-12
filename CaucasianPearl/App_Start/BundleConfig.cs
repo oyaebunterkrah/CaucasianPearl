@@ -9,18 +9,18 @@ namespace CaucasianPearl.App_Start
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
-                Format(Consts.Paths.SiteCssPrefixPath, "site.css"), new CssRewriteUrlTransform()));
+                Format(Consts.Paths.Css.SiteCssPrefixPath, "site.css"), new CssRewriteUrlTransform()));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                Format(Consts.Paths.SysJsPrefixPath, "jquery-{version}.js")));
+                Format(Consts.Paths.Js.SysJsPrefixPath, "jquery-{version}.js")));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                Format(Consts.Paths.SysJsPrefixPath, "jquery.validate*"),
-                Format(Consts.Paths.SysJsPrefixPath, "jquery.unobtrusive*"),
-                Format(Consts.Paths.SysJsPrefixPath, "jquery.validate.unobtrusive*")));
+                Format(Consts.Paths.Js.SysJsPrefixPath, "jquery.validate*"),
+                Format(Consts.Paths.Js.SysJsPrefixPath, "jquery.unobtrusive*"),
+                Format(Consts.Paths.Js.SysJsPrefixPath, "jquery.validate.unobtrusive*")));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                Format(Consts.Paths.SysJsPrefixPath, "modernizr-*")));
+                Format(Consts.Paths.Js.SysJsPrefixPath, "modernizr-*")));
         }
 
         private static string Format(string prefix, string path)

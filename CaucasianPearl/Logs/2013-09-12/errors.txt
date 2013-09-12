@@ -1,0 +1,636 @@
+2013-09-12 00:00:00.6144|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    в Ninject.KernelBase.Resolve(IRequest request) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 359
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 00:00:13.8142|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    в Ninject.KernelBase.Resolve(IRequest request) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 359
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 00:00:39.9116|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    в Ninject.KernelBase.Resolve(IRequest request) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 359
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 00:03:09.0462|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /
+Raw Url: /
+Message: c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Views\Event\GetHomePageEvents.cshtml(59): error CS0103: The name 'CultureInfo' does not exist in the current context
+Source: System.Web
+Stack Trace:    в System.Web.Compilation.AssemblyBuilder.Compile()
+   в System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   в System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   в System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   в System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   в System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   в System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   в System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   в System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   в Microsoft.Web.Mvc.FixedRazorViewEngine.Microsoft.Web.Mvc.IViewEngineProxy.FileExists(ControllerContext controllerContext, String virtualPath)
+   в Microsoft.Web.Mvc.ViewEngineFixWorker`1.GetPathFromSpecificName(ControllerContext controllerContext, String name, String cacheKey, String[]& searchedLocations)
+   в Microsoft.Web.Mvc.ViewEngineFixWorker`1.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   в Microsoft.Web.Mvc.ViewEngineFixWorker`1.FindPartialView(ControllerContext controllerContext, String partialViewName, Boolean useCache)
+   в Microsoft.Web.Mvc.FixedRazorViewEngine.FindPartialView(ControllerContext controllerContext, String partialViewName, Boolean useCache)
+   в System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass8.<FindPartialView>b__7(IViewEngine e)
+   в System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   в System.Web.Mvc.ViewEngineCollection.FindPartialView(ControllerContext controllerContext, String partialViewName)
+   в System.Web.Mvc.HtmlHelper.FindPartialView(ViewContext viewContext, String partialViewName, ViewEngineCollection viewEngineCollection)
+   в System.Web.Mvc.HtmlHelper.RenderPartialInternal(String partialViewName, ViewDataDictionary viewData, Object model, TextWriter writer, ViewEngineCollection viewEngineCollection)
+   в System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper htmlHelper, String partialViewName, Object model)
+   в ASP._Page_Views_home_Index_cshtml.Execute() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Views\Home\Index.cshtml:строка 17
+   в System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   в System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   в System.Web.WebPages.StartPage.RunPage()
+   в System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   в System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   в System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   в System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   в System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   в System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   в System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   в System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   в System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   в System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   в System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   в System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   в System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   в System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   в System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   в System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   в System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   в System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   в System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.CodeDom.Compiler.CompilerResults Compile()
+2013-09-12 00:03:09.3802|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /
+Raw Url: /
+Message: c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Views\Event\GetHomePageEvents.cshtml(59): error CS0103: The name 'CultureInfo' does not exist in the current context
+Source: System.Web
+Stack Trace:    в System.Web.Compilation.BuildManager.PostProcessFoundBuildResult(BuildResult result, Boolean keyFromVPP, VirtualPath virtualPath)
+   в System.Web.Compilation.BuildManager.GetBuildResultFromCacheInternal(String cacheKey, Boolean keyFromVPP, VirtualPath virtualPath, Int64 hashCode, Boolean ensureIsUpToDate)
+   в System.Web.Compilation.BuildManager.GetVPathBuildResultFromCacheInternal(VirtualPath virtualPath, Boolean ensureIsUpToDate)
+   в System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   в System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   в System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   в System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   в System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   в System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   в Microsoft.Web.Mvc.FixedRazorViewEngine.Microsoft.Web.Mvc.IViewEngineProxy.FileExists(ControllerContext controllerContext, String virtualPath)
+   в Microsoft.Web.Mvc.ViewEngineFixWorker`1.GetPathFromSpecificName(ControllerContext controllerContext, String name, String cacheKey, String[]& searchedLocations)
+   в Microsoft.Web.Mvc.ViewEngineFixWorker`1.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   в Microsoft.Web.Mvc.ViewEngineFixWorker`1.FindPartialView(ControllerContext controllerContext, String partialViewName, Boolean useCache)
+   в Microsoft.Web.Mvc.FixedRazorViewEngine.FindPartialView(ControllerContext controllerContext, String partialViewName, Boolean useCache)
+   в System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass8.<FindPartialView>b__7(IViewEngine e)
+   в System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   в System.Web.Mvc.ViewEngineCollection.FindPartialView(ControllerContext controllerContext, String partialViewName)
+   в System.Web.Mvc.HtmlHelper.FindPartialView(ViewContext viewContext, String partialViewName, ViewEngineCollection viewEngineCollection)
+   в System.Web.Mvc.HtmlHelper.RenderPartialInternal(String partialViewName, ViewDataDictionary viewData, Object model, TextWriter writer, ViewEngineCollection viewEngineCollection)
+   в System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper htmlHelper, String partialViewName, Object model)
+   в ASP._Page_Views_home_Index_cshtml.Execute() в c:\Users\днс\Documents\Visual Studio 2012\Projects\CaucasianPearl\CaucasianPearl\Views\Home\Index.cshtml:строка 17
+   в System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   в System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   в System.Web.WebPages.StartPage.RunPage()
+   в System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   в System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   в System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   в System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   в System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   в System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   в System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   в System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   в System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   в System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   в System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   в System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   в System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   в System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   в System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   в System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   в System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   в System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   в System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.CodeDom.Compiler.CompilerResults Compile()
+2013-09-12 00:04:05.5034|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    в Ninject.KernelBase.Resolve(IRequest request) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 359
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 00:04:39.9044|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    at Ninject.KernelBase.Resolve(IRequest request) in c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:line 359
+   at Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) in c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:line 197
+   at Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) in c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:line 165
+   at Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) in c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:line 114
+   at Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) in c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:line 96
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Ninject.Activation.Providers.StandardProvider.Create(IContext context) in c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:line 96
+   at Ninject.Activation.Context.Resolve() in c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:line 157
+   at Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) in c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:line 386
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   at System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   at Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) in c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:line 56
+   at System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 00:04:48.2189|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    в Ninject.KernelBase.Resolve(IRequest request) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 359
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 00:06:03.7342|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    в Ninject.KernelBase.Resolve(IRequest request) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 359
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 00:15:38.8171|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    в Ninject.KernelBase.Resolve(IRequest request) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 359
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 00:16:02.7124|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    в Ninject.KernelBase.Resolve(IRequest request) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 359
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 00:21:19.0515|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    в Ninject.KernelBase.Resolve(IRequest request) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 359
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 00:21:39.3707|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    в Ninject.KernelBase.Resolve(IRequest request) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 359
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 00:34:24.3954|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    в Ninject.KernelBase.Resolve(IRequest request) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 359
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 00:36:51.1868|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    в Ninject.KernelBase.Resolve(IRequest request) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 359
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 00:37:15.1412|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /request/createpartial
+Raw Url: /request/createpartial
+Message: Error activating IBaseService{Request}
+No matching bindings are available, and the type is not self-bindable.
+Activation path:
+  2) Injection of dependency IBaseService{Request} into parameter service of constructor of type RequestController
+  1) Request for RequestController
+
+Suggestions:
+  1) Ensure that you have defined a binding for IBaseService{Request}.
+  2) If the binding was defined in a module, ensure that the module has been loaded into the kernel.
+  3) Ensure you have not accidentally created more than one kernel.
+  4) If you are using constructor arguments, ensure that the parameter name matches the constructors parameter name.
+  5) If you are using automatic module loading, ensure the search path and filters are correct.
+
+Source: Ninject
+Stack Trace:    в Ninject.KernelBase.Resolve(IRequest request) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 359
+   в Ninject.Planning.Targets.Target`1.GetValue(Type service, IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 197
+   в Ninject.Planning.Targets.Target`1.ResolveWithin(IContext parent) в c:\Projects\Ninject\ninject\src\Ninject\Planning\Targets\Target.cs:строка 165
+   в Ninject.Activation.Providers.StandardProvider.GetValue(IContext context, ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 114
+   в Ninject.Activation.Providers.StandardProvider.<>c__DisplayClass4.<Create>b__2(ITarget target) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   в System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   в System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   в Ninject.Activation.Providers.StandardProvider.Create(IContext context) в c:\Projects\Ninject\ninject\src\Ninject\Activation\Providers\StandardProvider.cs:строка 96
+   в Ninject.Activation.Context.Resolve() в c:\Projects\Ninject\ninject\src\Ninject\Activation\Context.cs:строка 157
+   в Ninject.KernelBase.<>c__DisplayClass10.<Resolve>b__c(IBinding binding) в c:\Projects\Ninject\ninject\src\Ninject\KernelBase.cs:строка 386
+   в System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   в System.Linq.Enumerable.SingleOrDefault[TSource](IEnumerable`1 source)
+   в Ninject.Web.Mvc.NinjectDependencyResolver.GetService(Type serviceType) в c:\Projects\Ninject\ninject.web.mvc\mvc3\src\Ninject.Web.Mvc\NinjectDependencyResolver.cs:строка 56
+   в System.Web.Mvc.DefaultControllerFactory.DefaultControllerActivator.Create(RequestContext requestContext, Type controllerType)
+TargetSite: System.Collections.Generic.IEnumerable`1[System.Object] Resolve(Ninject.Activation.IRequest)
+2013-09-12 22:46:36.4143|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /@Url.Action(Consts.Actions.CreatePartial,
+Raw Url: /@Url.Action(Consts.Actions.CreatePartial,
+Message: The controller for path '/@Url.Action(Consts.Actions.CreatePartial,' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-09-12 22:46:46.4069|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /@Url.Action(Consts.Actions.CreatePartial,
+Raw Url: /@Url.Action(Consts.Actions.CreatePartial,
+Message: The controller for path '/@Url.Action(Consts.Actions.CreatePartial,' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-09-12 22:47:06.3410|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /@Url.Action(Consts.Actions.CreatePartial,
+Raw Url: /@Url.Action(Consts.Actions.CreatePartial,
+Message: The controller for path '/@Url.Action(Consts.Actions.CreatePartial,' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-09-12 22:47:23.1530|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /@Url.Action(Consts.Actions.CreatePartial,
+Raw Url: /@Url.Action(Consts.Actions.CreatePartial,
+Message: The controller for path '/@Url.Action(Consts.Actions.CreatePartial,' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)

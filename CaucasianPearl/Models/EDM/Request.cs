@@ -16,13 +16,13 @@ namespace CaucasianPearl.Models.EDM
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public string City { get; set; }
         public string Email { get; set; }
         public string Content { get; set; }
         public string Phone { get; set; }
-        public string City { get; set; }
-        public System.DateTime RequestDateTime { get; set; }
         public string Comment { get; set; }
         public Nullable<int> Status { get; set; }
-        public Nullable<System.DateTime> RequestRegistrationDate { get; set; }
+        public Nullable<System.DateTime> RequestDate { get; set; }
+        public Nullable<System.DateTime> Created { get; set; }
     }
 }

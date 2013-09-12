@@ -63,99 +63,99 @@ namespace Resources.ContentBlock {
         /// <summary>
         ///   Looks up a localized string similar to Действия.
         /// </summary>
-        public static string Actions {
+        public static string ContentBlock_Actions {
             get {
-                return ResourceManager.GetString("Actions", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_Actions", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Все контент-блоки.
         /// </summary>
-        public static string AllContentBlocks {
+        public static string ContentBlock_AllContentBlocks {
             get {
-                return ResourceManager.GetString("AllContentBlocks", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_AllContentBlocks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Вы уверены, что хотите удалить этот контент-блок?.
         /// </summary>
-        public static string AreYouSureThatYouWantDeleteThisContentBlock {
+        public static string ContentBlock_AreYouSureThatYouWantDeleteThisContentBlock {
             get {
-                return ResourceManager.GetString("AreYouSureThatYouWantDeleteThisContentBlock", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_AreYouSureThatYouWantDeleteThisContentBlock", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Назад к списку.
         /// </summary>
-        public static string BackToList {
+        public static string ContentBlock_BackToList {
             get {
-                return ResourceManager.GetString("BackToList", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_BackToList", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Контент-блок.
         /// </summary>
-        public static string ContentBlock {
+        public static string ContentBlock_ContentBlock {
             get {
-                return ResourceManager.GetString("ContentBlock", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_ContentBlock", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Создание контент-блока.
         /// </summary>
-        public static string ContentBlockCreating {
+        public static string ContentBlock_ContentBlockCreating {
             get {
-                return ResourceManager.GetString("ContentBlockCreating", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_ContentBlockCreating", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Удаление контент-блока.
         /// </summary>
-        public static string ContentBlockDeleting {
+        public static string ContentBlock_ContentBlockDeleting {
             get {
-                return ResourceManager.GetString("ContentBlockDeleting", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_ContentBlockDeleting", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Подробности контент-блока.
         /// </summary>
-        public static string ContentBlockDetails {
+        public static string ContentBlock_ContentBlockDetails {
             get {
-                return ResourceManager.GetString("ContentBlockDetails", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_ContentBlockDetails", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Редактирование контент-блока.
         /// </summary>
-        public static string ContentBlockEditing {
+        public static string ContentBlock_ContentBlockEditing {
             get {
-                return ResourceManager.GetString("ContentBlockEditing", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_ContentBlockEditing", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Контент-блоки.
         /// </summary>
-        public static string ContentBlocks {
+        public static string ContentBlock_ContentBlocks {
             get {
-                return ResourceManager.GetString("ContentBlocks", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_ContentBlocks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Создать контент-блок.
         /// </summary>
-        public static string CreateContentBlock {
+        public static string ContentBlock_CreateContentBlock {
             get {
-                return ResourceManager.GetString("CreateContentBlock", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_CreateContentBlock", resourceCulture);
             }
         }
     }

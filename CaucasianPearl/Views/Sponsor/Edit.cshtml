@@ -1,0 +1,80 @@
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
+@using CaucasianPearl.Core.UserControls
+@using Resources
+
+@model CaucasianPearl.Models.EDM.Sponsor
+
+@{
+    ViewBag.Title = string.Format("{0} | {1}", ViewRes.SponsorEditing, Consts.Title);
+}
+
+@Html.Raw(CssJsRegControl.Render(Consts.Paths.Plugins.CKEditor))
+
+<p>
+    @* Отмена *@
+    @Html.ActionLink(
+        ViewRes.Cancel,
+        actionName: Consts.Actions.Details,
+        controllerName: Consts.Controllers.Sponsor.Name,
+        routeValues: new
+            {
+                id = Model.ID,
+                page = Request.QueryString["page"]
+            },
+        htmlAttributes: new
+            {
+                @class = "link"
+            })
+</p>
+
+<h2>@ViewRes.SponsorEditing</h2>
+
+<h3>@ViewRes.ImageForSponsor</h3>
+
+@using (Html.BeginForm(
+        actionName: Consts.Controllers.Sponsor.Actions.UploadImage,
+        controllerName: Consts.Controllers.Sponsor.Name,
+        method: FormMethod.Post,
+        htmlAttributes: new
+        {
+            enctype = "multipart/form-data",
+            id = Model.ID
+        }))
+{
+    @Html.HiddenFor(model => model.ID)
+
+    <table>
+        <tr>
+            <td>
+                <div class="model-image">
+                    @Html.ActionImage(
+                        Consts.Actions.Details,
+                        controller: Consts.Controllers.Sponsor.Name,
+                        routeValues: new { id = Model.ID },
+                        imagePath: ImageHelper.GetImageUrl(Model, Consts.Controllers.Sponsor.SponsorImagesFolder),
+                        alt: Model.Name)
+                </div>
+            </td>
+            <td style="padding-left: 20px">
+                <input type="file" name="imagefile" />
+                <br />
+                <input type="submit" value="Загрузить" />
+            </td>
+        </tr>
+    </table>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@ViewRes.Sponsor</legend>
+
+        @Html.HiddenFor(model => model.ID)
+        @Html.Partial(Consts.Views.CreateOrEdit, Model)
+
+        <input id="submit" type="submit" value="@ViewRes.Save" />
+    </fieldset>
+}

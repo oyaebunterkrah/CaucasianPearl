@@ -1,0 +1,81 @@
+@using Recaptcha
+
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.UserControls
+@using Resources
+
+@model CaucasianPearl.Models.EDM.Request
+
+@Html.Raw(CssJsRegControl.Render("recaptcha/js/recaptcha_ajax.js", Consts.Paths.Plugins.PluginsPrefix))
+
+<div class="create_or_edit_label">
+    @Html.LabelFor(model => model.Name)
+    <span style="color: #f00">*</span>
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(model => model.Name)
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+
+<div class="create_or_edit_label">
+    @Html.LabelFor(model => model.City)
+    <span style="color: #f00">*</span>
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(model => model.City)
+    @Html.ValidationMessageFor(model => model.City)
+</div>
+
+<div class="create_or_edit_label">
+    @Html.LabelFor(model => model.Phone)
+    <span style="color: #f00">*</span>
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(model => model.Phone)
+    @Html.ValidationMessageFor(model => model.Phone)
+</div>
+
+<div class="create_or_edit_label">
+    @Html.LabelFor(model => model.Email)
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(model => model.Email)
+    @Html.ValidationMessageFor(model => model.Email)
+</div>
+
+<div class="create_or_edit_label">
+    @Html.LabelFor(model => model.RequestDate)
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(model => model.RequestDate)
+    @if (!Request.IsAjaxRequest()) {
+        @Html.ValidationMessageFor(model => model.RequestDate)
+    }
+</div>
+
+<div class="create_or_edit_label">
+    @Html.LabelFor(model => model.Content)
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(model => model.Content)
+    @Html.ValidationMessageFor(model => model.Content)
+</div>
+
+@* reCaptcha *@
+<div class="create_or_edit_field">
+    <div id="captchaBlock" class="captcha_block">
+        @* поле ввода капчи *@
+        <div class="create_or_edit_label">
+            <label for="captchaCode">Введите код с картинки</label>
+        </div>
+        <input id="captchaCode" type="text" />
+        @* валидация *@
+        <span id="captchaError" class="captcha_error">Вы ввели неверный код</span>
+        @* капча *@
+        <a id="captchaReload" class="captcha_reload" href="#">
+            <img id="captchaImage" class="captcha_image" alt="captcha image" />
+        </a>
+    </div>
+</div>
+    
+<div id="reCaptcha" class="reCaptcha"></div>

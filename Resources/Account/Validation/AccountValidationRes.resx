@@ -117,40 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChangePasswordModel_PasswordAndConfirmationMismatch" xml:space="preserve">
+  <data name="Account_ChangePasswordModel_PasswordAndConfirmationMismatch" xml:space="preserve">
     <value>Новы пароль и подтверждение не совпадают</value>
   </data>
-  <data name="ChangePassword_TheCurrentPasswordIsIncorrectOrTheNewPasswordIsInvalid" xml:space="preserve">
+  <data name="Account_ChangePassword_TheCurrentPasswordIsIncorrectOrTheNewPasswordIsInvalid" xml:space="preserve">
     <value>Неверно указан текущий пароль или новый пароль некорректен</value>
   </data>
-  <data name="LogOn_TheUserNameOrPasswordProvidedIsIncorrect" xml:space="preserve">
+  <data name="Account_LogOn_TheUserNameOrPasswordProvidedIsIncorrect" xml:space="preserve">
     <value>Неверно указано имя пользователя или пароль</value>
   </data>
-  <data name="NameRequired" xml:space="preserve">
+  <data name="Account_NameRequired" xml:space="preserve">
     <value>Название обязательно</value>
   </data>
-  <data name="NewPasswordAndConfirmMustMatch" xml:space="preserve">
+  <data name="Account_NewPasswordAndConfirmMustMatch" xml:space="preserve">
     <value>Новый пароль и подтверждение должны совпадать</value>
   </data>
-  <data name="PasswordAndConfirmMustMatch" xml:space="preserve">
+  <data name="Account_PasswordAndConfirmMustMatch" xml:space="preserve">
     <value>Пароль и подтверждение пароля должны совпадать</value>
   </data>
-  <data name="PasswordMinLength" xml:space="preserve">
+  <data name="Account_PasswordMinLength" xml:space="preserve">
     <value>Минимальная длина поля "{0}": {1} символа</value>
   </data>
-  <data name="RegisterModel_IncorrectEmailAddress" xml:space="preserve">
+  <data name="Account_RegisterModel_IncorrectEmailAddress" xml:space="preserve">
     <value>Некорректный адрес</value>
   </data>
-  <data name="RegisterModel_IncorrectUserName" xml:space="preserve">
+  <data name="Account_RegisterModel_IncorrectUserName" xml:space="preserve">
     <value>Некорректное имя пользователя</value>
   </data>
-  <data name="RegisterModel_PasswordsMustMatch" xml:space="preserve">
+  <data name="Account_RegisterModel_PasswordsMustMatch" xml:space="preserve">
     <value>Пароль и подтверждение пароля должны совпадать</value>
   </data>
-  <data name="Required" xml:space="preserve">
+  <data name="Account_Required" xml:space="preserve">
     <value>Поле обязательно для заполнения</value>
   </data>
-  <data name="StringLengthMin" xml:space="preserve">
+  <data name="Account_StringLengthMin" xml:space="preserve">
     <value>Поле "{0}" должно содержать не менее {2} символов</value>
   </data>
 </root>

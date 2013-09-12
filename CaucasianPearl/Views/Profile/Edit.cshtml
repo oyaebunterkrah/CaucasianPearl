@@ -1,18 +1,17 @@
 @using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Models.EDM
-@using Resources.Profile
-@using Resources.Shared
+@using Resources
 
 @model Profile
 
 @{
-    ViewBag.Title = ProfileViewRes.ProfileEditing;
+    ViewBag.Title = ViewRes.ProfileEditing;
 }
 
 <p>
     @* Отмена *@
     @Html.ActionLink(
-        SharedViewRes.Cancel,
+        ViewRes.Cancel,
         actionName: Consts.Actions.GetByShortName,
         controllerName: Consts.Controllers.Profile.Name,
         routeValues: new
@@ -26,9 +25,9 @@
             })
 </p>
 
-<h2>@ProfileViewRes.ProfileEditing</h2>
+<h2>@ViewRes.ProfileEditing</h2>
 
-<h3>@ProfileViewRes.ImageForProfile</h3>
+<h3>@ViewRes.ImageForProfile</h3>
 
 @using (Html.BeginForm(
             actionName: Consts.Controllers.Profile.Actions.UploadImage,
@@ -46,19 +45,19 @@
         <tr>
             <td>
                 @{
-    var filename = string.IsNullOrWhiteSpace(Model.ImageExt)
+                    var filename = string.IsNullOrWhiteSpace(Model.ImageExt)
                        ? Consts.DefaultImage
                        : string.Format("{0}{1}", Model.ID, Model.ImageExt.TrimEnd());
                 }
 
                 <div class="model-image">
-                    <img src='@(Url.Content(Consts.FoldersPathes.EntityImagesFolder))/@(Consts.Controllers.Profile.ProfileImagesFolder)/@(filename)' />
+                    <img src='@(Url.Content(Consts.Paths.Img.EntityImgFolder))/@(Consts.Controllers.Profile.ProfileImagesFolder)/@(filename)' />
                 </div>
             </td>
             <td style="padding-left: 20px">
                 <input type="file" name="imagefile" />
                 <br />
-                <input id="upload" type="submit" value="@SharedViewRes.Upload" />
+                <input id="upload" type="submit" value="@ViewRes.Upload" />
             </td>
         </tr>
     </table>
@@ -68,7 +67,7 @@
 {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>@ProfileViewRes.Profile</legend>
+        <legend>@ViewRes.UserProfile</legend>
 
         @Html.HiddenFor(model => model.ID)
 
@@ -77,11 +76,11 @@
         @Html.Partial(Consts.Views.CreateOrEdit, Model)
 
         <p>
-            <input id="submit" type="submit" value="@SharedViewRes.Save" />
+            <input id="submit" type="submit" value="@ViewRes.Save" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink(ProfileViewRes.BackToList, Consts.Actions.Index)
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 </div>

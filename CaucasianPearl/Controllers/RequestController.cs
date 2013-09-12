@@ -20,6 +20,7 @@ namespace CaucasianPearl.Controllers
         public RequestController(IBaseService<Request> service) :
             base(service: service)
         {
+             
         }
 
         // ¬ключаем постраничный вывод.
@@ -49,8 +50,6 @@ namespace CaucasianPearl.Controllers
         [AllowAnonymous]
         public override ActionResult Create(Request obj)
         {
-            obj.RequestRegistrationDate = DateTime.Now;
-
             return base.Create(obj);
         }
 
@@ -64,8 +63,6 @@ namespace CaucasianPearl.Controllers
         [HttpPost, RecaptchaControlMvc.CaptchaValidator]
         public override ActionResult CreatePartialWithCaptcha(Request obj, bool captchaValid, string captchaErrorMessage)
         {
-            obj.RequestRegistrationDate = DateTime.Now;
-
             return base.CreatePartialWithCaptcha(obj, captchaValid, captchaErrorMessage);
         }
 
@@ -80,6 +77,13 @@ namespace CaucasianPearl.Controllers
         protected override ActionResult OnCreated(Request model)
         {
             return RedirectToAction(Consts.Controllers.Request.Actions.Thanks);
+        }
+
+        protected override void ModifyValuesOnCreate(Request request)
+        {
+            request.Created = DateTime.Now;
+
+            base.ModifyValuesOnCreate(request);
         }
 
         protected override void ModifyValuesOnDetails(Request request)

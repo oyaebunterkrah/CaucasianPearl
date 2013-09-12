@@ -1,5 +1,5 @@
 ﻿@using CaucasianPearl.Core.Constants
-@using Resources.Account
+@using Resources
 
 @if (WebSecurity.IsAuthenticated) {
     <text>
@@ -10,7 +10,7 @@
                               routeValues: null,
                               htmlAttributes: new {
                                   @class = "username",
-                                  title = AccountViewRes.Manage })!
+                                  title = ViewRes.ManageProfile })!
         @* Выход *@
         @using (Html.BeginForm(
             Consts.Controllers.Account.Actions.LogOff,
@@ -23,7 +23,7 @@
         {
             @Html.AntiForgeryToken()
             @Html.ActionLink(
-                linkText: AccountViewRes.LoginPartial_LogOff,
+                linkText: ViewRes.LogOff,
                 actionName: Consts.Controllers.Account.Actions.LogOff,
                 controllerName: Consts.Controllers.Account.Name,
                 routeValues: null,
@@ -35,7 +35,7 @@
         <li>
             @* Регистрация *@
             @Html.ActionLink(
-                linkText: AccountViewRes.Login_Register,
+                linkText: ViewRes.Login_Register,
                 actionName: Consts.Controllers.Account.Actions.Register,
                 controllerName: Consts.Controllers.Account.Name,
                 routeValues: null,
@@ -44,7 +44,7 @@
         <li>
             @* Вход *@
             @Html.ActionLink(
-                linkText: AccountViewRes.LoginPartial_Login,
+                linkText: ViewRes.LoginPartial_Login,
                 actionName: Consts.Controllers.Account.Actions.Login,
                 controllerName: Consts.Controllers.Account.Name,
                 routeValues: null,

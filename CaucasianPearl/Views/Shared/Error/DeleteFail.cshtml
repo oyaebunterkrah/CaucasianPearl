@@ -1,10 +1,10 @@
 ﻿@using CaucasianPearl.Core.Constants
-@using Resources.Shared
+@using Resources
 
 @{
-    ViewBag.Title = string.Format("{0} | {1}", SharedErrorRes.DeleteForbidden, Consts.Title);
+    ViewBag.Title = string.Format("{0} | {1}", ErrorRes.DeleteForbidden, Consts.Title);
 }
 
-<h2 style="color: Red">@SharedErrorRes.DeleteForbidden</h2>
+<h2 style="color: Red">@ErrorRes.DeleteForbidden</h2>
 <br />
-<a href="@Consts.RootPath">@SharedViewRes.BackToHomePage</a>
+<a href="@Consts.RootPath">@ViewRes.BackToHomePage</a>

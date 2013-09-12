@@ -32,7 +32,7 @@
             var events = $.parseJSON('@eventsForMonth');
             $.each(events, function (i) {
                 setTimeout(function () {
-                    var eventDay = new Date(events[i].EventDate).getDate();
+                    var eventDay = events[i].Day;
                     if (eventDay != 'undefined' && eventDay != '') {
                         var day = $('.ui-datepicker-calendar a.ui-state-default').filter(function () { return $(this).text() == eventDay; });
                         day.html('<text>{0}</text>'.f(day.html()));
@@ -112,4 +112,4 @@
 
 <div id="datepicker"></div>
 
-@Html.Partial(Consts.UserControlsPaths.RequestFormControl, new ViewDataDictionary { { "elementId", "a.ui-state-default" } })
+@Html.Partial(Consts.Paths.UserControls.RequestFormControl, new ViewDataDictionary { { "elementId", "a.ui-state-default" } })

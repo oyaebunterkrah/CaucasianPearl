@@ -1,34 +1,51 @@
-﻿@{
-    ViewBag.Title = "О нас";
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.DAL.Data
+@using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Models.EDM
+@using Resources
+@using System.Globalization
+
+@model IEnumerable<ProfileItem>
+
+@{
+    ViewBag.Title = string.Format("{0} – {1}", ViewRes.ProjectTitle, ViewRes.AboutEnsemble);
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>@ViewBag.Message</h2>
-</hgroup>
+@* первый текст *@
+<div class="members_text2" style="float: left; width: 400px;">
+    @Html.Raw(Html.PlaceHolder("members_text1"))
+</div>
 
-<article>
-    <p>
-        Use this area to provide additional information.
-    </p>
+@* второй текст *@
+<div class="members_text2" style="float: left; width: 400px;">
+    @Html.Raw(Html.PlaceHolder("members_text2"))
+</div>
 
-    <p>
-        Use this area to provide additional information.
-    </p>
+@* участники ансамбля *@
+<div class="members">
+    @Html.Partial(Consts.Paths.UserControls.MembersControl, ViewBag.Members as IEnumerable<ProfileItem>)
+</div>
 
-    <p>
-        Use this area to provide additional information.
-    </p>
-</article>
+@* отзывы *@
+<div class="feedbacks" style="clear: both; margin-bottom: 50px;">
+    @Html.Partial(Consts.Paths.UserControls.FeedbacksControl, ViewBag.Feedbacks as FeedbackItem)
+</div>
 
-<aside>
-    <h3>Aside Title</h3>
-    <p>
-        Use this area to provide additional information.
-    </p>
-    <ul>
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-    </ul>
-</aside>
+<div>
+    <h2>
+        <a id="becomeSponsor" class="become_sponsor" href="https://money.yandex.ru/direct-payment.xml" target="_blank">@ViewRes.BecomeSponsor</a>
+    </h2>
+</div>
+
+@* крупные спонсоры *@
+<div class="big_sponsors" style="float: left; width: 400px;">
+    @Html.Partial(Consts.Paths.UserControls.BigSponsorsControl, ViewBag.BigSponsors as IEnumerable<SponsorItem>)
+</div>
+
+@* мелкие спонсоры *@
+<div class="small_sponsors" style="float: left; width: 400px;">
+    @Html.Partial(Consts.Paths.UserControls.SmallSponsorsControl, ViewBag.SmallSponsors as IEnumerable<SponsorItem>)
+</div>

@@ -117,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FormatIncorrect" xml:space="preserve">
+  <data name="Shared_FormatIncorrect" xml:space="preserve">
     <value>Неправильный формат</value>
   </data>
-  <data name="Required" xml:space="preserve">
+  <data name="Shared_Required" xml:space="preserve">
     <value>Поле обязательно для заполнения</value>
   </data>
-  <data name="StringLengthMax" xml:space="preserve">
+  <data name="Shared_StringLengthMax" xml:space="preserve">
     <value>Поле "{0}" должно содержать не более {2} символов</value>
   </data>
-  <data name="StringLengthMin" xml:space="preserve">
+  <data name="Shared_StringLengthMin" xml:space="preserve">
     <value>Поле "{0}" должно содержать не менее {2} символов</value>
   </data>
 </root>

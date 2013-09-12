@@ -39,6 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="!Resources\Other\OtherRes.Designer.cs">
+      <DependentUpon>OtherRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="!Resources\Other\OtherRes.hy.Designer.cs">
+      <DependentUpon>OtherRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Account\Error\AccountErrorRes.Designer.cs">
       <DependentUpon>AccountErrorRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -96,6 +106,46 @@
     </Compile>
     <Compile Include="ContentBlock\View\ContentBlockViewRes.hy.Designer.cs">
       <DependentUpon>ContentBlockViewRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="!Resources\Error\ErrorRes.Designer.cs">
+      <DependentUpon>ErrorRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="!Resources\Error\ErrorRes.hy.Designer.cs">
+      <DependentUpon>ErrorRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="!Resources\Model\ModelRes.Designer.cs">
+      <DependentUpon>ModelRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="!Resources\Model\ModelRes.hy.Designer.cs">
+      <DependentUpon>ModelRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="!Resources\Validation\ValidationRes.Designer.cs">
+      <DependentUpon>ValidationRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="!Resources\Validation\ValidationRes.hy.Designer.cs">
+      <DependentUpon>ValidationRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="!Resources\View\ViewRes.Designer.cs">
+      <DependentUpon>ViewRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="!Resources\View\ViewRes.hy.Designer.cs">
+      <DependentUpon>ViewRes.hy.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -259,43 +309,43 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="News\Error\NewsErrorRes.Designer.cs">
-      <DependentUpon>NewsErrorRes.resx</DependentUpon>
+    <Compile Include="Sponsor\Error\SponsorErrorRes.Designer.cs">
+      <DependentUpon>SponsorErrorRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="News\Error\NewsErrorRes.hy.Designer.cs">
-      <DependentUpon>NewsErrorRes.hy.resx</DependentUpon>
+    <Compile Include="Sponsor\Error\SponsorErrorRes.hy.Designer.cs">
+      <DependentUpon>SponsorErrorRes.hy.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="News\Model\NewsModelRes.Designer.cs">
-      <DependentUpon>NewsModelRes.resx</DependentUpon>
+    <Compile Include="Sponsor\Model\SponsorModelRes.Designer.cs">
+      <DependentUpon>SponsorModelRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="News\Model\NewsModelRes.hy.Designer.cs">
-      <DependentUpon>NewsModelRes.hy.resx</DependentUpon>
+    <Compile Include="Sponsor\Model\SponsorModelRes.hy.Designer.cs">
+      <DependentUpon>SponsorModelRes.hy.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="News\Validation\NewsValidationRes.Designer.cs">
-      <DependentUpon>NewsValidationRes.resx</DependentUpon>
+    <Compile Include="Sponsor\Validation\SponsorValidationRes.Designer.cs">
+      <DependentUpon>SponsorValidationRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="News\Validation\NewsValidationRes.hy.Designer.cs">
-      <DependentUpon>NewsValidationRes.hy.resx</DependentUpon>
+    <Compile Include="Sponsor\Validation\SponsorValidationRes.hy.Designer.cs">
+      <DependentUpon>SponsorValidationRes.hy.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="News\View\NewsViewRes.Designer.cs">
-      <DependentUpon>NewsViewRes.resx</DependentUpon>
+    <Compile Include="Sponsor\View\SponsorViewRes.Designer.cs">
+      <DependentUpon>SponsorViewRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="News\View\NewsViewRes.hy.Designer.cs">
-      <DependentUpon>NewsViewRes.hy.resx</DependentUpon>
+    <Compile Include="Sponsor\View\SponsorViewRes.hy.Designer.cs">
+      <DependentUpon>SponsorViewRes.hy.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -412,6 +462,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="!Resources\Other\OtherRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OtherRes.hy.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="!Resources\Other\OtherRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OtherRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Model\AccountModelRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AccountModelRes.hy.Designer.cs</LastGenOutput>
@@ -491,6 +551,46 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ContentBlockViewRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources.ContentBlock</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="!Resources\Error\ErrorRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorRes.hy.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="!Resources\Error\ErrorRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="!Resources\Model\ModelRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelRes.hy.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="!Resources\Model\ModelRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="!Resources\Validation\ValidationRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationRes.hy.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="!Resources\Validation\ValidationRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="!Resources\View\ViewRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewRes.hy.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="!Resources\View\ViewRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Gallery\Error\GalleryErrorRes.hy.resx">
@@ -653,44 +753,44 @@
       <CustomToolNamespace>Resources.Event</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="News\Error\NewsErrorRes.hy.resx">
+    <EmbeddedResource Include="Sponsor\Error\SponsorErrorRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewsErrorRes.hy.Designer.cs</LastGenOutput>
+      <LastGenOutput>SponsorErrorRes.hy.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="News\Error\NewsErrorRes.resx">
+    <EmbeddedResource Include="Sponsor\Error\SponsorErrorRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewsErrorRes.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources.News</CustomToolNamespace>
+      <LastGenOutput>SponsorErrorRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Sponsors</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="News\Model\NewsModelRes.hy.resx">
+    <EmbeddedResource Include="Sponsor\Model\SponsorModelRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewsModelRes.hy.Designer.cs</LastGenOutput>
+      <LastGenOutput>SponsorModelRes.hy.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="News\Model\NewsModelRes.resx">
+    <EmbeddedResource Include="Sponsor\Model\SponsorModelRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewsModelRes.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources.News</CustomToolNamespace>
+      <LastGenOutput>SponsorModelRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Sponsors</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="News\Validation\NewsValidationRes.hy.resx">
+    <EmbeddedResource Include="Sponsor\Validation\SponsorValidationRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewsValidationRes.hy.Designer.cs</LastGenOutput>
+      <LastGenOutput>SponsorValidationRes.hy.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="News\Validation\NewsValidationRes.resx">
+    <EmbeddedResource Include="Sponsor\Validation\SponsorValidationRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewsValidationRes.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources.News</CustomToolNamespace>
+      <LastGenOutput>SponsorValidationRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Sponsors</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="News\View\NewsViewRes.hy.resx">
+    <EmbeddedResource Include="Sponsor\View\SponsorViewRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewsViewRes.hy.Designer.cs</LastGenOutput>
+      <LastGenOutput>SponsorViewRes.hy.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="News\View\NewsViewRes.resx">
+    <EmbeddedResource Include="Sponsor\View\SponsorViewRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>NewsViewRes.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources.News</CustomToolNamespace>
+      <LastGenOutput>SponsorViewRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources.Sponsors</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Feedback\Error\FeedbackErrorRes.hy.resx">

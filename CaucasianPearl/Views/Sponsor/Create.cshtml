@@ -1,0 +1,40 @@
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.UserControls
+@using Resources
+
+@model CaucasianPearl.Models.EDM.Sponsor
+
+@{
+    ViewBag.Title = string.Format("{0} | {1}", ViewRes.SponsorCreating, Consts.Title);
+}
+
+@Html.Raw(CssJsRegControl.Render(Consts.Paths.Plugins.CKEditor))
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        replaceByCKEditor('@Url.Content(Consts.Paths.Plugins.CKEditorConfig)', 'Content', 'submit');
+    });
+</script>
+
+<p>
+    @Html.ActionLink(
+        @ViewRes.Cancel,
+        actionName: Consts.Actions.Index,
+        controllerName: Consts.Controllers.Sponsor.Name,
+        routeValues: new { page = Request.QueryString["page"] },
+        htmlAttributes: new { @class = "link" })
+</p>
+
+<h2>@ViewRes.SponsorCreating</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@ViewRes.Sponsor</legend>
+
+		@Html.Partial(Consts.Views.CreateOrEdit, Model)
+
+        <input id="submit" type="submit" value="@ViewRes.Create" />
+    </fieldset>
+}

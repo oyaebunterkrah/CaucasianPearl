@@ -3,9 +3,9 @@
 @using Resources.Shared
 
 @{
-    ViewBag.Title = string.Format("{0} | {1}", SharedViewRes.Thanks, Consts.Title);
+    ViewBag.Title = string.Format("{0} | {1}", ViewRes.Thanks, Consts.Title);
 }
 
-<h2 style="color: Red">@SharedViewRes.ThankYouWeWillCertainlyContactYou</h2>
+<h2 style="color: Red">@ViewRes.ThankYouWeWillCertainlyContactYou</h2>
 
-<a href="@Consts.RootPath">@SharedViewRes.BackToHomePage</a>
+<a href="@Consts.RootPath">@ViewRes.BackToHomePage</a>

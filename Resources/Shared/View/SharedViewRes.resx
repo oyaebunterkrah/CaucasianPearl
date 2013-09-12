@@ -117,58 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Actions" xml:space="preserve">
+  <data name="Shared_Actions" xml:space="preserve">
     <value>Действия</value>
   </data>
-  <data name="AddComment" xml:space="preserve">
+  <data name="Shared_AddComment" xml:space="preserve">
     <value>Добавить отзыв</value>
   </data>
-  <data name="Authorize" xml:space="preserve">
+  <data name="Shared_Authorize" xml:space="preserve">
     <value>Авторизоваться</value>
   </data>
-  <data name="BackToHomePage" xml:space="preserve">
+  <data name="Shared_BackToHomePage" xml:space="preserve">
     <value>Вернуться на главную страницу</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
+  <data name="Shared_Cancel" xml:space="preserve">
     <value>Отмена</value>
   </data>
-  <data name="Create" xml:space="preserve">
+  <data name="Shared_Create" xml:space="preserve">
     <value>Создать</value>
   </data>
-  <data name="Delete" xml:space="preserve">
+  <data name="Shared_Delete" xml:space="preserve">
     <value>Удалить</value>
   </data>
-  <data name="Details" xml:space="preserve">
+  <data name="Shared_Details" xml:space="preserve">
     <value>Подробности</value>
   </data>
-  <data name="Down" xml:space="preserve">
+  <data name="Shared_Down" xml:space="preserve">
     <value>Вниз</value>
   </data>
-  <data name="Edit" xml:space="preserve">
+  <data name="Shared_Edit" xml:space="preserve">
     <value>Редактировать</value>
   </data>
-  <data name="Feedback" xml:space="preserve">
+  <data name="Shared_Feedback" xml:space="preserve">
     <value>Отзывы и предложения</value>
   </data>
-  <data name="Save" xml:space="preserve">
+  <data name="Shared_Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="Thanks" xml:space="preserve">
+  <data name="Shared_Thanks" xml:space="preserve">
     <value>Спасибо</value>
   </data>
-  <data name="ThankYouWeWillCertainlyContactYou" xml:space="preserve">
+  <data name="Shared_ThankYouWeWillCertainlyContactYou" xml:space="preserve">
     <value>Спасибо! Мы с Вами обязательно свяжемся!</value>
   </data>
-  <data name="ToHomePage" xml:space="preserve">
+  <data name="Shared_ToHomePage" xml:space="preserve">
     <value>На главную</value>
   </data>
-  <data name="Up" xml:space="preserve">
+  <data name="Shared_Up" xml:space="preserve">
     <value>Вверх</value>
   </data>
-  <data name="Upload" xml:space="preserve">
+  <data name="Shared_Upload" xml:space="preserve">
     <value>Загрузить</value>
   </data>
-  <data name="YouSureYouWantToDeleteThis" xml:space="preserve">
+  <data name="Shared_YouSureYouWantToDeleteThis" xml:space="preserve">
     <value>Вы уверены,что хотите удалить?</value>
   </data>
 </root>

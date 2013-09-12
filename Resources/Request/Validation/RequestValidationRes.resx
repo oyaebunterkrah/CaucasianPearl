@@ -117,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Required" xml:space="preserve">
+  <data name="Request_Required" xml:space="preserve">
     <value>Поле обязательно для заполнения</value>
   </data>
-  <data name="StringLengthMinMax" xml:space="preserve">
+  <data name="Request_StringLengthMinMax" xml:space="preserve">
     <value>Поле "{0}" должно содержать от {2} до {1} символов</value>
   </data>
-  <data name="WrongDateFormat" xml:space="preserve">
+  <data name="Request_WrongDateFormat" xml:space="preserve">
     <value>Неверный формат даты</value>
   </data>
-  <data name="WrongEmailFormat" xml:space="preserve">
+  <data name="Request_WrongEmailFormat" xml:space="preserve">
     <value>Неверный формат электронной почты</value>
   </data>
 </root>

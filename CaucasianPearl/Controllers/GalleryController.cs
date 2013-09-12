@@ -33,6 +33,7 @@ namespace CaucasianPearl.Controllers
             return View(flickrModel);
         }
 
+        // TODO
         public ActionResult CreatePhotoSet()
         {
             var photosetId = _flickrService.CreatePhotoSet("test1", "description1");

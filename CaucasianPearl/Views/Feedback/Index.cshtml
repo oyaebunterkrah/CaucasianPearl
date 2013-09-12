@@ -7,27 +7,24 @@
 @using CaucasianPearl.Models.EDM;
 @using PagedList
 @using PagedList.Mvc
-@using Resources.Feedback
-@using Resources.Shared
+@using Resources
 
 @model IEnumerable<Feedback>
 
 @{
-    ViewBag.Title = string.Format("{0} - {1}", SharedRes.ProjectTitle, FeedbackViewRes.Feedback);
+    ViewBag.Title = string.Format("{0} - {1}", ViewRes.ProjectTitle, ViewRes.Feedbacks);
 }
 
 <p>
     @Html.ActionLink(
-        SharedViewRes.ToHomePage,
+        ViewRes.ToHomePage,
         actionName: Consts.Actions.Index,
         controllerName: Consts.Controllers.Home.Name,
         routeValues: null,
         htmlAttributes: new { @class = "link" })
     @Consts.BreadcrumbsSeparator
-    @FeedbackViewRes.Feedback
+    @ViewRes.Feedbacks
 </p>
-
-@*@Scripts.Render("~/bundles/jqueryval")*@
 
 <script type="text/javascript">
     var feedbackEntity = {
@@ -60,11 +57,11 @@
     };
 </script>
 
-<h2>@FeedbackViewRes.Feedback</h2>
+<h2>@ViewRes.Feedbacks</h2>
 
 <p>
     @Html.ActionLink(
-        FeedbackViewRes.AddComment,
+        ViewRes.AddComment,
         Consts.Actions.Create)
 </p>
 
@@ -87,25 +84,17 @@
             @* Display block *@
             <div id="@string.Format("displayBlock{0}", feedback.ID)">
                 <span id="title">
-                    @feedback.Name, @feedback.City, @String.Format("{0:g}", feedback.FeedbackDateTime)
+                    @feedback.Name, @feedback.City, @String.Format("{0:g}", feedback.Created)
                 </span>
                 <div>
-                    <span class="display-label">@FeedbackModelRes.Comment:</span>
+                    <span class="display-label">@ModelRes.Comment:</span>
                     <div id="@string.Format("feedbackComment{0}", feedback.ID)" class="display-field">
                         @feedback.Comment
                     </div>
 
-                    @if (!string.IsNullOrWhiteSpace(feedback.Suggestion))
-                    {
-                        <span class="display-label">@FeedbackModelRes.Suggestion:</span>
-                        <div id="@string.Format("feedbackSuggestion{0}", feedback.ID)" class="display-field">
-                            @feedback.Suggestion
-                        </div>
-                    }
-
                     @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
                     {
-                        <span class="display-label">@FeedbackModelRes.IsApproved:</span>
+                        <span class="display-label">@ModelRes.IsApproved:</span>
                         @Html.DisplayFor(m => feedback.IsApproved)
                     }
 
@@ -114,7 +103,7 @@
                         <p>
                             @*  Редактировать *@
                             @Html.ActionLink(
-                                linkText: SharedViewRes.Edit,
+                                linkText: ViewRes.Edit,
                                 actionName: Consts.Actions.Edit,
                                 routeValues: new {id = feedback.ID},
                                 htmlAttributes: new
@@ -124,7 +113,7 @@
                                     })|
                             @*  Удалить *@
                             @Html.ActionLink(
-                                linkText: SharedViewRes.Delete,
+                                linkText: ViewRes.Delete,
                                 actionName: Consts.Actions.Delete,
                                 routeValues: new {id = feedback.ID},
                                 htmlAttributes: new {id = string.Format("btnDelete{0}", feedback.ID)})
@@ -134,7 +123,7 @@
         
                 @*  Подробности *@
                 @Html.ActionLink(
-                    linkText: @FeedbackViewRes.Details,
+                    linkText: @ViewRes.Details,
                     actionName: Consts.Actions.Details,
                     routeValues: new {id = feedback.ID},
                     htmlAttributes: new {id = string.Format("btnDetails{0}", feedback.ID)})
@@ -151,13 +140,13 @@
                     <input
                         id="@string.Format("btnSubmit{0}", feedback.ID)"
                         type="submit"
-                        value="@SharedViewRes.Save" />
+                        value="@ViewRes.Save" />
 
                     @* Редактировать *@
                     <input
                         id="@string.Format("btnEdit{0}", feedback.ID)"
                         type="submit"
-                        value="@SharedViewRes.Cancel"
+                        value="@ViewRes.Cancel"
                         onclick="javascript:$(this).closest('#@string.Format("editBlock{0}", feedback.ID)').slideUp({ duration: feedbackEntity.slideUpDuration }); $('#@string.Format("displayBlock{0}", feedback.ID)').slideDown({ duration: feedbackEntity.slideDownDuration }); return false;" />
                 </div>
             }
@@ -176,9 +165,9 @@
 
 <div class="paginator">
     @Html.Partial(
-        Consts.UserControlsPaths.PaginatorControl,
+        Consts.Paths.UserControls.PaginatorControl,
         (PaginatorControl.GetLinks(
-            ServiceHelper<IBaseService<Feedback>>.GetService().Count(Request.QueryString),
+            ServiceHelper<IFeedbackService<Feedback>>.GetService().Count(Request.QueryString),
             Consts.PaginatorControl.FeedbackItemsPerPage,
             Consts.PaginatorControl.FeedbackNumberOfVisibleLinks)))
 </div>

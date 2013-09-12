@@ -157,7 +157,7 @@
                     @{
                         foreach (var imageName in ViewBag.Images) {
                             <div class="cover_image @(imageName == ViewBag.CoverImageName ? "main" : string.Empty)" data-imagename="@imageName" style="float: left; margin-right: 20px;">
-                                <img src='@(Url.Content(Consts.Paths.CoversFolder + imageName))' alt="" />
+                                <img src='@(Url.Content(Consts.Paths.Img.CoversFolder + imageName))' alt="" />
                                 <a class="delete" href="#"></a>
                                 <a class="fullscreen" href="#"></a>
                             </div>

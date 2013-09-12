@@ -117,19 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BlockId" xml:space="preserve">
+  <data name="ContentBlock_BlockId" xml:space="preserve">
     <value>ID контент-блока</value>
   </data>
-  <data name="Content" xml:space="preserve">
+  <data name="ContentBlock_Content" xml:space="preserve">
     <value>Контент</value>
   </data>
-  <data name="Description" xml:space="preserve">
+  <data name="ContentBlock_Description" xml:space="preserve">
     <value>Описание</value>
   </data>
-  <data name="IsPublished" xml:space="preserve">
+  <data name="ContentBlock_IsPublished" xml:space="preserve">
     <value>Опубликован</value>
   </data>
-  <data name="PlaceHolderId" xml:space="preserve">
+  <data name="ContentBlock_PlaceHolderId" xml:space="preserve">
     <value>ID блока расположения</value>
   </data>
 </root>

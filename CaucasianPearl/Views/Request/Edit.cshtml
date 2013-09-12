@@ -5,7 +5,7 @@
 @using Resources.Request
 
 @{
-    ViewBag.Title = SharedViewRes.Edit;
+    ViewBag.Title = ViewRes.Edit;
 }
 
 <h2>@RequestViewRes.RequestEditing</h2>
@@ -20,7 +20,7 @@
 		@Html.Partial(Consts.Views.CreateOrEdit, Model)
 
         <p>
-            <input type="submit" value="@SharedViewRes.Save" />
+            <input type="submit" value="@ViewRes.Save" />
         </p>
     </fieldset>
 }

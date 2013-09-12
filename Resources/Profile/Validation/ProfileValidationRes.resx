@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Required" xml:space="preserve">
+  <data name="Profile_Required" xml:space="preserve">
     <value>Поле обязательно для заполнения</value>
   </data>
-  <data name="StringLengthMax" xml:space="preserve">
+  <data name="Profile_StringLengthMax" xml:space="preserve">
     <value>Поле "{0}" должно содержать не более {2} символов</value>
   </data>
 </root>

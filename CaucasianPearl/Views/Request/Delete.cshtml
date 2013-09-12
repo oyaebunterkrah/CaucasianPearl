@@ -1,48 +1,48 @@
+@using CaucasianPearl.Core.Constants
+@using Resources
+
 @model CaucasianPearl.Models.EDM.Request
 
-@using CaucasianPearl.Core.Constants
-@using Resources.Request
-@using Resources.Shared
 
 @{
-    ViewBag.Title = SharedViewRes.Delete;
+    ViewBag.Title = ViewRes.Delete;
 }
 
-<h2>@SharedViewRes.Delete</h2>
+<h2>@ViewRes.Delete</h2>
 
-<h3>@SharedViewRes.YouSureYouWantToDeleteThis</h3>
+<h3>@ViewRes.YouSureYouWantToDeleteThis</h3>
 <fieldset>
-    <legend>@RequestViewRes.Requests</legend>
+    <legend>@ViewRes.Requests</legend>
 
-    <div class="display-label">@RequestModelRes.YourName</div>
+    <div class="display-label">@ModelRes.YourName</div>
     <div class="display-field">@Model.Name</div>
     
-    <div class="display-label">@RequestModelRes.Phone</div>
+    <div class="display-label">@ModelRes.Phone</div>
     <div class="display-field">@Model.Phone</div>
     
-    <div class="display-label">@RequestModelRes.Email</div>
+    <div class="display-label">@ModelRes.Email</div>
     <div class="display-field">@Model.Email</div>
 
-    <div class="display-label">@RequestModelRes.City</div>
+    <div class="display-label">@ModelRes.City</div>
     <div class="display-field">@Model.City</div>
 
-    <div class="display-label">@RequestModelRes.Content</div>
+    <div class="display-label">@ModelRes.Content</div>
     <div class="display-field">@Model.Content</div>
 
-    <div class="display-label">@RequestModelRes.RequestDateTime</div>
-    <div class="display-field">@String.Format("{0:g}", Model.RequestDateTime)</div>
+    <div class="display-label">@ModelRes.RequestDate</div>
+    <div class="display-field">@String.Format("{0:g}", Model.RequestDate)</div>
     
-    <div class="display-label">@RequestModelRes.Status</div>
+    <div class="display-label">@ModelRes.Status</div>
     <div class="display-field">@Model.Status</div>
     
-    <div class="display-label">@RequestModelRes.Comment</div>
+    <div class="display-label">@ModelRes.Comment</div>
     <div class="display-field">@Model.Comment</div>
 </fieldset>
 
 @using (Html.BeginForm())
 {
     <p>
-        <input type="submit" value="@SharedViewRes.Delete" /> |
-        @Html.ActionLink(RequestViewRes.BackToList, Consts.Actions.Index)
+        <input type="submit" value="@ViewRes.Delete" /> |
+        @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
     </p>
 }

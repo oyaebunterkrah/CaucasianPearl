@@ -1,0 +1,3 @@
+.send_request_response, .thanks, .error, .reCaptcha {
+    display: none;
+}

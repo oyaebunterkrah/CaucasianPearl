@@ -1,0 +1,89 @@
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Models
+@using CaucasianPearl.Models.EDM
+@using Resources
+
+@model IEnumerable<Sponsor>
+
+@{
+    ViewBag.Title = string.Format("{0} - {1}", ViewRes.ProjectTitle, ViewRes.Sponsor);
+}
+
+<p>
+    @Html.ActionLink(
+        ViewRes.ToHomePage,
+        actionName: Consts.Actions.Index,
+        controllerName: Consts.Controllers.Home.Name,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" })
+    @Consts.BreadcrumbsSeparator
+    @ViewRes.Sponsors
+</p>
+
+@if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
+{
+    <p>
+        @Html.ActionLink(
+            ViewRes.CreateSponsor,
+            actionName: Consts.Actions.Create,
+            controllerName: Consts.Controllers.Sponsor.Name,
+            routeValues: null,
+            htmlAttributes: new { @class = "link" })
+    </p>
+}
+
+<table>
+    @foreach (var sponsor in Model)
+    {
+        <tr>
+            <td style="text-align: center;">
+                <div class="model-image">
+                    @Html.ActionImage(
+                        Consts.Actions.Details,
+                        controller: Consts.Controllers.Sponsor.Name,
+                        routeValues: new { id = sponsor.ID },
+                        imagePath: ImageHelper.GetImageUrl(sponsor, Consts.Controllers.Sponsor.SponsorImagesFolder),
+                        alt: sponsor.Name)
+                </div>
+            </td>
+            <td style="text-align: center;">
+                @Html.ActionLink(
+                    sponsor.Name,
+                    actionName: Consts.Actions.Details,
+                    controllerName: Consts.Controllers.Sponsor.Name,
+                    routeValues: new { id = sponsor.ID },
+                    htmlAttributes: new { @class = "link" }) |
+
+                @Html.ActionLink(
+                    ViewRes.Edit,
+                    actionName: Consts.Actions.Edit,
+                    controllerName: Consts.Controllers.Sponsor.Name,
+                    routeValues: new { id = sponsor.ID },
+                    htmlAttributes: new { @class = "link" }) |
+
+                @Html.ActionLink(
+                    ViewRes.Delete,
+                    actionName: Consts.Actions.Delete,
+                    controllerName: Consts.Controllers.Sponsor.Name,
+                    routeValues: new { id = sponsor.ID },
+                    htmlAttributes: new { @class = "link" })
+            </td>
+        </tr>
+    }
+</table>
+
+<br />
+<br />
+
+<div class="paginator">
+    @Html.Partial(
+        Consts.Paths.UserControls.PaginatorControl,
+        (PaginatorControl.GetLinks(
+            ServiceHelper<IBaseService<Sponsor>>.GetService().Count(Request.QueryString),
+            Consts.PaginatorControl.SponsorItemsPerPage,
+            Consts.PaginatorControl.SponsorNumberOfVisibleLinks)))
+</div>

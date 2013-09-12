@@ -5,32 +5,31 @@
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Models
 @using CaucasianPearl.Models.EDM;
-@using Resources.ContentBlock
-@using Resources.Shared
+@using Resources
 
 @model IEnumerable<ContentBlock>
 
 @{
-    ViewBag.Title = string.Format("{0} - {1}", SharedRes.ProjectTitle, ContentBlockViewRes.ContentBlocks);
+    ViewBag.Title = string.Format("{0} - {1}", ViewRes.ProjectTitle, ViewRes.ContentBlocks);
 }
 
 <p>
     @Html.ActionLink(
-        SharedViewRes.ToHomePage,
+        ViewRes.ToHomePage,
         actionName: Consts.Actions.Index,
         controllerName: Consts.Controllers.Home.Name,
         routeValues: null,
         htmlAttributes: new { @class = "link" }
     )
     @Consts.BreadcrumbsSeparator
-    @ContentBlockViewRes.ContentBlocks
+    @ViewRes.ContentBlocks
 </p>
 
-<h2>@ContentBlockViewRes.ContentBlocks</h2>
+<h2>@ViewRes.ContentBlocks</h2>
 
 <p>
     @Html.ActionLink(
-        linkText: ContentBlockViewRes.CreateContentBlock,
+        linkText: ViewRes.CreateContentBlock,
         actionName: Consts.Actions.Create)
 </p>
 
@@ -38,27 +37,27 @@
 {
     <div>
         <div>
-            <span class="display-label">@ContentBlockModelRes.BlockId:</span>
+            <span class="display-label">@ModelRes.BlockId:</span>
             <div class="display-field">
                 @contentBlock.BlockId
             </div>
             
-            <span class="display-label">@ContentBlockModelRes.PlaceHolderId:</span>
+            <span class="display-label">@ModelRes.PlaceHolderId:</span>
             <div class="display-field">
                 @contentBlock.PlaceHolderId
             </div>
 
-            <span class="display-label">@ContentBlockModelRes.Content:</span>
+            <span class="display-label">@ModelRes.Content:</span>
             <div id="@string.Format("contentBlockContent{0}", contentBlock.ID)" class="display-field">
                 @Html.Raw(contentBlock.Content)
             </div>
 
-            <span class="display-label">@ContentBlockModelRes.Description:</span>
+            <span class="display-label">@ModelRes.Description:</span>
             <div class="display-field">
                 @contentBlock.Description
             </div>
             
-            <span class="display-label">@ContentBlockModelRes.IsPublished:</span>
+            <span class="display-label">@ModelRes.IsPublished:</span>
             <div class="display-field">
                 @Html.DisplayFor(m => contentBlock.IsPublished)
             </div>
@@ -69,12 +68,12 @@
             {
                 <div>
                     @Html.ActionLink(
-                        linkText: SharedViewRes.Edit,
+                        linkText: ViewRes.Edit,
                         actionName: Consts.Actions.Edit,
                         routeValues: new {id = contentBlock.ID}) |
 
                     @Html.ActionLink(
-                        linkText: SharedViewRes.Delete,
+                        linkText: ViewRes.Delete,
                         actionName: Consts.Actions.Delete,
                         routeValues: new {id = contentBlock.ID})
                 </div>
@@ -84,7 +83,7 @@
             
             <div>
                 @Html.ActionLink(
-                    linkText: @ContentBlockViewRes.ContentBlockDetails,
+                    linkText: @ViewRes.ContentBlockDetails,
                     actionName: Consts.Actions.Details,
                     routeValues: new {id = contentBlock.ID})
             </div>
@@ -96,12 +95,12 @@
                 <div>
                     <!-- Вверх -->
                     @Html.ActionLink(
-                        SharedViewRes.Up,
+                        ViewRes.Up,
                         Consts.Actions.Up,
                         new { id = contentBlock.ID }) |
                     <!-- Вниз -->
                     @Html.ActionLink(
-                        SharedViewRes.Down,
+                        ViewRes.Down,
                         Consts.Actions.Down,
                         new { id = contentBlock.ID })
                 </div>
@@ -119,7 +118,7 @@
 
 <div class="paginator">
     @Html.Partial(
-        Consts.UserControlsPaths.PaginatorControl,
+        Consts.Paths.UserControls.PaginatorControl,
         (PaginatorControl.GetLinks(
             ServiceHelper<IOrderedService<ContentBlock>>.GetService().Count(Request.QueryString),
             Consts.PaginatorControl.ContentBlockItemsPerPage,

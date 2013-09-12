@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NoPhotosetsFound" xml:space="preserve">
+  <data name="Gallery_NoPhotosetsFound" xml:space="preserve">
     <value>Не найдено ни одного фотоальбома.</value>
   </data>
-  <data name="Photosets" xml:space="preserve">
+  <data name="Gallery_Photosets" xml:space="preserve">
     <value>Фотоальбомы</value>
   </data>
 </root>

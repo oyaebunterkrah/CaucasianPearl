@@ -117,28 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="City" xml:space="preserve">
+  <data name="Feedback_City" xml:space="preserve">
     <value>Город</value>
   </data>
-  <data name="Comment" xml:space="preserve">
+  <data name="Feedback_Comment" xml:space="preserve">
     <value>Отзыв</value>
   </data>
-  <data name="FeedbackDateTime" xml:space="preserve">
+  <data name="Feedback_FeedbackDateTime" xml:space="preserve">
     <value>Дата и время</value>
   </data>
-  <data name="IsApproved" xml:space="preserve">
+  <data name="Feedback_IsApproved" xml:space="preserve">
     <value>Утверждён</value>
   </data>
-  <data name="Name" xml:space="preserve">
+  <data name="Feedback_Name" xml:space="preserve">
     <value>Имя</value>
   </data>
-  <data name="Suggestion" xml:space="preserve">
+  <data name="Feedback_Suggestion" xml:space="preserve">
     <value>Предложения</value>
   </data>
-  <data name="YourCity" xml:space="preserve">
+  <data name="Feedback_YourCity" xml:space="preserve">
     <value>Ваш город</value>
   </data>
-  <data name="YourName" xml:space="preserve">
+  <data name="Feedback_YourName" xml:space="preserve">
     <value>Ваше имя</value>
   </data>
 </root>

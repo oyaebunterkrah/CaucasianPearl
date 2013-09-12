@@ -21,7 +21,8 @@ namespace CaucasianPearl.Core.DAL.Data
             Content = StringHelper.DecodeScriptTags(@event.Content);
             Description = StringHelper.DecodeScriptTags(@event.Description);
             EventDate = @event.EventDate.HasValue ? @event.EventDate.Value.Date : new DateTime();
-            EventMedia = @event.EventMedia.Select(em => new EventMediaItem(em)).OrderBy(emi => !emi.IsPrimary); // главное фото в самом верху
+            EventMedia = @event.EventMedia.Select(em => new EventMediaItem(em)).OrderBy(emi => !emi.IsPrimary);
+                // главное фото в самом верху
             Title = @event.Title;
         }
 
@@ -46,16 +47,22 @@ namespace CaucasianPearl.Core.DAL.Data
         public EventItemInfo(Event @event)
         {
             ID = @event.ID;
+            Day = @event.EventDate.HasValue
+                      ? @event.EventDate.Value.Day
+                      : new DateTime().Day;
             Description = @event.Description;
             CoverImage = EventHelper.GetCoverImage(@event);
-            EventDate = @event.EventDate.HasValue ? @event.EventDate.Value.Date : new DateTime();
+            Month = StringHelper.DeclineMonth(@event.EventDate.HasValue
+                                                  ? @event.EventDate.Value
+                                                  : new DateTime());
             Title = @event.Title;
         }
 
         public int ID { get; set; }
+        public int Day { get; set; }
         public string Description { get; set; }
         public string CoverImage { get; set; }
-        public DateTime? EventDate { get; set; }
+        public string Month { get; set; }
         public string Title { get; set; }
     }
 

@@ -1,16 +1,15 @@
 ﻿@using CaucasianPearl.Core.Constants
-@using Resources.Event
-@using Resources.Shared
+@using Resources
 
 @model CaucasianPearl.Models.EDM.Event
 
 @{
-    ViewBag.Title = string.Format("{0} | {1}", EventViewRes.EventCreating, Consts.Title);
+    ViewBag.Title = string.Format("{0} | {1}", ViewRes.EventCreating, Consts.Title);
 }
 
 <script src="@Url.Content("~/content/js/sys/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/content/js/sys/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-<script src="@Url.Content(Consts.Paths.CKEditor)" type="text/javascript"></script>
+<script src="@Url.Content(Consts.Paths.Plugins.CKEditor)" type="text/javascript"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -39,32 +38,32 @@
 
 <p>
     @Html.ActionLink(
-        linkText: SharedViewRes.Cancel,
+        linkText: ViewRes.Cancel,
         actionName: Consts.Actions.Index,
         controllerName: Consts.Controllers.Event.Name,
         routeValues: new { page = Request.QueryString["page"] },
         htmlAttributes: new { @class = "link" })
 </p>
 
-<h2>@EventViewRes.EventCreating</h2>
+<h2>@ViewRes.EventCreating</h2>
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>@EventViewRes.Events</legend>
+        <legend>@ViewRes.Events</legend>
 
         @Html.Hidden("mediaItemsForCreate")
 
         @Html.Partial(Consts.Views.CreateOrEdit, Model)
 
-        <input id="submitCreate" type="submit" value="@SharedViewRes.Create" />
+        <input id="submitCreate" type="submit" value="@ViewRes.Create" />
     </fieldset>
 }
 
 <script type="text/javascript">
-    replaceByCKEditor('@Url.Content(Consts.Paths.CKEditorConfig)', 'Description', 'submitCreate');
+    replaceByCKEditor('@Url.Content(Consts.Paths.Plugins.CKEditorConfig)', 'Description', 'submitCreate');
 </script>
 
 @{ Html.RenderPartial(Consts.Controllers.Event.Views.SelectMediaItemsOnCreate, new ViewDataDictionary { { "mode", "create" } }); }

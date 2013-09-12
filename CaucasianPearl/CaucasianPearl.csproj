@@ -201,6 +201,55 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\DAL\Data\FeedbackData.cs" />
+    <Compile Include="Core\DAL\Data\RequestData.cs" />
+    <Compile Include="Core\DAL\Data\ProfileData.cs" />
+    <Compile Include="Core\DAL\Data\SponsorData.cs" />
+    <Compile Include="Core\EntityServices\Interface\IFeedbackService.cs" />
+    <Compile Include="Core\EntityServices\Interface\IRequestService.cs" />
+    <Compile Include="Core\EntityServices\Interface\IProfileService.cs" />
+    <Compile Include="Core\EntityServices\ProfileEntityService.cs" />
+    <Compile Include="Core\EntityServices\Interface\ISponsorService.cs" />
+    <Compile Include="Resources\Error\ErrorRes.Designer.cs">
+      <DependentUpon>ErrorRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Error\ErrorRes.hy.Designer.cs">
+      <DependentUpon>ErrorRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Model\ModelRes.Designer.cs">
+      <DependentUpon>ModelRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Model\ModelRes.hy.Designer.cs">
+      <DependentUpon>ModelRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Validation\ValidationRes.Designer.cs">
+      <DependentUpon>ValidationRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Validation\ValidationRes.hy.Designer.cs">
+      <DependentUpon>ValidationRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\View\ViewRes.Designer.cs">
+      <DependentUpon>ViewRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\View\ViewRes.hy.Designer.cs">
+      <DependentUpon>ViewRes.hy.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -220,7 +269,7 @@
     <Compile Include="Controllers\Interface\IBaseController.cs" />
     <Compile Include="Controllers\Interface\IOrderedController.cs" />
     <Compile Include="Controllers\Interface\IUrlFriendlyController.cs" />
-    <Compile Include="Controllers\OneNewsController.cs" />
+    <Compile Include="Controllers\SponsorController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\SiteSettingsController.cs" />
@@ -230,7 +279,6 @@
     <Compile Include="Core\EntityServices\EventMediaEntityService.cs" />
     <Compile Include="Core\EntityServices\EventEntityService.cs" />
     <Compile Include="Core\EntityServices\Interface\IEventService.cs" />
-    <Compile Include="Core\EntityServices\UserEntityService.cs" />
     <Compile Include="Core\Helpers\RecaptchaHelper.cs" />
     <Compile Include="Core\Helpers\EntityHelpers\EventHelper.cs" />
     <Compile Include="Core\Helpers\SiteSettingsHelper.cs" />
@@ -268,16 +316,17 @@
     <Compile Include="Core\EntityServices\ContentBlockEntityService.cs" />
     <Compile Include="Core\EntityServices\Factory\EventServiceFactory.cs" />
     <Compile Include="Core\EntityServices\Factory\FeedbackServiceFactory.cs" />
-    <Compile Include="Core\EntityServices\Factory\OneNewsServiceFactory.cs" />
+    <Compile Include="Core\EntityServices\Factory\SponsorServiceFactory.cs" />
     <Compile Include="Core\EntityServices\FeedbackEntityService.cs" />
     <Compile Include="Core\EntityServices\Interface\IBaseService.cs" />
     <Compile Include="Core\EntityServices\Interface\IOrderedService.cs" />
     <Compile Include="Core\EntityServices\Interface\IUrlFriendlyService.cs" />
-    <Compile Include="Core\EntityServices\OneNewsEntityService.cs" />
+    <Compile Include="Core\EntityServices\SponsorEntityService.cs" />
     <Compile Include="Core\EntityServices\RequestEntityService.cs" />
     <Compile Include="Core\Services\FlickrNetService\IFlickrService.cs" />
     <Compile Include="Core\Services\LoggingService\ILogService.cs" />
     <Compile Include="Core\Services\LoggingService\LogService.cs" />
+    <Compile Include="Core\UserControls\FooterControl.cs" />
     <Compile Include="Core\UserControls\CssJsRegControl.cs" />
     <Compile Include="Core\UserControls\PaginatorControl.cs" />
     <Compile Include="Core\Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -315,9 +364,6 @@
     <Compile Include="Models\EDM\Feedback.cs">
       <DependentUpon>EntityDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EDM\OneNews.cs">
-      <DependentUpon>EntityDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\EDM\Profile.cs">
       <DependentUpon>EntityDataModel.tt</DependentUpon>
     </Compile>
@@ -325,6 +371,9 @@
       <DependentUpon>EntityDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EDM\SiteSetting.cs">
+      <DependentUpon>EntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EDM\Sponsor.cs">
       <DependentUpon>EntityDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FlickrModel.cs" />
@@ -335,7 +384,7 @@
     <Compile Include="Models\Metadata\ProfileMetadata.cs" />
     <Compile Include="Models\Metadata\EventMetadata.cs" />
     <Compile Include="Models\Metadata\FeedbackMetadata.cs" />
-    <Compile Include="Models\Metadata\OneNewsMetadata.cs" />
+    <Compile Include="Models\Metadata\SponsorMetadata.cs" />
     <Compile Include="Models\Metadata\RequestMetadata.cs" />
     <Compile Include="Models\Partial\AccountModelsPartial.cs" />
     <Compile Include="Models\Partial\SiteSettingsPartial.cs" />
@@ -344,7 +393,7 @@
     <Compile Include="Models\Partial\ProfilePartial.cs" />
     <Compile Include="Models\Partial\EventPartial.cs" />
     <Compile Include="Models\Partial\FeedbackPartial.cs" />
-    <Compile Include="Models\Partial\OneNewsPartial.cs" />
+    <Compile Include="Models\Partial\SponsorPartial.cs" />
     <Compile Include="Models\Partial\ContentBlockPartial.cs" />
     <Compile Include="Models\WrapperModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -355,6 +404,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\cp\request_form.css" />
     <Content Include="Content\css\cp\photos.css" />
     <Content Include="Content\css\cp\pagedList.css" />
     <Content Include="Content\css\site\site.css" />
@@ -363,17 +413,19 @@
     <Content Include="Content\img\cp\event\delete.png" />
     <Content Include="Content\img\cp\event\edit.png" />
     <Content Include="Content\img\cp\event\primary.png" />
-    <Content Include="Content\img\cp\news\0.jpg" />
-    <Content Include="Content\img\cp\news\1.jpg" />
-    <Content Include="Content\img\cp\news\2.jpg" />
-    <Content Include="Content\img\cp\news\3.jpg" />
-    <Content Include="Content\img\cp\news\4.jpg" />
+    <Content Include="Content\img\cp\sponsor\0.jpg" />
+    <Content Include="Content\img\cp\sponsor\1.jpg" />
+    <Content Include="Content\img\cp\sponsor\2.jpg" />
+    <Content Include="Content\img\cp\sponsor\3.jpg" />
+    <Content Include="Content\img\cp\sponsor\7.jpg" />
     <Content Include="Content\img\cp\profile\0.jpg" />
     <Content Include="Content\img\cp\profile\2.jpg" />
     <Content Include="Content\img\cp\profile\3.jpg" />
     <Content Include="Content\img\site\1x1.png" />
     <Content Include="Content\img\site\close.gif" />
     <Content Include="Content\img\site\favicon.ico" />
+    <Content Include="Content\img\site\flag-hy.png" />
+    <Content Include="Content\img\site\flag-ru.png" />
     <Content Include="Content\img\site\fullscreen.gif" />
     <Content Include="Content\img\site\default-image.png" />
     <Content Include="Content\img\site\loading-min.gif" />
@@ -396,7 +448,9 @@
     <Content Include="Content\img\site\social_share\ok.png" />
     <Content Include="Content\img\site\social-share.png" />
     <Content Include="Content\img\site\social_share\vk.png" />
+    <Content Include="Content\js\cp\request_form.js" />
     <Content Include="Content\js\cp\main.js" />
+    <Content Include="Content\js\sys\jquery-1.10.2.min.js" />
     <Content Include="Content\js\sys\jquery-1.8.2.js" />
     <Content Include="Content\js\sys\jquery-1.8.2.min.js" />
     <Content Include="Content\js\sys\jquery.unobtrusive-ajax.js" />
@@ -409,7 +463,6 @@
     <Content Include="Content\js\sys\knockout-2.2.0.js" />
     <Content Include="Content\js\sys\modernizr-2.6.2.js" />
     <Content Include="Content\js\sys\_references.js" />
-    <Content Include="Content\PagedList.css" />
     <Content Include="Content\plugins\audioplayer\audio\pink_martini_-_sympathique.mp3" />
     <Content Include="Content\plugins\audioplayer\player\uppod.swf" />
     <Content Include="Content\plugins\audioplayer\styles\audio164-471.txt" />
@@ -680,7 +733,6 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Info\info.txt" />
-    <Content Include="FlickrNet.chm" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.4.js" />
     <Content Include="Scripts\jquery-1.4.4.min.js" />
@@ -716,7 +768,7 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Events.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error\Unexpected.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -734,11 +786,11 @@
     <Content Include="Views\Feedback\Details.cshtml" />
     <Content Include="Views\Feedback\Edit.cshtml" />
     <Content Include="Views\Feedback\Index.cshtml" />
-    <Content Include="Views\OneNews\Create.cshtml" />
-    <Content Include="Views\OneNews\Delete.cshtml" />
-    <Content Include="Views\OneNews\Details.cshtml" />
-    <Content Include="Views\OneNews\Edit.cshtml" />
-    <Content Include="Views\OneNews\Index.cshtml" />
+    <Content Include="Views\Sponsor\Create.cshtml" />
+    <Content Include="Views\Sponsor\Delete.cshtml" />
+    <Content Include="Views\Sponsor\Details.cshtml" />
+    <Content Include="Views\Sponsor\Edit.cshtml" />
+    <Content Include="Views\Sponsor\Index.cshtml" />
     <Content Include="Views\Request\Create.cshtml" />
     <Content Include="Views\Request\CreateOrEdit.cshtml" />
     <Content Include="Views\Request\Delete.cshtml" />
@@ -750,7 +802,6 @@
     <Content Include="Views\Shared\UserControls\CultureControl.cshtml" />
     <Content Include="Views\Shared\UserControls\LoginControl.cshtml" />
     <Content Include="Views\Shared\UserControls\PaginatorControl.cshtml" />
-    <Content Include="Views\Home\Contacts.cshtml" />
     <EntityDeploy Include="Models\EDM\EntityDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EntityDataModel.Designer.cs</LastGenOutput>
@@ -785,7 +836,7 @@
     <Content Include="Content\plugins\galleria\LICENSE" />
     <None Include="Properties\PublishProfiles\CaucasianPearl.pubxml" />
     <Content Include="Views\Request\Thanks.cshtml" />
-    <Content Include="Views\OneNews\CreateOrEdit.cshtml" />
+    <Content Include="Views\Sponsor\CreateOrEdit.cshtml" />
     <Content Include="Views\Event\CreateOrEdit.cshtml" />
     <Content Include="Views\Profile\Create.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
@@ -821,10 +872,17 @@
     <Content Include="Views\SiteSettings\Index.cshtml" />
     <Content Include="Views\SiteSettings\_CreateOrEdit.cshtml" />
     <Content Include="Views\SiteSettings\GetCoverImages.cshtml" />
-    <Content Include="Views\Event\GetHomePageEvents.cshtml" />
+    <Content Include="Views\Shared\UserControls\HomePageEvents.cshtml" />
     <Content Include="Views\Request\CreatePartial.cshtml" />
     <Content Include="Views\Shared\UserControls\RequestFormControl.cshtml" />
     <Content Include="Views\Shared\UserControls\SocialShareControl.cshtml" />
+    <Content Include="Views\Shared\UserControls\FooterControl.cshtml" />
+    <Content Include="Views\Shared\UserControls\SponsorsControl.cshtml" />
+    <Content Include="Views\Shared\UserControls\SmallSponsorsControl.cshtml" />
+    <Content Include="Views\Shared\UserControls\BigSponsorsControl.cshtml" />
+    <Content Include="Views\Shared\UserControls\MembersControl.cshtml" />
+    <Content Include="Views\Shared\UserControls\FeedbacksControl.cshtml" />
+    <Content Include="Views\Request\CreateOrEditPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -838,10 +896,46 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Resources\Resources.csproj">
-      <Project>{85ee7365-be65-4e9c-8928-76920db73783}</Project>
-      <Name>Resources</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Resources\Error\ErrorRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorRes.hy.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Error\ErrorRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Model\ModelRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelRes.hy.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Model\ModelRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Validation\ValidationRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationRes.hy.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Validation\ValidationRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\View\ViewRes.hy.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewRes.hy.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\View\ViewRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewRes.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

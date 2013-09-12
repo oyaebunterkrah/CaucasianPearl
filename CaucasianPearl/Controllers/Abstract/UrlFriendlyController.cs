@@ -46,9 +46,9 @@ namespace CaucasianPearl.Controllers.Abstract
         // При создании или сохранении объекта:
         // если свойство ShortName пустое, формируем его из значения shortNameSource
         // затем проверяем его свойство ShortName и приводим его к уникальному виду
-        protected override void ChangeValuesOnEdit(T model)
+        protected override void ModifyValuesOnEdit(T model)
         {
-            base.ChangeValuesOnEdit(model);
+            base.ModifyValuesOnEdit(model);
 
             if (string.IsNullOrWhiteSpace(model.ShortName))
             {

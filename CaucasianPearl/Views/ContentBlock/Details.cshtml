@@ -1,44 +1,43 @@
 ﻿@using CaucasianPearl.Core.Constants
-@using Resources.ContentBlock
-@using Resources.Shared
+@using Resources
 
 @model CaucasianPearl.Models.EDM.ContentBlock
 
 @{
-    ViewBag.Title = ContentBlockViewRes.ContentBlocks;
+    ViewBag.Title = ViewRes.ContentBlocks;
 }
 
-<h2>@ContentBlockViewRes.ContentBlock: @Model.BlockId</h2>
+<h2>@ViewRes.ContentBlock: @Model.BlockId</h2>
 
 <p>
     @Html.ActionLink(
-        linkText: @ContentBlockViewRes.BackToList,
+        linkText: @ViewRes.BackToList,
         actionName: Consts.Actions.Index)
 </p>
 
 <div>
     <div>
-        <span class="display-label">@ContentBlockModelRes.BlockId:</span>
+        <span class="display-label">@ModelRes.BlockId:</span>
         <div class="display-field">
             @Model.BlockId
         </div>
             
-        <span class="display-label">@ContentBlockModelRes.PlaceHolderId:</span>
+        <span class="display-label">@ModelRes.PlaceHolderId:</span>
         <div class="display-field">
             @Model.PlaceHolderId
         </div>
 
-        <span class="display-label">@ContentBlockModelRes.Content:</span>
+        <span class="display-label">@ModelRes.Content:</span>
         <div id="@string.Format("contentBlockContent{0}", Model.ID)" class="display-field">
             @Html.Raw(Model.Content)
         </div>
 
-        <span class="display-label">@ContentBlockModelRes.Description:</span>
+        <span class="display-label">@ModelRes.Description:</span>
         <div class="display-field">
             @Model.Description
         </div>
             
-        <span class="display-label">@ContentBlockModelRes.IsPublished:</span>
+        <span class="display-label">@ModelRes.IsPublished:</span>
         <div class="display-field">
             @Html.DisplayFor(m => Model.IsPublished)
         </div>
@@ -47,12 +46,12 @@
         {
             <p>
                 @Html.ActionLink(
-                    linkText: SharedViewRes.Edit,
+                    linkText: ViewRes.Edit,
                     actionName: Consts.Actions.Edit,
                     routeValues: new { id = Model.ID }
                         ) |
                 @Html.ActionLink(
-                    linkText: SharedViewRes.Delete,
+                    linkText: ViewRes.Delete,
                     actionName: Consts.Actions.Delete,
                     routeValues: new { id = Model.ID }
                         )
@@ -61,7 +60,7 @@
     </div>
         
     @Html.ActionLink(
-        linkText: @ContentBlockViewRes.ContentBlockDetails,
+        linkText: @ViewRes.ContentBlockDetails,
         actionName: Consts.Actions.Details,
         routeValues: new {id = Model.ID})
 </div>

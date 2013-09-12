@@ -1,17 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.Filters;
-using Resources.Account;
+using Resources;
 
 namespace CaucasianPearl.Models.Metadata
 {
     public class RegisterExternalLoginModelMetadata
     {
-        [Display(Name = "LogOnModel_UserName", ResourceType = typeof(AccountModelRes))]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(AccountValidationRes))]
-        [RegularExpression(Consts.UserNameRegex, ErrorMessageResourceName = "RegisterModel_IncorrectUserName",
-            ErrorMessageResourceType = typeof(AccountValidationRes))]
+        [Display(Name = "UserName", ResourceType = typeof(ModelRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
+        [RegularExpression(Consts.UserNameRegex, ErrorMessageResourceName = "IncorrectUserName",
+            ErrorMessageResourceType = typeof(ValidationRes))]
         public string UserName { get; set; }
 
         public string ExternalLoginData { get; set; }
@@ -19,44 +20,44 @@ namespace CaucasianPearl.Models.Metadata
 
     public class LocalPasswordModelMetadata
     {
-        [Display(Name = "ChangePasswordModel_CurrentPassword", ResourceType = typeof(AccountModelRes))]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(AccountValidationRes))]
+        [Display(Name = "ChangePasswordModel_CurrentPassword", ResourceType = typeof(ModelRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
         [DataType(DataType.Password)]
         public string OldPassword { get; set; }
 
-        [Display(Name = "ChangePasswordModel_NewPassword", ResourceType = typeof(AccountModelRes))]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(AccountValidationRes))]
-        [StringLength(20, ErrorMessageResourceName = "StringLengthMin", ErrorMessageResourceType = typeof(AccountValidationRes), MinimumLength = 6)]
+        [Display(Name = "NewPassword", ResourceType = typeof(ModelRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
+        [StringLength(20, ErrorMessageResourceName = "StringLengthMin", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string NewPassword { get; set; }
 
-        [Display(Name = "ChangePasswordModel_ConfirmNewPassword", ResourceType = typeof(AccountModelRes))]
+        [Display(Name = "ChangePasswordModel_ConfirmNewPassword", ResourceType = typeof(ModelRes))]
         [DataType(DataType.Password)]
-        [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessageResourceName = "ChangePasswordModel_PasswordAndConfirmationMismatch", ErrorMessageResourceType = typeof(AccountValidationRes))]
+        [System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessageResourceName = "PasswordAndConfirmationMismatch", ErrorMessageResourceType = typeof(ValidationRes))]
         public string ConfirmPassword { get; set; }
     }
 
     public class LoginModelMetadata
     {
-        [Display(Name = "LogOnModel_UserName", ResourceType = typeof(AccountModelRes))]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(AccountValidationRes))]
-        [RegularExpression(Consts.UserNameRegex, ErrorMessageResourceName = "RegisterModel_IncorrectUserName",
-            ErrorMessageResourceType = typeof(AccountValidationRes))]
+        [Display(Name = "UserName", ResourceType = typeof(ModelRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
+        [RegularExpression(Consts.UserNameRegex, ErrorMessageResourceName = "IncorrectUserName",
+            ErrorMessageResourceType = typeof(ValidationRes))]
         public string UserName { get; set; }
 
-        [Display(Name = "LogOnModel_Password", ResourceType = typeof(AccountModelRes))]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(AccountValidationRes))]
+        [Display(Name = "Password", ResourceType = typeof(ModelRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "LogOnModel_RememberMe", ResourceType = typeof(AccountModelRes))]
+        [Display(Name = "NeedRemember", ResourceType = typeof(ModelRes))]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterModelMetadata
     {
-        [Display(Name = "RegisterModel_UserName", ResourceType = typeof(AccountModelRes))]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(AccountValidationRes))]
+        [Display(Name = "UserName", ResourceType = typeof(ModelRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
         public string UserName { get; set; }
 
         [Required]
@@ -89,22 +90,22 @@ namespace CaucasianPearl.Models.Metadata
         public string Sequence { get; set; }
 
 
-        [Display(Name = "RegisterModel_Email", ResourceType = typeof(AccountModelRes))]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(AccountValidationRes))]
+        [Display(Name = "Email", ResourceType = typeof(ModelRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
         [DataType(DataType.EmailAddress)]
-        [RegularExpression(Consts.EmailRegex, ErrorMessageResourceName = "RegisterModel_IncorrectEmailAddress", ErrorMessageResourceType = typeof(AccountValidationRes))]
+        [RegularExpression(Consts.EmailRegex, ErrorMessageResourceName = "IncorrectEmailAddress", ErrorMessageResourceType = typeof(ValidationRes))]
         public string Email { get; set; }
 
-        [Display(Name = "RegisterModel_Password", ResourceType = typeof(AccountModelRes))]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(AccountValidationRes))]
+        [Display(Name = "Password", ResourceType = typeof(ModelRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
         [DataType(DataType.Password)]
-        [StringLength(20, ErrorMessageResourceName = "StringLengthMin", ErrorMessageResourceType = typeof(AccountValidationRes), MinimumLength = 6)]
+        [StringLength(20, ErrorMessageResourceName = "StringLengthMin", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 6)]
         public string Password { get; set; }
 
-        [Display(Name = "RegisterModel_ConfirmPassword", ResourceType = typeof(AccountModelRes))]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(AccountValidationRes))]
+        [Display(Name = "ConfirmPassword", ResourceType = typeof(ModelRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
         [DataType(DataType.Password)]
-        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessageResourceName = "RegisterModel_PasswordsMustMatch", ErrorMessageResourceType = typeof(AccountValidationRes))]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessageResourceName = "PasswordsMustMatch", ErrorMessageResourceType = typeof(ValidationRes))]
         public string ConfirmPassword { get; set; }
     }
 

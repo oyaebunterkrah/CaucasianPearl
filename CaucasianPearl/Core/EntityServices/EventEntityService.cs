@@ -50,12 +50,7 @@ namespace CaucasianPearl.Core.EntityServices
 
             return eventItems;
         }
-        
-        /// <summary>
-        /// Возвращает соседние события.
-        /// </summary>
-        /// <param name="id">ID события</param>
-        /// <returns></returns>
+
         public IEnumerable<EventItem> GetNeighborEvents(int id)
         {
             var eventItems = new List<EventItem>();
@@ -80,10 +75,6 @@ namespace CaucasianPearl.Core.EntityServices
             return eventItems.OrderBy(e => e.EventDate);
         }
 
-        /// <summary>
-        /// Возвращает события на месяц.
-        /// </summary>
-        /// <returns>События в формате JSON</returns>
         public IEnumerable<EventItemInfo> GetEventsForMonth()
         {
             return Get()
@@ -93,11 +84,6 @@ namespace CaucasianPearl.Core.EntityServices
                 .Select(e => new EventItemInfo(e));
         }
 
-        /// <summary>
-        /// Возвращает события на указанную дату.
-        /// </summary>
-        /// <param name="date">Дата события</param>
-        /// <returns></returns>
         public IEnumerable<EventItem> GetEventsToDate(DateTime date)
         {
             return Get()
@@ -107,16 +93,18 @@ namespace CaucasianPearl.Core.EntityServices
                 .ToList()
                 .Select(e => new EventItem(e));
         }
-        
+
         #endregion
 
         #region Helpers
 
-        public string GetPrimaryPhoto(EventItem eventItem)
+        public string GetPrimaryPhotoUrl(EventItem eventItem)
         {
             var eventMediaItem = eventItem.EventMedia.FirstOrDefault(em => em.IsPrimary ?? false);
 
-            return eventMediaItem != null ? eventMediaItem.ThumbnailUrl : ImageHelper.GetDefaultImageUrl(Consts.FoldersPathes.CommonImagesFolder);
+            return eventMediaItem != null
+                ? eventMediaItem.ThumbnailUrl
+                : ImageHelper.GetDefaultImageUrl(Consts.Paths.Img.SiteImgFolder);
         }
 
         #endregion

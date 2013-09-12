@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+
 using CaucasianPearl.Core.Filters;
-using Resources.Profile;
-using Resources.Shared;
+using Resources;
 
 namespace CaucasianPearl.Models.Metadata
 {
@@ -10,39 +10,43 @@ namespace CaucasianPearl.Models.Metadata
         [Show(ShowForDisplay = false, ShowForEdit = false)]
         public int ID { get; set; }
 
-        [Display(Name = "UserName", ResourceType = typeof (ProfileModelRes))]
+        [Display(Name = "UserName", ResourceType = typeof(ModelRes))]
         [DataType(DataType.Text)]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof (SharedValidationRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
         [StringLength(30, ErrorMessageResourceName = "StringLengthMax",
-            ErrorMessageResourceType = typeof (SharedValidationRes), MinimumLength = 3)]
+            ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
         [Show(ShowForDisplay = true, ShowForEdit = true)]
         public string UserName { get; set; }
 
-        [Display(Name = "Email", ResourceType = typeof (ProfileModelRes))]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof (SharedValidationRes))]
-        [DataType(DataType.EmailAddress, ErrorMessageResourceType = typeof (SharedValidationRes),
-            ErrorMessageResourceName = "FormatIncorrect")]
-        [RegularExpression(@"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}",
-            ErrorMessageResourceType = typeof (SharedValidationRes), ErrorMessageResourceName = "FormatIncorrect")]
+        [Display(Name = "Email", ResourceType = typeof(ModelRes))]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
+        [EmailAddress(ErrorMessageResourceName = "WrongEmailFormat", ErrorMessageResourceType = typeof(ValidationRes), ErrorMessage = null)]
+        [Show(ShowForDisplay = true, ShowForEdit = true)]
         public string Email { get; set; }
 
-        [Display(Name = "FirstName", ResourceType = typeof(ProfileModelRes))]
+        [Display(Name = "Name", ResourceType = typeof(ModelRes))]
         [DataType(DataType.Text)]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(SharedValidationRes))]
-        [StringLength(50, ErrorMessageResourceName = "StringLengthMax",
-            ErrorMessageResourceType = typeof(SharedValidationRes), MinimumLength = 3)]
-        [Show(ShowForDisplay = false, ShowForEdit = false)]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
+        [StringLength(50, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
+        [Show(ShowForDisplay = true, ShowForEdit = true)]
         public string FirstName { get; set; }
 
-        [Display(Name = "LastName", ResourceType = typeof(ProfileModelRes))]
+        [Display(Name = "LastName", ResourceType = typeof(ModelRes))]
         [DataType(DataType.Text)]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(SharedValidationRes))]
-        [StringLength(50, ErrorMessageResourceName = "StringLengthMax",
-            ErrorMessageResourceType = typeof(SharedValidationRes), MinimumLength = 3)]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
+        [StringLength(50, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
+        [Show(ShowForDisplay = true, ShowForEdit = true)]
         public string LastName { get; set; }
 
+        [Display(Name = "Position", ResourceType = typeof(ModelRes))]
+        [StringLength(50, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
         [Show(ShowForDisplay = true, ShowForEdit = true)]
-        public int? Group { get; set; }
+        public string Position { get; set; }
+
+        [Display(Name = "Description", ResourceType = typeof(ModelRes))]
+        [StringLength(500, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
+        [Show(ShowForDisplay = true, ShowForEdit = true)]
+        public string Description { get; set; }
 
         [Show(ShowForDisplay = true, ShowForEdit = true)]
         public string ImageExt { get; set; }

@@ -1,33 +1,30 @@
-@model CaucasianPearl.Models.EDM.Profile
-
 @using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.Helpers
-@using Resources.Profile
-@using Resources.Shared
+@using Resources
+
+@model CaucasianPearl.Models.EDM.Profile
 
 @{
     ViewBag.Title = string.Format("{0} {1} | {2}", Model.FirstName, Model.LastName, Consts.Title);
 }
 
-<h2>@ProfileViewRes.Profile: @Model.FirstName @Model.LastName</h2>
+<h2>@ViewRes.UserProfile: @Model.FirstName @Model.LastName</h2>
 
 <p>
     @* На домашнюю страницу *@
     @Html.ActionLink(
-        SharedViewRes.ToHomePage,
+        ViewRes.ToHomePage,
         actionName: Consts.Actions.Index,
         controllerName: Consts.Controllers.Home.Name,
         routeValues: null,
-        htmlAttributes: new { @class = "link" }
-         )
+        htmlAttributes: new { @class = "link" })
     @Consts.BreadcrumbsSeparator
     @* Все новости *@
     @Html.ActionLink(
-        ProfileViewRes.AllProfiles,
+        ViewRes.AllProfiles,
         actionName: Consts.Actions.Index,
         routeValues: null,
-        htmlAttributes: new { @class = "link" }
-         )
+        htmlAttributes: new { @class = "link" })
     @Consts.BreadcrumbsSeparator
     @Model.FirstName @Model.LastName
 </p>
@@ -37,27 +34,25 @@
     <p>
         @* Редактировать *@
         @Html.ActionLink(
-            SharedViewRes.Edit,
+            ViewRes.Edit,
             actionName: Consts.Actions.Edit,
             controllerName: Consts.Controllers.Profile.Name,
             routeValues: new { id = Model.ID },
-            htmlAttributes: new { @class = "link" }
-        )
+            htmlAttributes: new { @class = "link" })
         @Consts.MenuSeparator
         @* Удалить *@
         @Html.ActionLink(
-            SharedViewRes.Delete,
+            ViewRes.Delete,
             actionName: Consts.Actions.Delete,
             controllerName: Consts.Controllers.Profile.Name,
             routeValues: new { id = Model.ID },
-            htmlAttributes: new { @class = "link" }
-        )
+            htmlAttributes: new { @class = "link" })
     </p>
 }
 
 <div class="model-image">
     <img src='@string.Format("{0}/{1}/{2}",
-                             (Url.Content(Consts.EntityImagesFolder)),
+                             (Url.Content(Consts.Paths.Img.EntityImgFolder)),
                              (Consts.Controllers.Profile.ProfileImagesFolder),
                              ImageHelper.GetImageName(Model))' alt="@Model.FirstName @Model.LastName"/>
 </div>
@@ -83,8 +78,12 @@
             <div class="display-field">@Html.DisplayFor(model => model.LastName)</div>
             <div class="clear"></div>
 
-            <div class="display-label">@Html.LabelFor(model => model.Group)</div>
-            <div class="display-field">@Html.DisplayFor(model => model.Group)</div>
+            <div class="display-label">@Html.LabelFor(model => model.Position)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Position)</div>
+            <div class="clear"></div>
+            
+            <div class="display-label">@Html.LabelFor(model => model.Description)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Description)</div>
             <div class="clear"></div>
 
             <div class="display-label">@Html.LabelFor(model => model.ImageExt)</div>
@@ -104,7 +103,7 @@
 
 <p>
     @if (WebSecurity.IsAuthenticated && Roles.IsUserInRole(Consts.Roles.Admin)) {
-        @Html.ActionLink(SharedViewRes.Edit, Consts.Actions.Edit, new { id = Model.ID }) @:|
+        @Html.ActionLink(ViewRes.Edit, Consts.Actions.Edit, new { id = Model.ID }) @:|
     }
-    @Html.ActionLink(ProfileViewRes.BackToList, Consts.Actions.Index)
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 </p>

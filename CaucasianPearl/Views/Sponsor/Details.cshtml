@@ -1,0 +1,120 @@
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
+@using Resources
+
+@model CaucasianPearl.Models.EDM.Sponsor
+
+@{
+    ViewBag.Title = string.Format("{0} | {1}", Model.Name, Consts.Title);
+}
+
+<p>
+    @* На домашнюю страницу *@
+    @Html.ActionLink(
+        ViewRes.ToHomePage,
+        actionName: Consts.Actions.Index,
+        controllerName: Consts.Controllers.Home.Name,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" })
+    @Consts.BreadcrumbsSeparator
+    @* Все новости *@
+    @Html.ActionLink(
+        ViewRes.AllSponsors,
+        actionName: Consts.Actions.Index,
+        routeValues: null,
+        htmlAttributes: new { @class = "link" })
+    @Consts.BreadcrumbsSeparator
+    @Model.Name
+</p>
+
+@if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
+{
+    <p>
+        @* Редактировать *@
+        @Html.ActionLink(
+            ViewRes.Edit,
+            actionName: Consts.Actions.Edit,
+            controllerName: Consts.Controllers.Sponsor.Name,
+            routeValues: new { id = Model.ID },
+            htmlAttributes: new { @class = "link" }
+        )
+        @Consts.MenuSeparator
+        @* Удалить *@
+        @Html.ActionLink(
+            ViewRes.Delete,
+            actionName: Consts.Actions.Delete,
+            controllerName: Consts.Controllers.Sponsor.Name,
+            routeValues: new { id = Model.ID },
+            htmlAttributes: new { @class = "link" })
+    </p>
+}
+
+<h2>@ViewRes.Sponsor: @Model.Name</h2>
+
+<br />
+
+<div class="model-image">
+    @Html.ActionImage(
+        Consts.Actions.Details,
+        controller: Consts.Controllers.Sponsor.Name,
+        routeValues: new { id = Model.ID },
+        imagePath: ImageHelper.GetImageUrl(Model, Consts.Controllers.Sponsor.SponsorImagesFolder),
+        alt: Model.Name)
+</div>
+
+<fieldset>
+    <legend>@Model.Name</legend>
+
+    <div class="display-form">
+        <div class="display-property">
+            @Html.HiddenFor(model => model.ID)
+
+            <div class="display-label">@Html.LabelFor(model => model.Name)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Name)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.City)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.City)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.Email)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Email)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.Phone)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Phone)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.Sum)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Sum)</div>
+            <div class="clear"></div>
+            
+            <div class="display-label">@Html.LabelFor(model => model.Url)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Url)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.Comment)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Comment)</div>
+            <div class="clear"></div>
+
+            <div class="display-label">@Html.LabelFor(model => model.Created)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Created)</div>
+            <div class="clear"></div>
+            
+            <div class="display-label">@Html.LabelFor(model => model.Confirmed)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Confirmed)</div>
+            <div class="clear"></div>
+
+            @Html.HiddenFor(model => model.ImageExt)
+        </div>
+    </div>
+</fieldset>
+
+<p>
+    @if (WebSecurity.IsAuthenticated && Roles.IsUserInRole(Consts.Roles.Admin))
+    {
+        @Html.ActionLink(ViewRes.Edit, Consts.Actions.Edit, new { id = Model.ID }) @:|
+    }
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
+</p>

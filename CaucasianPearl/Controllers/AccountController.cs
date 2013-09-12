@@ -6,11 +6,12 @@ using System.Transactions;
 using System.Web.Mvc;
 using System.Web.Security;
 using Microsoft.Web.WebPages.OAuth;
-using Resources.Account;
 using WebMatrix.WebData;
+
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Models;
 using CaucasianPearl.Models.EDM;
+using Resources;
 
 namespace CaucasianPearl.Controllers
 {
@@ -46,7 +47,7 @@ namespace CaucasianPearl.Controllers
                 return RedirectToLocal(returnUrl);
 
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError(string.Empty, AccountErrorRes.TheUserNameOrPasswordProvidedIsIncorrect);
+            ModelState.AddModelError(string.Empty, ErrorRes.TheUserNameOrPasswordProvidedIsIncorrect);
             return View(model);
         }
 
@@ -181,7 +182,7 @@ namespace CaucasianPearl.Controllers
                                                 new {Message = ManageMessageId.ChangePasswordSuccess});
 
                     ModelState.AddModelError(string.Empty,
-                                             AccountErrorRes.TheCurrentPasswordIsIncorrectOrTheNewPasswordIsInvalid);
+                                             ErrorRes.TheCurrentPasswordIsIncorrectOrTheNewPasswordIsInvalid);
                 }
             }
             else
@@ -206,7 +207,7 @@ namespace CaucasianPearl.Controllers
                     {
                         ModelState.AddModelError(string.Empty,
                                                  String.Format(
-                                                     AccountErrorRes
+                                                     ErrorRes
                                                          .UnableToCreateLocalAccountAnAccountWithTheNameMayAlreadyExist,
                                                      User.Identity.Name));
                     }
@@ -298,7 +299,7 @@ namespace CaucasianPearl.Controllers
 
                     ModelState.AddModelError(key: "UserName",
                                              errorMessage:
-                                                 AccountErrorRes.UserNameAlreadyExistsPleaseEnterADifferentUserName);
+                                                 ErrorRes.UserNameAlreadyExistsPleaseEnterADifferentUserName);
                 }
             }
 
@@ -387,34 +388,34 @@ namespace CaucasianPearl.Controllers
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
-                    return AccountErrorRes.MembershipCreateStatus_DuplicateUserName;
+                    return ErrorRes.MembershipCreateStatus_DuplicateUserName;
 
                 case MembershipCreateStatus.DuplicateEmail:
-                    return AccountErrorRes.MembershipCreateStatus_DuplicateEmail;
+                    return ErrorRes.MembershipCreateStatus_DuplicateEmail;
 
                 case MembershipCreateStatus.InvalidPassword:
-                    return AccountErrorRes.MembershipCreateStatus_InvalidPassword;
+                    return ErrorRes.MembershipCreateStatus_InvalidPassword;
 
                 case MembershipCreateStatus.InvalidEmail:
-                    return AccountErrorRes.MembershipCreateStatus_InvalidEmail;
+                    return ErrorRes.MembershipCreateStatus_InvalidEmail;
 
                 case MembershipCreateStatus.InvalidAnswer:
-                    return AccountErrorRes.MembershipCreateStatus_InvalidAnswer;
+                    return ErrorRes.MembershipCreateStatus_InvalidAnswer;
 
                 case MembershipCreateStatus.InvalidQuestion:
-                    return AccountErrorRes.MembershipCreateStatus_InvalidQuestion;
+                    return ErrorRes.MembershipCreateStatus_InvalidQuestion;
 
                 case MembershipCreateStatus.InvalidUserName:
-                    return AccountErrorRes.MembershipCreateStatus_InvalidUserName;
+                    return ErrorRes.MembershipCreateStatus_InvalidUserName;
 
                 case MembershipCreateStatus.ProviderError:
-                    return AccountErrorRes.MembershipCreateStatus_ProviderError;
+                    return ErrorRes.MembershipCreateStatus_ProviderError;
 
                 case MembershipCreateStatus.UserRejected:
-                    return AccountErrorRes.MembershipCreateStatus_UserRejected;
+                    return ErrorRes.MembershipCreateStatus_UserRejected;
 
                 default:
-                    return AccountErrorRes.MembershipCreateStatus_Default;
+                    return ErrorRes.MembershipCreateStatus_Default;
             }
         }
 

@@ -1,29 +1,28 @@
 @using CaucasianPearl.Models.EDM
 @using CaucasianPearl.Core.Constants
-@using Resources.Profile
-@using Resources.Shared
+@using Resources
 
 @model Profile
 
 @{
-    ViewBag.Title = ProfileViewRes.ProfileCreating;
+    ViewBag.Title = ViewRes.ProfileCreating;
 }
 
-<h2>@ProfileViewRes.ProfileCreating</h2>
+<h2>@ViewRes.ProfileCreating</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>@ProfileViewRes.Profile</legend>
+        <legend>@ViewRes.UserProfile</legend>
 
 		@Html.Partial(Consts.Views.CreateOrEdit, Model)
 
         <p>
-            <input id="submit" type="submit" value="@SharedViewRes.Create" />
+            <input id="submit" type="submit" value="@ViewRes.Create" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink(ProfileViewRes.BackToList, Consts.Actions.Index)
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 </div>

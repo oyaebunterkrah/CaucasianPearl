@@ -19,7 +19,8 @@ namespace CaucasianPearl.Models.EDM
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Nullable<int> Group { get; set; }
+        public string Position { get; set; }
+        public string Description { get; set; }
         public string ImageExt { get; set; }
         public string ShortName { get; set; }
         public Nullable<int> Sequence { get; set; }

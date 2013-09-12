@@ -117,37 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Actions" xml:space="preserve">
+  <data name="ContentBlock_Actions" xml:space="preserve">
     <value>Действия</value>
   </data>
-  <data name="AllContentBlocks" xml:space="preserve">
+  <data name="ContentBlock_AllContentBlocks" xml:space="preserve">
     <value>Все контент-блоки</value>
   </data>
-  <data name="AreYouSureThatYouWantDeleteThisContentBlock" xml:space="preserve">
+  <data name="ContentBlock_AreYouSureThatYouWantDeleteThisContentBlock" xml:space="preserve">
     <value>Вы уверены, что хотите удалить этот контент-блок?</value>
   </data>
-  <data name="BackToList" xml:space="preserve">
+  <data name="ContentBlock_BackToList" xml:space="preserve">
     <value>Назад к списку</value>
   </data>
-  <data name="ContentBlock" xml:space="preserve">
+  <data name="ContentBlock_ContentBlock" xml:space="preserve">
     <value>Контент-блок</value>
   </data>
-  <data name="ContentBlockCreating" xml:space="preserve">
+  <data name="ContentBlock_ContentBlockCreating" xml:space="preserve">
     <value>Создание контент-блока</value>
   </data>
-  <data name="ContentBlockDeleting" xml:space="preserve">
+  <data name="ContentBlock_ContentBlockDeleting" xml:space="preserve">
     <value>Удаление контент-блока</value>
   </data>
-  <data name="ContentBlockDetails" xml:space="preserve">
+  <data name="ContentBlock_ContentBlockDetails" xml:space="preserve">
     <value>Подробности контент-блока</value>
   </data>
-  <data name="ContentBlockEditing" xml:space="preserve">
+  <data name="ContentBlock_ContentBlockEditing" xml:space="preserve">
     <value>Редактирование контент-блока</value>
   </data>
-  <data name="ContentBlocks" xml:space="preserve">
+  <data name="ContentBlock_ContentBlocks" xml:space="preserve">
     <value>Контент-блоки</value>
   </data>
-  <data name="CreateContentBlock" xml:space="preserve">
+  <data name="ContentBlock_CreateContentBlock" xml:space="preserve">
     <value>Создать контент-блок</value>
   </data>
 </root>

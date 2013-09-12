@@ -22,7 +22,7 @@ em { font-style: italic }
 }
 .alignleft { float: left }
 .alignright { float: right }
-div { position: relative }
+/*div { position: relative }*/
 /* END RESET STYLES */
 
 html { -webkit-font-smoothing: antialiased }

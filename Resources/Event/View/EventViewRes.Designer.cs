@@ -63,108 +63,108 @@ namespace Resources.Event {
         /// <summary>
         ///   Looks up a localized string similar to Действия.
         /// </summary>
-        public static string Actions {
+        public static string Event_Actions {
             get {
-                return ResourceManager.GetString("Actions", resourceCulture);
+                return ResourceManager.GetString("Event_Actions", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Все события.
         /// </summary>
-        public static string AllEvents {
+        public static string Event_AllEvents {
             get {
-                return ResourceManager.GetString("AllEvents", resourceCulture);
+                return ResourceManager.GetString("Event_AllEvents", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Вы уверены, что хотите удалить это событие?.
         /// </summary>
-        public static string AreYouSureThatYouWantDeleteThisEvent {
+        public static string Event_AreYouSureThatYouWantDeleteThisEvent {
             get {
-                return ResourceManager.GetString("AreYouSureThatYouWantDeleteThisEvent", resourceCulture);
+                return ResourceManager.GetString("Event_AreYouSureThatYouWantDeleteThisEvent", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Назад к списку.
         /// </summary>
-        public static string BackToList {
+        public static string Event_BackToList {
             get {
-                return ResourceManager.GetString("BackToList", resourceCulture);
+                return ResourceManager.GetString("Event_BackToList", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Создать событие.
         /// </summary>
-        public static string CreateEvent {
+        public static string Event_CreateEvent {
             get {
-                return ResourceManager.GetString("CreateEvent", resourceCulture);
+                return ResourceManager.GetString("Event_CreateEvent", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Подробности событие.
         /// </summary>
-        public static string Details {
+        public static string Event_Details {
             get {
-                return ResourceManager.GetString("Details", resourceCulture);
+                return ResourceManager.GetString("Event_Details", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Событие.
         /// </summary>
-        public static string Event {
+        public static string Event_Event {
             get {
-                return ResourceManager.GetString("Event", resourceCulture);
+                return ResourceManager.GetString("Event_Event", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Создание события.
         /// </summary>
-        public static string EventCreating {
+        public static string Event_EventCreating {
             get {
-                return ResourceManager.GetString("EventCreating", resourceCulture);
+                return ResourceManager.GetString("Event_EventCreating", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Удаление события.
         /// </summary>
-        public static string EventDeleting {
+        public static string Event_EventDeleting {
             get {
-                return ResourceManager.GetString("EventDeleting", resourceCulture);
+                return ResourceManager.GetString("Event_EventDeleting", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Редактирование события.
         /// </summary>
-        public static string EventEditing {
+        public static string Event_EventEditing {
             get {
-                return ResourceManager.GetString("EventEditing", resourceCulture);
+                return ResourceManager.GetString("Event_EventEditing", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to События.
         /// </summary>
-        public static string Events {
+        public static string Event_Events {
             get {
-                return ResourceManager.GetString("Events", resourceCulture);
+                return ResourceManager.GetString("Event_Events", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Изображение для события.
         /// </summary>
-        public static string ImageForEvent {
+        public static string Event_ImageForEvent {
             get {
-                return ResourceManager.GetString("ImageForEvent", resourceCulture);
+                return ResourceManager.GetString("Event_ImageForEvent", resourceCulture);
             }
         }
     }

@@ -1,11 +1,10 @@
-@using CaucasianPearl.Core.Constants
-@using CaucasianPearl.Core.UserControls
-@using Resources.Request
 @using Recaptcha
 
-@model CaucasianPearl.Models.EDM.Request
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.UserControls
+@using Resources
 
-@Html.Raw(CssJsRegControl.Render("recaptcha/js/recaptcha_ajax.js", Consts.Paths.PluginsPrefix))
+@model CaucasianPearl.Models.EDM.Request
 
 <div class="create_or_edit_label">
     @Html.LabelFor(model => model.Name)
@@ -43,13 +42,11 @@
 </div>
 
 <div class="create_or_edit_label">
-    @Html.LabelFor(model => model.RequestDateTime)
+    @Html.LabelFor(model => model.RequestDate)
 </div>
 <div class="create_or_edit_field">
-    @Html.EditorFor(model => model.RequestDateTime)
-    @if (!Request.IsAjaxRequest()) {
-       @Html.ValidationMessageFor(model => model.RequestDateTime)
-    }
+    @Html.EditorFor(model => model.RequestDate)
+    @Html.ValidationMessageFor(model => model.RequestDate)
 </div>
 
 <div class="create_or_edit_label">
@@ -60,49 +57,25 @@
     @Html.ValidationMessageFor(model => model.Content)
 </div>
 
-@* reCaptcha *@
-@if (Convert.ToBoolean(ViewData["isAjaxRequest"]) /* && !WebSecurity.IsAuthenticated*/)
-{
-    <div class="create_or_edit_field">
-        <div id="captchaBlock" class="captcha_block">
-            @* поле ввода капчи *@
-            <div class="create_or_edit_label">
-                <label for="captchaCode">Введите код с картинки</label>
-            </div>
-            <input id="captchaCode" type="text" />
-            @* валидация *@
-            <span id="captchaError" class="captcha_error">Вы ввели неверный код</span>
-            @* капча *@
-            <a id="captchaReload" class="captcha_reload" href="#">
-                <img id="captchaImage" class="captcha_image" alt="captcha image" />
-            </a>
-        </div>
-    </div>
+<div class="create_or_edit_label">
+    @Html.LabelFor(model => model.Comment)
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(model => model.Comment)
+    @Html.ValidationMessageFor(model => model.Comment)
+</div>
     
-    <div id="reCaptcha" class="reCaptcha"></div>
+@{
+    var statuses = new List<SelectListItem> {
+        new SelectListItem { Value = "0", Text = ModelRes.NotProcessed, Selected = true },
+        new SelectListItem { Value = "1", Text = ModelRes.Processed }
+    };
 }
 
-@if (!WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
-{
-    <div class="create_or_edit_label">
-        @Html.LabelFor(model => model.Comment)
-    </div>
-    <div class="create_or_edit_field">
-        @Html.EditorFor(model => model.Comment)
-        @Html.ValidationMessageFor(model => model.Comment)
-    </div>
-    
-    var statuses = new List<SelectListItem>
-        {
-            new SelectListItem { Value = "0", Text = RequestModelRes.NotProcessed, Selected = true },
-            new SelectListItem { Value = "1", Text = RequestModelRes.Processed }
-        };
-    
-    <div class="create_or_edit_label">
-        @Html.LabelFor(model => model.Status)
-    </div>
-    <div class="create_or_edit_field">
-        @Html.DropDownListFor(model => model.Status, new SelectList(statuses, "Value", "Text", statuses.First(s => s.Selected).Value))
-        @Html.ValidationMessageFor(model => model.Status)
-    </div>
-}
+<div class="create_or_edit_label">
+    @Html.LabelFor(model => model.Status)
+</div>
+<div class="create_or_edit_field">
+    @Html.DropDownListFor(model => model.Status, new SelectList(statuses, "Value", "Text", statuses.First(s => s.Selected).Value))
+    @Html.ValidationMessageFor(model => model.Status)
+</div>

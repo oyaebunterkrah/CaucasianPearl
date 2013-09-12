@@ -2,27 +2,26 @@
 @using CaucasianPearl.Core.EntityServices.Interface
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Core.UserControls
-@using CaucasianPearl.Core.Helpers;
+@using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Models
-@using CaucasianPearl.Models.EDM;
-@using Resources.Event
-@using Resources.Shared
+@using CaucasianPearl.Models.EDM
+@using Resources
 
 @model IEnumerable<Event>
 
 @{
-    ViewBag.Title = string.Format("{0} - {1}", SharedRes.ProjectTitle, EventViewRes.Events);
+    ViewBag.Title = string.Format("{0} - {1}", ViewRes.ProjectTitle, ViewRes.Events);
 }
 
 <p>
     @Html.ActionLink(
-        SharedViewRes.ToHomePage,
+        ViewRes.ToHomePage,
         actionName: Consts.Actions.Index,
         controllerName: Consts.Controllers.Home.Name,
         routeValues: null,
         htmlAttributes: new { @class = "link" })
     @Consts.BreadcrumbsSeparator
-    @EventViewRes.Events
+    @ViewRes.Events
 </p>
 
 @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
@@ -30,7 +29,7 @@
     <p>
         <!-- Создать -->
         @Html.ActionLink(
-            EventViewRes.CreateEvent,
+            ViewRes.CreateEvent,
             actionName: Consts.Actions.Create,
             controllerName: Consts.Controllers.Event.Name,
             routeValues: null,
@@ -44,7 +43,9 @@
             <td style="text-align: center;">
                 @{
                     var eventMedia = @eventItem.EventMedia.FirstOrDefault(em => em.IsPrimary ?? false);
-                    var primaryImageUrl = eventMedia != null ? eventMedia.ThumbnailUrl : ImageHelper.GetDefaultImageUrl(Consts.FoldersPathes.CommonImagesFolder);
+                    var primaryImageUrl = eventMedia != null
+                        ? eventMedia.ThumbnailUrl
+                        : ImageHelper.GetDefaultImageUrl(Consts.Paths.Img.SiteImgFolder);
                 }
                 @Html.ActionImage(
                     Consts.Actions.GetByShortName,
@@ -69,21 +70,21 @@
                 <td>
                     <!-- Вверх -->
                     @Html.ActionLink(
-                        SharedViewRes.Up,
+                        ViewRes.Up,
                         Consts.Actions.Up,
                         new { id = @eventItem.ID })
                 </td>
                 <td>
                     <!-- Вниз -->
                     @Html.ActionLink(
-                        SharedViewRes.Down,
+                        ViewRes.Down,
                         Consts.Actions.Down,
                         new { id = @eventItem.ID })
                 </td>
                 <td>
                     <!-- Редактировать -->
                     @Html.ActionLink(
-                        SharedViewRes.Edit,
+                        ViewRes.Edit,
                         Consts.Actions.Edit,
                         controllerName: Consts.Controllers.Event.Name,
                         routeValues: new { id = @eventItem.ID },
@@ -92,7 +93,7 @@
                 <td>
                     <!-- Удалить -->
                     @Html.ActionLink(
-                        SharedViewRes.Delete, actionName: Consts.Actions.Delete,
+                        ViewRes.Delete, actionName: Consts.Actions.Delete,
                         controllerName: Consts.Controllers.Event.Name,
                         routeValues: new { id = @eventItem.ID },
                         htmlAttributes: new { @class = "link" })
@@ -106,7 +107,7 @@
 
 <div class="paginator">
     @Html.Partial(
-        Consts.UserControlsPaths.PaginatorControl,
+        Consts.Paths.UserControls.PaginatorControl,
         (PaginatorControl.GetLinks(
             ServiceHelper<IEventService<Event>>.GetService().Count(Request.QueryString),
             Consts.PaginatorControl.EventItemsPerPage,

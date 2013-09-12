@@ -1,0 +1,19 @@
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.DAL.Data
+@using CaucasianPearl.Core.UserControls
+@using Resources
+
+@* мелкие спонсоры *@
+@model  IEnumerable<SponsorItem>
+
+@*Html.Raw(CssJsRegControl.Render())*@
+
+@{
+    <div id="sponsors" class="sponsors">
+        @foreach (var sponsor in Model) {
+            <a href="@sponsor.Url">
+                <span class="sponsor">@sponsor.Name</span>
+            </a>
+        }
+    </div>
+}

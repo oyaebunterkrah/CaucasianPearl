@@ -117,40 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Actions" xml:space="preserve">
+  <data name="Profile_Actions" xml:space="preserve">
     <value>Действия</value>
   </data>
-  <data name="AllProfiles" xml:space="preserve">
+  <data name="Profile_AllProfiles" xml:space="preserve">
     <value>Все профили</value>
   </data>
-  <data name="AreYouSureThatYouWantDeleteThisProfile" xml:space="preserve">
+  <data name="Profile_AreYouSureThatYouWantDeleteThisProfile" xml:space="preserve">
     <value>Вы уверены, что хотите удалить свой профиль?</value>
   </data>
-  <data name="BackToList" xml:space="preserve">
+  <data name="Profile_BackToList" xml:space="preserve">
     <value>Назад к списку</value>
   </data>
-  <data name="CreateProfile" xml:space="preserve">
+  <data name="Profile_CreateProfile" xml:space="preserve">
     <value>Создать профиль</value>
   </data>
-  <data name="ImageForProfile" xml:space="preserve">
+  <data name="Profile_ImageForProfile" xml:space="preserve">
     <value>Изображение для профиля</value>
   </data>
-  <data name="Profile" xml:space="preserve">
+  <data name="Profile_Profile" xml:space="preserve">
     <value>Профиль пользователя</value>
   </data>
-  <data name="ProfileCreating" xml:space="preserve">
+  <data name="Profile_ProfileCreating" xml:space="preserve">
     <value>Создание профиля</value>
   </data>
-  <data name="ProfileDeleting" xml:space="preserve">
+  <data name="Profile_ProfileDeleting" xml:space="preserve">
     <value>Удаление профиля</value>
   </data>
-  <data name="ProfileDetails" xml:space="preserve">
+  <data name="Profile_ProfileDetails" xml:space="preserve">
     <value>Подробности профиля</value>
   </data>
-  <data name="ProfileEditing" xml:space="preserve">
+  <data name="Profile_ProfileEditing" xml:space="preserve">
     <value>Редактирование профиля</value>
   </data>
-  <data name="Profiles" xml:space="preserve">
+  <data name="Profile_Profiles" xml:space="preserve">
     <value>Профили пользователей</value>
   </data>
 </root>

@@ -63,117 +63,117 @@ namespace Resources.Request {
         /// <summary>
         ///   Looks up a localized string similar to Город.
         /// </summary>
-        public static string City {
+        public static string Request_City {
             get {
-                return ResourceManager.GetString("City", resourceCulture);
+                return ResourceManager.GetString("Request_City", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Комментарий.
         /// </summary>
-        public static string Comment {
+        public static string Request_Comment {
             get {
-                return ResourceManager.GetString("Comment", resourceCulture);
+                return ResourceManager.GetString("Request_Comment", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Текст заявки.
         /// </summary>
-        public static string Content {
+        public static string Request_Content {
             get {
-                return ResourceManager.GetString("Content", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Электронная почта.
-        /// </summary>
-        public static string Email {
-            get {
-                return ResourceManager.GetString("Email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Имя.
-        /// </summary>
-        public static string Name {
-            get {
-                return ResourceManager.GetString("Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Не обработано.
-        /// </summary>
-        public static string NotProcessed {
-            get {
-                return ResourceManager.GetString("NotProcessed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Телефон.
-        /// </summary>
-        public static string Phone {
-            get {
-                return ResourceManager.GetString("Phone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Обработано.
-        /// </summary>
-        public static string Processed {
-            get {
-                return ResourceManager.GetString("Processed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Желаемая дата.
-        /// </summary>
-        public static string RequestDateTime {
-            get {
-                return ResourceManager.GetString("RequestDateTime", resourceCulture);
+                return ResourceManager.GetString("Request_Content", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Дата и время регистрации заявки.
         /// </summary>
-        public static string RequestRegistrationDate {
+        public static string Request_Created {
             get {
-                return ResourceManager.GetString("RequestRegistrationDate", resourceCulture);
+                return ResourceManager.GetString("Request_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Электронная почта.
+        /// </summary>
+        public static string Request_Email {
+            get {
+                return ResourceManager.GetString("Request_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Имя.
+        /// </summary>
+        public static string Request_Name {
+            get {
+                return ResourceManager.GetString("Request_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не обработано.
+        /// </summary>
+        public static string Request_NotProcessed {
+            get {
+                return ResourceManager.GetString("Request_NotProcessed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Телефон.
+        /// </summary>
+        public static string Request_Phone {
+            get {
+                return ResourceManager.GetString("Request_Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обработано.
+        /// </summary>
+        public static string Request_Processed {
+            get {
+                return ResourceManager.GetString("Request_Processed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Желаемая дата.
+        /// </summary>
+        public static string Request_RequestDate {
+            get {
+                return ResourceManager.GetString("Request_RequestDate", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Статус.
         /// </summary>
-        public static string Status {
+        public static string Request_Status {
             get {
-                return ResourceManager.GetString("Status", resourceCulture);
+                return ResourceManager.GetString("Request_Status", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Ваш город.
         /// </summary>
-        public static string YourCity {
+        public static string Request_YourCity {
             get {
-                return ResourceManager.GetString("YourCity", resourceCulture);
+                return ResourceManager.GetString("Request_YourCity", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Ваше имя.
         /// </summary>
-        public static string YourName {
+        public static string Request_YourName {
             get {
-                return ResourceManager.GetString("YourName", resourceCulture);
+                return ResourceManager.GetString("Request_YourName", resourceCulture);
             }
         }
     }

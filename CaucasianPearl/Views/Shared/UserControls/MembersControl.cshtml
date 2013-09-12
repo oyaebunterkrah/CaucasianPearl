@@ -1,0 +1,72 @@
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.DAL.Data
+@using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Models.EDM
+@using Resources
+
+@model IEnumerable<ProfileItem>
+
+@Html.Raw(CssJsRegControl.Render("photos.css", Consts.Paths.Css.CpCssPrefixPath))
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.container').click(function (e) {
+            e.preventDefault();
+
+            var self = $(this);
+            var profileDescription = self.find('.profile_description');
+
+            if (profileDescription.is('.display_none')) {
+                $('.profile_description').addClass('display_none');
+                profileDescription
+                    .removeClass('display_none')
+                    .addClass('selected');
+            } else {
+                $('.profile_description').removeClass('selected');
+                profileDescription.addClass('display_none');
+            }
+        });
+    });
+</script>
+
+<style type="text/css">
+    .profile_position {
+        
+    }
+
+    .profile_description {
+        
+    }
+</style>
+
+<div class="wrapper" style="clear: both;">
+    <div class="photo-content">
+        <ul class="photo-area" style="height: 238px;">
+            @foreach (var profile in Model)
+            {
+                <li class="photo-item">
+                    <div class="container">
+                        <span class="image-block">
+                            <img
+                                src="@Url.Content(profile.ImageUrl)"
+                                class="photo"
+                                alt="@profile.FirstName @profile.LastName"
+                                title="@profile.FirstName @profile.LastName" />
+                            @*</a>*@
+                        </span>
+                        <div class="photo-text">
+                            <h2 class="photo-title">
+                                <span>@profile.FirstName @profile.LastName</span>
+                            </h2>
+                            <div class="profile_position">@profile.Position</div>
+                            <div class="profile_description display_none">@profile.Description</div>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

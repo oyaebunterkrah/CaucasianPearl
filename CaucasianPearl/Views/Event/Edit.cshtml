@@ -1,15 +1,14 @@
 ﻿@using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.UserControls
-@using Resources.Event
-@using Resources.Shared
+@using Resources
 
 @model CaucasianPearl.Models.EDM.Event
 
 @{
-    ViewBag.Title = string.Format("{0} | {1}", EventViewRes.EventEditing, Consts.Title);
+    ViewBag.Title = string.Format("{0} | {1}", ViewRes.EventEditing, Consts.Title);
 }
 
-@Html.Raw(CssJsRegControl.Render(Consts.Paths.CKEditor))
+@Html.Raw(CssJsRegControl.Render(Consts.Paths.Plugins.CKEditor))
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -57,7 +56,7 @@
 <p>
     <!-- Отмена -->
     @Html.ActionLink(
-        linkText: SharedViewRes.Cancel,
+        linkText: ViewRes.Cancel,
         actionName: Consts.Actions.GetByShortName,
         controllerName: Consts.Controllers.Event.Name,
         routeValues: new
@@ -71,15 +70,15 @@
 
     <!-- Удалить -->
     @Html.ActionLink(
-        SharedViewRes.Delete, actionName: Consts.Actions.Delete,
+        ViewRes.Delete, actionName: Consts.Actions.Delete,
         controllerName: Consts.Controllers.Event.Name,
         routeValues: new { id = Model.ID },
         htmlAttributes: new { @class = "link" })
 </p>
 
-<h2>@EventViewRes.EventEditing</h2>
+<h2>@ViewRes.EventEditing</h2>
 
-@*<h3>@EventViewRes.ImageForEvent</h3>
+@*<h3>@ViewRes.ImageForEvent</h3>
     
 @using (Html.BeginForm(
     actionName: Consts.Controllers.Event.Actions.UploadImage,
@@ -102,7 +101,7 @@
                 }
 
                 <div class="model-image">
-                    <img src='@(Url.Content(Consts.EntityImagesFolder))/@(Consts.Controllers.Event.EventImagesFolder)/@(filename)' alt='@Model.Name' />
+                    <img src='@(Url.Content(Consts.EntityImgFolder))/@(Consts.Controllers.Event.EventImagesFolder)/@(filename)' alt='@Model.Name' />
                 </div>
             </td>
             <td style="padding-left: 20px">
@@ -119,7 +118,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>@EventViewRes.Events</legend>
+        <legend>@ViewRes.Events</legend>
 
         @Html.HiddenFor(model => model.ID)
 
@@ -131,12 +130,12 @@
         
         @{ Html.RenderPartial(Consts.Controllers.Event.Views.SelectMediaItemsOnEdit, Model, new ViewDataDictionary { { "mode", "edit" } }); }
 
-        <input id="submitEdit" type="submit" value="@SharedViewRes.Save" />
+        <input id="submitEdit" type="submit" value="@ViewRes.Save" />
     </fieldset>
 }
 
 <script type="text/javascript">
-    replaceByCKEditor('@Url.Content(Consts.Paths.CKEditorConfig)', 'Description', 'submitEdit');
+    replaceByCKEditor('@Url.Content(Consts.Paths.Plugins.CKEditorConfig)', 'Description', 'submitEdit');
 </script>
 
 @{ Html.RenderPartial(Consts.Controllers.Event.Views.SelectMediaItemsOnCreate, Model, new ViewDataDictionary { { "mode", "edit" } }); }

@@ -4,62 +4,61 @@
 @using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Models
 @using CaucasianPearl.Models.EDM;
-@using Resources.Request
-@using Resources.Shared
+@using Resources
 
 @model IEnumerable<Request>
 
 @{
-    ViewBag.Title = string.Format("{0} - {1}", SharedRes.ProjectTitle, RequestViewRes.Requests);
+    ViewBag.Title = string.Format("{0} - {1}", ViewRes.ProjectTitle, ViewRes.Requests);
 }
 
 <p>
     @Html.ActionLink(
-        SharedViewRes.ToHomePage,
+        ViewRes.ToHomePage,
         actionName: Consts.Actions.Index,
         controllerName: Consts.Controllers.Home.Name,
         routeValues: null,
         htmlAttributes: new { @class = "link" }
     )
     @Consts.BreadcrumbsSeparator
-    @RequestViewRes.Requests
+    @ViewRes.Requests
 </p>
 
-<h2>@RequestViewRes.Requests</h2>
+<h2>@ViewRes.Requests</h2>
 
 <p>
     @Html.ActionLink(
-        linkText: RequestViewRes.AddRequest,
+        linkText: ViewRes.AddRequest,
         actionName: Consts.Actions.Create)
 </p>
 
 @foreach (var request in Model)
 {
     <div>
-        @request.Name, @request.City, @String.Format("{0:g}", request.RequestDateTime)
+        @request.Name, @request.City, @String.Format("{0:g}", request.RequestDate)
         
         <div>
-            <span class="display-label">@RequestModelRes.Phone:</span>
+            <span class="display-label">@ModelRes.Phone:</span>
             <div class="display-field">
                 @request.Phone
             </div>
             
-            <span class="display-label">@RequestModelRes.Email:</span>
+            <span class="display-label">@ModelRes.Email:</span>
             <div class="display-field">
                 @request.Email
             </div>
 
-            <span class="display-label">@RequestModelRes.Content:</span>
+            <span class="display-label">@ModelRes.Content:</span>
             <div id="@string.Format("requestContent{0}", request.ID)" class="display-field">
                 @request.Content
             </div>
 
-            <span class="display-label">@RequestModelRes.Status:</span>
+            <span class="display-label">@ModelRes.Status:</span>
             <div id="@string.Format("requestStatus{0}", request.ID)" class="display-field">
                 @request.Status
             </div>
             
-            <span class="display-label">@RequestModelRes.Comment:</span>
+            <span class="display-label">@ModelRes.Comment:</span>
             <div id="@string.Format("requestComment{0}", request.ID)" class="display-field">
                 @request.Comment
             </div>
@@ -68,12 +67,12 @@
             {
                 <p>
                     @Html.ActionLink(
-                        linkText: SharedViewRes.Edit,
+                        linkText: ViewRes.Edit,
                         actionName: Consts.Actions.Edit,
                         routeValues: new {id = request.ID}
                          ) |
                     @Html.ActionLink(
-                        linkText: SharedViewRes.Delete,
+                        linkText: ViewRes.Delete,
                         actionName: Consts.Actions.Delete,
                         routeValues: new {id = request.ID}
                          )
@@ -82,7 +81,7 @@
         </div>
         
         @Html.ActionLink(
-            linkText: @RequestViewRes.RequestDetails,
+            linkText: @ViewRes.RequestDetails,
             actionName: Consts.Actions.Details,
             routeValues: new {id = request.ID})
     </div>
@@ -97,7 +96,7 @@
 
 <div class="paginator">
     @Html.Partial(
-        Consts.UserControlsPaths.PaginatorControl,
+        Consts.Paths.UserControls.PaginatorControl,
         (PaginatorControl.GetLinks(
             ServiceHelper<IBaseService<Request>>.GetService().Count(Request.QueryString),
             Consts.PaginatorControl.RequestItemsPerPage,

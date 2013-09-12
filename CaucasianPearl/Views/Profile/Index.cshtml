@@ -4,17 +4,16 @@
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Core.UserControls
 @using CaucasianPearl.Models.EDM
-@using Resources.Profile
-@using Resources.Shared
+@using Resources
 @using System.Globalization
 
 @model IEnumerable<Profile>
 
 @{
-    ViewBag.Title = string.Format("{0} - {1}", SharedRes.ProjectTitle, ProfileViewRes.Profiles);
+    ViewBag.Title = string.Format("{0} - {1}", ViewRes.ProjectTitle, ViewRes.UserProfiles);
 }
 
-@Html.Raw(CssJsRegControl.Render("photos.css", Consts.Paths.CpCssPrefixPath))
+@Html.Raw(CssJsRegControl.Render("photos.css", Consts.Paths.Css.CpCssPrefixPath))
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -42,23 +41,23 @@
 
 <p>
     @Html.ActionLink(
-        SharedViewRes.ToHomePage,
+        ViewRes.ToHomePage,
         actionName: Consts.Actions.Index,
         controllerName: Consts.Controllers.Home.Name,
         routeValues: null,
         htmlAttributes: new { @class = "link" })
     @Consts.BreadcrumbsSeparator
-    @ProfileViewRes.Profiles
+    @ViewRes.UserProfiles
 </p>
 
-<h2>@ProfileViewRes.Profiles</h2>
+<h2>@ViewRes.UserProfiles</h2>
 
 <div style="display: none;">
     @if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager)))
     {
         <p>
             @Html.ActionLink(
-                ProfileViewRes.CreateProfile,
+                ViewRes.CreateProfile,
                 Consts.Actions.Create)
         </p>
     }
@@ -79,10 +78,11 @@
                                                                             shortname = profile.ShortName,
                                                                             page = Request.QueryString["page"],
                                                                             find = Request.QueryString["find"]
-                                                                        })" title="@profile.FirstName @profile.LastName">
-                            </a>
-                                <img class="photo" src="@profile.ImageUrl" alt="@profile.FirstName @profile.LastName" title="@profile.FirstName @profile.LastName" />
-                            @*</a>*@
+                                                                        })" title="@profile.FirstName @profile.LastName"></a>
+                            <img class="photo"
+                                src="@Url.Content(profile.ImageUrl)"
+                                alt="@profile.FirstName @profile.LastName"
+                                title="@profile.FirstName @profile.LastName" />
                         </span>
                         <div class="photo-text">
                             <h2 class="photo-title">
@@ -93,30 +93,31 @@
                                                              shortname = profile.ShortName,
                                                              page = Request.QueryString["page"],
                                                              find = Request.QueryString["find"]
-                                                         })" title="@profile.FirstName  @profile.LastName">@profile.FirstName @profile.LastName</a>
+                                                         })"
+                                    title="@profile.FirstName  @profile.LastName">@profile.FirstName @profile.LastName</a>
                             </h2>
                             <span>Имя: @profile.FirstName @profile.LastName</span>
                             <br />
-                            <span>Группа: @profile.Group</span>
+                            <span>Позиция: @profile.Position</span>
                         </div>
-                            
+
                         @if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager) || WebSecurity.CurrentUserId == profile.ID))
                         {
                             <div class="photo-text">
                                 @Html.ActionLink(
-                                    SharedViewRes.Details,
+                                    ViewRes.Details,
                                     Consts.Actions.Details,
                                     new { id = profile.ID },
                                     new { style = "display: block;" })
 
                                 @Html.ActionLink(
-                                    SharedViewRes.Edit,
+                                    ViewRes.Edit,
                                     Consts.Actions.Edit,
                                     new { id = profile.ID },
                                     new { style = "display: block;" })
-                    
+
                                 @Html.ActionLink(
-                                    SharedViewRes.Delete,
+                                    ViewRes.Delete,
                                     Consts.Actions.Delete,
                                     new { id = profile.ID },
                                     new { style = "display: block;" })
@@ -131,7 +132,7 @@
 
 <div class="paginator">
     @Html.Partial(
-        Consts.UserControlsPaths.PaginatorControl,
+        Consts.Paths.UserControls.PaginatorControl,
         (PaginatorControl.GetLinks(
             ServiceHelper<IUrlFriendlyService<Profile>>.GetService().Count(Request.QueryString),
             Consts.PaginatorControl.ProfileItemsPerPage,

@@ -1,0 +1,66 @@
+﻿@using CaucasianPearl
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.DAL.Data
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
+@using CaucasianPearl.Core.UserControls
+@using Resources
+
+@{
+    var currentController = ViewContext.RouteData.Values["controller"] as string;
+    var currentAction = ViewContext.RouteData.Values["action"] as string;
+    var forbiddenActions = new[] {
+        Consts.Actions.Create,
+        Consts.Actions.Details,
+        Consts.Actions.Edit,
+        Consts.Actions.Delete
+    };
+    var visible = ViewBag.FooterVisible ?? !forbiddenActions.Contains(currentAction);
+    var isHomePage = currentController == Consts.Controllers.Home.Name && currentAction == Consts.Actions.Index;
+
+    if (visible) {
+        <script type="text/javascript"> </script>
+
+        if (isHomePage) {
+            <div class="footer_extended">
+                @* крупные спонсоры *@
+                @Html.Partial(Consts.Paths.UserControls.BigSponsorsControl, ViewBag.BigSponsors as IEnumerable<SponsorItem>)
+
+                @* форма заявки *@
+                @Html.Partial(Consts.Paths.UserControls.RequestFormControl, new ViewDataDictionary { { "elementId", "#sendRequest" } })
+
+                <input id="sendRequest" type="button" value="Оставить заявку на выступление" />
+
+                @* контакты разработчиков *@
+                @*@Html.Raw(Html.PlaceHolder("developersContacts"))*@
+
+                <div class="developer_contacts">
+                    @ViewRes.FooterTitle, @DateTime.Now.Year
+                    <div>Разработка сайта: А. Погосян</div>
+                    <div>Дизайн: И. Киньябулатов</div>
+                    <div>Вёрстка: X. Xxxxxxxxx</div>
+                </div>
+
+                @*
+                    аудиоплеер
+                    <div class="player" @* style="display: none;"
+                        <object id="audioplayer361" type="application/x-shockwave-flash" data="http://caucasianpearl/content/audioplayer/player/uppod.swf" width="350" height="50">
+                            <param name="bgcolor" value="#ffffff" />
+                            <param name="allowScriptAccess" value="always" />
+                            <param name="movie" value="http://caucasianpearl/content/plugins/audioplayer/player/uppod.swf" />
+                            <param name="flashvars" value="comment=Жемчужина Кавказа&amp;st=http://caucasianpearl/content/plugins/audioplayer/styles/audio164-471.txt&amp;file=http://cs1-26v4.vk.me/p35/6e11d4c8f5d0e2.mp3" />
+                        </object>
+                    </div>
+                *@
+            </div>
+        }
+        else {
+            <div class="footer_default">
+                <span class="footer_title">@ViewRes.FooterTitle, @DateTime.Now.Year</span>
+                <a href="#">
+                    <span class="contact_info_link">@ViewRes.ContactInformation</span>
+                </a>
+                <span class="contacts">Разработка сайта: А. Погосян &nbsp;&nbsp;&nbsp; Дизайн: И. Киньябулатов</span>
+            </div>
+        }
+    }
+}

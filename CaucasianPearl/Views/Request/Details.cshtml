@@ -1,46 +1,45 @@
 @using CaucasianPearl.Core.Constants
-@using Resources.Request
-@using Resources.Shared
+@using Resources
 
 @model CaucasianPearl.Models.EDM.Request
 
 @{
-    ViewBag.Title = RequestViewRes.Requests;
+    ViewBag.Title = ViewRes.Requests;
 }
 
-<h2>@RequestViewRes.Requests</h2>
+<h2>@ViewRes.Requests</h2>
 
 <p>
     @Html.ActionLink(
-        linkText: @RequestViewRes.BackToList,
+        linkText: @ViewRes.BackToList,
         actionName: Consts.Actions.Index)
 </p>
 
 <div>
-    @Model.Name, @Model.City, @String.Format("{0:g}", Model.RequestDateTime)
+    @Model.Name, @Model.City, @String.Format("{0:g}", Model.RequestDate)
         
     <div>
-        <span class="display-label">@RequestModelRes.Phone:</span>
+        <span class="display-label">@ModelRes.Phone:</span>
         <div class="display-field">
             @Model.Phone
         </div>
             
-        <span class="display-label">@RequestModelRes.Email:</span>
+        <span class="display-label">@ModelRes.Email:</span>
         <div class="display-field">
             @Model.Email
         </div>
         
-        <span class="display-label">@RequestModelRes.Content:</span>
+        <span class="display-label">@ModelRes.Content:</span>
         <div class="display-field">
             @Model.Content
         </div>
         
-        <span class="display-label">@RequestModelRes.Status:</span>
+        <span class="display-label">@ModelRes.Status:</span>
         <div class="display-field">
             @Model.Status
         </div>
         
-        <span class="display-label">@RequestModelRes.Comment:</span>
+        <span class="display-label">@ModelRes.Comment:</span>
         <div class="display-field">
             @Model.Comment
         </div>
@@ -49,12 +48,12 @@
         {
             <p>
                 @Html.ActionLink(
-                    linkText: SharedViewRes.Edit,
+                    linkText: ViewRes.Edit,
                     actionName: Consts.Actions.Edit,
                     routeValues: new { id = Model.ID }
                         ) |
                 @Html.ActionLink(
-                    linkText: SharedViewRes.Delete,
+                    linkText: ViewRes.Delete,
                     actionName: Consts.Actions.Delete,
                     routeValues: new { id = Model.ID }
                         )
@@ -63,7 +62,7 @@
     </div>
         
     @Html.ActionLink(
-        linkText: @RequestViewRes.RequestDetails,
+        linkText: @ViewRes.RequestDetails,
         actionName: Consts.Actions.Details,
         routeValues: new {id = Model.ID})
 </div>

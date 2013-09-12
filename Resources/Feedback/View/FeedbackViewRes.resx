@@ -117,22 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Actions" xml:space="preserve">
+  <data name="Feedback_Actions" xml:space="preserve">
     <value>Действия</value>
   </data>
-  <data name="AddComment" xml:space="preserve">
+  <data name="Feedback_AddComment" xml:space="preserve">
     <value>Добавить отзыв</value>
   </data>
-  <data name="BackToList" xml:space="preserve">
+  <data name="Feedback_BackToList" xml:space="preserve">
     <value>Назад к списку</value>
   </data>
-  <data name="Details" xml:space="preserve">
+  <data name="Feedback_Details" xml:space="preserve">
     <value>Подробности отзыва</value>
   </data>
-  <data name="Feedback" xml:space="preserve">
+  <data name="Feedback_Feedback" xml:space="preserve">
     <value>Отзывы и предложения</value>
   </data>
-  <data name="FeedbackEditing" xml:space="preserve">
+  <data name="Feedback_FeedbackEditing" xml:space="preserve">
     <value>Редактирование отзыва</value>
   </data>
 </root>

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
+
 using CaucasianPearl.Controllers.Abstract;
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.EntityServices;
@@ -9,7 +10,7 @@ using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Helpers.HtmlHelpers;
 using CaucasianPearl.Models.EDM;
-using Resources.Shared;
+using Resources;
 
 namespace CaucasianPearl.Controllers
 {
@@ -25,7 +26,7 @@ namespace CaucasianPearl.Controllers
 
         public ActionResult GetCoverImages()
         {
-            var path = Server.MapPath(Consts.Paths.CoversFolder);
+            var path = Server.MapPath(Consts.Paths.Img.CoversFolder);
             ViewBag.Images = Directory.GetFiles(path, "*.*")
                                      .Select(Path.GetFileName)
                                      .ToArray();
@@ -45,7 +46,7 @@ namespace CaucasianPearl.Controllers
                 (Request.Files.Count == 0 ||
                  (Request.Files.Count > 0 && httpPostedFileBase.ContentLength == 0)))
             {
-                ViewBag.ErrorMessage = SharedErrorRes.YouDidNotSelectAFile;
+                ViewBag.ErrorMessage = ErrorRes.YouDidNotSelectAFile;
                 if (HttpContext.Request.UrlReferrer != null)
                     ViewBag.RedirectedUrl = HttpContext.Request.UrlReferrer.AbsolutePath;
 
@@ -61,7 +62,7 @@ namespace CaucasianPearl.Controllers
                     // Определяем название и полный путь полноразмерной картинки и миниатюры
                     var extension = Path.GetExtension(imageFile.FileName);
                     var fileName = DateTime.Now.Ticks + extension;
-                    var fileSavePath = Path.Combine(Server.MapPath(Url.Content(Consts.Paths.CoversFolder)), fileName);
+                    var fileSavePath = Path.Combine(Server.MapPath(Url.Content(Consts.Paths.Img.CoversFolder)), fileName);
 
                     // Если файлы с такими названиями уже имеются, удаляем их
                     if (System.IO.File.Exists(fileSavePath))
@@ -71,7 +72,7 @@ namespace CaucasianPearl.Controllers
                     imageFile.ResizeAndSave(maxHeight: 600,
                                             maxWidth: 0, strSavePath: fileSavePath);
 
-                    var path = Server.MapPath(Consts.Paths.CoversFolder);
+                    var path = Server.MapPath(Consts.Paths.Img.CoversFolder);
                     if (Directory.GetFiles(path, "*.*").Length > 4)
                     {
                         var fileInfo = new DirectoryInfo(path)
@@ -100,7 +101,7 @@ namespace CaucasianPearl.Controllers
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
         public void DeleteCoverImage(string imageName)
         {
-            var path = Server.MapPath(Consts.Paths.CoversFolder);
+            var path = Server.MapPath(Consts.Paths.Img.CoversFolder);
             var fileInfo = new DirectoryInfo(path).GetFileSystemInfos().FirstOrDefault(fi => fi.Name == imageName);
             
             if (fileInfo != null && fileInfo.Exists)

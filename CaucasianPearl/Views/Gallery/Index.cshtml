@@ -2,21 +2,20 @@
 @using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Core.Services.FlickrNetService
 @using CaucasianPearl.Core.UserControls
-@using Resources.Shared
-@using Resources.Gallery
+@using Resources
 
 @model CaucasianPearl.Models.FlickrModel
 
 @{
-    ViewBag.Title = SharedRes.ProjectTitle;
+    ViewBag.Title = ViewRes.ProjectTitle;
 }
 
-@Html.Raw(CssJsRegControl.Render("photos.css", Consts.Paths.CpCssPrefixPath))
+@Html.Raw(CssJsRegControl.Render("photos.css", Consts.Paths.Css.CpCssPrefixPath))
 
-<h2>@GalleryViewRes.Photosets</h2>
+<h2>@ViewRes.Photosets</h2>
 
 @if (Model.Photosets.Count == 0) {
-    <span>@GalleryViewRes.NoPhotosetsFound</span>
+    <span>@ViewRes.NoPhotosetsFound</span>
 }
 else {
     <div class="wrapper">
@@ -77,7 +76,7 @@ else {
 
 <div class="paginator">
     @Html.Partial(
-        Consts.UserControlsPaths.PaginatorControl,
+        Consts.Paths.UserControls.PaginatorControl,
         (PaginatorControl.GetLinks(
             ServiceHelper<IFlickrService>.GetService().PhotosetsCount,
             Consts.PaginatorControl.FlickrItemsPerPage,

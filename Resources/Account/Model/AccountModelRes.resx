@@ -117,37 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChangePasswordModel_ConfirmNewPassword" xml:space="preserve">
+  <data name="Account_ChangePasswordModel_ConfirmNewPassword" xml:space="preserve">
     <value>Подтверждение нового пароля</value>
   </data>
-  <data name="ChangePasswordModel_CurrentPassword" xml:space="preserve">
+  <data name="Account_ChangePasswordModel_CurrentPassword" xml:space="preserve">
     <value>Текущий пароль</value>
   </data>
-  <data name="ChangePasswordModel_NewPassword" xml:space="preserve">
+  <data name="Account_ChangePasswordModel_NewPassword" xml:space="preserve">
     <value>Новый пароль</value>
   </data>
-  <data name="LogOnModel_Password" xml:space="preserve">
+  <data name="Account_LogOnModel_Password" xml:space="preserve">
     <value>Пароль</value>
   </data>
-  <data name="LogOnModel_RememberMe" xml:space="preserve">
+  <data name="Account_LogOnModel_RememberMe" xml:space="preserve">
     <value>Запомнить?</value>
   </data>
-  <data name="LogOnModel_UserName" xml:space="preserve">
+  <data name="Account_LogOnModel_UserName" xml:space="preserve">
     <value>Имя пользователя</value>
   </data>
-  <data name="Name" xml:space="preserve">
+  <data name="Account_Name" xml:space="preserve">
     <value>Название</value>
   </data>
-  <data name="RegisterModel_ConfirmPassword" xml:space="preserve">
+  <data name="Account_RegisterModel_ConfirmPassword" xml:space="preserve">
     <value>Подтверждение пароля</value>
   </data>
-  <data name="RegisterModel_Email" xml:space="preserve">
+  <data name="Account_RegisterModel_Email" xml:space="preserve">
     <value>Адрес почты</value>
   </data>
-  <data name="RegisterModel_Password" xml:space="preserve">
+  <data name="Account_RegisterModel_Password" xml:space="preserve">
     <value>Пароль</value>
   </data>
-  <data name="RegisterModel_UserName" xml:space="preserve">
+  <data name="Account_RegisterModel_UserName" xml:space="preserve">
     <value>Имя пользователя</value>
   </data>
 </root>

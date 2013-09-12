@@ -770,7 +770,7 @@ html {
     overflow-y: scroll;
 }
 
-.dispay_none {
+.display_none {
     display: none;
 }
 
@@ -787,9 +787,9 @@ html {
 }
 
 
-/* OneNews image
+/* Sponsor image
 ----------------------------------------------------------*/
-.oneNews-image img {
+.-image img {
     height: 240px;
 }
 
@@ -1216,7 +1216,7 @@ html {
 
 /* Captcha block
 ----------------------------------------------------------*/
-.captchaImage {
+.captcha_Image {
     height: 47px;
 }
 
@@ -1276,4 +1276,20 @@ html {
 }*/
 
 
+/* Футер / Footer
+----------------------------------------------------------*/
+.developer_contacts {
+    float: right;
+    text-align: right;
+}
 
+
+/* Спонсоры / Sponsors
+----------------------------------------------------------*/
+.sponsors {
+    
+}
+
+.sponsor_img {
+    height: 50px;
+}

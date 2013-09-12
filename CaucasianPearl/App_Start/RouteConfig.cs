@@ -22,11 +22,11 @@ namespace CaucasianPearl.App_Start
                     });
 
             routes.MapRoute(
-                name: "News",
-                url: "news",
+                name: "Sponsors",
+                url: "sponsors",
                 defaults: new
                     {
-                        controller = Consts.Controllers.OneNews.Name,
+                        controller = Consts.Controllers.Sponsor.Name,
                         action = Consts.Actions.Index,
                         shortname = UrlParameter.Optional
                     });
@@ -39,6 +39,15 @@ namespace CaucasianPearl.App_Start
                         controller = Consts.Controllers.Profile.Name,
                         action = Consts.Actions.Index,
                         shortname = UrlParameter.Optional
+                    });
+
+            routes.MapRoute(
+                name: "Members",
+                url: "members",
+                defaults: new
+                    {
+                        controller = Consts.Controllers.Profile.Name,
+                        action = Consts.Controllers.Profile.Actions.Members,
                     });
 
             routes.MapRoute(
@@ -115,11 +124,11 @@ namespace CaucasianPearl.App_Start
                     });
 
             routes.MapRoute(
-                name: "OneNewsByShortName",
-                url: "news/{shortname}",
+                name: "SponsorByShortName",
+                url: "sponsors/{shortname}",
                 defaults: new
                     {
-                        controller = Consts.Controllers.OneNews.Name,
+                        controller = Consts.Controllers.Sponsor.Name,
                         action = Consts.Actions.GetByShortName,
                         shortname = UrlParameter.Optional
                     });

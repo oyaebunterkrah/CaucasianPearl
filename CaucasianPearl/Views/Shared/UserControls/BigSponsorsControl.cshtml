@@ -1,0 +1,23 @@
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.DAL.Data
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Core.UserControls
+@using Resources
+
+@* крупные спонсоры *@
+@model  IEnumerable<SponsorItem>
+
+@*Html.Raw(CssJsRegControl.Render())*@
+
+@{
+    <div id="sponsors" class="sponsors">
+        @foreach (var sponsor in Model) {
+            <a href="@sponsor.Url" target="_blank">
+                <img
+                    src="@Url.Content(ImageHelper.GetImageUrl(sponsor, Consts.Controllers.Sponsor.SponsorImagesFolder))"
+                    class="sponsor_img"
+                    alt="@sponsor.Name" />
+            </a>
+        }
+    </div>
+}

@@ -61,65 +61,848 @@ namespace Resources.Request {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Аккаунт не был создан. Пожалуйста, исправьте ошибки и попробуйте снова.
+        /// </summary>
+        public static string Account_AccountCreatingWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain {
+            get {
+                return ResourceManager.GetString("Account_AccountCreatingWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Учётные данные.
+        /// </summary>
+        public static string Account_AccountInformation {
+            get {
+                return ResourceManager.GetString("Account_AccountInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изменить пароль.
+        /// </summary>
+        public static string Account_ChangePassword {
+            get {
+                return ResourceManager.GetString("Account_ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пароль не изменён. Пожалуйста, исправьте ошибки и попробуйте снова.
+        /// </summary>
+        public static string Account_ChangingPasswordWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain {
+            get {
+                return ResourceManager.GetString("Account_ChangingPasswordWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to символов в длину.
+        /// </summary>
+        public static string Account_CharactersInLength {
+            get {
+                return ResourceManager.GetString("Account_CharactersInLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создание нового аккаунта.
+        /// </summary>
+        public static string Account_CreateANewAccount {
+            get {
+                return ResourceManager.GetString("Account_CreateANewAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to если у Вас нет аккаунта.
+        /// </summary>
+        public static string Account_IfYouDontHaveAnAccount {
+            get {
+                return ResourceManager.GetString("Account_IfYouDontHaveAnAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вход.
+        /// </summary>
+        public static string Account_Login {
+            get {
+                return ResourceManager.GetString("Account_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Зарегистрируйтесь.
+        /// </summary>
+        public static string Account_Login_Register {
+            get {
+                return ResourceManager.GetString("Account_Login_Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вход.
+        /// </summary>
+        public static string Account_LoginPartial_Login {
+            get {
+                return ResourceManager.GetString("Account_LoginPartial_Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выход.
+        /// </summary>
+        public static string Account_LoginPartial_LogOff {
+            get {
+                return ResourceManager.GetString("Account_LoginPartial_LogOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вход не выполнен. Пожалуйста, исправьте ошибки и попробуйте снова.
+        /// </summary>
+        public static string Account_LoginWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain {
+            get {
+                return ResourceManager.GetString("Account_LoginWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выход.
+        /// </summary>
+        public static string Account_LogOff {
+            get {
+                return ResourceManager.GetString("Account_LogOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редактировать профиль.
+        /// </summary>
+        public static string Account_Manage {
+            get {
+                return ResourceManager.GetString("Account_Manage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Новый пароль должен быть минимум.
+        /// </summary>
+        public static string Account_NewPasswordAreRequiredToBeAminimumOf {
+            get {
+                return ResourceManager.GetString("Account_NewPasswordAreRequiredToBeAminimumOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изменение пароля.
+        /// </summary>
+        public static string Account_PasswordChanging {
+            get {
+                return ResourceManager.GetString("Account_PasswordChanging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пароли должны быть минимум.
+        /// </summary>
+        public static string Account_PasswordsAreRequiredToBeAminimumOf {
+            get {
+                return ResourceManager.GetString("Account_PasswordsAreRequiredToBeAminimumOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пожалуйста, введите имя пользователя и пароль.
+        /// </summary>
+        public static string Account_PleaseEnterYourUserNameAndPassword {
+            get {
+                return ResourceManager.GetString("Account_PleaseEnterYourUserNameAndPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Регистрация.
+        /// </summary>
+        public static string Account_Register {
+            get {
+                return ResourceManager.GetString("Account_Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Для изменения пароля используйте форму ниже.
+        /// </summary>
+        public static string Account_UseTheFormBelowToChangeYourPassword {
+            get {
+                return ResourceManager.GetString("Account_UseTheFormBelowToChangeYourPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Для создания аккаунта используйте форму ниже.
+        /// </summary>
+        public static string Account_UseTheFormBelowToCreateANewAccount {
+            get {
+                return ResourceManager.GetString("Account_UseTheFormBelowToCreateANewAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ваш пароль был успешно изменён.
+        /// </summary>
+        public static string Account_YourPasswordHasBeenChangedSuccessfully {
+            get {
+                return ResourceManager.GetString("Account_YourPasswordHasBeenChangedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Действия.
         /// </summary>
-        public static string Actions {
+        public static string ContentBlock_Actions {
             get {
-                return ResourceManager.GetString("Actions", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_Actions", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Добавление заявки.
+        ///   Looks up a localized string similar to Все контент-блоки.
         /// </summary>
-        public static string AddingRequest {
+        public static string ContentBlock_AllContentBlocks {
             get {
-                return ResourceManager.GetString("AddingRequest", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_AllContentBlocks", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Добавить заявку.
+        ///   Looks up a localized string similar to Вы уверены, что хотите удалить этот контент-блок?.
         /// </summary>
-        public static string AddRequest {
+        public static string ContentBlock_AreYouSureThatYouWantDeleteThisContentBlock {
             get {
-                return ResourceManager.GetString("AddRequest", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_AreYouSureThatYouWantDeleteThisContentBlock", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Назад к списку.
         /// </summary>
-        public static string BackToList {
+        public static string ContentBlock_BackToList {
             get {
-                return ResourceManager.GetString("BackToList", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_BackToList", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Подробности заявки.
+        ///   Looks up a localized string similar to Контент-блок.
         /// </summary>
-        public static string RequestDetails {
+        public static string ContentBlock_ContentBlock {
             get {
-                return ResourceManager.GetString("RequestDetails", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_ContentBlock", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Редактирование заявки.
+        ///   Looks up a localized string similar to Создание контент-блока.
         /// </summary>
-        public static string RequestEditing {
+        public static string ContentBlock_ContentBlockCreating {
             get {
-                return ResourceManager.GetString("RequestEditing", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_ContentBlockCreating", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Заявки.
+        ///   Looks up a localized string similar to Удаление контент-блока.
         /// </summary>
-        public static string Requests {
+        public static string ContentBlock_ContentBlockDeleting {
             get {
-                return ResourceManager.GetString("Requests", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_ContentBlockDeleting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подробности контент-блока.
+        /// </summary>
+        public static string ContentBlock_ContentBlockDetails {
+            get {
+                return ResourceManager.GetString("ContentBlock_ContentBlockDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редактирование контент-блока.
+        /// </summary>
+        public static string ContentBlock_ContentBlockEditing {
+            get {
+                return ResourceManager.GetString("ContentBlock_ContentBlockEditing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Контент-блоки.
+        /// </summary>
+        public static string ContentBlock_ContentBlocks {
+            get {
+                return ResourceManager.GetString("ContentBlock_ContentBlocks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создать контент-блок.
+        /// </summary>
+        public static string ContentBlock_CreateContentBlock {
+            get {
+                return ResourceManager.GetString("ContentBlock_CreateContentBlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Действия.
+        /// </summary>
+        public static string Event_Actions {
+            get {
+                return ResourceManager.GetString("Event_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Все события.
+        /// </summary>
+        public static string Event_AllEvents {
+            get {
+                return ResourceManager.GetString("Event_AllEvents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вы уверены, что хотите удалить это событие?.
+        /// </summary>
+        public static string Event_AreYouSureThatYouWantDeleteThisEvent {
+            get {
+                return ResourceManager.GetString("Event_AreYouSureThatYouWantDeleteThisEvent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Назад к списку.
+        /// </summary>
+        public static string Event_BackToList {
+            get {
+                return ResourceManager.GetString("Event_BackToList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создать событие.
+        /// </summary>
+        public static string Event_CreateEvent {
+            get {
+                return ResourceManager.GetString("Event_CreateEvent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подробности событие.
+        /// </summary>
+        public static string Event_Details {
+            get {
+                return ResourceManager.GetString("Event_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Событие.
+        /// </summary>
+        public static string Event_Event {
+            get {
+                return ResourceManager.GetString("Event_Event", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создание события.
+        /// </summary>
+        public static string Event_EventCreating {
+            get {
+                return ResourceManager.GetString("Event_EventCreating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удаление события.
+        /// </summary>
+        public static string Event_EventDeleting {
+            get {
+                return ResourceManager.GetString("Event_EventDeleting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редактирование события.
+        /// </summary>
+        public static string Event_EventEditing {
+            get {
+                return ResourceManager.GetString("Event_EventEditing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to События.
+        /// </summary>
+        public static string Event_Events {
+            get {
+                return ResourceManager.GetString("Event_Events", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изображение для события.
+        /// </summary>
+        public static string Event_ImageForEvent {
+            get {
+                return ResourceManager.GetString("Event_ImageForEvent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Действия.
+        /// </summary>
+        public static string Feedback_Actions {
+            get {
+                return ResourceManager.GetString("Feedback_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Добавить отзыв.
+        /// </summary>
+        public static string Feedback_AddComment {
+            get {
+                return ResourceManager.GetString("Feedback_AddComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Назад к списку.
+        /// </summary>
+        public static string Feedback_BackToList {
+            get {
+                return ResourceManager.GetString("Feedback_BackToList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подробности отзыва.
+        /// </summary>
+        public static string Feedback_Details {
+            get {
+                return ResourceManager.GetString("Feedback_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отзывы и предложения.
+        /// </summary>
+        public static string Feedback_Feedback {
+            get {
+                return ResourceManager.GetString("Feedback_Feedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редактирование отзыва.
+        /// </summary>
+        public static string Feedback_FeedbackEditing {
+            get {
+                return ResourceManager.GetString("Feedback_FeedbackEditing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не найдено ни одного фотоальбома..
+        /// </summary>
+        public static string Gallery_NoPhotosetsFound {
+            get {
+                return ResourceManager.GetString("Gallery_NoPhotosetsFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Фотоальбомы.
+        /// </summary>
+        public static string Gallery_Photosets {
+            get {
+                return ResourceManager.GetString("Gallery_Photosets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Действия.
+        /// </summary>
+        public static string Profile_Actions {
+            get {
+                return ResourceManager.GetString("Profile_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Все профили.
+        /// </summary>
+        public static string Profile_AllProfiles {
+            get {
+                return ResourceManager.GetString("Profile_AllProfiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вы уверены, что хотите удалить свой профиль?.
+        /// </summary>
+        public static string Profile_AreYouSureThatYouWantDeleteThisProfile {
+            get {
+                return ResourceManager.GetString("Profile_AreYouSureThatYouWantDeleteThisProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Назад к списку.
+        /// </summary>
+        public static string Profile_BackToList {
+            get {
+                return ResourceManager.GetString("Profile_BackToList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создать профиль.
+        /// </summary>
+        public static string Profile_CreateProfile {
+            get {
+                return ResourceManager.GetString("Profile_CreateProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изображение для профиля.
+        /// </summary>
+        public static string Profile_ImageForProfile {
+            get {
+                return ResourceManager.GetString("Profile_ImageForProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Профиль пользователя.
+        /// </summary>
+        public static string Profile_Profile {
+            get {
+                return ResourceManager.GetString("Profile_Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создание профиля.
+        /// </summary>
+        public static string Profile_ProfileCreating {
+            get {
+                return ResourceManager.GetString("Profile_ProfileCreating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удаление профиля.
+        /// </summary>
+        public static string Profile_ProfileDeleting {
+            get {
+                return ResourceManager.GetString("Profile_ProfileDeleting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подробности профиля.
+        /// </summary>
+        public static string Profile_ProfileDetails {
+            get {
+                return ResourceManager.GetString("Profile_ProfileDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редактирование профиля.
+        /// </summary>
+        public static string Profile_ProfileEditing {
+            get {
+                return ResourceManager.GetString("Profile_ProfileEditing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Профили пользователей.
+        /// </summary>
+        public static string Profile_Profiles {
+            get {
+                return ResourceManager.GetString("Profile_Profiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Действия.
+        /// </summary>
+        public static string Shared_Actions {
+            get {
+                return ResourceManager.GetString("Shared_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Добавить отзыв.
+        /// </summary>
+        public static string Shared_AddComment {
+            get {
+                return ResourceManager.GetString("Shared_AddComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Авторизоваться.
+        /// </summary>
+        public static string Shared_Authorize {
+            get {
+                return ResourceManager.GetString("Shared_Authorize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вернуться на главную страницу.
+        /// </summary>
+        public static string Shared_BackToHomePage {
+            get {
+                return ResourceManager.GetString("Shared_BackToHomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отмена.
+        /// </summary>
+        public static string Shared_Cancel {
+            get {
+                return ResourceManager.GetString("Shared_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создать.
+        /// </summary>
+        public static string Shared_Create {
+            get {
+                return ResourceManager.GetString("Shared_Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удалить.
+        /// </summary>
+        public static string Shared_Delete {
+            get {
+                return ResourceManager.GetString("Shared_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подробности.
+        /// </summary>
+        public static string Shared_Details {
+            get {
+                return ResourceManager.GetString("Shared_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вниз.
+        /// </summary>
+        public static string Shared_Down {
+            get {
+                return ResourceManager.GetString("Shared_Down", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редактировать.
+        /// </summary>
+        public static string Shared_Edit {
+            get {
+                return ResourceManager.GetString("Shared_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отзывы и предложения.
+        /// </summary>
+        public static string Shared_Feedback {
+            get {
+                return ResourceManager.GetString("Shared_Feedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сохранить.
+        /// </summary>
+        public static string Shared_Save {
+            get {
+                return ResourceManager.GetString("Shared_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Спасибо.
+        /// </summary>
+        public static string Shared_Thanks {
+            get {
+                return ResourceManager.GetString("Shared_Thanks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Спасибо! Мы с Вами обязательно свяжемся!.
+        /// </summary>
+        public static string Shared_ThankYouWeWillCertainlyContactYou {
+            get {
+                return ResourceManager.GetString("Shared_ThankYouWeWillCertainlyContactYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to На главную.
+        /// </summary>
+        public static string Shared_ToHomePage {
+            get {
+                return ResourceManager.GetString("Shared_ToHomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вверх.
+        /// </summary>
+        public static string Shared_Up {
+            get {
+                return ResourceManager.GetString("Shared_Up", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Загрузить.
+        /// </summary>
+        public static string Shared_Upload {
+            get {
+                return ResourceManager.GetString("Shared_Upload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вы уверены,что хотите удалить?.
+        /// </summary>
+        public static string Shared_YouSureYouWantToDeleteThis {
+            get {
+                return ResourceManager.GetString("Shared_YouSureYouWantToDeleteThis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Действия.
+        /// </summary>
+        public static string Sponsor_Actions {
+            get {
+                return ResourceManager.GetString("Sponsor_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Все новости.
+        /// </summary>
+        public static string Sponsor_AllSponsors {
+            get {
+                return ResourceManager.GetString("Sponsor_AllSponsors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вы уверены, что хотите удалить эту новость?.
+        /// </summary>
+        public static string Sponsor_AreYouSureThatYouWantDeleteThisSponsor {
+            get {
+                return ResourceManager.GetString("Sponsor_AreYouSureThatYouWantDeleteThisSponsor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Назад к списку.
+        /// </summary>
+        public static string Sponsor_BackToList {
+            get {
+                return ResourceManager.GetString("Sponsor_BackToList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создать новость.
+        /// </summary>
+        public static string Sponsor_CreateSponsor {
+            get {
+                return ResourceManager.GetString("Sponsor_CreateSponsor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подробности новости.
+        /// </summary>
+        public static string Sponsor_Details {
+            get {
+                return ResourceManager.GetString("Sponsor_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Изображение для новости.
+        /// </summary>
+        public static string Sponsor_ImageForSponsor {
+            get {
+                return ResourceManager.GetString("Sponsor_ImageForSponsor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Новость.
+        /// </summary>
+        public static string Sponsor_Sponsor {
+            get {
+                return ResourceManager.GetString("Sponsor_Sponsor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создание новости.
+        /// </summary>
+        public static string Sponsor_SponsorCreating {
+            get {
+                return ResourceManager.GetString("Sponsor_SponsorCreating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удаление новости.
+        /// </summary>
+        public static string Sponsor_SponsorDeleting {
+            get {
+                return ResourceManager.GetString("Sponsor_SponsorDeleting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редактирование новости.
+        /// </summary>
+        public static string Sponsor_SponsorEditing {
+            get {
+                return ResourceManager.GetString("Sponsor_SponsorEditing", resourceCulture);
             }
         }
     }

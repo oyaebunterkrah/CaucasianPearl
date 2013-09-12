@@ -63,18 +63,18 @@ namespace Resources.Gallery {
         /// <summary>
         ///   Looks up a localized string similar to Не найдено ни одного фотоальбома..
         /// </summary>
-        public static string NoPhotosetsFound {
+        public static string Gallery_NoPhotosetsFound {
             get {
-                return ResourceManager.GetString("NoPhotosetsFound", resourceCulture);
+                return ResourceManager.GetString("Gallery_NoPhotosetsFound", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Фотоальбомы.
         /// </summary>
-        public static string Photosets {
+        public static string Gallery_Photosets {
             get {
-                return ResourceManager.GetString("Photosets", resourceCulture);
+                return ResourceManager.GetString("Gallery_Photosets", resourceCulture);
             }
         }
     }

@@ -3,36 +3,38 @@ using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+using WebMatrix.WebData;
+
 using CaucasianPearl.Controllers.Abstract;
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Helpers.HtmlHelpers;
 using CaucasianPearl.Models.EDM;
-using Resources.Shared;
-using WebMatrix.WebData;
+using Resources;
 
 namespace CaucasianPearl.Controllers
 {   
-    public class ProfileController : UrlFriendlyController<Profile, IUrlFriendlyService<Profile>>
+    public class ProfileController : UrlFriendlyController<Profile, IProfileService<Profile>>
     {
-        public ProfileController(IUrlFriendlyService<Profile> service) :
+        public ProfileController(IProfileService<Profile> service) :
             base(service: service)
         {
+
         }
+
+        #region Properties
 
         // Включаем постраничный вывод.
         protected override bool IsPageable { get { return true; } }
 
+        #endregion
+
+        #region Actions
+
         public override ActionResult Index()
         {
-            var profiles = _service.Get(IsPageable);
-
-            foreach (var profile in profiles)
-                profile.ImageUrl = string.Format("{0}/{1}/{2}",
-                                                 Url.Content(Consts.FoldersPathes.EntityImagesFolder),
-                                                 Consts.Controllers.Profile.ProfileImagesFolder,
-                                                 ImageHelper.GetImageName(profile));
+            var profiles = _service.GetProfiles();
 
             return View(profiles);
         }
@@ -65,7 +67,7 @@ namespace CaucasianPearl.Controllers
             var postedImage = Request.Files[0];
             if (postedImage != null && (int.Equals(Request.Files.Count, 0) || (Request.Files.Count > 0 && int.Equals(postedImage.ContentLength, 0))))
             {
-                ViewBag.ErrorMessage = SharedErrorRes.YouDidNotSelectAFile;
+                ViewBag.ErrorMessage = ErrorRes.YouDidNotSelectAFile;
                 if (HttpContext.Request.UrlReferrer != null)
                     ViewBag.RedirectedUrl = HttpContext.Request.UrlReferrer.AbsolutePath;
 
@@ -80,9 +82,8 @@ namespace CaucasianPearl.Controllers
                     var extension = Path.GetExtension(postedImage.FileName);
                     var fileName = profileId + extension;
                     var fileSavePath = Path.Combine(
-                        Server.MapPath(Url.Content(Consts.FoldersPathes.EntityImagesFolder)),
+                        Server.MapPath(Url.Content(Consts.Paths.Img.EntityImgFolder)),
                         Consts.Controllers.Profile.ProfileImagesFolder,
-                        "/",
                         fileName);
 
                     // если файлы с такими названиями уже имеются, удаляем их
@@ -120,5 +121,7 @@ namespace CaucasianPearl.Controllers
             }
             return Json(new { message = "chunk uploaded", name = name }); }*/
         }
+
+        #endregion
     }
 }

@@ -3,13 +3,12 @@
 @using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Core.UserControls
-@using Resources.Shared
-@using Resources.TopMenu
+@using Resources
 
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <title>@SharedRes.ProjectTitle</title>
+        <title>@ViewRes.ProjectTitle</title>
         
         <link href="@Url.Content("~/content/img/site/favicon.ico")" rel="site icon" type="image/x-icon" />
 
@@ -20,13 +19,13 @@
         @Scripts.Render("~/bundles/jqueryval")
 
         @* jquery ui { *@
-        @Html.Raw(CssJsRegControl.Render("jqueryui/js/jquery-ui-1.9.2.custom.js", Consts.Paths.PluginsPrefix))
-        @Html.Raw(CssJsRegControl.Render("jqueryui/css/jquery-ui-1.9.2.custom.css", Consts.Paths.PluginsPrefix))
+        @Html.Raw(CssJsRegControl.Render("jqueryui/js/jquery-ui-1.9.2.custom.js", Consts.Paths.Plugins.PluginsPrefix))
+        @Html.Raw(CssJsRegControl.Render("jqueryui/css/jquery-ui-1.9.2.custom.css", Consts.Paths.Plugins.PluginsPrefix))
 
-        @Html.Raw(CssJsRegControl.Render("main.js", Consts.Paths.CpJsPrefixPath, "windows-1251"))
+        @Html.Raw(CssJsRegControl.Render("main.js", Consts.Paths.Js.CpJsPrefixPath, "windows-1251"))
         
         @* язык для datepicker *@
-        @Html.Raw(CssJsRegControl.Render(string.Format("jqueryui/js/jquery.ui.datepicker-{0}.js", CultureHelper.CurrentCultureAbbr), Consts.Paths.PluginsPrefix))
+        @Html.Raw(CssJsRegControl.Render(string.Format("jqueryui/js/jquery.ui.datepicker-{0}.js", CultureHelper.CurrentCultureAbbr), Consts.Paths.Plugins.PluginsPrefix))
     </head>
 
     <body>
@@ -35,7 +34,7 @@
                 <div class="float-left">
                     <p class="site-title">
                         @Html.ActionLink(
-                            SharedRes.ProjectTitle,
+                            ViewRes.ProjectTitle,
                             actionName: Consts.Actions.Index,
                             controllerName: Consts.Controllers.Home.Name
                         )
@@ -43,109 +42,104 @@
                 </div>
                 <div class="float-right">
                     <section id="login">
-                        @Html.Partial(Consts.UserControlsPaths.LoginControl)
-                        @Html.Partial(Consts.UserControlsPaths.CultureControl)
+                        @Html.Partial(Consts.Paths.UserControls.LoginControl)
+                        @Html.Partial(Consts.Paths.UserControls.CultureControl)
                     </section>
                     <nav>
                         <ul class="menu">
                             <li>
                                 @Html.ActionLink(
-                                    linkText: TopMenuRes.Home,
-                                    actionName: Consts.Actions.Index,
-                                    controllerName: Consts.Controllers.Home.Name)
-                            </li>
-                            <li>
-                                @Html.ActionLink(
-                                    linkText: TopMenuRes.Profiles,
-                                    actionName: Consts.Actions.Index,
-                                    controllerName: Consts.Controllers.Profile.Name)
-                            </li>
-                            <li>
-                                @Html.ActionLink(
-                                    linkText: TopMenuRes.Events,
-                                    actionName: Consts.Actions.Index,
-                                    controllerName: Consts.Controllers.Event.Name)
-                            </li>
-                            <li>
-                                @Html.ActionLink(
-                                    linkText: TopMenuRes.News,
-                                    actionName: Consts.Actions.Index,
-                                    controllerName: Consts.Controllers.OneNews.Name)
-                            </li>
-                            <li>
-                                @Html.ActionLink(
-                                    linkText: TopMenuRes.About,
+                                    linkText: ViewRes.AboutEnsemble,
                                     actionName: Consts.Controllers.Home.Actions.About,
                                     controllerName: Consts.Controllers.Home.Name)
                             </li>
                             <li>
                                 @Html.ActionLink(
-                                    linkText: TopMenuRes.Affiche,
+                                    linkText: ViewRes.Events,
+                                    actionName: Consts.Controllers.Event.Actions.GetEvents,
+                                    controllerName: Consts.Controllers.Event.Name)
+                            </li>
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: ViewRes.Affiche,
                                     actionName: Consts.Controllers.Home.Actions.Affiche,
                                     controllerName: Consts.Controllers.Home.Name)
                             </li>
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: ViewRes.SiteSettings,
+                                    actionName: Consts.Actions.Index,
+                                    controllerName: Consts.Controllers.SiteSettings.Name)
+                            </li>
+                            @*<li>
+                                @Html.ActionLink(
+                                    linkText: ViewRes.Home,
+                                    actionName: Consts.Actions.Index,
+                                    controllerName: Consts.Controllers.Home.Name)
+                            </li>
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: ViewRes.UserProfiles,
+                                    actionName: Consts.Actions.Index,
+                                    controllerName: Consts.Controllers.Profile.Name)
+                            </li>                            
+                            <li>
+                                @Html.ActionLink(
+                                    linkText: ViewRes.Sponsors,
+                                    actionName: Consts.Actions.Index,
+                                    controllerName: Consts.Controllers.Sponsor.Name)
+                            </li>
+                            
                         </ul>
                         <ul class="menu">
                             <li>
                                 @Html.ActionLink(
-                                    linkText: TopMenuRes.Requests,
+                                    linkText: ViewRes.Requests,
                                     actionName: Consts.Actions.Create,
                                     controllerName: Consts.Controllers.Request.Name)
                             </li>
                             <li>
                                 @Html.ActionLink(
-                                    linkText: TopMenuRes.Gallery,
+                                    linkText: ViewRes.Gallery,
                                     actionName: Consts.Actions.Index,
                                     controllerName: Consts.Controllers.Gallery.Name)
                             </li>
                             <li>
                                 @Html.ActionLink(
-                                    linkText: TopMenuRes.Feedbacks,
+                                    linkText: ViewRes.Feedbacks,
                                     actionName: Consts.Actions.Index,
                                     controllerName: Consts.Controllers.Feedback.Name)
                             </li>
                             <li>
                                 @Html.ActionLink(
-                                    linkText: TopMenuRes.Contacts,
+                                    linkText: ViewRes.Contacts,
                                     actionName: Consts.Controllers.Home.Actions.Contacts,
                                     controllerName: Consts.Controllers.Home.Name)
                             </li>
                             <li>
                                 @Html.ActionLink(
-                                    linkText: TopMenuRes.Contact,
+                                    linkText: ViewRes.Contacts,
                                     actionName: Consts.Controllers.Home.Actions.Contact,
                                     controllerName: Consts.Controllers.Home.Name)
                             </li>
-                            <li>
-                                @Html.ActionLink(
-                                    linkText: TopMenuRes.SiteSettings,
-                                    actionName: Consts.Actions.Index,
-                                    controllerName: Consts.Controllers.SiteSettings.Name)
-                            </li>
-                            @* TODO: убрать *@
-                            @*@if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager)))
-                            {*@
+                            //TODO: убрать
+                            if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager)))
+                            {
                                 <li>
                                     @Html.ActionLink(
-                                        linkText: TopMenuRes.ContentBlock,
+                                        linkText: ViewRes.ContentBlock,
                                         actionName: Consts.Actions.Index,
                                         controllerName: Consts.Controllers.ContentBlock.Name)
                                 </li>
-                            @*}*@
+                            }*@
                         </ul>
                     </nav>
                 </div>
+                @* social share *@
+                @Html.Partial(Consts.Paths.UserControls.SocialShareControl)
             </div>
         </header>
         <div id="body">
-            @* social share *@
-            @Html.Partial(Consts.UserControlsPaths.SocialShareControl)
-            
-            @HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()
-            @HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString()
-            @ViewContext.RouteData.Values["controller"]
-            @ViewContext.RouteData.Values["action"]
-
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
@@ -154,14 +148,8 @@
             <div class="loading"></div>
         </div>
         <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year | Designed by Artem Pogosoff</p>
-                </div>
-            </div>
+            @Html.Partial(Consts.Paths.UserControls.FooterControl)
         </footer>
-
         @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
     </body>
 </html>

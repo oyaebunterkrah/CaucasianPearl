@@ -18,8 +18,7 @@ namespace CaucasianPearl.Models.EDM
         public string Name { get; set; }
         public string City { get; set; }
         public string Comment { get; set; }
-        public string Suggestion { get; set; }
-        public System.DateTime FeedbackDateTime { get; set; }
-        public bool IsApproved { get; set; }
+        public Nullable<bool> IsApproved { get; set; }
+        public Nullable<System.DateTime> Created { get; set; }
     }
 }

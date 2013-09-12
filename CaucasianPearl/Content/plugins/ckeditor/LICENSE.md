@@ -985,7 +985,7 @@ Version 1.1
           the Modification is made available as described in Section 3.2,
           Contributor shall promptly modify the LEGAL file in all copies
           Contributor makes available thereafter and shall take other steps
-          (such as notifying appropriate mailing lists or newsgroups)
+          (such as notifying appropriate mailing lists or sgroups)
           reasonably calculated to inform those who received the Covered
           Code that new knowledge has been obtained.
 

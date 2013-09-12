@@ -9,15 +9,15 @@ namespace CaucasianPearl.Models
     public class WrapperModel
     {
         public IEnumerable<Event> Events;
-        public IEnumerable<OneNews> OneNews;
+        public IEnumerable<Sponsor> Sponsor;
 
         public WrapperModel()
         {
             var eventService = ServiceHelper<IEventService<Event>>.GetService();
             Events = eventService.Get().Take(3);
 
-            var oneNewsService = ServiceHelper<IUrlFriendlyService<OneNews>>.GetService();
-            OneNews = oneNewsService.Get().Take(3);
+            var Service = ServiceHelper<IBaseService<Sponsor>>.GetService();
+            Sponsor = Service.Get().Take(3);
         }
     }
 }

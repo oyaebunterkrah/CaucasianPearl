@@ -10,10 +10,10 @@
           <EntitySet Name="Event" EntityType="caucasianpearldbModel.Store.Event" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="EventMedia" EntityType="caucasianpearldbModel.Store.EventMedia" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Feedback" EntityType="caucasianpearldbModel.Store.Feedback" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="OneNews" EntityType="caucasianpearldbModel.Store.OneNews" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Profile" EntityType="caucasianpearldbModel.Store.Profile" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Request" EntityType="caucasianpearldbModel.Store.Request" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SiteSettings" EntityType="caucasianpearldbModel.Store.SiteSettings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Sponsor" EntityType="caucasianpearldbModel.Store.Sponsor" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_EventMedia_Event1" Association="caucasianpearldbModel.Store.FK_EventMedia_Event1">
             <End Role="Event" EntitySet="Event" />
             <End Role="EventMedia" EntitySet="EventMedia" />
@@ -70,28 +70,10 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="20" />
-          <Property Name="Comment" Type="nvarchar" Nullable="false" MaxLength="2000" />
-          <Property Name="Suggestion" Type="nvarchar" MaxLength="2000" />
-          <Property Name="FeedbackDateTime" Type="datetime2" Nullable="false" />
-          <Property Name="IsApproved" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="OneNews">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="CreatedDate" Type="date" />
-          <Property Name="CreatedTime" Type="time" />
-          <Property Name="LastUpdatedDate" Type="date" />
-          <Property Name="LastUpdatedTime" Type="time" />
-          <Property Name="LastUpdatedUser" Type="nvarchar" MaxLength="50" />
-          <Property Name="Content" Type="nvarchar(max)" />
-          <Property Name="ImageExt" Type="nchar" MaxLength="10" />
-          <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Sequence" Type="int" />
+          <Property Name="City" Type="nvarchar" MaxLength="20" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Created" Type="datetime2" />
+          <Property Name="IsApproved" Type="bit" />
         </EntityType>
         <EntityType Name="Profile">
           <Key>
@@ -102,8 +84,9 @@
           <Property Name="Email" Type="nvarchar" MaxLength="30" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Group" Type="int" />
-          <Property Name="ImageExt" Type="nchar" MaxLength="10" />
+          <Property Name="Position" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="ImageExt" Type="nvarchar" MaxLength="5" />
           <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
           <Property Name="Sequence" Type="int" />
         </EntityType>
@@ -116,9 +99,9 @@
           <Property Name="City" Type="nvarchar" MaxLength="20" />
           <Property Name="Phone" Type="nvarchar" MaxLength="20" />
           <Property Name="Email" Type="nvarchar" MaxLength="30" />
-          <Property Name="Content" Type="nvarchar" Nullable="false" MaxLength="2000" />
-          <Property Name="RequestDateTime" Type="datetime2" Nullable="false" />
-          <Property Name="RequestRegistrationDate" Type="date" />
+          <Property Name="Content" Type="nvarchar" MaxLength="2000" />
+          <Property Name="RequestDate" Type="datetime" />
+          <Property Name="Created" Type="datetime" />
           <Property Name="Comment" Type="nvarchar" MaxLength="500" />
           <Property Name="Status" Type="int" />
         </EntityType>
@@ -131,6 +114,22 @@
           <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DefaultValue" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Sum" Type="int" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+          <Property Name="Url" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Confirmed" Type="bit" Nullable="false" />
+          <Property Name="ImageExt" Type="nvarchar" MaxLength="5" />
         </EntityType>
         <Association Name="FK_EventMedia_Event1">
           <End Role="Event" Type="caucasianpearldbModel.Store.Event" Multiplicity="0..1" />
@@ -151,7 +150,6 @@
         <EntityContainer Name="CaucasianPearlContext" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="Events" EntityType="caucasianpearldbModel.Event" />
           <EntitySet Name="Feedbacks" EntityType="caucasianpearldbModel.Feedback" />
-          <EntitySet Name="News" EntityType="caucasianpearldbModel.OneNews" />
           <EntitySet Name="Requests" EntityType="caucasianpearldbModel.Request" />
           <EntitySet Name="Profiles" EntityType="caucasianpearldbModel.Profile" />
           <EntitySet Name="ContentBlocks" EntityType="caucasianpearldbModel.ContentBlock" />
@@ -161,6 +159,7 @@
             <End Role="EventMedia" EntitySet="EventMedias" />
           </AssociationSet>
           <EntitySet Name="SiteSettings" EntityType="caucasianpearldbModel.SiteSetting" />
+          <EntitySet Name="Sponsors" EntityType="caucasianpearldbModel.Sponsor" />
         </EntityContainer>
         <EntityType Name="Event">
           <Key>
@@ -182,28 +181,10 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="City" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Comment" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
-          <Property Name="Suggestion" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
-          <Property Name="FeedbackDateTime" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="OneNews">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="CreatedBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
-          <Property Name="CreatedTime" Type="Time" Precision="7" />
-          <Property Name="LastUpdatedDate" Type="DateTime" Precision="0" />
-          <Property Name="LastUpdatedTime" Type="Time" Precision="7" />
-          <Property Name="LastUpdatedUser" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Content" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="ImageExt" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
-          <Property Name="ShortName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Sequence" Type="Int32" />
+          <Property Name="City" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Comment" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Type="DateTime" Name="Created" Precision="7" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
@@ -211,14 +192,14 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Email" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
-          <Property Name="Content" Type="String" Nullable="false" MaxLength="2000" Unicode="true" FixedLength="false" />
-          <Property Name="Phone" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="City" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="RequestDateTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Email" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Content" MaxLength="2000" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Phone" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="Comment" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="Status" Type="Int32" />
-          <Property Type="DateTime" Name="RequestRegistrationDate" Precision="0" />
+          <Property Type="DateTime" Name="RequestDate" Precision="3" />
+          <Property Type="DateTime" Name="Created" Precision="3" />
         </EntityType>
         <EntityType Name="Profile">
           <Key>
@@ -229,8 +210,9 @@
           <Property Type="String" Name="Email" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Group" />
-          <Property Type="String" Name="ImageExt" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Position" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ImageExt" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="ShortName" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="Sequence" />
         </EntityType>
@@ -289,6 +271,22 @@
           <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="DefaultValue" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Type="String" Name="City" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Sum" />
+          <Property Type="String" Name="Comment" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Url" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Created" Precision="3" />
+          <Property Type="Boolean" Name="Confirmed" Nullable="false" />
+          <Property Type="String" Name="ImageExt" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -312,45 +310,26 @@
           <EntitySetMapping Name="Feedbacks">
             <EntityTypeMapping TypeName="caucasianpearldbModel.Feedback">
               <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="Created" ColumnName="Created" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="Suggestion" ColumnName="Suggestion" />
-                <ScalarProperty Name="FeedbackDateTime" ColumnName="FeedbackDateTime" />
                 <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="News">
-            <EntityTypeMapping TypeName="caucasianpearldbModel.OneNews">
-              <MappingFragment StoreEntitySet="OneNews">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
-                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-                <ScalarProperty Name="LastUpdatedTime" ColumnName="LastUpdatedTime" />
-                <ScalarProperty Name="LastUpdatedUser" ColumnName="LastUpdatedUser" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="ImageExt" ColumnName="ImageExt" />
-                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Requests">
             <EntityTypeMapping TypeName="caucasianpearldbModel.Request">
               <MappingFragment StoreEntitySet="Request">
-                <ScalarProperty Name="RequestRegistrationDate" ColumnName="RequestRegistrationDate" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
@@ -359,10 +338,11 @@
           <EntitySetMapping Name="Profiles">
             <EntityTypeMapping TypeName="caucasianpearldbModel.Profile">
               <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
                 <ScalarProperty Name="Sequence" ColumnName="Sequence" />
                 <ScalarProperty Name="ShortName" ColumnName="ShortName" />
                 <ScalarProperty Name="ImageExt" ColumnName="ImageExt" />
-                <ScalarProperty Name="Group" ColumnName="Group" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -411,6 +391,23 @@
                 <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sponsors">
+            <EntityTypeMapping TypeName="caucasianpearldbModel.Sponsor">
+              <MappingFragment StoreEntitySet="Sponsor">
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
+                <ScalarProperty Name="ImageExt" ColumnName="ImageExt" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

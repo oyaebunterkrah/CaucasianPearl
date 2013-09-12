@@ -26,14 +26,6 @@
     @Html.ValidationMessageFor(model => model.Comment)
 </div>
 
-<div class="create_or_edit_label">
-    @Html.LabelFor(model => model.Suggestion)
-</div>
-<div class="create_or_edit_field">
-    @Html.EditorFor(model => model.Suggestion)
-    @Html.ValidationMessageFor(model => model.Suggestion)
-</div>
-
 @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
 {
     <div class="create_or_edit_label">

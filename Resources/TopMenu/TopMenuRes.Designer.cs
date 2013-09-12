@@ -63,117 +63,117 @@ namespace Resources.TopMenu {
         /// <summary>
         ///   Looks up a localized string similar to О нас.
         /// </summary>
-        public static string About {
+        public static string TopMenu_About {
             get {
-                return ResourceManager.GetString("About", resourceCulture);
+                return ResourceManager.GetString("TopMenu_About", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Афиша.
         /// </summary>
-        public static string Affiche {
+        public static string TopMenu_Affiche {
             get {
-                return ResourceManager.GetString("Affiche", resourceCulture);
+                return ResourceManager.GetString("TopMenu_Affiche", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Написать нам.
         /// </summary>
-        public static string Contact {
+        public static string TopMenu_Contact {
             get {
-                return ResourceManager.GetString("Contact", resourceCulture);
+                return ResourceManager.GetString("TopMenu_Contact", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Контакты.
         /// </summary>
-        public static string Contacts {
+        public static string TopMenu_Contacts {
             get {
-                return ResourceManager.GetString("Contacts", resourceCulture);
+                return ResourceManager.GetString("TopMenu_Contacts", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Контент-блоки.
         /// </summary>
-        public static string ContentBlock {
+        public static string TopMenu_ContentBlock {
             get {
-                return ResourceManager.GetString("ContentBlock", resourceCulture);
+                return ResourceManager.GetString("TopMenu_ContentBlock", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to События.
         /// </summary>
-        public static string Events {
+        public static string TopMenu_Events {
             get {
-                return ResourceManager.GetString("Events", resourceCulture);
+                return ResourceManager.GetString("TopMenu_Events", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Оставить отзыв.
         /// </summary>
-        public static string Feedbacks {
+        public static string TopMenu_Feedbacks {
             get {
-                return ResourceManager.GetString("Feedbacks", resourceCulture);
+                return ResourceManager.GetString("TopMenu_Feedbacks", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Галерея.
         /// </summary>
-        public static string Gallery {
+        public static string TopMenu_Gallery {
             get {
-                return ResourceManager.GetString("Gallery", resourceCulture);
+                return ResourceManager.GetString("TopMenu_Gallery", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Домашняя.
         /// </summary>
-        public static string Home {
+        public static string TopMenu_Home {
             get {
-                return ResourceManager.GetString("Home", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Новости.
-        /// </summary>
-        public static string News {
-            get {
-                return ResourceManager.GetString("News", resourceCulture);
+                return ResourceManager.GetString("TopMenu_Home", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Наш коллектив.
         /// </summary>
-        public static string Profiles {
+        public static string TopMenu_Profiles {
             get {
-                return ResourceManager.GetString("Profiles", resourceCulture);
+                return ResourceManager.GetString("TopMenu_Profiles", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Отправить заявку.
         /// </summary>
-        public static string Requests {
+        public static string TopMenu_Requests {
             get {
-                return ResourceManager.GetString("Requests", resourceCulture);
+                return ResourceManager.GetString("TopMenu_Requests", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Настройки сайта.
         /// </summary>
-        public static string SiteSettings {
+        public static string TopMenu_SiteSettings {
             get {
-                return ResourceManager.GetString("SiteSettings", resourceCulture);
+                return ResourceManager.GetString("TopMenu_SiteSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Новости.
+        /// </summary>
+        public static string TopMenu_Sponsor {
+            get {
+                return ResourceManager.GetString("TopMenu_Sponsor", resourceCulture);
             }
         }
     }

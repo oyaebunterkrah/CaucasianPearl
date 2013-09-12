@@ -1,15 +1,14 @@
 ﻿@model CaucasianPearl.Models.EDM.Event
 
 @using CaucasianPearl.Core.Constants
-@using Resources.Event
-@using Resources.Shared
+@using Resources
 
 @{
-    ViewBag.Title = string.Format("{0} | {1}", EventViewRes.EventDeleting, Consts.Title);
+    ViewBag.Title = string.Format("{0} | {1}", ViewRes.EventDeleting, Consts.Title);
 }
 
 <p>
-    @Html.ActionLink(SharedViewRes.Cancel,
+    @Html.ActionLink(ViewRes.Cancel,
         actionName: Consts.Actions.GetByShortName,
         routeValues: new
         {
@@ -20,9 +19,9 @@
     )
 </p>
 
-<h2 style="color: Red">@EventViewRes.AreYouSureThatYouWantDeleteThisEvent</h2>
+<h2 style="color: Red">@ViewRes.AreYouSureThatYouWantDeleteThisEvent</h2>
 
 @using (Html.BeginForm())
 {
-    <input type="submit" value="@SharedViewRes.Delete" />
+    <input type="submit" value="@ViewRes.Delete" />
 }

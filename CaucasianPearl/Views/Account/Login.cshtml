@@ -1,9 +1,9 @@
-﻿@using Resources.Account
+﻿@using Resources
 
 @model CaucasianPearl.Models.LoginModel
 
 @{
-    ViewBag.Title = AccountViewRes.Login;
+    ViewBag.Title = ViewRes.Login;
 }
 
 <hgroup class="title">
@@ -47,7 +47,3 @@
     <h2>Use another service to log in.</h2>
     @Html.Action("ExternalLoginsList", new { returnUrl = ViewBag.ReturnUrl })
 </section>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

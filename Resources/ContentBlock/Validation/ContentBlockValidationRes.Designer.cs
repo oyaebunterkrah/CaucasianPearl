@@ -63,18 +63,18 @@ namespace Resources.ContentBlock {
         /// <summary>
         ///   Looks up a localized string similar to Поле обязательно для заполнения.
         /// </summary>
-        public static string Required {
+        public static string ContentBlock_Required {
             get {
-                return ResourceManager.GetString("Required", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_Required", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Поле &quot;{0}&quot; должно содержать не более {2} символов.
         /// </summary>
-        public static string StringLengthMax {
+        public static string ContentBlock_StringLengthMax {
             get {
-                return ResourceManager.GetString("StringLengthMax", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_StringLengthMax", resourceCulture);
             }
         }
     }

@@ -18,7 +18,7 @@ namespace CaucasianPearl.Core.Helpers
         }
         
         #endregion
-        
+
         public static SiteSettingsEntityService SiteSettingsService
         {
             get

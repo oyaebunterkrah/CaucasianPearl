@@ -27,11 +27,11 @@ namespace CaucasianPearl.Models.EDM
     
         public DbSet<Event> Events { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
-        public DbSet<OneNews> News { get; set; }
         public DbSet<Request> Requests { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<ContentBlock> ContentBlocks { get; set; }
         public DbSet<EventMedia> EventMedias { get; set; }
         public DbSet<SiteSetting> SiteSettings { get; set; }
+        public DbSet<Sponsor> Sponsors { get; set; }
     }
 }

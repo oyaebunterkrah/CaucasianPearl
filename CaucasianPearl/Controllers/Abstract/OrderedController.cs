@@ -21,7 +21,7 @@ namespace CaucasianPearl.Controllers.Abstract
 
         public override ActionResult Create(T obj)
         {
-            AddValuesOnCreate(obj);
+            ModifyValuesOnCreate(obj);
 
             return base.Create(obj);
         }
@@ -104,9 +104,9 @@ namespace CaucasianPearl.Controllers.Abstract
         #region Overridden virtual methods
 
         // При создании объекта автоматически задаём ему значение Sequence, равное следующему после наибольшего.
-        protected override void AddValuesOnCreate(T obj)
+        protected override void ModifyValuesOnCreate(T obj)
         {
-            base.AddValuesOnCreate(obj);
+            base.ModifyValuesOnCreate(obj);
 
             _service.AddValuesOnCreate(obj);
         }

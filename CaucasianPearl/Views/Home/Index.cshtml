@@ -4,39 +4,50 @@
 @using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Core.UserControls
 @using CaucasianPearl.Models
-@using Resources.Shared
-
-@{
-    ViewBag.Title = SharedRes.ProjectTitle;
-}
+@using Resources
 
 @model IEnumerable<EventItemInfo>
 
+@{
+    ViewBag.Title = ViewRes.ProjectTitle;
+}
+
 @* проверяем режим: события/обложка *@
 @if (ViewBag.HomePageMode == SiteSettingsHelper.HomePageMode.Events && Model != null) {
-    { Html.RenderPartial("~/Views/Event/GetHomePageEvents.cshtml", Model); }
+    @Html.Partial(Consts.Paths.UserControls.HomePageEvents, ViewBag.Events as IEnumerable<EventItemInfo>)
 } else {
     <img src='@ViewBag.CoverImagePath' alt="Обложка" />
 }
 
-@* форма заявки *@
-@Html.Partial(Consts.UserControlsPaths.RequestFormControl, new ViewDataDictionary { { "elementId", "#sendRequest" } })
+@*@using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "Post", OnComplete = "Contact.onComplete" }))
+{
+    @Html.ValidationSummary(true, "A few fields are still empty")
+    <fieldset>
+        <legend>Написать нам</legend>
+        <div class="create_or_edit_label">
+            @Html.LabelFor(m => m.Name)
+        </div>
+        <div class="create_or_edit_field">@Html.TextBoxFor(m => m.Name)
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+        <div class="create_or_edit_label">
+            @Html.LabelFor(m => m.Email)
+        </div>
+        <div class="create_or_edit_field">
+            @Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div class="create_or_edit_label">
+            @Html.LabelFor(m => m.Comment)
+        </div>
+        <div class="create_or_edit_field">
+            @Html.TextAreaFor(m => m.Comment, 10, 25, null)
+            @Html.ValidationMessageFor(m => m.Comment)
+        </div>
+        <p>
+            <input type="submit" value="Отправить" />
+        </p>
+    </fieldset>
 
-<input id="sendRequest" type="button" value="Оставить заявку на выступление" />
-
-@*
-    аудиоплеер
-    <div class="player" @* style="display: none;"
-        <object id="audioplayer361" type="application/x-shockwave-flash" data="http://caucasianpearl/content/audioplayer/player/uppod.swf" width="350" height="50">
-            <param name="bgcolor" value="#ffffff" />
-            <param name="allowScriptAccess" value="always" />
-            <param name="movie" value="http://caucasianpearl/content/plugins/audioplayer/player/uppod.swf" />
-            <param name="flashvars" value="comment=Жемчужина Кавказа&amp;st=http://caucasianpearl/content/plugins/audioplayer/styles/audio164-471.txt&amp;file=http://cs1-26v4.vk.me/p35/6e11d4c8f5d0e2.mp3" />
-        </object>
-    </div>
-
-    контент блок
-    <div class="placeHolder1">
-        @Html.Raw(Html.PlaceHolder("placeHolder1"))
-    </div>
-*@
+    <p id="result">@TempData["Message"]</p>
+}*@

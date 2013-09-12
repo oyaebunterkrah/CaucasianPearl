@@ -1,7 +1,6 @@
 ﻿@using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.Helpers
-@using Resources.Event
-@using Resources.Shared
+@using Resources
 
 @model CaucasianPearl.Models.EDM.Event
 
@@ -11,7 +10,7 @@
 
 <p>
     @* На домашнюю страницу *@
-    @Html.ActionLink(SharedViewRes.ToHomePage,
+    @Html.ActionLink(ViewRes.ToHomePage,
         Consts.Actions.Index,
         controllerName: Consts.Controllers.Home.Name,
         routeValues: null,
@@ -20,7 +19,7 @@
     @* Все события *@
     @Consts.BreadcrumbsSeparator
     @Html.ActionLink(
-        EventViewRes.AllEvents,
+        ViewRes.AllEvents,
         actionName: Consts.Actions.Index,
         routeValues: null,
         htmlAttributes: new { @class = "link" }
@@ -34,7 +33,7 @@
     <p>
         <!-- Редактировать -->
         @Html.ActionLink(
-            SharedViewRes.Edit,
+            ViewRes.Edit,
             Consts.Actions.Edit,
             controllerName: Consts.Controllers.Event.Name,
             routeValues: new { id = Model.ID },
@@ -42,14 +41,14 @@
         @Consts.MenuSeparator
         <!-- Удалить -->
         @Html.ActionLink(
-            SharedViewRes.Delete, actionName: Consts.Actions.Delete,
+            ViewRes.Delete, actionName: Consts.Actions.Delete,
             controllerName: Consts.Controllers.Event.Name,
             routeValues: new { id = Model.ID },
             htmlAttributes: new { @class = "link" })
         @Consts.MenuSeparator
         <!-- Создать -->
         @Html.ActionLink(
-            EventViewRes.CreateEvent,
+            ViewRes.CreateEvent,
             actionName: Consts.Actions.Create,
             controllerName: Consts.Controllers.Event.Name,
             routeValues: null,
@@ -57,7 +56,7 @@
     </p>
 }
 
-<h2>@EventViewRes.Event: @Model.Title</h2>
+<h2>@ViewRes.Event: @Model.Title</h2>
 
 <br />
 
@@ -111,5 +110,5 @@
 </div>
 
 <p>
-    @Html.ActionLink(EventViewRes.BackToList, Consts.Actions.Index)
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 </p>

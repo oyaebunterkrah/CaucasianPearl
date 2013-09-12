@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.IO;
+using System.Web;
 using CaucasianPearl.Core.Constants;
 
 namespace CaucasianPearl.Core.Helpers
@@ -11,30 +12,33 @@ namespace CaucasianPearl.Core.Helpers
             if (model == null)
                 return Consts.DefaultImage;
 
-            return string.Format("{0}{1}",
+            var imageName = string.Format("{0}{1}",
                                  model.ID,
                                  string.IsNullOrWhiteSpace(model.ImageExt) ? Consts.DefaultImage : model.ImageExt.TrimEnd());
+
+            return imageName;
         }
 
         // Возвращает url изображения.
         public static string GetImageUrl(dynamic model, string imageFolder)
         {
-            var imageUrl = string.Format("{0}/{1}", VirtualPathUtility.ToAppRelative(Consts.FoldersPathes.EntityImagesFolder),
-                                         Consts.DefaultImage);
+            var defaultImageUrl = string.Format("{0}/{1}", VirtualPathUtility.ToAppRelative(Consts.Paths.Img.SiteImgFolder), Consts.DefaultImage);
 
             if (model == null || string.IsNullOrWhiteSpace(imageFolder))
-                return imageUrl;
+                return defaultImageUrl;
 
-            return string.Format("{0}/{1}/{2}",
-                                 VirtualPathUtility.ToAppRelative(Consts.FoldersPathes.EntityImagesFolder),
+            var imageUrl = string.Format("{0}/{1}/{2}",
+                                 VirtualPathUtility.ToAppRelative(Consts.Paths.Img.EntityImgFolder),
                                  imageFolder,
                                  ImageHelper.GetImageName(model));
+
+            return !File.Exists(HttpContext.Current.Server.MapPath(imageUrl)) ? defaultImageUrl : imageUrl;
         }
 
         // Возвращает url изображения по умолчанию.
         public static string GetDefaultImageUrl(string imagePath)
         {
-            return string.Format("{0}/{1}", imagePath, Consts.DefaultImage);
+            return VirtualPathUtility.ToAppRelative(string.Format("{0}/{1}", imagePath, Consts.DefaultImage));
         }
     }
 }

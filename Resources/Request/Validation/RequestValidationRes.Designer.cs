@@ -63,36 +63,36 @@ namespace Resources.Request {
         /// <summary>
         ///   Looks up a localized string similar to Поле обязательно для заполнения.
         /// </summary>
-        public static string Required {
+        public static string Request_Required {
             get {
-                return ResourceManager.GetString("Required", resourceCulture);
+                return ResourceManager.GetString("Request_Required", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Поле &quot;{0}&quot; должно содержать от {2} до {1} символов.
         /// </summary>
-        public static string StringLengthMinMax {
+        public static string Request_StringLengthMinMax {
             get {
-                return ResourceManager.GetString("StringLengthMinMax", resourceCulture);
+                return ResourceManager.GetString("Request_StringLengthMinMax", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Неверный формат даты.
         /// </summary>
-        public static string WrongDateFormat {
+        public static string Request_WrongDateFormat {
             get {
-                return ResourceManager.GetString("WrongDateFormat", resourceCulture);
+                return ResourceManager.GetString("Request_WrongDateFormat", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Неверный формат электронной почты.
         /// </summary>
-        public static string WrongEmailFormat {
+        public static string Request_WrongEmailFormat {
             get {
-                return ResourceManager.GetString("WrongEmailFormat", resourceCulture);
+                return ResourceManager.GetString("Request_WrongEmailFormat", resourceCulture);
             }
         }
     }

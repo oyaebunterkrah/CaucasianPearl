@@ -1,0 +1,99 @@
+﻿@using CaucasianPearl;
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.DAL.Data
+@using CaucasianPearl.Core.UserControls
+@using Resources
+
+@model FeedbackItem
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#previousFeedback').click(function (e) {
+            e.preventDefault();
+            var self = $(this);
+
+            if (self.hasClass('disabled'))
+                return;
+            
+            var options = {
+                url: '/feedback/getpreviousfeedback',
+                type: 'POST',
+                data: { id: $(this).data('feedbackid') },
+                success: function (result) { onSuccess(result, self); },
+                error: function (result) { onError(result); }
+            };
+
+            ajaxRequest(options);
+        });
+
+        // т.к. при первой загрузке подгружается последний отзыв
+        $('#nextFeedback').addClass('disabled');
+
+        $('#nextFeedback').click(function (e) {
+            e.preventDefault();
+            var self = $(this);
+            
+            if (self.hasClass('disabled'))
+                return;
+            
+            var options = {
+                url: '/feedback/getnextfeedback',
+                type: 'POST',
+                data: { id: $(this).data('feedbackid') },
+                success: function (result) { onSuccess(result, self); },
+                error: function (result) { onError(result); }
+            };
+
+            ajaxRequest(options);
+        });
+
+        onSuccess = function (result, sender) {
+            if (result.IsLast) {
+                $('.navigate.disabled').removeClass('disabled');
+                sender.addClass('disabled');
+            } else
+                $('.navigate.disabled').removeClass('disabled');
+
+            //$('#feedbackName').hide('slide', { direction: 'left' }, 125, function () { $(this).text(result.Name).show('slide', { direction: 'left' }); });
+            //$('#feedbackCity').hide('slide', { direction: 'left' }, 250, function () { $(this).text(result.City).show('slide', { direction: 'left' }); });
+            //$('#feedbackComment').hide('slide', { direction: 'left' }, 375, function () { $(this).text(result.Comment).show('slide', { direction: 'left' }); });
+            //$('#feedbackCreated').hide('slide', { direction: 'left' }, 500, function () { $(this).text(result.Created).show('slide', { direction: 'left' }); });
+
+            $('#feedbackName').fadeOut(125, function () { $(this).text(result.Name).fadeIn(); });
+            $('#feedbackCity').fadeOut(250, function () { $(this).text(result.City).fadeIn(); });
+            $('#feedbackComment').fadeOut(375, function () { $(this).text(result.Comment).fadeIn(); });
+            $('#feedbackCreated').fadeOut(500, function () { $(this).text(result.Created).fadeIn(); });
+
+            $('#previousFeedback, #nextFeedback').data('feedbackid', result.ID);
+        };
+
+        onError = function (result) {
+            alert(result);
+        };
+    });
+</script>
+
+<style type="text/css">
+    .disabled {
+        color: red !important;
+    }
+    .disabled:hover {
+        cursor: text;
+        text-decoration: none !important;
+    }
+</style>
+
+<div class="feedbacks">
+    <h2>@ViewRes.Feedbacks</h2>
+
+    <a id="previousFeedback" class="previous_feedback navigate" href="#" data-feedbackid="@Model.ID">Предыдущий отзыв</a>
+    
+    <div class="feedback_container">
+        <div id="feedbackName" class="feedback_name">@Model.Name</div>
+        <div id="feedbackCity" class="feedback_city">@Model.City</div>
+        <div id="feedbackComment" class="feedback_comment">@Model.Comment</div>
+        <div id="feedbackCreated" class="feedback_created">@Model.Created</div>
+    </div>
+
+    <a id="nextFeedback" class="next_feedback navigate" href="#" data-feedbackid="@Model.ID">Следующий отзыв</a>
+</div>

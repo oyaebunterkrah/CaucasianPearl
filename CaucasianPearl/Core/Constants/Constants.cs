@@ -29,6 +29,7 @@ namespace CaucasianPearl.Core.Constants
         public const string BreadcrumbsSeparator = " / ";
         public const string MenuSeparator = " | ";
 
+        public const string PathDelimiter = "/";
         public const string RootPath = "/";
 
         public static class PaginatorControl
@@ -44,9 +45,9 @@ namespace CaucasianPearl.Core.Constants
             public const int EventNumberOfVisibleLinks = 10;
 
             // Количество объектов на одной странице для новостей.
-            public const int NewsItemsPerPage = 10;
+            public const int SponsorItemsPerPage = 10;
             // Количество отображаемых страниц перед многоточием для новостей.
-            public const int NewsNumberOfVisibleLinks = 10;
+            public const int SponsorNumberOfVisibleLinks = 10;
 
             // Количество объектов на одной странице для отзывов и предложений.
             public const int FeedbackItemsPerPage = 5;
@@ -111,18 +112,8 @@ namespace CaucasianPearl.Core.Constants
                 "changepassword",
                 "changepasswordsuccess",
                 "event",
-                "onenews"
+                "sponsor"
             };
-
-        #region Пути к папкам
-
-        public static class FoldersPathes
-        {
-            public const string EntityImagesFolder = "~/content/img/cp";
-            public const string CommonImagesFolder = "/content/img/site";
-        }
-        
-        #endregion
 
         // Изображение по умолчанию.
         public const string DefaultImage = "default-image.png";
@@ -135,7 +126,7 @@ namespace CaucasianPearl.Core.Constants
         }
 
         public const string DateTimeFormat = @"{0:dd.MM.yyyy, 0:hh\:mm}";
-        public const string DateFormat = "{0:yyyy-MM-dd}";
+        public const string DateFormat = "{0:dd.MM.yyyy}";
         public const string TimeFormat = @"{0:hh\:mm}";
 
         // Controllers.
@@ -224,24 +215,33 @@ namespace CaucasianPearl.Core.Constants
                 }
             }
 
-            // OneNews.
-            public static class OneNews
+            // Sponsor.
+            public static class Sponsor
             {
-                public const string Name = "onenews";
+                public const string Name = "sponsor";
+                public const string DefaultImagePath = "~/content/img/cp/sponsor/";
+                public const int DefaultBigSponsorsCount = 3;
+                public const int DefaultSmallSponsorsCount = 12;
 
                 // Размеры картинок для раздела Товары.
-                public const int OneNewsImagesHeight = 320;
-                public const int OneNewsImagesWidth = 240;
+                public const int SponsorImagesHeight = 320;
+                public const int SponsorImagesWidth = 240;
 
                 // Папки для загрузки картинок для раздела Мероприятия.
-                public const string OneNewsImagesFolder = "news";
+                public const string SponsorImagesFolder = "sponsor";
 
                 // Actions.
                 public static class Actions
                 {
-                    // OneNews actions.
-                    public const string News = "news";
+                    // Sponsor actions.
+                    public const string Sponsor = "sponsor";
                     public const string UploadImage = "uploadimage";
+                }
+
+                // Views.
+                public static class Views
+                {
+                    // Sponsor views.
                 }
             }
 
@@ -292,7 +292,14 @@ namespace CaucasianPearl.Core.Constants
                 {
                     // User actions.
                     public const string Profiles = "profiles";
+                    public const string Members = "members";
                     public const string UploadImage = "uploadimage";
+                }
+
+                // Views.
+                public static class Views
+                {
+                    // Profile views.
                 }
             }
 
@@ -404,6 +411,7 @@ namespace CaucasianPearl.Core.Constants
             public const string Create = "Create";
             public const string Edit = "Edit";
             public const string CreateOrEdit = "CreateOrEdit";
+            public const string CreateOrEditPartial = "CreateOrEditPartial";
             public const string Delete = "Delete";
             public const string Details = "Details";
 
@@ -577,17 +585,6 @@ namespace CaucasianPearl.Core.Constants
 
         #endregion
 
-        public static class UserControlsPaths
-        {
-            private const string PathPrefix = "UserControls/";
-
-            public const string CultureControl = PathPrefix + "CultureControl";
-            public const string LoginControl = PathPrefix + "LoginControl";
-            public const string PaginatorControl = PathPrefix + "PaginatorControl";
-            public const string RequestFormControl = PathPrefix + "RequestFormControl";
-            public const string SocialShareControl = PathPrefix + "SocialShareControl";
-        }
-
         public static class QueryStringParameters
         {
             public const string Page = "page";
@@ -595,32 +592,62 @@ namespace CaucasianPearl.Core.Constants
 
         public static class Paths
         {
-            public const string CoversFolder = "~/content/img/cp/covers/";
-            public const string PluginsPrefix = "~/content/plugins";
+            public static class UserControls
+            {
+                private const string PathPrefix = "UserControls/";
 
-            // js {
-            public const string CpJsPrefixPath = "~/content/js/cp";
-            public const string SysJsPrefixPath = "~/content/js/sys";
-            
-            public const string CKEditor = PluginsPrefix + "/ckeditor/ckeditor.js";
-            public const string CKEditorConfig = PluginsPrefix + "/ckeditor/config.js";
-            public const string Galleria = PluginsPrefix + "/galleria/galleria-1.2.9.min.js";
-            public const string GalleriaClassicTheme = PluginsPrefix + "/galleria/themes/classic/galleria.classic.min.js"; // }
+                public const string BigSponsorsControl = PathPrefix + "BigSponsorsControl";
+                public const string CultureControl = PathPrefix + "CultureControl";
+                public const string FeedbacksControl = PathPrefix + "FeedbacksControl";
+                public const string FooterControl = PathPrefix + "FooterControl";
+                public const string HomePageEvents = PathPrefix + "HomePageEvents";
+                public const string LoginControl = PathPrefix + "LoginControl";
+                public const string MembersControl = PathPrefix + "MembersControl";
+                public const string PaginatorControl = PathPrefix + "PaginatorControl";
+                public const string RequestFormControl = PathPrefix + "RequestFormControl";
+                public const string SmallSponsorsControl = PathPrefix + "SmallSponsorsControl";
+                public const string SocialShareControl = PathPrefix + "SocialShareControl";
+                public const string SponsorsControl = PathPrefix + "SponsorsControl";
+            }
 
-            // css {
-            public const string CpCssPrefixPath = "~/content/css/cp";
-            public const string SiteCssPrefixPath = "~/content/css/site"; // }
+            public static class Plugins
+            {
+                public const string PluginsPrefix = "~/content/plugins";
+
+                public const string CKEditor = PluginsPrefix + "/ckeditor/ckeditor.js";
+                public const string CKEditorConfig = PluginsPrefix + "/ckeditor/config.js";
+                public const string Galleria = PluginsPrefix + "/galleria/galleria-1.2.9.min.js";
+                public const string GalleriaClassicTheme = PluginsPrefix + "/galleria/themes/classic/galleria.classic.min.js";
+            }
+
+            public static class Js
+            {
+                public const string CpJsPrefixPath = "~/content/js/cp";
+                public const string SysJsPrefixPath = "~/content/js/sys";
+            }
+
+            public static class Css
+            {
+                public const string CpCssPrefixPath = "~/content/css/cp";
+                public const string SiteCssPrefixPath = "~/content/css/site";
+            }
+
+            public static class Img
+            {
+                public const string CoversFolder = "~/content/img/cp/covers/";
+                public const string EntityImgFolder = "~/content/img/cp";
+                public const string SiteImgFolder = "~/content/img/site";
+            }
         }
 
         public static class SiteSettings
         {
             // режим главной страницы. Возможны два режима работы: cover (режим обложки) и events (режим событий)
             public const string HomePageMode = "home_page_mode";
-
             // название изображения главной страницы (обложки)
             public const string CoverImageName = "cover_image_name";
+            // флаг отображать/скрывать для футера.
+            public const string FooterVisibility = "footer_visibility";
         }
-
-
     }
 }

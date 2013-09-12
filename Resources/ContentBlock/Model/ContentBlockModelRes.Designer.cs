@@ -63,45 +63,45 @@ namespace Resources.ContentBlock {
         /// <summary>
         ///   Looks up a localized string similar to ID контент-блока.
         /// </summary>
-        public static string BlockId {
+        public static string ContentBlock_BlockId {
             get {
-                return ResourceManager.GetString("BlockId", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_BlockId", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Контент.
         /// </summary>
-        public static string Content {
+        public static string ContentBlock_Content {
             get {
-                return ResourceManager.GetString("Content", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_Content", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Описание.
         /// </summary>
-        public static string Description {
+        public static string ContentBlock_Description {
             get {
-                return ResourceManager.GetString("Description", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_Description", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Опубликован.
         /// </summary>
-        public static string IsPublished {
+        public static string ContentBlock_IsPublished {
             get {
-                return ResourceManager.GetString("IsPublished", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_IsPublished", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to ID блока расположения.
         /// </summary>
-        public static string PlaceHolderId {
+        public static string ContentBlock_PlaceHolderId {
             get {
-                return ResourceManager.GetString("PlaceHolderId", resourceCulture);
+                return ResourceManager.GetString("ContentBlock_PlaceHolderId", resourceCulture);
             }
         }
     }

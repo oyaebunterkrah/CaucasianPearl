@@ -1,30 +1,27 @@
 using System;
+using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using CaucasianPearl.Controllers.Abstract;
+using CaucasianPearl.Core.DAL.Data;
 using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Models.EDM;
 
 namespace CaucasianPearl.Controllers
 {
-    public class FeedbackController : BaseController<Feedback, IBaseService<Feedback>>
+    public class FeedbackController : BaseController<Feedback, IFeedbackService<Feedback>>
     {
-        public FeedbackController(IBaseService<Feedback> service) :
+        public FeedbackController(IFeedbackService<Feedback> service) :
             base(service: service)
         {
         }
 
-        [AllowAnonymous]
-        public override ActionResult Create(Feedback obj)
-        {
-            obj.FeedbackDateTime = DateTime.Now;
-
-            return base.Create(obj);
-        }
-
         // Включаем постраничный вывод.
-        protected override bool IsPageable { get { return true; } }
+        protected override bool IsPageable
+        {
+            get { return true; }
+        }
 
         // Получение списка объектов.
         public override ActionResult Index()
@@ -34,14 +31,18 @@ namespace CaucasianPearl.Controllers
             foreach (var feedback in feedbacks)
             {
                 feedback.Comment = feedback.Comment.Length < 100
-                                      ? feedback.Comment
-                                      : feedback.Comment.Substring(0, 150) + "...";
-                feedback.Suggestion = feedback.Suggestion.Length < 100
-                                      ? feedback.Suggestion
-                                      : feedback.Suggestion.Substring(0, 150) + "...";
+                                       ? feedback.Comment
+                                       : feedback.Comment.Substring(0, 150) + "...";
             }
 
             return View(feedbacks);
+        }
+
+        protected override void ModifyValuesOnCreate(Feedback feedback)
+        {
+            feedback.Created = DateTime.Now;
+
+            base.ModifyValuesOnCreate(feedback);
         }
 
         // Перенаправление после редактирования объекта.
@@ -55,12 +56,29 @@ namespace CaucasianPearl.Controllers
                                    {
                                        success = true,
                                        message = "Элемент успешно обновлён.",
-                                       suggestion = feedback.Suggestion,
                                        comment = feedback.Comment,
                                        id = feedback.ID
                                    }
                            }
                        : base.OnEdited(feedback);
+        }
+
+        // Возвращает последний отзыв.
+        public FeedbackItem GetLastFeedback()
+        {
+            return _service.GetLastFeedback();
+        }
+
+        // Возвращает последний отзыв.
+        public JsonResult GetPreviousFeedback(int id)
+        {
+            return Json(_service.GetPreviousFeedback(id), JsonRequestBehavior.AllowGet);
+        }
+
+        // Возвращает последний отзыв.
+        public JsonResult GetNextFeedback(int id)
+        {
+            return Json(_service.GetNextFeedback(id), JsonRequestBehavior.AllowGet);
         }
     }
 }

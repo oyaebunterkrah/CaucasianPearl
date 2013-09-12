@@ -1,21 +1,23 @@
-﻿using System.Collections.ObjectModel;
-using CaucasianPearl.Core.DAL.Data;
-using CaucasianPearl.Core.Services.LoggingService;
-using Newtonsoft.Json;
-using Resources.Shared;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
+using WebMatrix.WebData;
+
+using Newtonsoft.Json;
+using Resources;
+
 using CaucasianPearl.Controllers.Abstract;
 using CaucasianPearl.Core.Constants;
+using CaucasianPearl.Core.DAL.Data;
 using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Helpers.HtmlHelpers;
 using CaucasianPearl.Core.Services.FlickrNetService;
+using CaucasianPearl.Core.Services.LoggingService;
 using CaucasianPearl.Models.EDM;
-using WebMatrix.WebData;
 
 namespace CaucasianPearl.Controllers
 {
@@ -24,7 +26,7 @@ namespace CaucasianPearl.Controllers
         public EventController(IEventService<Event> service) :
             base(service: service)
         {
-            WebSecurity.Login("admin", "Eekoogh4", true);
+            //WebSecurity.Login("admin", "Eekoogh4", true);
         }
 
         #region Properties
@@ -146,7 +148,7 @@ namespace CaucasianPearl.Controllers
             var httpPostedFileBase = Request.Files[0];
             if (httpPostedFileBase != null && (Request.Files.Count == 0 || (Request.Files.Count > 0 && httpPostedFileBase.ContentLength == 0)))
             {
-                ViewBag.ErrorMessage = SharedErrorRes.YouDidNotSelectAFile;
+                ViewBag.ErrorMessage = ErrorRes.YouDidNotSelectAFile;
                 if (HttpContext.Request.UrlReferrer != null)
                     ViewBag.RedirectedUrl = HttpContext.Request.UrlReferrer.AbsolutePath;
 
@@ -162,10 +164,9 @@ namespace CaucasianPearl.Controllers
                     // Определяем название и полный путь полноразмерной картинки и миниатюры
                     var extension = Path.GetExtension(imageFile.FileName);
                     var fileName = eventId + extension;
-                    var fileSavePath = Path.Combine(
-                        Server.MapPath(Url.Content(Consts.FoldersPathes.EntityImagesFolder)),
-                        Consts.Controllers.Event.EventImagesFolder,
-                        "/",
+
+                    var fileSavePath = Path.Combine(Server.MapPath(Url.Content(Consts.Paths.Img.EntityImgFolder)),
+                        Consts.Controllers.Sponsor.SponsorImagesFolder,
                         fileName);
 
                     // Если файлы с такими названиями уже имеются, удаляем их
@@ -226,18 +227,6 @@ namespace CaucasianPearl.Controllers
             return View(events);
         }
 
-        /// <summary>
-        /// Возвращает события для главной страницы.
-        /// </summary>
-        /// <returns></returns>
-        [ChildActionOnly]
-        public ActionResult GetHomePageEvents()
-        {
-            var events = _service.GetLastEventsInfo(Consts.Controllers.Event.EventCount);
-
-            return View(events);
-        }
-        
         #endregion
 
         #region Helpers
@@ -390,7 +379,7 @@ namespace CaucasianPearl.Controllers
 
             return JsonHelper.Deserialize<List<MediaItem>>(mediaItemsJson);
         }
-        
+
         // Возвращает список событий на указанную дату.
         public string GetEventsToDate(string date)
         {

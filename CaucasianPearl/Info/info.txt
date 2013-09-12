@@ -60,11 +60,11 @@ ckeditor
 	http://peterkeating.co.uk/using-ckeditor-with-razor-for-net-mvc3/
 
 rating
-	http://dotnet.dzone.com/news/building-star-rating-system
+	http://dotnet.dzone.com/s/building-star-rating-system
 
 примеры сайтов
 	http://rukivverh.ru/
-	http://www.dancing-studio.ru/news.html
+	http://www.dancing-studio.ru/s.html
 
 Непутевые заметки о ASP.NET MVC. Часть 1 (и единственная)
 	http://habrahabr.ru/post/143024/

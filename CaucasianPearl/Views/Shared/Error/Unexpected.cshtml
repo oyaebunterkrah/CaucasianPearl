@@ -1,10 +1,10 @@
 ﻿@using CaucasianPearl.Core.Constants
-@using Resources.Shared
+@using Resources
 
 @{
-    ViewBag.Title = string.Format("{0} | {1}", SharedErrorRes.UnexpectedError, Consts.Title);
+    ViewBag.Title = string.Format("{0} | {1}", ErrorRes.UnexpectedError, Consts.Title);
 }
 
-<h2 style="color: Red">@SharedErrorRes.UnexpectedError</h2>
+<h2 style="color: Red">@ErrorRes.UnexpectedError</h2>
 <br />
-<a href="@Consts.RootPath">@SharedViewRes.BackToHomePage</a>
+<a href="@Consts.RootPath">@ViewRes.BackToHomePage</a>

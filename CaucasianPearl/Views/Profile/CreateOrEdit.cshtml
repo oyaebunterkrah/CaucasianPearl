@@ -38,13 +38,21 @@
     </div>
 
     <div class="create_or_edit_label">
-        @Html.LabelFor(model => model.Group)
+        @Html.LabelFor(model => model.Position)
     </div>
     <div class="create_or_edit_field">
-        @Html.EditorFor(model => model.Group)
-        @Html.ValidationMessageFor(model => model.Group)
+        @Html.EditorFor(model => model.Position)
+        @Html.ValidationMessageFor(model => model.Position)
     </div>
 
+     <div class="create_or_edit_label">
+        @Html.LabelFor(model => model.Description)
+    </div>
+    <div class="create_or_edit_field">
+        @Html.EditorFor(model => model.Description)
+        @Html.ValidationMessageFor(model => model.Description)
+    </div>
+    
     <div class="create_or_edit_label">
         @Html.LabelFor(model => model.ImageExt)
     </div>

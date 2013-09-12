@@ -1,38 +1,30 @@
+@using CaucasianPearl.Core.Constants
+@using Resources
+
 @model CaucasianPearl.Models.EDM.Feedback
 
-@using CaucasianPearl.Core.Constants
-@using Resources.Feedback
-@using Resources.Feedback
-@using Resources.Shared
-
 @{
-    ViewBag.Title = FeedbackViewRes.Feedback;
+    ViewBag.Title = ViewRes.Feedback;
 }
 
-<h2>@FeedbackViewRes.Feedback: @Model.Name</h2>
+<h2>@ViewRes.Feedback: @Model.Name</h2>
 
 <p>
     @Html.ActionLink(
-        linkText: @FeedbackViewRes.BackToList,
+        linkText: @ViewRes.BackToList,
         actionName: Consts.Actions.Index)
 </p>
 
 <div>
-    @Model.Name, @Model.City, @String.Format("{0:g}", Model.FeedbackDateTime)
+    @Model.Name, @Model.City, @String.Format("{0:g}", Model.Created)
 
     <div>
-        <span class="display-label">@FeedbackModelRes.Comment:</span>
+        <span class="display-label">@ModelRes.Comment:</span>
         <div class="display-field">@Model.Comment</div>
-
-        @if (!string.IsNullOrWhiteSpace(@Model.Suggestion))
-        {
-            <span class="display-label">@FeedbackModelRes.Suggestion:</span>
-            <div class="display-field">@Model.Suggestion</div>
-        }
 
         @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
         {
-            <span class="display-label">@FeedbackModelRes.IsApproved:</span>
+            <span class="display-label">@ModelRes.IsApproved:</span>
             <div class="display-field">@Model.IsApproved</div>
         }
 
@@ -40,12 +32,12 @@
         {
             <p>
                 @Html.ActionLink(
-                    linkText: SharedViewRes.Edit,
+                    linkText: ViewRes.Edit,
                     actionName: Consts.Actions.Edit,
                     routeValues: new { id = Model.ID }
                         ) |
                 @Html.ActionLink(
-                    linkText: SharedViewRes.Delete,
+                    linkText: ViewRes.Delete,
                     actionName: Consts.Actions.Delete,
                     routeValues: new { id = Model.ID }
                         )

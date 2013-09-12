@@ -1,7 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+
 using CaucasianPearl.Core.Filters;
-using Resources.Feedback;
+using Resources;
 
 namespace CaucasianPearl.Models.Metadata
 {
@@ -10,39 +11,33 @@ namespace CaucasianPearl.Models.Metadata
         [Show(ShowForDisplay = false, ShowForEdit = false)]
         public int ID { get; set; }
 
-        [Display(Name = "YourName", ResourceType = typeof(FeedbackModelRes))]
+        [Display(Name = "YourName", ResourceType = typeof(ModelRes))]
         [DataType(DataType.Text)]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(FeedbackValidationRes))]
-        [StringLength(50, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(FeedbackValidationRes), MinimumLength = 3)]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
+        [StringLength(50, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
         [Show(ShowForEdit = false)]
         public string Name { get; set; }
 
-        [Display(Name = "YourCity", ResourceType = typeof(FeedbackModelRes))]
+        [Display(Name = "YourCity", ResourceType = typeof(ModelRes))]
         [DataType(DataType.Text)]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(FeedbackValidationRes))]
-        [StringLength(20, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(FeedbackValidationRes), MinimumLength = 3)]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
+        [StringLength(20, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
         [Show(ShowForEdit = false)]
         public string City { get; set; }
 
-        [Display(Name = "Comment", ResourceType = typeof(FeedbackModelRes))]
+        [Display(Name = "Comment", ResourceType = typeof(ModelRes))]
         [DataType(DataType.Text)]
-        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(FeedbackValidationRes))]
-        [StringLength(2000, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(FeedbackValidationRes), MinimumLength = 50)]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
+        [StringLength(2000, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 50)]
         [Show(ShowForEdit = false)]
         public string Comment { get; set; }
 
-        [Display(Name = "Suggestion", ResourceType = typeof(FeedbackModelRes))]
-        [DataType(DataType.Text)]
-        [StringLength(2000, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(FeedbackValidationRes), MinimumLength = 50)]
-        [Show(ShowForEdit = false)]
-        public string Suggestion { get; set; }
-
-        [Display(Name = "FeedbackDateTime", ResourceType = typeof(FeedbackModelRes))]
+        [Display(Name = "DateTime", ResourceType = typeof(ModelRes))]
         [DataType(DataType.DateTime)]
         [Show(ShowForEdit = false)]
-        public DateTime FeedbackDateTime { get; set; }
+        public DateTime Created { get; set; }
 
-        [Display(Name = "IsApproved", ResourceType = typeof(FeedbackModelRes))]
+        [Display(Name = "IsApproved", ResourceType = typeof(ModelRes))]
         [Show(ShowForDisplay = false, ShowForEdit = false)]
         public bool IsApproved { get; set; }
     }

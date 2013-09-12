@@ -117,70 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccountCreatingWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
+  <data name="Account_AccountCreatingWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
     <value>Аккаунт не был создан. Пожалуйста, исправьте ошибки и попробуйте снова</value>
   </data>
-  <data name="AccountInformation" xml:space="preserve">
+  <data name="Account_AccountInformation" xml:space="preserve">
     <value>Учётные данные</value>
   </data>
-  <data name="ChangePassword" xml:space="preserve">
+  <data name="Account_ChangePassword" xml:space="preserve">
     <value>Изменить пароль</value>
   </data>
-  <data name="ChangingPasswordWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
+  <data name="Account_ChangingPasswordWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
     <value>Пароль не изменён. Пожалуйста, исправьте ошибки и попробуйте снова</value>
   </data>
-  <data name="CharactersInLength" xml:space="preserve">
+  <data name="Account_CharactersInLength" xml:space="preserve">
     <value>символов в длину</value>
   </data>
-  <data name="CreateANewAccount" xml:space="preserve">
+  <data name="Account_CreateANewAccount" xml:space="preserve">
     <value>Создание нового аккаунта</value>
   </data>
-  <data name="IfYouDontHaveAnAccount" xml:space="preserve">
+  <data name="Account_IfYouDontHaveAnAccount" xml:space="preserve">
     <value>если у Вас нет аккаунта</value>
   </data>
-  <data name="LoginWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
+  <data name="Account_LoginWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
     <value>Вход не выполнен. Пожалуйста, исправьте ошибки и попробуйте снова</value>
   </data>
-  <data name="LogOff" xml:space="preserve">
+  <data name="Account_LogOff" xml:space="preserve">
     <value>Выход</value>
   </data>
-  <data name="Login" xml:space="preserve">
+  <data name="Account_Login" xml:space="preserve">
     <value>Вход</value>
   </data>
-  <data name="Login_Register" xml:space="preserve">
+  <data name="Account_Login_Register" xml:space="preserve">
     <value>Зарегистрируйтесь</value>
   </data>
-  <data name="NewPasswordAreRequiredToBeAminimumOf" xml:space="preserve">
+  <data name="Account_NewPasswordAreRequiredToBeAminimumOf" xml:space="preserve">
     <value>Новый пароль должен быть минимум</value>
   </data>
-  <data name="PasswordsAreRequiredToBeAminimumOf" xml:space="preserve">
+  <data name="Account_PasswordsAreRequiredToBeAminimumOf" xml:space="preserve">
     <value>Пароли должны быть минимум</value>
   </data>
-  <data name="PleaseEnterYourUserNameAndPassword" xml:space="preserve">
+  <data name="Account_PleaseEnterYourUserNameAndPassword" xml:space="preserve">
     <value>Пожалуйста, введите имя пользователя и пароль</value>
   </data>
-  <data name="Register" xml:space="preserve">
+  <data name="Account_Register" xml:space="preserve">
     <value>Регистрация</value>
   </data>
-  <data name="UseTheFormBelowToChangeYourPassword" xml:space="preserve">
+  <data name="Account_UseTheFormBelowToChangeYourPassword" xml:space="preserve">
     <value>Для изменения пароля используйте форму ниже</value>
   </data>
-  <data name="UseTheFormBelowToCreateANewAccount" xml:space="preserve">
+  <data name="Account_UseTheFormBelowToCreateANewAccount" xml:space="preserve">
     <value>Для создания аккаунта используйте форму ниже</value>
   </data>
-  <data name="YourPasswordHasBeenChangedSuccessfully" xml:space="preserve">
+  <data name="Account_YourPasswordHasBeenChangedSuccessfully" xml:space="preserve">
     <value>Ваш пароль был успешно изменён</value>
   </data>
-  <data name="LoginPartial_LogOff" xml:space="preserve">
+  <data name="Account_LoginPartial_LogOff" xml:space="preserve">
     <value>Выход</value>
   </data>
-  <data name="LoginPartial_Login" xml:space="preserve">
+  <data name="Account_LoginPartial_Login" xml:space="preserve">
     <value>Вход</value>
   </data>
-  <data name="PasswordChanging" xml:space="preserve">
+  <data name="Account_PasswordChanging" xml:space="preserve">
     <value>Изменение пароля</value>
   </data>
-  <data name="Manage" xml:space="preserve">
+  <data name="Account_Manage" xml:space="preserve">
     <value>Редактировать профиль</value>
   </data>
 </root>

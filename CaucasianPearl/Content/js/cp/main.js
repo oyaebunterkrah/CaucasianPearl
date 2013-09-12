@@ -123,6 +123,27 @@ var consts = {
                 return self.data('unobtrusiveValidation').validate();
             } // }
         });
+        
+        // добавл€ем валидатор дл€ даты дл€ datepicker {
+        $.validator.addMethod(
+            'date',
+            function (value, element, params) {
+                if (this.optional(element)) {
+                    return true;
+                };
+                var result;
+                try {
+                    $.datepicker.parseDate('dd.mm.yy', value);
+                    result = true;
+                } catch (err) {
+                    result = false;
+                }
+                return result;
+            },
+            ''
+        ); // }
+        
+        replaceMvcDatepicker();
 
         $('.ui-widget-overlay').live('click', function () {
             closeDialogs();
@@ -146,6 +167,21 @@ var consts = {
         return f(this.getUTCDate()) + '.' +
              f(this.getUTCMonth() + 1) + '.' +
              this.getUTCFullYear();
+    };
+
+    // ставим datepicker на поле выбора даты
+    // убираем mvc'шный выбор даты
+    replaceMvcDatepicker = function () {
+        var dateField = $('input[type="date"]');
+        if (dateField.length) {
+            dateField.get(0).type = 'text';
+            dateField.datepicker({
+                changeYear: true,
+                minDate: 0,
+                maxDate: '+6M',
+                dateFormat: 'dd.mm.yy'
+            });
+        }
     };
 
     scrollToElement = function (element, duration) {
@@ -189,10 +225,12 @@ var consts = {
         return value.replace(/\[/g, '<').replace(/\]/g, '>');
     };
 
+    // закрыть все jquery ui диалоговые окна
     closeDialogs = function () {
         $('.ui-dialog-content').dialog('close');
     };
-
+    
+    // отобразить loading
     showLoading = function (min) {
         if (min) {
             $('.overlay_min').show();
@@ -203,6 +241,7 @@ var consts = {
         }
     };
 
+    // скрыть loading
     hideLoading = function (min) {
         if (min) {
             $('.overlay_min').hide();
@@ -211,6 +250,21 @@ var consts = {
             $('.overlay').hide();
             $('.loading').hide();
         }
+    };
+    
+    // возвращает название мес€ца прописью
+    getMonthStr = function (intMonth) {
+        var MonthArray = new Array('€нвар€', 'феврал€', 'марта', 'апрел€', 'ма€', 'июн€', 'июл€', 'августа', 'сент€бр€', 'окт€бр€', 'но€бр€', 'декабр€');
+        
+        return MonthArray[intMonth];
+    };
+
+    // возвращает дату с мес€цем, написанным прописью
+    getDateStr = function (date) {
+        var year = date.getYear();
+        if (year < 1000) year += 1900;
+
+        return '{0} {1} {2}'.f(date.getDate(), getMonthStr(date.getMonth()), year);
     };
 
     // ќбЄртка дл€ ajax вызовов.

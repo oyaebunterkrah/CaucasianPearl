@@ -1,15 +1,14 @@
 ﻿@model CaucasianPearl.Models.EDM.ContentBlock
 
 @using CaucasianPearl.Core.Constants
-@using Resources.ContentBlock
-@using Resources.Shared
+@using Resources
 
 @{
-    ViewBag.Title = string.Format("{0} | {1}", ContentBlockViewRes.ContentBlockDeleting, Consts.Title);
+    ViewBag.Title = string.Format("{0} | {1}", ViewRes.ContentBlockDeleting, Consts.Title);
 }
 
 <p>
-    @Html.ActionLink(SharedViewRes.Cancel,
+    @Html.ActionLink(ViewRes.Cancel,
         actionName: Consts.Actions.Details,
         routeValues: new
         {
@@ -24,5 +23,5 @@
 
 @using (Html.BeginForm())
 {
-    <input type="submit" value="@SharedViewRes.Delete" />
+    <input type="submit" value="@ViewRes.Delete" />
 }
