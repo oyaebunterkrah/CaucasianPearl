@@ -14,21 +14,21 @@ namespace CaucasianPearl.Models.Metadata
         [Display(Name = "YourName", ResourceType = typeof(ModelRes))]
         [DataType(DataType.Text)]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
-        [StringLength(50, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
+        [StringLength(50, ErrorMessageResourceName = "StringLengthMinMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
         [Show(ShowForEdit = false)]
         public string Name { get; set; }
 
         [Display(Name = "YourCity", ResourceType = typeof(ModelRes))]
         [DataType(DataType.Text)]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
-        [StringLength(20, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
+        [StringLength(20, ErrorMessageResourceName = "StringLengthMinMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
         [Show(ShowForEdit = false)]
         public string City { get; set; }
 
         [Display(Name = "Comment", ResourceType = typeof(ModelRes))]
-        [DataType(DataType.Text)]
+        [DataType(DataType.MultilineText)]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
-        [StringLength(2000, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 50)]
+        [StringLength(2000, ErrorMessageResourceName = "StringLengthMinMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 50)]
         [Show(ShowForEdit = false)]
         public string Comment { get; set; }
 

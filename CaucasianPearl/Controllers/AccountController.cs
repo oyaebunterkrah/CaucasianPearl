@@ -44,7 +44,7 @@ namespace CaucasianPearl.Controllers
         public ActionResult Login(LoginModel model, string returnUrl)
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
-                return RedirectToLocal(returnUrl);
+                return RedirectToAction(Consts.Actions.Index, Consts.Controllers.Home.Name);
 
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError(string.Empty, ErrorRes.TheUserNameOrPasswordProvidedIsIncorrect);
@@ -66,7 +66,6 @@ namespace CaucasianPearl.Controllers
         //
         // GET: /Account/Register
 
-        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -76,7 +75,6 @@ namespace CaucasianPearl.Controllers
         // POST: /Account/Register
 
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {

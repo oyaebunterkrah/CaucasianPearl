@@ -1,0 +1,14 @@
+.popup {
+    background: #43424A;
+    display: none;
+    position: absolute;
+}
+
+.popup .links {
+    margin: 10px;
+}
+
+.popup a {
+    display: inline;
+    color: #fff;
+}

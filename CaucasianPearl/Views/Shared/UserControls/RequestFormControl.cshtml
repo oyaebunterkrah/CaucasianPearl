@@ -2,21 +2,24 @@
 @using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.UserControls
 @using CaucasianPearl.Properties
+@using Resources
 
-@Html.Raw(CssJsRegControl.Render("recaptcha/js/recaptcha_ajax.js", Consts.Paths.Plugins.PluginsPrefix))
+@Html.Raw(CssJsRegControl.Render("recaptcha/recaptcha_ajax.js", Consts.Paths.Plugins.PluginsPrefix))
 @Html.Raw(CssJsRegControl.Render("jquery.maskedinput.min.js", Consts.Paths.Plugins.PluginsPrefix))
 @Html.Raw(CssJsRegControl.Render("request_form.js", Consts.Paths.Js.CpJsPrefixPath, "windows-1251"))
 @Html.Raw(CssJsRegControl.Render("request_form.css", Consts.Paths.Css.CpCssPrefixPath))
+@Html.Raw(CssJsRegControl.Render("jquery.infieldlabel.js", Consts.Paths.Plugins.PluginsPrefix, "utf-8"))
 
 @* задаём параметры для request_form.js *@
 <script type="text/javascript">
-    var elementId = '@ViewData["elementId"]';
+    var triggerElementId = '@ViewData["triggerElementId"]';
+    var requestDateControlId = '#RequestDate';
     var formUrl = '@Url.Action(Consts.Actions.CreatePartial, Consts.Controllers.Request.Name)';
-    var reCaptchaPublicKey = '@Settings.Default.ReCaptchaPublicKey';
 </script>
 
+@* форма заявки { *@
 <div id="requestBlock" class="send_request_response">
-    <span id="errorMessage" class="error">Во время отправки заявки возникла неожиданная ошибка. Пожалуйста, повторите попытку позднее.</span>
+    <div id="errorMessage" class="error">@ViewRes.RequestSendingError</div>
 
     @* сюда подгружается форма заявки *@
     <div id="requestForm" class="request_form"></div>
@@ -25,4 +28,4 @@
     <div class="loading_min"></div>
 </div>
 
-<div id="thanks" class="thanks">Спасибо за проявленный интерес! Мы обязательно с Вами свяжемся!</div>
+<div id="thanks" class="thanks">@ViewRes.RequestThanks</div>@* } *@

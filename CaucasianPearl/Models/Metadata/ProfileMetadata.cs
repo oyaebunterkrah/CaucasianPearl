@@ -44,16 +44,17 @@ namespace CaucasianPearl.Models.Metadata
         public string Position { get; set; }
 
         [Display(Name = "Description", ResourceType = typeof(ModelRes))]
+        [DataType(DataType.MultilineText)]
         [StringLength(500, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
-        [Show(ShowForDisplay = true, ShowForEdit = true)]
         public string Description { get; set; }
 
-        [Show(ShowForDisplay = true, ShowForEdit = true)]
+        [Display(Name = "ImageExt", ResourceType = typeof(ModelRes))]
         public string ImageExt { get; set; }
 
+        [Display(Name = "ShortName", ResourceType = typeof(ModelRes))]
         public int? ShortName { get; set; }
 
-        [Show(ShowForDisplay = true, ShowForEdit = true)]
+        [Display(Name = "Sequence", ResourceType = typeof(ModelRes))]
         public int? Sequence { get; set; }
     }
 }

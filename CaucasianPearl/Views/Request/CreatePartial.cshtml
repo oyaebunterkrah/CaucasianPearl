@@ -10,12 +10,12 @@
     null,
     new AjaxOptions {
         HttpMethod = "Post",
-        OnBegin = "onBegin",
-        OnComplete = "onComplete",
-        OnSuccess = "onSuccess",
-        OnFailure = "onFailure"
+        OnBegin = "onSendRequestBegin",
+        OnComplete = "onSendRequestComplete",
+        OnSuccess = "onSendRequestSuccess",
+        OnFailure = "onSendRequestFailure"
     },
-    new { id = "formCreateRequest" })) {
+    new { id = "formSendRequest" })) {
 
     @Html.Partial(Consts.Views.CreateOrEditPartial, Model)
 }

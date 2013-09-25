@@ -1,0 +1,51 @@
+/* Афиша
+----------------------------------------------------------*/
+#datepicker .ui-datepicker { font-size: 30px; }
+#datepicker .ui-datepicker { width: 30em; }
+#datepicker .ui-datepicker .ui-datepicker-prev, #datepicker  .ui-datepicker .ui-datepicker-next { display: none; }
+#datepicker .ui-datepicker-header { display: none; }
+#datepicker .ui-datepicker-calendar thead { display: none; }
+#datepicker .ui-state-default { height: 90px; }
+#datepicker .ui-datepicker td span, #datepicker  .ui-datepicker td a { text-align: left; }
+#datepicker .ui-widget-content { border: 1px solid #aaaaaa; color: #222222; }
+
+#datepicker .ui-state-default {
+    background-color: #F5F5F5;
+	background-image: none;
+	color: #C9C9C9;
+	font-size: 45px;
+}
+#datepicker .ui-state-hover {
+    background-color: #EDEDED;
+	background-image: none;
+	color: #C9C9C9;
+	font-size: 45px;
+}
+#datepicker .ui-state-highlight {
+    background-color: #F5F5F5;
+    background-image: none;
+    border: none;
+    color: #C9C9C9;
+}
+#datepicker .ui-state-active{
+    color: #212121;
+    background-color: #F3F1E1;
+    font-weight: normal;
+}
+
+.highlight {
+    background-color: red !important;
+}
+.events {
+    margin-top: 15px;
+}
+.event_title {
+    clear: both;
+    display: block;
+    font-size: 10px;
+    text-decoration: none;
+}
+.have_events {
+    background-color: #CED989 !important;
+    color: #4C495A !important;
+}

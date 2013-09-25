@@ -1,29 +1,30 @@
+@using CaucasianPearl.Core.Constants
+@using Resources
+
 @model CaucasianPearl.Models.EDM.SiteSetting
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = ViewRes.Details;
 }
 
-<h2>Details</h2>
+<h2>@ViewRes.Details</h2>
 
 <fieldset>
     <legend>SiteSetting</legend>
 
-    <div class="display-label">Name</div>
+    <div class="display-label">@ModelRes.Name</div>
     <div class="display-field">@Model.Name</div>
 
-    <div class="display-label">Value</div>
+    <div class="display-label">@ModelRes.Value</div>
     <div class="display-field">@Model.Value</div>
     
-    <div class="display-label">DefaultValue</div>
+    <div class="display-label">@ModelRes.DefaultValue</div>
     <div class="display-field">@Model.DefaultValue</div>
     
-    <div class="display-label">Description</div>
+    <div class="display-label">@ModelRes.Description</div>
     <div class="display-field">@Model.Description</div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(ViewRes.Edit, Consts.Actions.Edit, new { id = Model.ID }) |
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 </p>
-
-

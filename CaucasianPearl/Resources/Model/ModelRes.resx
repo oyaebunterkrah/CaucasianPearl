@@ -231,4 +231,28 @@
   <data name="RequestText" xml:space="preserve">
     <value>Текст заявки</value>
   </data>
+  <data name="Cover" xml:space="preserve">
+    <value>Обложка</value>
+  </data>
+  <data name="DefaultValue" xml:space="preserve">
+    <value>Значение по умолчанию</value>
+  </data>
+  <data name="EventDate" xml:space="preserve">
+    <value>Дата события</value>
+  </data>
+  <data name="ImageExt" xml:space="preserve">
+    <value>Формат изображения</value>
+  </data>
+  <data name="RequestDate" xml:space="preserve">
+    <value>Дата заявки</value>
+  </data>
+  <data name="Sequence" xml:space="preserve">
+    <value>Порядковый номер</value>
+  </data>
+  <data name="ShortName" xml:space="preserve">
+    <value>Название в адресной строке</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Значение</value>
+  </data>
 </root>

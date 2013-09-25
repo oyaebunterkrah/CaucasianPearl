@@ -1,22 +1,161 @@
-﻿@model Contact
-           
-@using CaucasianPearl.Models
-@using CaucasianPearl.Core.Constants
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Models.EDM
+@using CaucasianPearl.Core.DAL.Data
+@using Resources
 
-@*<script src="@Url.Content("~/content/js/sys/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/content/js/sys/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>*@
+@model IEnumerable<EventItem>
 
-<script>
-    var Contact = {
-        onComplete: function (content) {
-            var result = eval(content.get_response().get_object());
-            var textNode = document.createTextNode(result.message);
-            document.getElementById("result").appendChild(textNode);
-        }
-    };
-</script>
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.Events); }
 
-@{
-    Html.EnableClientValidation();
+@Html.Raw(CssJsRegControl.Render("orbit/jquery.orbit-1.2.3.js", Consts.Paths.Plugins.PluginsPrefix))
+@Html.Raw(CssJsRegControl.Render("orbit/orbit-1.2.3.css", Consts.Paths.Plugins.PluginsPrefix))
+@Html.Raw(CssJsRegControl.Render("events.js", Consts.Paths.Js.CpJsPrefixPath))
+
+<!--[if IE]>
+		<style type="text/css">
+			.timer { display: none !important; }
+			div.caption { background:transparent; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);zoom: 1; }
+	</style>
+<![endif]-->
+
+@* медиа элементы текущего события *@
+@if (Model != null) {
+    EventItem currentEvent = ViewBag.CurrentEventInfo;
+    if (currentEvent != null && currentEvent.EventMedia != null && currentEvent.EventMedia.Any()) {
+        <div class="container">
+            @* event media *@
+            <div id="featured">
+                @foreach (var eventMediaItem in currentEvent.EventMedia) {
+                    if (eventMediaItem.MediaType == "photos") {
+                        <img
+                            src="@eventMediaItem.LargeUrl"
+                            ondblclick=" openInNewTab('@eventMediaItem.FlickrUrl') "
+                            data-caption="#mediaItemInfo_@eventMediaItem.ID" />
+                    }
+                    else {
+                        <div class="video">
+                            <embed
+                                src="@eventMediaItem.VideoUrl"
+                                type="application/x-shockwave-flash"
+                                width="940"
+                                height="350"
+                                allowfullscreen="true"
+                                flashvars="flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false"
+                                data-caption="#mediaItemInfo_@eventMediaItem.ID">
+                        </div>
+                    }
+                }
+            </div>
+
+            @* description/content *@
+            <div class="event_media_items_data">
+                @foreach (var eventMediaItem in currentEvent.EventMedia) {
+                    if (!string.IsNullOrWhiteSpace(eventMediaItem.Description) || !string.IsNullOrWhiteSpace(eventMediaItem.Content)) {
+                        <div id="mediaItemInfo_@eventMediaItem.ID" class="orbit-caption">
+                            @if (!string.IsNullOrWhiteSpace(eventMediaItem.Description)) {
+                                <div class="description">@Html.Raw(eventMediaItem.Description)</div>
+                            }
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    }
 }
 
+@* события *@
+<div id="events" class="events" style="margin-top: 10px;">
+    @foreach (var eventItem in Model) {
+        <div class="event_item float_left">
+            <div class="image float_left">
+                <a class="event_link" data-eventid="@eventItem.ID" onclick=" setEventMedia($(this)) ">
+                    <img src="@(ServiceHelper<IEventService<Event>>.GetService().GetPrimaryPhotoUrl(eventItem))" />
+                </a>
+            </div>
+            <div class="properties float_left">
+                <div class="title property">@eventItem.Title</div>
+                <div class="date property">@(eventItem.EventDate != null ? eventItem.EventDate.Value.ToShortDateString() : string.Empty)</div>
+                <div class="description property">@eventItem.Description</div>
+            </div>
+
+            @{
+                // скрытые медиа файлы события
+                if (eventItem.EventMedia != null && eventItem.EventMedia.Any()) {
+                    <div class="event_media_items">
+                        @foreach (var eventMediaItem in eventItem.EventMedia) {
+                            if (eventMediaItem.MediaType == "photos") {
+                                <img src="@eventMediaItem.LargeUrl"
+                                     data-eventid="@eventItem.ID"
+                                     data-flickrurl="@eventMediaItem.FlickrUrl"
+                                     data-description="@eventMediaItem.Description"
+                                     data-content="@eventMediaItem.Content"
+                                     data-caption="#mediaItemInfo_@eventMediaItem.ID"
+                                     ondblclick=" openInNewTab('@eventMediaItem.FlickrUrl') " />
+                            }
+                            else {
+                                <div class="video">
+                                    <embed src="@eventMediaItem.VideoUrl&amp;flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false" type="application/x-shockwave-flash" width="940" height="350" scrolling="no" frameBorder="0" allowfullscreen="true"
+                                           data-eventid="@eventItem.ID"
+                                           data-flickrurl="@eventMediaItem.FlickrUrl"
+                                           data-description="@eventMediaItem.Description"
+                                           data-content="@eventMediaItem.Content"
+                                           data-caption="#mediaItemInfo_@eventMediaItem.ID"
+                                           ondblclick=" openInNewTab('@eventMediaItem.FlickrUrl') " />
+                                </div>
+                            }
+                        }
+                    </div>
+
+                @* описание/контент медиа файлов события *@
+                    <div class="event_media_items_data">
+                        @foreach (var eventMediaItem in eventItem.EventMedia) {
+                            if (!string.IsNullOrWhiteSpace(eventMediaItem.Description) || !string.IsNullOrWhiteSpace(eventMediaItem.Content)) {
+                                <div id="thumbMediaItemInfo_@eventMediaItem.ID" class="orbit-caption">
+                                    @if (!string.IsNullOrWhiteSpace(eventMediaItem.Description)) {
+                                        <div class="description">@Html.Raw(eventMediaItem.Description)</div>
+                                    }
+                                </div>
+                            }
+                        }
+                    </div>
+                }
+            }
+        </div>
+    }
+</div>
+
+@* шаблон - событие *@
+<div class="event_item_template float_left">
+    <div class="image float_left">
+        <a class="event_link" data-eventid="" onclick="setEventMedia($(this))">
+            <img src="~/content/img/site/1x1.png" />
+        </a>
+    </div>
+    <div class="properties float_left">
+        <div class="title property"></div>
+        <div class="date property"></div>
+        <div class="description property"></div>
+        @*<div class="content property"></div>*@
+    </div>
+    <div class="event_media_items"></div>
+    <div class="event_media_items_data"></div>
+</div>
+
+@* шаблон - скрытые медиа файлы события *@
+<div class="event_media_item_template">
+    <img />
+    <div class="video">
+        <embed src="&amp;flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false" type="application/x-shockwave-flash" width="940" height="350" scrolling="no" frameborder="0" allowfullscreen="true" />
+    </div>
+</div>
+
+@* шаблон - описание/контент медиа файлов события *@
+<div class="event_media_item_info_template">
+    <div class="orbit-caption">
+        <div class="description"></div>
+        <div class="content"></div>
+    </div>
+</div>

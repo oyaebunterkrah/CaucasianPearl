@@ -1,12 +1,15 @@
+@using CaucasianPearl.Core.Constants
+@using Resources
+
 @model CaucasianPearl.Models.EDM.SiteSetting
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = ViewRes.Deleting;
 }
 
-<h2>Delete</h2>
+<h2>@ViewRes.Deleting</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>@ViewRes.AreYouSureYouWantToDeleteThisSiteSetting</h3>
 <fieldset>
     <legend>SiteSetting</legend>
 

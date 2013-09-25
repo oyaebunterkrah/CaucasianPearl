@@ -31,6 +31,12 @@ namespace CaucasianPearl.Core.EntityServices
 
         #region Methods
 
+        // Возвращает список событий.
+        // 2 события, которые были до и после
+        // 1* 2* 3* 4*
+        // если 1, то внизу отображается 2,3,4,5
+        // если 2, то внизу отображается 1,3,4,5
+        // если 4, то внизу отображается 2,3,5,6
         public IEnumerable<EventItem> GetLastEvents(int count)
         {
             var eventItems = Get()

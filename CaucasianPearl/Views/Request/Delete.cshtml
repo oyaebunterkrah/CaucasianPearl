@@ -3,12 +3,15 @@
 
 @model CaucasianPearl.Models.EDM.Request
 
-
 @{
     ViewBag.Title = ViewRes.Delete;
 }
 
 <h2>@ViewRes.Delete</h2>
+
+<div>
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
+</div>
 
 <h3>@ViewRes.YouSureYouWantToDeleteThis</h3>
 <fieldset>
@@ -32,6 +35,9 @@
     <div class="display-label">@ModelRes.RequestDate</div>
     <div class="display-field">@String.Format("{0:g}", Model.RequestDate)</div>
     
+    <div class="display-label">@ModelRes.CreatedDate</div>
+    <div class="display-field">@String.Format("{0:g}", Model.Created)</div>
+
     <div class="display-label">@ModelRes.Status</div>
     <div class="display-field">@Model.Status</div>
     
@@ -41,8 +47,5 @@
 
 @using (Html.BeginForm())
 {
-    <p>
-        <input type="submit" value="@ViewRes.Delete" /> |
-        @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
-    </p>
+    <input type="submit" value="@ViewRes.Delete" /> @:| @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 }

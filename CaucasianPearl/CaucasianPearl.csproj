@@ -210,6 +210,7 @@
     <Compile Include="Core\EntityServices\Interface\IProfileService.cs" />
     <Compile Include="Core\EntityServices\ProfileEntityService.cs" />
     <Compile Include="Core\EntityServices\Interface\ISponsorService.cs" />
+    <Compile Include="Core\Helpers\MvcHtmlStringHelpers\MenuLink.cs" />
     <Compile Include="Resources\Error\ErrorRes.Designer.cs">
       <DependentUpon>ErrorRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -404,6 +405,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\cp\affiche.css" />
+    <Content Include="Content\css\cp\footer.css" />
+    <Content Include="Content\css\cp\events_control.css" />
+    <Content Include="Content\css\cp\events.css" />
+    <Content Include="Content\css\cp\feedback_form.css" />
+    <Content Include="Content\css\cp\feedbacks_control.css" />
     <Content Include="Content\css\cp\request_form.css" />
     <Content Include="Content\css\cp\photos.css" />
     <Content Include="Content\css\cp\pagedList.css" />
@@ -448,6 +455,13 @@
     <Content Include="Content\img\site\social_share\ok.png" />
     <Content Include="Content\img\site\social-share.png" />
     <Content Include="Content\img\site\social_share\vk.png" />
+    <Content Include="Content\js\cp\captcha_field.js" />
+    <Content Include="Content\js\cp\affiche.js" />
+    <Content Include="Content\js\cp\footer.js" />
+    <Content Include="Content\js\cp\events_control.js" />
+    <Content Include="Content\js\cp\events.js" />
+    <Content Include="Content\js\cp\feedback_form.js" />
+    <Content Include="Content\js\cp\feedbacks_control.js" />
     <Content Include="Content\js\cp\request_form.js" />
     <Content Include="Content\js\cp\main.js" />
     <Content Include="Content\js\sys\jquery-1.10.2.min.js" />
@@ -463,10 +477,9 @@
     <Content Include="Content\js\sys\knockout-2.2.0.js" />
     <Content Include="Content\js\sys\modernizr-2.6.2.js" />
     <Content Include="Content\js\sys\_references.js" />
-    <Content Include="Content\plugins\audioplayer\audio\pink_martini_-_sympathique.mp3" />
-    <Content Include="Content\plugins\audioplayer\player\uppod.swf" />
-    <Content Include="Content\plugins\audioplayer\styles\audio164-471.txt" />
-    <Content Include="Content\plugins\audioplayer\Три способа как вставить видео на сайт %282013-04-20 1-53-32%29.htm" />
+    <Content Include="Content\plugins\uppod\player\uppod.swf" />
+    <Content Include="Content\plugins\uppod\styles\audio164-471.txt" />
+    <Content Include="Content\plugins\uppod\Три способа как вставить видео на сайт %282013-04-20 1-53-32%29.htm" />
     <Content Include="Content\plugins\ckeditor\build-config.js" />
     <Content Include="Content\plugins\ckeditor\ckeditor.js" />
     <Content Include="Content\plugins\ckeditor\config.js" />
@@ -645,6 +658,7 @@
     <Content Include="Content\plugins\galleria\themes\classic\galleria.classic.css" />
     <Content Include="Content\plugins\galleria\themes\classic\galleria.classic.js" />
     <Content Include="Content\plugins\galleria\themes\classic\galleria.classic.min.js" />
+    <Content Include="Content\plugins\jquery.infieldlabel.js" />
     <Content Include="Content\plugins\jquery.maskedinput.min.js" />
     <Content Include="Content\plugins\jqueryui\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\plugins\jqueryui\css\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -676,7 +690,7 @@
     <Content Include="Content\plugins\orbit\orbit\right-arrow.png" />
     <Content Include="Content\plugins\orbit\orbit\rotator-black.png" />
     <Content Include="Content\plugins\orbit\orbit\timer-black.png" />
-    <Content Include="Content\plugins\recaptcha\js\recaptcha_ajax.js" />
+    <Content Include="Content\plugins\recaptcha\recaptcha_ajax.js" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -732,22 +746,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="Info\info.txt" />
-    <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.4.js" />
-    <Content Include="Scripts\jquery-1.4.4.min.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.js" />
-    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\knockout-2.2.0.debug.js" />
-    <Content Include="Scripts\knockout-2.2.0.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="index.html" />
+    <Content Include="info.txt" />
+    <None Include="Properties\PublishProfiles\parking.ru.pubxml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -768,7 +769,6 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Events.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error\Unexpected.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -819,7 +819,6 @@
       <DependentUpon>EntityDataModel.edmx</DependentUpon>
       <LastGenOutput>EntityDataModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Info\FlickrNet.chm" />
     <None Include="Content\js\sys\jquery-1.8.2.intellisense.js" />
     <None Include="Content\js\sys\jquery.validate-vsdoc.js" />
     <Content Include="Content\plugins\ckeditor\CHANGES.md" />
@@ -834,7 +833,7 @@
     <Content Include="Content\plugins\ckeditor\samples\sample_posteddata.php" />
     <Content Include="Content\plugins\ckeditor\skins\moonocolor\readme.md" />
     <Content Include="Content\plugins\galleria\LICENSE" />
-    <None Include="Properties\PublishProfiles\CaucasianPearl.pubxml" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <Content Include="Views\Request\Thanks.cshtml" />
     <Content Include="Views\Sponsor\CreateOrEdit.cshtml" />
     <Content Include="Views\Event\CreateOrEdit.cshtml" />
@@ -863,16 +862,16 @@
     <Content Include="Views\ContentBlock\Index.cshtml" />
     <Content Include="Views\Event\SelectMediaItemsOnCreate.cshtml" />
     <Content Include="Views\Event\SelectMediaItemsOnEdit.cshtml" />
-    <Content Include="Views\Event\GetEvents.cshtml" />
+    <Content Include="Views\Home\Events.cshtml" />
     <Content Include="Views\Home\Affiche.cshtml" />
     <Content Include="Views\SiteSettings\Create.cshtml" />
     <Content Include="Views\SiteSettings\Edit.cshtml" />
     <Content Include="Views\SiteSettings\Delete.cshtml" />
     <Content Include="Views\SiteSettings\Details.cshtml" />
     <Content Include="Views\SiteSettings\Index.cshtml" />
-    <Content Include="Views\SiteSettings\_CreateOrEdit.cshtml" />
+    <Content Include="Views\SiteSettings\CreateOrEdit.cshtml" />
     <Content Include="Views\SiteSettings\GetCoverImages.cshtml" />
-    <Content Include="Views\Shared\UserControls\HomePageEvents.cshtml" />
+    <Content Include="Views\Shared\UserControls\EventsControl.cshtml" />
     <Content Include="Views\Request\CreatePartial.cshtml" />
     <Content Include="Views\Shared\UserControls\RequestFormControl.cshtml" />
     <Content Include="Views\Shared\UserControls\SocialShareControl.cshtml" />
@@ -883,11 +882,16 @@
     <Content Include="Views\Shared\UserControls\MembersControl.cshtml" />
     <Content Include="Views\Shared\UserControls\FeedbacksControl.cshtml" />
     <Content Include="Views\Request\CreateOrEditPartial.cshtml" />
+    <Content Include="Views\Shared\Fields\CaptchaField.cshtml" />
+    <Content Include="Views\Shared\UserControls\FeedbackFormControl.cshtml" />
+    <Content Include="Views\Feedback\CreateOrEditPartial.cshtml" />
+    <Content Include="Views\Feedback\CreatePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\cp\covers\" />
-    <Folder Include="Content\plugins\audioplayer\playlists\" />
+    <Folder Include="Content\plugins\uppod\audio\" />
+    <Folder Include="Content\plugins\uppod\playlists\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -905,6 +909,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorRes.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Model\ModelRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

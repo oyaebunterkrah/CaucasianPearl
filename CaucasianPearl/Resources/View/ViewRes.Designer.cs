@@ -63,18 +63,9 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Об ансамбле.
         /// </summary>
-        public static string AboutEnsemble {
+        public static string About {
             get {
-                return ResourceManager.GetString("AboutEnsemble", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to О нас.
-        /// </summary>
-        public static string AboutUs {
-            get {
-                return ResourceManager.GetString("AboutUs", resourceCulture);
+                return ResourceManager.GetString("About", resourceCulture);
             }
         }
         
@@ -106,6 +97,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Действие.
+        /// </summary>
+        public static string Action {
+            get {
+                return ResourceManager.GetString("Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Действия.
         /// </summary>
         public static string Actions {
@@ -120,6 +120,33 @@ namespace Resources {
         public static string AddComment {
             get {
                 return ResourceManager.GetString("AddComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Добавление отзыва.
+        /// </summary>
+        public static string AddingFeedback {
+            get {
+                return ResourceManager.GetString("AddingFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Добавление заявки.
+        /// </summary>
+        public static string AddingRequest {
+            get {
+                return ResourceManager.GetString("AddingRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Добавить заявку.
+        /// </summary>
+        public static string AddRequest {
+            get {
+                return ResourceManager.GetString("AddRequest", resourceCulture);
             }
         }
         
@@ -214,6 +241,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Вы уверены, что хотите удалить эту настройку сайта?.
+        /// </summary>
+        public static string AreYouSureYouWantToDeleteThisSiteSetting {
+            get {
+                return ResourceManager.GetString("AreYouSureYouWantToDeleteThisSiteSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Авторизоваться.
         /// </summary>
         public static string Authorize {
@@ -282,6 +318,15 @@ namespace Resources {
         public static string CharactersInLength {
             get {
                 return ResourceManager.GetString("CharactersInLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Комментарий.
+        /// </summary>
+        public static string Comment {
+            get {
+                return ResourceManager.GetString("Comment", resourceCulture);
             }
         }
         
@@ -358,6 +403,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Обложка.
+        /// </summary>
+        public static string Cover {
+            get {
+                return ResourceManager.GetString("Cover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Создать.
         /// </summary>
         public static string Create {
@@ -412,11 +466,47 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Создание.
+        /// </summary>
+        public static string Creating {
+            get {
+                return ResourceManager.GetString("Creating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Значение по умолчанию.
+        /// </summary>
+        public static string DefaultValue {
+            get {
+                return ResourceManager.GetString("DefaultValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Удалить.
         /// </summary>
         public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удаление.
+        /// </summary>
+        public static string Deleting {
+            get {
+                return ResourceManager.GetString("Deleting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Описание.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
@@ -444,6 +534,15 @@ namespace Resources {
         public static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редактирование.
+        /// </summary>
+        public static string Editing {
+            get {
+                return ResourceManager.GetString("Editing", resourceCulture);
             }
         }
         
@@ -538,6 +637,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Во время отправки отзыва возникла неожиданная ошибка. Пожалуйста, повторите попытку позднее..
+        /// </summary>
+        public static string FeedbackSendingError {
+            get {
+                return ResourceManager.GetString("FeedbackSendingError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Спасибо за Ваше мнение! Отзыв появится на сайте после проверки модератором..
+        /// </summary>
+        public static string FeedbackThanks {
+            get {
+                return ResourceManager.GetString("FeedbackThanks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to © Ансамбль «Жемчужина Кавказа».
         /// </summary>
         public static string FooterTitle {
@@ -561,6 +678,15 @@ namespace Resources {
         public static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Настройка режима главной страницы.
+        /// </summary>
+        public static string HomePageModeSettings {
+            get {
+                return ResourceManager.GetString("HomePageModeSettings", resourceCulture);
             }
         }
         
@@ -601,11 +727,11 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Оставить отзыв.
+        ///   Looks up a localized string similar to Главная.
         /// </summary>
-        public static string LeaveComment {
+        public static string Index {
             get {
-                return ResourceManager.GetString("LeaveComment", resourceCulture);
+                return ResourceManager.GetString("Index", resourceCulture);
             }
         }
         
@@ -772,11 +898,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Профили.
+        /// </summary>
+        public static string Profiles {
+            get {
+                return ResourceManager.GetString("Profiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Жемчужина Кавказа.
         /// </summary>
         public static string ProjectTitle {
             get {
                 return ResourceManager.GetString("ProjectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ЖК.
+        /// </summary>
+        public static string ProjectTitleShort {
+            get {
+                return ResourceManager.GetString("ProjectTitleShort", resourceCulture);
             }
         }
         
@@ -790,11 +934,47 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Подробности заявки.
+        /// </summary>
+        public static string RequestDetails {
+            get {
+                return ResourceManager.GetString("RequestDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Редактирование заявки.
+        /// </summary>
+        public static string RequestEditing {
+            get {
+                return ResourceManager.GetString("RequestEditing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Заявки.
         /// </summary>
         public static string Requests {
             get {
                 return ResourceManager.GetString("Requests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Во время отправки заявки возникла неожиданная ошибка. Пожалуйста, повторите попытку позднее..
+        /// </summary>
+        public static string RequestSendingError {
+            get {
+                return ResourceManager.GetString("RequestSendingError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Спасибо за проявленный интерес! Мы обязательно с Вами свяжемся!.
+        /// </summary>
+        public static string RequestThanks {
+            get {
+                return ResourceManager.GetString("RequestThanks", resourceCulture);
             }
         }
         
@@ -808,11 +988,47 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отправить заявку.
+        ///   Looks up a localized string similar to Разделы.
+        /// </summary>
+        public static string Sections {
+            get {
+                return ResourceManager.GetString("Sections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Оставить отзыв.
+        /// </summary>
+        public static string SendFeedback {
+            get {
+                return ResourceManager.GetString("SendFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Оставить заявку.
         /// </summary>
         public static string SendRequest {
             get {
                 return ResourceManager.GetString("SendRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Оставить заявку на выступление.
+        /// </summary>
+        public static string SendRequestForPerformance {
+            get {
+                return ResourceManager.GetString("SendRequestForPerformance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Настройка сайта.
+        /// </summary>
+        public static string SiteSetting {
+            get {
+                return ResourceManager.GetString("SiteSetting", resourceCulture);
             }
         }
         
@@ -898,6 +1114,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Название.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to На главную.
         /// </summary>
         public static string ToHomePage {
@@ -957,6 +1182,15 @@ namespace Resources {
         public static string UseTheFormBelowToCreateANewAccount {
             get {
                 return ResourceManager.GetString("UseTheFormBelowToCreateANewAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Значение.
+        /// </summary>
+        public static string Value {
+            get {
+                return ResourceManager.GetString("Value", resourceCulture);
             }
         }
         

@@ -1,0 +1,22 @@
+.event {
+    float: left;
+    visibility: hidden;
+    margin: 40px;
+    width: 40%;
+}
+.event_link {
+    clear: both;
+    float: left;
+}
+.event_cover_image {
+    height: 300px;
+    width: 400px;
+}
+.event_title {
+    clear: both;
+    float: left;
+}
+.event_date {
+    float: left;
+    margin-left: 10px;
+}

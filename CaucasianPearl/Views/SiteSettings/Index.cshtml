@@ -1,47 +1,111 @@
+@using CaucasianPearl.Core.Constants
+@using Resources
+
 @model IEnumerable<CaucasianPearl.Models.EDM.SiteSetting>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.SiteSettings);
 }
 
-<h2>Index</h2>
+<h2>@ViewRes.SiteSettings</h2>
+
+<div>
+    <h4>@ViewRes.Sections</h4>
+    <ul class="ul_with_no_bullets">
+        <li>@Html.ActionLink(
+                ViewRes.Events,
+                Consts.Actions.Index,
+                Consts.Controllers.Event.Name,
+                null,
+                new { target = "_blank" })</li>
+        <li>@Html.ActionLink(
+                ViewRes.Feedbacks, Consts.Actions.Index,
+                Consts.Controllers.Feedback.Name,
+                null,
+                new { target = "_blank" })</li>
+        
+        <li>@Html.ActionLink(
+                ViewRes.Requests, Consts.Actions.Index,
+                Consts.Controllers.Request.Name,
+                null,
+                new { target = "_blank" })</li>
+        <li>@Html.ActionLink(
+                ViewRes.Sponsors, Consts.Actions.Index,
+                Consts.Controllers.Sponsor.Name,
+                null,
+                new { target = "_blank" })</li>
+        <li>@Html.ActionLink(
+                ViewRes.UserProfiles, Consts.Actions.Index,
+                Consts.Controllers.Profile.Name,
+                null,
+                new { target = "_blank" })</li>
+        <li>@Html.ActionLink(
+                ViewRes.ContentBlocks, Consts.Actions.Index,
+                Consts.Controllers.ContentBlock.Name,
+                null,
+                new { target = "_blank" })</li>
+        <li>@Html.ActionLink(
+                ViewRes.HomePageModeSettings, Consts.Controllers.SiteSettings.Actions.GetCoverImages,
+                Consts.Controllers.SiteSettings.Name,
+                null,
+                new { target = "_blank" })</li>
+        <li>@Html.ActionLink(
+                ViewRes.SiteSettings, Consts.Actions.Index,
+                Consts.Controllers.SiteSettings.Name,
+                null,
+                new { target = "_blank" })</li>
+    </ul>
+</div>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink(ViewRes.Create, Consts.Actions.Create)
 </p>
+
 <table>
     <tr>
-        <th></th>
         <th>
-            Name
+            @ViewRes.Action
         </th>
         <th>
-            Value
+            @ViewRes.Title
+        </th>
+        <th>
+            @ViewRes.Value
+        </th>
+        <th>
+            @ViewRes.DefaultValue
+        </th>
+        <th>
+            @ViewRes.Comment
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-        <td>
-			@item.Name
-        </td>
-        <td>
-			@item.Value
-        </td>
-        <td>
-			@item.DefaultValue
-        </td>
-        <td>
-			@item.Description
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <ul class="ul_with_no_bullets">
+                    <li>@Html.ActionLink(ViewRes.Details, Consts.Actions.Details, new { id = item.ID })</li>
+                    <li>@Html.ActionLink(ViewRes.Edit, Consts.Actions.Edit, new { id = item.ID })</li>
+                    <li>@Html.ActionLink(ViewRes.Delete, Consts.Actions.Delete, new { id = item.ID })</li>
+                </ul>
+            </td>
+            <td>
+			    @item.Name
+            </td>
+            <td>
+			    @item.Value
+            </td>
+            <td>
+			    @item.DefaultValue
+            </td>
+            <td>
+			    @item.Description
+            </td>
+        </tr>
+    }
 </table>
 
+<p>
+    @Html.ActionLink(ViewRes.Create, Consts.Actions.Create)
+</p>
 

@@ -2,14 +2,15 @@
 @using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
+@using CaucasianPearl.Core.Helpers.MvcHtmlStringHelpers
 @using CaucasianPearl.Core.UserControls
 @using Resources
 
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <title>@ViewRes.ProjectTitle</title>
-        
+        <title>@ViewBag.Title</title>
+
         <link href="@Url.Content("~/content/img/site/favicon.ico")" rel="site icon" type="image/x-icon" />
 
         @Styles.Render("~/bundles/styles")
@@ -26,6 +27,11 @@
         
         @* язык для datepicker *@
         @Html.Raw(CssJsRegControl.Render(string.Format("jqueryui/js/jquery.ui.datepicker-{0}.js", CultureHelper.CurrentCultureAbbr), Consts.Paths.Plugins.PluginsPrefix))
+        
+        @* глобальные переменные *@
+        <script type="text/javascript">
+            var currentCulture = '@CultureHelper.CurrentCultureAbbr';
+        </script>
     </head>
 
     <body>
@@ -48,25 +54,25 @@
                     <nav>
                         <ul class="menu">
                             <li>
-                                @Html.ActionLink(
-                                    linkText: ViewRes.AboutEnsemble,
+                                @Html.MenuLink(
+                                    linkText: ViewRes.About,
                                     actionName: Consts.Controllers.Home.Actions.About,
                                     controllerName: Consts.Controllers.Home.Name)
                             </li>
                             <li>
-                                @Html.ActionLink(
+                                @Html.MenuLink(
                                     linkText: ViewRes.Events,
-                                    actionName: Consts.Controllers.Event.Actions.GetEvents,
-                                    controllerName: Consts.Controllers.Event.Name)
+                                    actionName: Consts.Controllers.Home.Actions.Events,
+                                    controllerName: Consts.Controllers.Home.Name)
                             </li>
                             <li>
-                                @Html.ActionLink(
+                                @Html.MenuLink(
                                     linkText: ViewRes.Affiche,
                                     actionName: Consts.Controllers.Home.Actions.Affiche,
                                     controllerName: Consts.Controllers.Home.Name)
                             </li>
                             <li>
-                                @Html.ActionLink(
+                                @Html.MenuLink(
                                     linkText: ViewRes.SiteSettings,
                                     actionName: Consts.Actions.Index,
                                     controllerName: Consts.Controllers.SiteSettings.Name)
@@ -149,6 +155,7 @@
         </div>
         <footer>
             @Html.Partial(Consts.Paths.UserControls.FooterControl)
+            <div id="unexpectedError" class="unexpected_error">@ErrorRes.UnexpectedError</div>
         </footer>
         @Scripts.Render("~/bundles/jquery")
     </body>

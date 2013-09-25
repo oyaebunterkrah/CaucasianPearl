@@ -1,0 +1,22 @@
+.send_feedback_response, .thanks, .error, .reCaptcha {
+    display: none;
+}
+
+.required {
+    color: #f00;
+    float: right;
+}
+
+form div {
+    position: relative;
+}
+
+form label.inside {
+    margin: 10px 5px 5px 7px;
+}
+
+label {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

@@ -1,4 +1,4 @@
-var consts = {
+п»їvar consts = {
     'fields': {
         'eventid': 'eventid',
         'photoid': 'photoid',
@@ -39,9 +39,9 @@ var consts = {
 (function ($) {
     $(document).ready(function () {
         jQuery.noConflict();
-
+        
         $.fn.extend({
-            // центрирует элемент
+            // С†РµРЅС‚СЂРёСЂСѓРµС‚ СЌР»РµРјРµРЅС‚
             center: function () {
                 this.css('position', 'absolute');
                 this.css('top', Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
@@ -51,7 +51,7 @@ var consts = {
 
                 return this;
             }, // }
-            // открывает popup для указанного элемента {
+            // РѕС‚РєСЂС‹РІР°РµС‚ popup РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° {
             popup: function (options) {
                 if (options == undefined)
                     options = {};
@@ -73,7 +73,7 @@ var consts = {
                     buttons: options.buttons != undefined ? options.buttons :
                         [
                             {
-                                text: 'Закрыть',
+                                text: 'Р—Р°РєСЂС‹С‚СЊ',
                                 id: 'btnClose',
                                 click: function () {
                                     closeDialogs();
@@ -82,11 +82,11 @@ var consts = {
                         ],
                 });
             },
-            // сравнивает значение из data по ключу key с указанным value {
+            // СЃСЂР°РІРЅРёРІР°РµС‚ Р·РЅР°С‡РµРЅРёРµ РёР· data РїРѕ РєР»СЋС‡Сѓ key СЃ СѓРєР°Р·Р°РЅРЅС‹Рј value {
             isData: function (key, value) {
                 return $(this).data(key) == value;
             }, // }
-            // сбрасывает сообщения об ошибках валидации для инпутов в элементе (форме) {
+            // СЃР±СЂР°СЃС‹РІР°РµС‚ СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєР°С… РІР°Р»РёРґР°С†РёРё РґР»СЏ РёРЅРїСѓС‚РѕРІ РІ СЌР»РµРјРµРЅС‚Рµ (С„РѕСЂРјРµ) {
             resetValidation: function () {
                 var self = $(this);
                 self.find('.field-validation-error')
@@ -96,16 +96,16 @@ var consts = {
                 self.find('.input-validation-error')
                     .removeClass('input-validation-error')
                     .addClass('valid');
-                
-                // обновляем валидацию для формы для попап окон {
+
+                // РѕР±РЅРѕРІР»СЏРµРј РІР°Р»РёРґР°С†РёСЋ РґР»СЏ С„РѕСЂРјС‹ РґР»СЏ РїРѕРїР°Рї РѕРєРѕРЅ {
                 var form = $('form');
                 form.removeData('validator')
                     .removeData('nobtrusiveValidation');
                 $.validator.unobtrusive.parse(form); // }
-                
+
                 return self;
             }, // }
-            // очищает инпуты внутри элемента (формы) {
+            // РѕС‡РёС‰Р°РµС‚ РёРЅРїСѓС‚С‹ РІРЅСѓС‚СЂРё СЌР»РµРјРµРЅС‚Р° (С„РѕСЂРјС‹) {
             clearData: function () {
                 var self = $(this);
                 self.find('textarea').val('');
@@ -115,16 +115,54 @@ var consts = {
 
                 return self;
             }, // }
-            // валидация формы {
+            // РІР°Р»РёРґР°С†РёСЏ С„РѕСЂРјС‹ {
             isValid: function () {
                 var self = $(this);
                 $.validator.unobtrusive.parse(self);
-                
+
                 return self.data('unobtrusiveValidation').validate();
-            } // }
+            }, // }
+            // show more/less... {
+            trunc: function (numWords) {
+                var self = $(this);
+                self.each(function () {
+                    var me = $(this);
+                    var original = me.text();
+                    var truncated = original.split(' ');
+
+                    if (truncated.length <= numWords)
+                        return;
+
+                    if (!self.is('.collapsed'))
+                        self.addClass('collapsed');
+
+                    while (truncated.length > numWords)
+                        truncated.pop();
+
+                    collapse();
+                    
+                    function expand() {
+                        me.empty();
+                        me.text(original);
+                        me.click(collapse);
+                        
+                        return false;
+                    };
+                    
+                    function collapse () {
+                        me.empty();
+                        me.text(truncated.join(' ') + '...');
+                        me.click(expand);
+                        
+                        return false;
+                    };
+                });
+
+                return self;
+            } //  } show more/less...
         });
         
-        // добавляем валидатор для даты для datepicker {
+        // РґРѕР±Р°РІР»СЏРµРј РІР°Р»РёРґР°С‚РѕСЂ РґР»СЏ РґР°С‚С‹ РґР»СЏ datepicker {
         $.validator.addMethod(
             'date',
             function (value, element, params) {
@@ -148,6 +186,8 @@ var consts = {
         $('.ui-widget-overlay').live('click', function () {
             closeDialogs();
         });
+        
+        //highlightActiveMenuItem();
     });
 
     String.prototype.format = String.prototype.f = function () {
@@ -169,8 +209,13 @@ var consts = {
              this.getUTCFullYear();
     };
 
-    // ставим datepicker на поле выбора даты
-    // убираем mvc'шный выбор даты
+    highlightActiveMenuItem = function () {
+        var url = window.location.pathname;
+        $('.menu a[href="' + url + '"]').addClass('active');
+    };
+
+    // СЃС‚Р°РІРёРј datepicker РЅР° РїРѕР»Рµ РІС‹Р±РѕСЂР° РґР°С‚С‹
+    // СѓР±РёСЂР°РµРј mvc'С€РЅС‹Р№ РІС‹Р±РѕСЂ РґР°С‚С‹
     replaceMvcDatepicker = function () {
         var dateField = $('input[type="date"]');
         if (dateField.length) {
@@ -225,12 +270,12 @@ var consts = {
         return value.replace(/\[/g, '<').replace(/\]/g, '>');
     };
 
-    // закрыть все jquery ui диалоговые окна
+    // Р·Р°РєСЂС‹С‚СЊ РІСЃРµ jquery ui РґРёР°Р»РѕРіРѕРІС‹Рµ РѕРєРЅР°
     closeDialogs = function () {
         $('.ui-dialog-content').dialog('close');
     };
     
-    // отобразить loading
+    // РѕС‚РѕР±СЂР°Р·РёС‚СЊ loading
     showLoading = function (min) {
         if (min) {
             $('.overlay_min').show();
@@ -241,7 +286,7 @@ var consts = {
         }
     };
 
-    // скрыть loading
+    // СЃРєСЂС‹С‚СЊ loading
     hideLoading = function (min) {
         if (min) {
             $('.overlay_min').hide();
@@ -252,14 +297,19 @@ var consts = {
         }
     };
     
-    // возвращает название месяца прописью
-    getMonthStr = function (intMonth) {
-        var MonthArray = new Array('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
-        
-        return MonthArray[intMonth];
+    unexpectedError = function () {
+        $('#unexpectedError').dialog().dialog('open');
     };
 
-    // возвращает дату с месяцем, написанным прописью
+    // РІРѕР·РІСЂР°С‰Р°РµС‚ РЅР°Р·РІР°РЅРёРµ РјРµСЃСЏС†Р° РїСЂРѕРїРёСЃСЊСЋ
+    getMonthStr = function (intMonth) {
+        var monthRuArray = new Array('СЏРЅРІР°СЂСЏ', 'С„РµРІСЂР°Р»СЏ', 'РјР°СЂС‚Р°', 'Р°РїСЂРµР»СЏ', 'РјР°СЏ', 'РёСЋРЅСЏ', 'РёСЋР»СЏ', 'Р°РІРіСѓСЃС‚Р°', 'СЃРµРЅС‚СЏР±СЂСЏ', 'РѕРєС‚СЏР±СЂСЏ', 'РЅРѕСЏР±СЂСЏ', 'РґРµРєР°Р±СЂСЏ');
+        var monthHyArray = new Array('Х°ХёЦ‚Х¶ХѕХЎЦЂХ«', 'ЦѓХҐХїЦЂХѕХЎЦЂХ«', 'ХґХЎЦЂХїХ«', 'ХЎХєЦЂХ«Х¬Х«', 'ХґХЎХµХ«ХЅХ«', 'Х°ХёЦ‚Х¶Х«ХЅХ«', 'Х°ХёЦ‚Х¬Х«ХЅХ«', 'Ц…ХЈХёХЅХїХёХЅХ«', 'ХЅХҐХєХїХҐХґХўХҐЦЂХ«', 'Х°ХёХЇХїХҐХґХўХҐЦЂХ«', 'Х¶ХёХµХҐХґХўХҐЦЂХ«', 'Х¤ХҐХЇХїХҐХґХўХҐЦЂХ«');
+
+        return currentCulture == 'ru' ? monthRuArray[intMonth] : monthHyArray[intMonth];
+    };
+
+    // РІРѕР·РІСЂР°С‰Р°РµС‚ РґР°С‚Сѓ СЃ РјРµСЃСЏС†РµРј, РЅР°РїРёСЃР°РЅРЅС‹Рј РїСЂРѕРїРёСЃСЊСЋ
     getDateStr = function (date) {
         var year = date.getYear();
         if (year < 1000) year += 1900;
@@ -267,7 +317,7 @@ var consts = {
         return '{0} {1} {2}'.f(date.getDate(), getMonthStr(date.getMonth()), year);
     };
 
-    // Обёртка для ajax вызовов.
+    // РћР±С‘СЂС‚РєР° РґР»СЏ ajax РІС‹Р·РѕРІРѕРІ.
     ajaxRequest = function (options) {
         $.ajax({
             // parameters {

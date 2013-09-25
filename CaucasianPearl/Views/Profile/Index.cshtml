@@ -10,34 +10,10 @@
 @model IEnumerable<Profile>
 
 @{
-    ViewBag.Title = string.Format("{0} - {1}", ViewRes.ProjectTitle, ViewRes.UserProfiles);
+    ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.UserProfiles);
 }
 
 @Html.Raw(CssJsRegControl.Render("photos.css", Consts.Paths.Css.CpCssPrefixPath))
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.image-block .photo').click(function () {
-            var clone = $(this).parents('.container').clone();
-            clone.popup({
-                autoOpen: true,
-                modal: true,
-                close: function () {
-                    closeDialogs();
-                },
-                buttons:
-                    [
-                        {
-                            text: 'Закрыть',
-                            click: function () {
-                                closeDialogs();
-                            }
-                        }
-                    ]
-            });
-        });
-    });
-</script>
 
 <p>
     @Html.ActionLink(
@@ -52,9 +28,8 @@
 
 <h2>@ViewRes.UserProfiles</h2>
 
-<div style="display: none;">
-    @if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager)))
-    {
+<div>
+    @if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager))) {
         <p>
             @Html.ActionLink(
                 ViewRes.CreateProfile,
@@ -66,43 +41,42 @@
 <div class="wrapper">
     <div class="photo-content">
         <ul class="photo-area" style="height: 238px;">
-            @foreach (var profile in Model)
-            {
+            @foreach (var profile in Model) {
                 <li class="photo-item">
                     <div class="container">
                         <span class="image-block">
-                            <a class="image-zoom" href="@Url.Action(Consts.Actions.GetByShortName,
-                                                                    Consts.Controllers.Profile.Name,
-                                                                    new
-                                                                        {
-                                                                            shortname = profile.ShortName,
-                                                                            page = Request.QueryString["page"],
-                                                                            find = Request.QueryString["find"]
-                                                                        })" title="@profile.FirstName @profile.LastName"></a>
-                            <img class="photo"
-                                src="@Url.Content(profile.ImageUrl)"
-                                alt="@profile.FirstName @profile.LastName"
-                                title="@profile.FirstName @profile.LastName" />
+                            <a class="image-zoom"
+                               title="@profile.FirstName @profile.LastName"
+                               href="@Url.Action(Consts.Actions.GetByShortName,
+                                         Consts.Controllers.Profile.Name,
+                                         new {
+                                             shortname = profile.ShortName,
+                                             page = Request.QueryString["page"],
+                                             find = Request.QueryString["find"]
+                                         })">
+                                <img class="photo"
+                                     src="@Url.Content(profile.ImageUrl)"
+                                     alt="@profile.FirstName @profile.LastName"
+                                     title="@profile.FirstName @profile.LastName" />
+                            </a>
                         </span>
                         <div class="photo-text">
                             <h2 class="photo-title">
                                 <a href="@Url.Action(Consts.Actions.GetByShortName,
                                                      Consts.Controllers.Profile.Name,
-                                                     new
-                                                         {
-                                                             shortname = profile.ShortName,
-                                                             page = Request.QueryString["page"],
-                                                             find = Request.QueryString["find"]
-                                                         })"
-                                    title="@profile.FirstName  @profile.LastName">@profile.FirstName @profile.LastName</a>
+                                                     new {
+                                                         shortname = profile.ShortName,
+                                                         page = Request.QueryString["page"],
+                                                         find = Request.QueryString["find"]
+                                                     })"
+                                   title="@profile.FirstName  @profile.LastName">@profile.FirstName @profile.LastName</a>
                             </h2>
                             <span>Имя: @profile.FirstName @profile.LastName</span>
                             <br />
                             <span>Позиция: @profile.Position</span>
                         </div>
 
-                        @if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager) || WebSecurity.CurrentUserId == profile.ID))
-                        {
+                        @if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager) || WebSecurity.CurrentUserId == profile.ID)) {
                             <div class="photo-text">
                                 @Html.ActionLink(
                                     ViewRes.Details,
@@ -134,7 +108,7 @@
     @Html.Partial(
         Consts.Paths.UserControls.PaginatorControl,
         (PaginatorControl.GetLinks(
-            ServiceHelper<IUrlFriendlyService<Profile>>.GetService().Count(Request.QueryString),
+            ServiceHelper<IProfileService<Profile>>.GetService().Count(Request.QueryString),
             Consts.PaginatorControl.ProfileItemsPerPage,
             Consts.PaginatorControl.ProfileNumberOfVisibleLinks)))
 </div>

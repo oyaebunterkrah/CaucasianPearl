@@ -7,6 +7,7 @@ using CaucasianPearl.Core.DAL.Data;
 using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Models.EDM;
+using Recaptcha;
 
 namespace CaucasianPearl.Controllers
 {
@@ -36,6 +37,31 @@ namespace CaucasianPearl.Controllers
             }
 
             return View(feedbacks);
+        }
+
+        [AllowAnonymous]
+        public override ActionResult Create()
+        {
+            return base.Create();
+        }
+
+        [AllowAnonymous]
+        public override ActionResult Create(Feedback obj)
+        {
+            return base.Create(obj);
+        }
+
+        [AllowAnonymous]
+        public override ActionResult CreatePartial()
+        {
+            return base.CreatePartial();
+        }
+
+        [AllowAnonymous]
+        [HttpPost, RecaptchaControlMvc.CaptchaValidator]
+        public override ActionResult CreatePartialWithCaptcha(Feedback obj, bool captchaValid, string captchaErrorMessage)
+        {
+            return base.CreatePartialWithCaptcha(obj, captchaValid, captchaErrorMessage);
         }
 
         protected override void ModifyValuesOnCreate(Feedback feedback)

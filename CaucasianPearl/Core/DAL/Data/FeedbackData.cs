@@ -19,7 +19,7 @@ namespace CaucasianPearl.Core.DAL.Data
         public FeedbackItem(Feedback feedback, bool isLast)
         {
             ID = feedback.ID;
-            Name = feedback.Name;
+            Name = !string.IsNullOrWhiteSpace(feedback.Name) ? feedback.Name : ViewRes.NotSpecified;
             City = !string.IsNullOrWhiteSpace(feedback.City) ? feedback.City : ViewRes.NotSpecified;
             Comment = !string.IsNullOrWhiteSpace(feedback.Comment) ? feedback.Comment : ViewRes.NotSpecified;
             Created = feedback.Created.HasValue

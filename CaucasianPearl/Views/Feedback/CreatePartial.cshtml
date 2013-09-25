@@ -1,0 +1,21 @@
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Models.EDM
+@using Resources
+
+@model Feedback
+
+@using (Ajax.BeginForm(
+    Consts.Actions.CreatePartialWithCaptcha,
+    Consts.Controllers.Feedback.Name,
+    null,
+    new AjaxOptions {
+        HttpMethod = "Post",
+        OnBegin = "onSendFeedbackBegin",
+        OnComplete = "onSendFeedbackComplete",
+        OnSuccess = "onSendFeedbackSuccess",
+        OnFailure = "onSendFeedbackFailure"
+    },
+    new { id = "formSendFeedback" })) {
+
+    @Html.Partial(Consts.Views.CreateOrEditPartial, Model)
+}

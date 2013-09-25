@@ -1,0 +1,29 @@
+﻿@using CaucasianPearl;
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Properties
+@using Resources
+
+@Html.Raw(CssJsRegControl.Render("recaptcha/recaptcha_ajax.js", Consts.Paths.Plugins.PluginsPrefix))
+@Html.Raw(CssJsRegControl.Render("feedback_form.js", Consts.Paths.Js.CpJsPrefixPath, "windows-1251"))
+@Html.Raw(CssJsRegControl.Render("feedback_form.css", Consts.Paths.Css.CpCssPrefixPath))
+@Html.Raw(CssJsRegControl.Render("jquery.infieldlabel.js", Consts.Paths.Plugins.PluginsPrefix, "utf-8"))
+
+@* задаём параметры для feedback_form.js *@
+<script type="text/javascript">
+    var triggerElementId = '@ViewData["triggerElementId"]';
+    var formUrl = '@Url.Action(Consts.Actions.CreatePartial, Consts.Controllers.Feedback.Name)';
+</script>
+
+@* форма заявки { *@
+<div id="feedbackBlock" class="send_feedback_response">
+    <span id="errorMessage" class="error">@ViewRes.FeedbackSendingError</span>
+
+    @* сюда подгружается форма заявки *@
+    <div id="feedbackForm" class="feedback_form"></div>
+    
+    <div class="overlay_min"></div>
+    <div class="loading_min"></div>
+</div>
+
+<div id="thanks" class="thanks">@ViewRes.FeedbackThanks</div>@* } *@

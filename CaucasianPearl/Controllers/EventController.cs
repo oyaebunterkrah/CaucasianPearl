@@ -209,24 +209,6 @@ namespace CaucasianPearl.Controllers
             return Json(new { message = "chunk uploaded", name = name }); }*/
         }
 
-        // Возвращает список событий.
-        // 2 события, которые были до и после
-        // 1* 2* 3* 4*
-        // если 1, то внизу отображается 2,3,4,5
-        // если 2, то внизу отображается 1,3,4,5
-        // если 4, то внизу отображается 2,3,5,6
-        public ActionResult GetEvents(string id)
-        {
-            int eventId;
-            int.TryParse(id, out eventId);
-            var currentEvent = _service.Get(eventId);
-            var events = _service.GetLastEvents(Consts.Controllers.Event.EventCount);
-            var currentEventInfo = currentEvent != null ? new EventItem(currentEvent) : events.First();
-            ViewBag.CurrentEventInfo = currentEventInfo;
-
-            return View(events);
-        }
-
         #endregion
 
         #region Helpers

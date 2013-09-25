@@ -15,9 +15,10 @@ namespace CaucasianPearl.App_Start
             if (!WebSecurity.Initialized)
                 WebSecurity.InitializeDatabaseConnection(
                     Consts.Connections.Default,
-                    "Profile",
-                    "ID",
-                    "UserName", autoCreateTables: true
+                    userTableName: "Profile",
+                    userIdColumn: "ID",
+                    userNameColumn: "UserName",
+                    autoCreateTables: true
                 );
 
             // добавляем админа, если его нет

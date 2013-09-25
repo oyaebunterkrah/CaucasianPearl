@@ -1,0 +1,10 @@
+.disabled {
+    color: red !important;
+}
+.disabled:hover {
+    cursor: text;
+    text-decoration: none !important;
+}
+.collapsed {
+    cursor: pointer;
+}

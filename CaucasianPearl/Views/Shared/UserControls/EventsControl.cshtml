@@ -1,0 +1,32 @@
+﻿@using System.Globalization
+
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Models.EDM
+@using CaucasianPearl.Core.DAL.Data
+@using Resources
+
+@model IEnumerable<EventItemInfo>
+
+@Html.Raw(CssJsRegControl.Render("events_control.js", Consts.Paths.Js.CpJsPrefixPath))
+@Html.Raw(CssJsRegControl.Render("events_control.css", Consts.Paths.Css.CpCssPrefixPath))
+
+<div class="events_block">
+    @foreach (var eventInfo in Model) {
+        <div class="event image-block">
+            <a class="event_link" href="@Url.Action(
+                Consts.Controllers.Home.Actions.Events,
+                Consts.Controllers.Home.Name,
+                new RouteValueDictionary {
+                    { "id", eventInfo.ID }
+                })" >
+                <img class="event_cover_image" src="@eventInfo.CoverImage" alt="@eventInfo.Title" />
+            </a>
+            <span class="event_title">@eventInfo.Title</span>
+            <span class="event_date_day">@eventInfo.Day</span>
+            <span class="event_date_month">@eventInfo.Month</span>
+        </div>
+    }
+</div>

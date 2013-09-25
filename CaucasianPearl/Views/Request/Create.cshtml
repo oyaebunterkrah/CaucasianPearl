@@ -1,20 +1,18 @@
 @model CaucasianPearl.Models.EDM.Request
 
 @using CaucasianPearl.Core.Constants
-@using Resources.Request
-@using Resources.Shared
-
+@using Resources
 @{
-    ViewBag.Title = RequestViewRes.Requests;
+    ViewBag.Title = ViewRes.Requests;
 }
 
-<h2>@RequestViewRes.AddingRequest</h2>
+<h2>@ViewRes.AddingRequest</h2>
 
-@using (Html.BeginForm(Consts.Actions.Create, Consts.Controllers.Request.Name, FormMethod.Post, new { id = "formCreateRequest" }))
+@using (Html.BeginForm(Consts.Actions.Create, Consts.Controllers.Request.Name, FormMethod.Post, new { id = "formSendRequest" }))
 {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>@RequestViewRes.Requests</legend>
+        <legend>@ViewRes.Requests</legend>
 
 		@Html.Partial(Consts.Views.CreateOrEdit, Model)
 
@@ -26,6 +24,6 @@
 
 @if (WebSecurity.IsAuthenticated && User.IsInRole(Consts.Roles.AdminContentManager)) {
     <div>
-        @Html.ActionLink(@RequestViewRes.BackToList, Consts.Actions.Index)
+        @Html.ActionLink(@ViewRes.BackToList, Consts.Actions.Index)
     </div>
 }

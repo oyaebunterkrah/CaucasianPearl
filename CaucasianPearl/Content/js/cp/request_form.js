@@ -3,13 +3,13 @@
 
     $(document).ready(function () {
         // кнопка-триггер открытия формы заявки
-        $(elementId).click(function (e) {
+        $(triggerElementId).click(function (e) {
             openRequestForm();
         });
 
         // попап - форма заявки
         $('#requestBlock').popup({
-            height: 610,
+            height: 500,
             width: 500,
             buttons:
             [
@@ -43,27 +43,15 @@
             ],
         });
 
-        initializeRequestForm();
+        initializeFeedbackForm();
     });
 
-    initializeRequestForm = function () {
+    initializeFeedbackForm = function () {
         $('#requestForm').load(formUrl, function (responseText, textStatus, XMLHttpRequest) {
             if (textStatus == "error") {
                 requestFormLoadedSuccessful = false;
                 return;
             }
-
-            Recaptcha.create(reCaptchaPublicKey, 'reCaptcha', { theme: 'red' });
-
-            // при нажатии на капчу
-            $('#captchaReload').click(function (e) {
-                e.preventDefault();
-                reloadCaptcha();
-            });
-
-            $('#captchaCode').keyup(function (e) {
-                $("#recaptcha_response_field").val($(this).val());
-            });
 
             // инициализируем "нашу" капчу
             initializeCaptcha();
@@ -72,7 +60,7 @@
             $("#Phone").mask("+7 (999) 999-99-99");
 
             // при изменении даты меняем заголовок окна
-            $('#RequestDate').change(function () {
+            $(requestDateControlId).change(function () {
                 var selectedDate = $(this).val();
                 if (selectedDate != '')
                     $('.ui-dialog-title').text(getRequestFormTitle(selectedDate));
@@ -82,39 +70,14 @@
         });
     };
 
-    // инициализация "нашей" капчи
-    initializeCaptcha = function () {
-        // таймаут, чтобы успела прогрузиться reCaptcha
-        setTimeout(function () {
-            var reCaptchaImageSrc = $('#recaptcha_image img').attr('src');
-            $('#captchaImage').attr('src', reCaptchaImageSrc);
-        }, 300);
-    };
-
-    // обновляем "нашу" капчу
-    reloadCaptcha = function (showError) {
-        var captchaCode = $('#captchaCode'),
-            captchaError = $('#captchaError');
-        Recaptcha.reload();
-        captchaCode.val('');
-        initializeCaptcha();
-        if (showError)
-            captchaError
-                .removeClass('field-validation-valid')
-                .addClass('field-validation-error');
-        else
-            captchaError
-                .removeClass('field-validation-error')
-                .addClass('field-validation-valid');
-
-        captchaCode.focus();
-    };
-
     prepareRequestForm = function (date) {
         $('#requestForm')
             .clearData()
             .resetValidation()
-            .find('#RequestDateTime').val(date);
+            .find(requestDateControlId).val(getRequestDate(date, false));
+
+        // название полей внутри инпутов
+        $('label.inside').inFieldLabels();
 
         reloadCaptcha();
         hideStatusInfo();
@@ -128,18 +91,24 @@
 
         showLoading();
         prepareRequestForm(date);
-        $('#requestBlock').dialog({ title: getRequestFormTitle(date) }).dialog("open");
+        $('#requestBlock').dialog({ title: getRequestFormTitle(date) }).dialog('open');
         hideLoading();
     };
 
     // возвращает заголовок для окна заявки
     getRequestFormTitle = function (date) {
-        var dateStr = getDateStr($.datepicker.parseDate('dd.mm.yy', date));
-        return 'Оставить заявку на {0}'.f(dateStr);
+        return 'Оставить заявку на {0}'.f(getRequestDate(date, true));
+    };
+
+    getRequestDate = function (date, isFull) {
+        if (date == undefined)
+            date = $.datepicker.formatDate('dd.mm.yy', new Date());
+
+        return isFull ? getDateStr($.datepicker.parseDate('dd.mm.yy', date)) : date;
     };
 
     btnSendRequestFormClick = function () {
-        var form = $('#formCreateRequest');
+        var form = $('#formSendRequest');
         if (form.isValid()) {
             hideStatusInfo();
             
@@ -155,15 +124,15 @@
 
     // callback {
     // - - - - - - - - - - - - - - - - - - -
-    onBegin = function (success) {
+    onSendRequestBegin = function (success) {
         showLoading(true);
     };
 
-    onComplete = function (complete) {
+    onSendRequestComplete = function (complete) {
         hideLoading(true);
     };
     
-    onSuccess = function (result) {
+    onSendRequestSuccess = function (result) {
         if (result.success) {
             $('#requestBlock').dialog('close');
             setTimeout(function () {
@@ -178,7 +147,7 @@
         }
     };
 
-    onFailure = function (error) {
+    onSendRequestFailure = function (error) {
         reloadCaptcha();
         $('#errorMessage').fadeIn();
     }; // - - - - - - - - - - - - - - - - - -

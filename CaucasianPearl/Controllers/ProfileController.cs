@@ -20,7 +20,6 @@ namespace CaucasianPearl.Controllers
         public ProfileController(IProfileService<Profile> service) :
             base(service: service)
         {
-
         }
 
         #region Properties

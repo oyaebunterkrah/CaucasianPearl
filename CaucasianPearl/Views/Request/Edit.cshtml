@@ -1,20 +1,23 @@
 @model CaucasianPearl.Models.EDM.Request
 
 @using CaucasianPearl.Core.Constants
-@using Resources.Shared
-@using Resources.Request
+@using Resources
 
 @{
     ViewBag.Title = ViewRes.Edit;
 }
 
-<h2>@RequestViewRes.RequestEditing</h2>
+<h2>@ViewRes.RequestEditing</h2>
+
+<div>
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
+</div>
 
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>@RequestViewRes.Requests</legend>
+        <legend>@ViewRes.Requests</legend>
 
         @Html.HiddenFor(model => model.ID)
 		@Html.Partial(Consts.Views.CreateOrEdit, Model)
@@ -26,5 +29,5 @@
 }
 
 <div>
-    @Html.ActionLink(RequestViewRes.BackToList, Consts.Actions.Index)
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 </div>

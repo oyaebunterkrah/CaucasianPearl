@@ -172,7 +172,7 @@
     <value>Аккаунт с таким именем уже существует. Выберете другое имя.</value>
   </data>
   <data name="UnexpectedError" xml:space="preserve">
-    <value>Возникла неожиданная ошибка</value>
+    <value>Возникла неожиданная ошибка!</value>
   </data>
   <data name="UserNameAlreadyExistsPleaseEnterADifferentUserName" xml:space="preserve">
     <value>Такое имя пользователя уже существует. Выберете другое имя.</value>

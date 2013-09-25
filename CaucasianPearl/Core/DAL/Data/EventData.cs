@@ -21,8 +21,7 @@ namespace CaucasianPearl.Core.DAL.Data
             Content = StringHelper.DecodeScriptTags(@event.Content);
             Description = StringHelper.DecodeScriptTags(@event.Description);
             EventDate = @event.EventDate.HasValue ? @event.EventDate.Value.Date : new DateTime();
-            EventMedia = @event.EventMedia.Select(em => new EventMediaItem(em)).OrderBy(emi => !emi.IsPrimary);
-                // главное фото в самом верху
+            EventMedia = @event.EventMedia.Select(em => new EventMediaItem(em)).OrderByDescending(emi => emi.IsPrimary);
             Title = @event.Title;
         }
 

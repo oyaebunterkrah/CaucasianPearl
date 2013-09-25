@@ -1,0 +1,270 @@
+﻿<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+    /*код плагина*/
+    (function ($) {
+        var methods = {
+            init: function (options) {
+                var p = {
+                    row: 7,			//кол-во столбцов
+                    col: 6,			//кол-во колонок
+                    speed: 20,		//скорость подсветки кубиков
+                    freq: 400,		//частота сигнала
+                    on: true		//включено по умолчанию (true,false)
+                };
+                if (options) {
+                    $.extend(p, options);
+                }
+                var eqWrap = $(this).addClass('eqWrap');
+                for (c = 0; c < p.col; c++) {
+                    var eqColEl = $('<div>').addClass('eqCol').appendTo(eqWrap);
+                    for (r = 0; r < p.row; r++) {
+                        $('<div>').addClass('eqItem').appendTo(eqColEl);
+                    }
+                }
+                var
+                eqCol = $('.eqCol', eqWrap),
+                eqItem = $('.eqItem', eqWrap),
+                randomNumber = function (m, n) {
+                    m = parseInt(m);
+                    n = parseInt(n);
+                    return Math.floor(Math.random() * (n - m + 1)) + m;
+                },
+                eqUp = function (colEl, val) {
+                    var
+                    speed = p.speed,
+                    v = p.row - val,
+                    i = p.row,
+                    j = 0,
+                    flag2 = true,
+                    eachItemUp = function () {
+                        $('.eqItem', colEl).eq(i - 1).nextAll().stop().css({ opacity: '1' });
+                        if ($('.eqItem', colEl).eq(i - 1).css('opacity') == 1) {
+                            flag2 = false
+                        } else {
+                            flag2 = true
+                        }
+                        $('.eqItem', colEl).eq(i - 1).stop(true).animate({ opacity: '1' }, p.speed, function () {
+                            if ($('.eqItem', colEl).index(this) == v) {
+                                if (flag2) {
+                                    eqDown(colEl, val);
+                                }
+                            } else {
+                                i--;
+                                j++;
+                                if (i > v) {
+                                    eachItemUp()
+                                }
+                            }
+                        })
+
+                    }
+                    eachItemUp()
+                },
+                eqDown = function (colEl, val) {
+                    var
+                    v = p.row - val,
+                    i = (p.row - val),
+                    j = 0,
+                    speed = p.speed * 2,
+                    eachItemDown = function () {
+                        if (i == (p.row - val)) {
+                            $('.eqItem', colEl).eq(i).animate({ opacity: '0' }, speed * 10)
+                            setTimeout(function () {
+                                i++;
+                                j++;
+                                if (i < p.row) {
+                                    eachItemDown();
+                                }
+                            }, speed)
+                        } else {
+                            $('.eqItem', colEl).eq(i).animate({ opacity: '0' }, speed, function () {
+                                i++;
+                                j++;
+                                if (i < p.row) {
+                                    eachItemDown();
+                                }
+                            })
+                        }
+                    }
+                    eachItemDown();
+                },
+                eqInterval = function () {
+                    eqCol.each(function () {
+                        eqUp($(this), randomNumber(0, p.row))
+                    })
+                }
+                eqInterval()
+                if (p.on) {
+                    var eqIntervalId = setInterval(eqInterval, p.freq)
+                    $(this).data({
+                        'eqIntId': eqIntervalId,
+                        'eqInt': eqInterval,
+                        'freq': p.freq,
+                        'on': p.on
+                    })
+                }
+            }, start: function () {
+                if (!$(this).data('on')) {
+                    $(this).data('eqInt')();
+                    var eqIntervalId = setInterval($(this).data('eqInt'), $(this).data('freq'));
+                    $(this).data({
+                        'eqIntId': eqIntervalId,
+                        'on': true
+                    })
+                }
+            },
+            stop: function () {
+                if ($(this).data('on')) {
+                    clearInterval($(this).data('eqIntId'));
+                    $('.eqItem', $(this)).animate({ opacity: 0 })
+                    $(this).data({
+                        'on': false
+                    })
+                }
+            }
+        };
+        $.fn.liEqualizer = function (method) {
+            if (methods[method]) {
+                return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+            } else if (typeof method === 'object' || !method) {
+                return methods.init.apply(this, arguments);
+            } else {
+                $.error('Метод ' + method + ' в jQuery.liEqualizer не существует');
+            }
+        };
+    })(jQuery);
+    /*инициализация плагина*/
+    $(function () {
+        $('.anyClass').liEqualizer({
+            row: 25,         //кол-во столбцов
+            col: 10,	        //кол-во колонок
+            speed: 10,		//скорость подсветки кубиков
+            freq: 250,		//частота сигнала
+            on: true			//включено по умолчанию (true,false)
+        });
+        $('.start').click(function () {
+            $('.anyClass').liEqualizer('start');
+            return false;
+        })
+        $('.stop').click(function () {
+            $('.anyClass').liEqualizer('stop');
+            return false;
+        })
+    });
+    
+    setInterval(function () {
+        var col = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+        $('.eqItem').css({ 'background-color': col });
+    }, 500);
+</script>
+
+<style type="text/css">
+	/*Layout css*/
+	body {
+		margin: 0;
+		padding: 20px 10px;
+		text-align: center;
+	}
+	/*plugin css*/
+	.eqWrap {
+		margin: -1px 0 0 -2px;
+		overflow: hidden;
+		display: inline-block;
+	}
+	.eqCol {
+		width: 37px;
+		margin: 0 0 0 2px;
+		float: left;
+	}
+	.eqItem {
+		height: 10px;
+		width: 100%;
+		background: #e7aa3b;
+		margin: 1px 0 0 0;
+		opacity: 0;
+	}
+	.eqCol .eqItem:last-child { opacity: 1 !important }
+	
+	.button {
+		-moz-box-shadow:inset 0px 0px 5px -50px #fce2c1;
+		-webkit-box-shadow:inset 0px 0px 5px -50px #fce2c1;
+		box-shadow:inset 0px 0px 5px -50px #fce2c1;
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
+		background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
+		background-color:#ffc477;
+		-webkit-border-top-left-radius:5px;
+		-moz-border-radius-topleft:5px;
+		border-top-left-radius:5px;
+		-webkit-border-top-right-radius:5px;
+		-moz-border-radius-topright:5px;
+		border-top-right-radius:5px;
+		-webkit-border-bottom-right-radius:5px;
+		-moz-border-radius-bottomright:5px;
+		border-bottom-right-radius:5px;
+		-webkit-border-bottom-left-radius:5px;
+		-moz-border-radius-bottomleft:5px;
+		border-bottom-left-radius:5px;
+		text-indent:0px;
+		border:1px solid #eeb44f;
+		display:inline-block;
+		color:#ffffff;
+		font-family:Trebuchet MS;
+		font-size:30px;
+		font-weight:bold;
+		font-style:normal;
+		height:60px;
+		line-height:60px;
+		width:200px;
+		text-decoration:none;
+		text-align:center;
+		text-shadow:1px 0px 50px #cc9f52;
+	}
+	.button:hover {
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
+		background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
+		background-color:#fb9e25;
+	}
+	.button:active {
+		position:relative;
+		top:1px;
+	}
+</style>
+
+<table style="height: 100%; width: 100%;">
+    <tr>
+		<td style="vertical-align: bottom; text-align: center; width: 30%">
+		</td>
+		<td style="vertical-align: bottom; text-align: center">
+			<a class="button" href="#" onclick="javascript:alert('Coming soon!'); return false;">ВОЙТИ</a>
+			
+			<div style="font-size: 50px; margin-top: 25px;">
+				Жемчужина Кавказа
+			</div>
+		</td>
+		<td style="vertical-align: bottom; text-align: center; width: 30%">
+		</td>
+	</tr>
+    <tr>
+        <td style="vertical-align: bottom; text-align: center; width: 30%">
+            <div class="anyClass"></div>
+            <div style="display: none;">
+                <button class="start">start</button>
+                <button class="stop">stop</button>
+            </div>
+        </td>
+        <td style="vertical-align: bottom; text-align: center">
+            <img src="http://img-fotki.yandex.ru/get/3415/shuraev-d.9/0_46d5a_1ead701f_L.gif" style="height: 450px; width: 450px;" />
+			
+			<object id="audioplayer361" type="application/x-shockwave-flash" data="http://oyaebunterkrah.ucoz.ru/player/uppod.swf" width="350" height="50"><param name="bgcolor" value="#ffffff" /><param name="allowScriptAccess" value="always" /><param name="movie" value="http://oyaebunterkrah.ucoz.ru/player/uppod.swf" /><param name="flashvars" value="auto=play&amp;comment=Жемчужина Кавказа&amp;st=http://oyaebunterkrah.ucoz.ru/player/audio164-471.txt&amp;file=http://oyaebunterkrah.ucoz.ru/player/arsen_petrosov-erevan.mp3" /></object>	
+        </td>
+        <td style="vertical-align: bottom; text-align: center; width: 30%">
+            <div class="anyClass"></div>
+            <div style="display: none;">
+                <button class="start">start</button>
+                <button class="stop">stop</button>
+            </div>
+        </td>
+    </tr>
+</table>

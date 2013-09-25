@@ -1,0 +1,30 @@
+﻿@using CaucasianPearl;
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.UserControls
+@using CaucasianPearl.Properties
+
+@* ключ для reCaptcha *@
+<script type="text/javascript">
+    var reCaptchaPublicKey = '@Settings.Default.ReCaptchaPublicKey';
+</script>
+
+@Html.Raw(CssJsRegControl.Render("captcha_field.js", Consts.Paths.Js.CpJsPrefixPath))
+
+@* reCaptcha *@
+<div class="create_or_edit_field">
+    <div id="captchaBlock" class="captcha_block">
+        @* поле ввода капчи *@
+        <div class="create_or_edit_label">
+            <label for="captchaCode">Введите код с картинки</label>
+        </div>
+        <input id="captchaCode" type="text" />
+        @* валидация *@
+        <span id="captchaError" class="captcha_error">Вы ввели неверный код</span>
+        @* капча *@
+        <a id="captchaReload" class="captcha_reload" href="#">
+            <img id="captchaImage" class="captcha_image" alt="captcha image" />
+        </a>
+    </div>
+</div>
+    
+<div id="reCaptcha" class="reCaptcha"></div>

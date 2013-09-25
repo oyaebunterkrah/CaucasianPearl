@@ -5,13 +5,16 @@
         display: inline;
         position: relative;
     }
+
     .cover_image:hover {
-        background-color: rgb(183, 183, 107);
+        background-color: #CED989;
         cursor: pointer;
     }
+
     .cover_image img {
         height: 140px;
     }
+
     .delete {
         background: url('/content/img/site/close.gif') no-repeat center center;
         display: block;
@@ -24,9 +27,11 @@
         width: 11px;
         z-index: 90;
     }
+
     .delete:hover {
         background-color: red;
     }
+
     .fullscreen {
         background: url('/content/img/site/fullscreen.gif') no-repeat center center;
         display: block;
@@ -39,17 +44,19 @@
         width: 16px;
         z-index: 90;
     }
+
     .fullscreen:hover {
         background-color: transparent;
     }
+
     .main {
-        background-color: rgb(183, 183, 107);
+        background-color: #CED989;
     }
 </style>
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.dialog').dialog({
+        $('.dialog').popup({
             autoOpen: false,
             modal: true
         });
@@ -65,7 +72,7 @@
         $('.cover_image img').click(function (e) {
             var imageName = $(this).parent('.cover_image').data('imagename');
 
-            $('#set_cover_dialog').dialog({
+            $('#set_cover_dialog').popup({
                 buttons: {
                     'Да': function () {
                         setCoverImage(imageName);
@@ -88,7 +95,7 @@
             
             var imageName = $(this).parent('.cover_image').data('imagename');
 
-            $('#delete_image_dialog').dialog({
+            $('#delete_image_dialog').popup({
                 show: 'fade',
                 hide: 'fade',
                 buttons: {

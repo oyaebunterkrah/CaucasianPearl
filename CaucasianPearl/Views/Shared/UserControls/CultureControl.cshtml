@@ -3,44 +3,24 @@
 @using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
 
-@*@Html.ActionLink(
-    Consts.Culture.Russian,
-    Consts.Controllers.Account.Actions.ChangeCulture,
-    Consts.Controllers.Account.Name,
-    new
-    {
-        lang = Consts.Culture.Ru,
-        returnUrl = Request.RawUrl
-    },
-    null)*@
-
-@Html.ActionImage(
-    action: Consts.Controllers.Account.Actions.ChangeCulture,
-    controller: Consts.Controllers.Account.Name,
-    routeValues: new {
-        lang = Consts.Culture.Ru,
-        returnUrl = Request.RawUrl
-    },
-    imagePath: Url.Content(Path.Combine(Consts.Paths.Img.SiteImgFolder, "flag-ru.png")),
-    alt: "Русский")
-
-@*@Html.ActionLink(
-    Consts.Culture.Armenian,
-    Consts.Controllers.Account.Actions.ChangeCulture,
-    Consts.Controllers.Account.Name,
-    new
-    {
-        lang = Consts.Culture.Hy,
-        returnUrl = Request.RawUrl
-    },
-    null)*@
-
-@Html.ActionImage(
-    action: Consts.Controllers.Account.Actions.ChangeCulture,
-    controller: Consts.Controllers.Account.Name,
-    routeValues: new {
-        lang = Consts.Culture.Hy,
-        returnUrl = Request.RawUrl
-    },
-    imagePath: Url.Content(Path.Combine(Consts.Paths.Img.SiteImgFolder, "flag-hy.png")),
-    alt: "Հայերեն")
+@if (CultureHelper.CurrentCulture == CultureHelper.Hy) {
+    @Html.ActionImage(
+        action: Consts.Controllers.Account.Actions.ChangeCulture,
+        controller: Consts.Controllers.Account.Name,
+        routeValues: new {
+            lang = Consts.Culture.Ru,
+            returnUrl = Request.RawUrl
+        },
+        imagePath: Url.Content(Path.Combine(Consts.Paths.Img.SiteImgFolder, "flag-ru.png")),
+        alt: "Русский")
+    } else {
+    @Html.ActionImage(
+        action: Consts.Controllers.Account.Actions.ChangeCulture,
+        controller: Consts.Controllers.Account.Name,
+        routeValues: new {
+            lang = Consts.Culture.Hy,
+            returnUrl = Request.RawUrl
+        },
+        imagePath: Url.Content(Path.Combine(Consts.Paths.Img.SiteImgFolder, "flag-hy.png")),
+        alt: "Հայերեն")
+}

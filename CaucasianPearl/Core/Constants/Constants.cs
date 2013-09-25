@@ -142,14 +142,10 @@ namespace CaucasianPearl.Core.Constants
                 {
                     // О нас.
                     public const string About = "about";
+                    // События.
+                    public const string Events = "events";
                     // Афиша.
                     public const string Affiche = "affiche";
-                    // Контакты.
-                    public const string Contacts = "contacts";
-                    // Отзывы и предложения.
-                    public const string Feedback = "feedback";
-                    // Написать нам.
-                    public const string Contact = "contact";
                 }
             }
 
@@ -197,7 +193,6 @@ namespace CaucasianPearl.Core.Constants
                 {
                     // Event actions.
                     public const string Events = "events";
-                    public const string GetEvents = "getevents";
                     public const string GetHomePageEvents = "gethomepageevents";
                     public const string SelectMediaItemsOnCreate = "selectmediaitemsoncreate";
                     public const string SelectMediaItemsOnEdit = "selectmediaitemsonedit";
@@ -399,7 +394,7 @@ namespace CaucasianPearl.Core.Constants
             public const string DeletePartial = "deletepartial";
             public const string DeleteExpress = "deleteexpress";
             public const string Details = "details";
-            public const string GetByShortName = "GetByShortName";
+            public const string GetByShortName = "getbyshortname";
             public const string Up = "up";
             public const string Down = "down";
         }
@@ -599,8 +594,9 @@ namespace CaucasianPearl.Core.Constants
                 public const string BigSponsorsControl = PathPrefix + "BigSponsorsControl";
                 public const string CultureControl = PathPrefix + "CultureControl";
                 public const string FeedbacksControl = PathPrefix + "FeedbacksControl";
+                public const string FeedbackFormControl = PathPrefix + "FeedbackFormControl";
                 public const string FooterControl = PathPrefix + "FooterControl";
-                public const string HomePageEvents = PathPrefix + "HomePageEvents";
+                public const string EventsControl = PathPrefix + "EventsControl";
                 public const string LoginControl = PathPrefix + "LoginControl";
                 public const string MembersControl = PathPrefix + "MembersControl";
                 public const string PaginatorControl = PathPrefix + "PaginatorControl";
@@ -608,6 +604,13 @@ namespace CaucasianPearl.Core.Constants
                 public const string SmallSponsorsControl = PathPrefix + "SmallSponsorsControl";
                 public const string SocialShareControl = PathPrefix + "SocialShareControl";
                 public const string SponsorsControl = PathPrefix + "SponsorsControl";
+            }
+
+            public static class Fields
+            {
+                private const string PathPrefix = "Fields/";
+
+                public const string CaptchaField = PathPrefix + "CaptchaField";
             }
 
             public static class Plugins

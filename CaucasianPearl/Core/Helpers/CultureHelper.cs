@@ -24,6 +24,12 @@ namespace CaucasianPearl.Core.Helpers
             }
         }
 
+        public static string Ru
+        { get { return "ru-RU"; } }
+
+        public static string Hy
+        { get { return "hy-AM"; } }
+
         // Возвращает строку с первым символом в нижнем регистре.
         public static void Initialize()
         {

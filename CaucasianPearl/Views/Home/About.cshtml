@@ -10,9 +10,7 @@
 
 @model IEnumerable<ProfileItem>
 
-@{
-    ViewBag.Title = string.Format("{0} – {1}", ViewRes.ProjectTitle, ViewRes.AboutEnsemble);
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.About); }
 
 @* первый текст *@
 <div class="members_text2" style="float: left; width: 400px;">
@@ -35,9 +33,7 @@
 </div>
 
 <div>
-    <h2>
-        <a id="becomeSponsor" class="become_sponsor" href="https://money.yandex.ru/direct-payment.xml" target="_blank">@ViewRes.BecomeSponsor</a>
-    </h2>
+    <input id="becomeSponsor" class ="become_sponsor" type="button" onclick="window.open('https://money.yandex.ru/direct-payment.xml', '_blank')" value="@ViewRes.BecomeSponsor" />
 </div>
 
 @* крупные спонсоры *@

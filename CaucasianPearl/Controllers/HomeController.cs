@@ -1,7 +1,9 @@
-﻿using System.Text;
+﻿using System.Linq;
+using System.Text;
 using System.Web.ApplicationServices;
 using System.Web.Mvc;
 using CaucasianPearl.Core.Constants;
+using CaucasianPearl.Core.DAL.Data;
 using CaucasianPearl.Core.EntityServices;
 using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Filters;
@@ -54,6 +56,19 @@ namespace CaucasianPearl.Controllers
             return View();
         }
 
+        public ActionResult Events(string id)
+        {
+            int eventId;
+            int.TryParse(id, out eventId);
+            var eventEntityService = ServiceHelper<IEventService<Event>>.GetService();
+            var currentEvent = eventEntityService.Get(eventId);
+            var events = eventEntityService.GetLastEvents(Consts.Controllers.Event.EventCount);
+            var currentEventInfo = currentEvent != null ? new EventItem(currentEvent) : events.First();
+            ViewBag.CurrentEventInfo = currentEventInfo;
+
+            return View(events);
+        }
+
         //[LocalizedCacheAttribute(Duration = Consts.OutputCacheDuration)]
         public ActionResult Affiche()
         {
@@ -66,33 +81,5 @@ namespace CaucasianPearl.Controllers
 
             return View();
         }
-
-        ////[LocalizedCacheAttribute(Duration = Consts.OutputCacheDuration)]
-        //public ActionResult Contact()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult Contact(Contact model)
-        //{
-        //    var msg = "Имеется несколько ошибок!";
-
-        //    if (ModelState.IsValid)
-        //        msg = "Спасибо! Мы скоро Вам ответим.";
-
-        //    if (Request.IsAjaxRequest())
-        //        return new JsonResult {ContentEncoding = Encoding.UTF8, Data = new {success = true, message = msg}};
-
-        //    TempData["Message"] = msg;
-
-        //    return View();
-        //}
-
-        ////[LocalizedCacheAttribute(Duration = Consts.OutputCacheDuration)]
-        //public ActionResult Contacts()
-        //{
-        //    return View();
-        //}
     }
 }

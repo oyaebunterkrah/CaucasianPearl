@@ -363,9 +363,6 @@
   <data name="ProjectTitle" xml:space="preserve">
     <value>Жемчужина Кавказа</value>
   </data>
-  <data name="AboutUs" xml:space="preserve">
-    <value>О нас</value>
-  </data>
   <data name="Affiche" xml:space="preserve">
     <value>Афиша</value>
   </data>
@@ -381,9 +378,6 @@
   <data name="Home" xml:space="preserve">
     <value>Домашняя</value>
   </data>
-  <data name="LeaveComment" xml:space="preserve">
-    <value>Оставить отзыв</value>
-  </data>
   <data name="ManageProfile" xml:space="preserve">
     <value>Управление профилем</value>
   </data>
@@ -394,7 +388,7 @@
     <value>Заявки</value>
   </data>
   <data name="SendRequest" xml:space="preserve">
-    <value>Отправить заявку</value>
+    <value>Оставить заявку</value>
   </data>
   <data name="SiteSettings" xml:space="preserve">
     <value>Настройки сайта</value>
@@ -414,7 +408,7 @@
   <data name="FooterTitle" xml:space="preserve">
     <value>© Ансамбль «Жемчужина Кавказа»</value>
   </data>
-  <data name="AboutEnsemble" xml:space="preserve">
+  <data name="About" xml:space="preserve">
     <value>Об ансамбле</value>
   </data>
   <data name="Feedback" xml:space="preserve">
@@ -425,5 +419,89 @@
   </data>
   <data name="BecomeSponsor" xml:space="preserve">
     <value>Стать спонсором</value>
+  </data>
+  <data name="AddingRequest" xml:space="preserve">
+    <value>Добавление заявки</value>
+  </data>
+  <data name="FeedbackSendingError" xml:space="preserve">
+    <value>Во время отправки отзыва возникла неожиданная ошибка. Пожалуйста, повторите попытку позднее.</value>
+  </data>
+  <data name="FeedbackThanks" xml:space="preserve">
+    <value>Спасибо за Ваше мнение! Отзыв появится на сайте после проверки модератором.</value>
+  </data>
+  <data name="RequestSendingError" xml:space="preserve">
+    <value>Во время отправки заявки возникла неожиданная ошибка. Пожалуйста, повторите попытку позднее.</value>
+  </data>
+  <data name="RequestThanks" xml:space="preserve">
+    <value>Спасибо за проявленный интерес! Мы обязательно с Вами свяжемся!</value>
+  </data>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>Оставить отзыв</value>
+  </data>
+  <data name="SendRequestForPerformance" xml:space="preserve">
+    <value>Оставить заявку на выступление</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Действие</value>
+  </data>
+  <data name="AddingFeedback" xml:space="preserve">
+    <value>Добавление отзыва</value>
+  </data>
+  <data name="AddRequest" xml:space="preserve">
+    <value>Добавить заявку</value>
+  </data>
+  <data name="AreYouSureYouWantToDeleteThisSiteSetting" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить эту настройку сайта?</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Комментарий</value>
+  </data>
+  <data name="Cover" xml:space="preserve">
+    <value>Обложка</value>
+  </data>
+  <data name="Creating" xml:space="preserve">
+    <value>Создание</value>
+  </data>
+  <data name="DefaultValue" xml:space="preserve">
+    <value>Значение по умолчанию</value>
+  </data>
+  <data name="Deleting" xml:space="preserve">
+    <value>Удаление</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Editing" xml:space="preserve">
+    <value>Редактирование</value>
+  </data>
+  <data name="HomePageModeSettings" xml:space="preserve">
+    <value>Настройка режима главной страницы</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>Профили</value>
+  </data>
+  <data name="ProjectTitleShort" xml:space="preserve">
+    <value>ЖК</value>
+  </data>
+  <data name="RequestDetails" xml:space="preserve">
+    <value>Подробности заявки</value>
+  </data>
+  <data name="RequestEditing" xml:space="preserve">
+    <value>Редактирование заявки</value>
+  </data>
+  <data name="Sections" xml:space="preserve">
+    <value>Разделы</value>
+  </data>
+  <data name="SiteSetting" xml:space="preserve">
+    <value>Настройка сайта</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Название</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Значение</value>
   </data>
 </root>

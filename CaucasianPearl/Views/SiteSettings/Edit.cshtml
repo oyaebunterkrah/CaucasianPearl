@@ -1,25 +1,28 @@
+@using CaucasianPearl.Core.Constants
+@using Resources
+
 @model CaucasianPearl.Models.EDM.SiteSetting
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = ViewRes.Editing;
 }
 
-<h2>Edit</h2>
+<h2>@ViewRes.Editing</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>SiteSetting</legend>
+        <legend>@ViewRes.SiteSetting</legend>
 
         @Html.HiddenFor(model => model.ID)
-		@Html.Partial("_CreateOrEdit", Model)
+		@Html.Partial(Consts.Views.CreateOrEdit, Model)
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="@ViewRes.Save" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 </div>

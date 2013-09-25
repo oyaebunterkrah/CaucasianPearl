@@ -201,10 +201,8 @@
         selectionSet();
     };
 
-    onGetPhotosetsSuccess = function(photosetsJson) {
+    onGetPhotosetsSuccess = function (photosets) {
         $('#selectMediaItems').hide();
-
-        var photosets = $.parseJSON(photosetsJson);
 
         for (var i = 0; i < photosets.length; i++) {
             $('<div/>')
@@ -238,7 +236,7 @@
         }
     };
 
-    onGetPhotosSuccess = function(photosetId, photosetElemId, photosJson) {
+    onGetPhotosSuccess = function (photosetId, photosetElemId, photos) {
         var photoBlockId = 'photoBlock_' + photosetElemId;
         var photoBlock = $('<div/>')
             .attr({
@@ -246,8 +244,6 @@
             })
             .addClass('photoBlock photoBlock-selected')
             .appendTo($('#photosBlock'));
-
-        var photos = $.parseJSON(photosJson);
 
         for (var i = 0; i < photos.length; i++) {
             if (mode == 'edit' && eventMedia.indexOf(photos[i].PhotoId) > -1)
@@ -360,8 +356,8 @@
             url: '/event/getphotosets',
             type: 'GET',
             success: function (photosetsJson) { onGetPhotosetsSuccess(photosetsJson); },
-            beforeSend: function () { $('#photosetsBlock').addClass('loading'); },
-            complete: function () { $('#photosetsBlock').removeClass('loading'); },
+            beforeSend: function () { showLoading(); },
+            complete: function () { hideLoading(); },
             error: function (request, status, error) { alert('Не удалось загрузить альбомы. Пожалуйста, повторите попытку...'); }
         };
 
@@ -375,11 +371,8 @@
             type: 'POST',
             data: { photosetId: photosetId },
             success: function (photosJson) { onGetPhotosSuccess(photosetId, photosetElemId, photosJson); },
-            beforeSend: function () { $('#photosBlock').addClass('loading'); },
-            complete: function () {
-                $('#photosBlock').removeClass('loading');
-                selectionSet();
-            },
+            beforeSend: function () { showLoading(); },
+            complete: function () { hideLoading(); selectionSet(); },
             error: function (request, status, error) { alert('Не удалось загрузить фотографии. Пожалуйста, повторите попытку...'); }
         };
         

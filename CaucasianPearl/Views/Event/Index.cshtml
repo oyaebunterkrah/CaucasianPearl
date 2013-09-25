@@ -10,7 +10,7 @@
 @model IEnumerable<Event>
 
 @{
-    ViewBag.Title = string.Format("{0} - {1}", ViewRes.ProjectTitle, ViewRes.Events);
+    ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.Events);
 }
 
 <p>
@@ -62,7 +62,7 @@
                     htmlAttributes: new { @class = "link" })
             </td>
             <td style="text-align: center;">
-                @eventItem.EventDate
+                @eventItem.EventDate.Value.ToShortDateString()
             </td>
             
             @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))

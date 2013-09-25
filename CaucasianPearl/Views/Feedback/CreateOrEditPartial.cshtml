@@ -1,0 +1,28 @@
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.UserControls
+@using Resources
+
+@model CaucasianPearl.Models.EDM.Feedback
+
+<div class="create_or_edit_field">
+    <span class="required">*</span>
+    @Html.LabelFor(model => model.Name, new { @class = "inside" })
+    @Html.EditorFor(model => model.Name)
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+
+<div class="create_or_edit_field">
+    <span class="required">*</span>
+    @Html.LabelFor(model => model.City, new { @class = "inside" })
+    @Html.EditorFor(model => model.City)
+    @Html.ValidationMessageFor(model => model.City)
+</div>
+
+<div class="create_or_edit_field">
+    <span class="required">*</span>
+    @Html.LabelFor(model => model.Comment, new { @class = "inside" })
+    @Html.EditorFor(model => model.Comment)
+    @Html.ValidationMessageFor(model => model.Comment)
+</div>
+
+@Html.Partial(Consts.Paths.Fields.CaptchaField)

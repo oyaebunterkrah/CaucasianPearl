@@ -1,115 +1,17 @@
 ﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.UserControls
+@using Resources
 
-@{
-    ViewBag.Title = "Афиша";
-    // список событий на месяц
-    var eventsForMonth = @Html.Raw(@ViewBag.EventsForMonth);
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.Index); }
 
 <script type="text/javascript">
-    $(function () {
-        $(document).ready(function () {
-            initializeDatepicker();
-            loadEvents();
-        });
-
-        initializeDatepicker = function () {
-            $('#datepicker').datepicker({
-                changeMonth: false,
-                changeYear: false,
-                stepMonths: 0,
-                showOtherMonths: true,
-                onSelect: function (date, inst) {
-                    if (!$.isNumeric(inst.selectedDay))
-                        date = getSelectedDate(inst);
-                    openRequestForm(date);
-                    loadEvents();
-                }
-            });
-        };
-        
-        loadEvents = function () {
-            var events = $.parseJSON('@eventsForMonth');
-            $.each(events, function (i) {
-                setTimeout(function () {
-                    var eventDay = events[i].Day;
-                    if (eventDay != 'undefined' && eventDay != '') {
-                        var day = $('.ui-datepicker-calendar a.ui-state-default').filter(function () { return $(this).text() == eventDay; });
-                        day.html('<text>{0}</text>'.f(day.html()));
-                        day.append('<div class="events"><u class="event_title">{0}</u></div>'.f(events[i].Title))
-                           .addClass('have_events')
-                           .hide()
-                           .fadeIn();
-                    }
-                }, i * 100);
-            });
-        };
-        
-        // делаем так, потому что текст в ячейках изменён (добавлен тэг <text> + события)
-        // и из-за этого datepicker не парсит дату
-        getSelectedDate = function (inst) {
-            var selectedDay = $('<div/>')
-                .html(inst.selectedDay)
-                .find('text')
-                .text();
-            return $.datepicker.formatDate('dd.mm.yy', new Date('{0}/{1}/{2}'.f(inst.selectedYear, inst.selectedMonth + 1, selectedDay)));
-        };
-    });
+    // список событий на месяц
+    var eventsForMonth = '@Html.Raw(@ViewBag.EventsForMonth)';
 </script>
 
-@* перенёс в site.css *@
-<style type="text/css">
-    /*#datepicker .ui-datepicker { font-size: 30px; }
-    #datepicker .ui-datepicker { width: 30em; }
-    #datepicker .ui-datepicker .ui-datepicker-prev, #datepicker  .ui-datepicker .ui-datepicker-next { display: none; }
-    #datepicker .ui-datepicker-header { display: none; }
-    #datepicker .ui-datepicker-calendar thead { display: none; }
-    #datepicker .ui-state-default { height: 90px; }
-    #datepicker .ui-datepicker td span, #datepicker  .ui-datepicker td a { text-align: left; }
-    #datepicker .ui-widget-content { border: 1px solid #aaaaaa; color: #222222; }
-
-    #datepicker .ui-state-default {
-        background-color: #F5F5F5;
-	    background-image: none;
-	    color: #C9C9C9;
-	    font-size: 45px;
-    }
-    #datepicker .ui-state-hover {
-        background-color: #EDEDED;
-	    background-image: none;
-	    color: #C9C9C9;
-	    font-size: 45px;
-    }
-    #datepicker .ui-state-highlight {
-        background-color: #F5F5F5;
-        background-image: none;
-        border: none;
-        color: #C9C9C9;
-    }
-    #datepicker .ui-state-active{
-        color: #212121;
-        background-color: #F3F1E1;
-        font-weight: normal;
-    }
-
-    .highlight {
-       background-color: red !important;
-    }
-    .events {
-        margin-top: 15px;
-    }
-    .event_title {
-        clear: both;
-        display: block;
-        font-size: 10px;
-        text-decoration: none;
-    }
-    .have_events {
-        background-color: #F3EDC9 !important;
-        color: #4C495A !important;
-    }*/
-</style>
+@Html.Raw(CssJsRegControl.Render("affiche.js", Consts.Paths.Js.CpJsPrefixPath))
+@Html.Raw(CssJsRegControl.Render("affiche.css", Consts.Paths.Css.CpCssPrefixPath))
 
 <div id="datepicker"></div>
 
-@Html.Partial(Consts.Paths.UserControls.RequestFormControl, new ViewDataDictionary { { "elementId", "a.ui-state-default" } })
+@Html.Partial(Consts.Paths.UserControls.RequestFormControl)

@@ -8,46 +8,15 @@
 
 @model IEnumerable<EventItemInfo>
 
-@{
-    ViewBag.Title = ViewRes.ProjectTitle;
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.Index); }
 
 @* проверяем режим: события/обложка *@
 @if (ViewBag.HomePageMode == SiteSettingsHelper.HomePageMode.Events && Model != null) {
-    @Html.Partial(Consts.Paths.UserControls.HomePageEvents, ViewBag.Events as IEnumerable<EventItemInfo>)
+    @Html.Partial(Consts.Paths.UserControls.EventsControl, ViewBag.Events as IEnumerable<EventItemInfo>)
 } else {
-    <img src='@ViewBag.CoverImagePath' alt="Обложка" />
+    @* первый текст *@
+    <div class="home_page_text">
+        @Html.Raw(Html.PlaceHolder("home_page_text"))
+    </div>
+    <img src='@ViewBag.CoverImagePath' alt="@ViewRes.Cover" />
 }
-
-@*@using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "Post", OnComplete = "Contact.onComplete" }))
-{
-    @Html.ValidationSummary(true, "A few fields are still empty")
-    <fieldset>
-        <legend>Написать нам</legend>
-        <div class="create_or_edit_label">
-            @Html.LabelFor(m => m.Name)
-        </div>
-        <div class="create_or_edit_field">@Html.TextBoxFor(m => m.Name)
-            @Html.ValidationMessageFor(m => m.Name)
-        </div>
-        <div class="create_or_edit_label">
-            @Html.LabelFor(m => m.Email)
-        </div>
-        <div class="create_or_edit_field">
-            @Html.TextBoxFor(m => m.Email)
-            @Html.ValidationMessageFor(m => m.Email)
-        </div>
-        <div class="create_or_edit_label">
-            @Html.LabelFor(m => m.Comment)
-        </div>
-        <div class="create_or_edit_field">
-            @Html.TextAreaFor(m => m.Comment, 10, 25, null)
-            @Html.ValidationMessageFor(m => m.Comment)
-        </div>
-        <p>
-            <input type="submit" value="Отправить" />
-        </p>
-    </fieldset>
-
-    <p id="result">@TempData["Message"]</p>
-}*@

@@ -7,30 +7,29 @@ namespace CaucasianPearl.Models.Metadata
 {
     public class SiteSettingsMetadata
     {
-        [Show(ShowForDisplay = false, ShowForEdit = false)]
         public int ID { get; set; }
 
-        [Display(Name = "Название")]
-        //[Display(Name = "YourName", ResourceType = typeof(RequestModelRes))]
+        [Display(Name = "Title", ResourceType = typeof(ModelRes))]
         [DataType(DataType.Text)]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
         [StringLength(50, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
-        [Show(ShowForDisplay = true, ShowForEdit = true)]
         public string Name { get; set; }
 
-
-        [Display(Name = "Значение")]
-        // [Display(Name = "YourName", ResourceType = typeof(RequestModelRes))]
+        [Display(Name = "Value", ResourceType = typeof(ModelRes))]
         [DataType(DataType.Text)]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
-        [Show(ShowForDisplay = true, ShowForEdit = true)]
+        [StringLength(50, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
         public string Value { get; set; }
 
-        [Display(Name = "Описание")]
-        // [Display(Name = "YourName", ResourceType = typeof(RequestModelRes))]
+        [Display(Name = "DefaultValue", ResourceType = typeof(ModelRes))]
+        [DataType(DataType.Text)]
+        [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
+        [StringLength(50, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
+        public string DefaultValue { get; set; }
+
+        [Display(Name = "Description", ResourceType = typeof(ModelRes))]
         [DataType(DataType.MultilineText)]
         [StringLength(500, ErrorMessageResourceName = "StringLengthMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
-        [Show(ShowForDisplay = true, ShowForEdit = true)]
         public string Description { get; set; }
     }
 }

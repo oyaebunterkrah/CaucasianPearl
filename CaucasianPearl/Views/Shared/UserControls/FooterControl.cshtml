@@ -5,6 +5,21 @@
 @using CaucasianPearl.Core.UserControls
 @using Resources
 
+@Html.Raw(CssJsRegControl.Render("footer.js", Consts.Paths.Js.CpJsPrefixPath, "windows-1251"))
+@Html.Raw(CssJsRegControl.Render("footer.css", Consts.Paths.Css.CpCssPrefixPath))
+
+@*
+    аудиоплеер
+    <div class="player" @* style="display: none;"
+        <object id="audioplayer361" type="application/x-shockwave-flash" data="http://caucasianpearl/content/audioplayer/player/uppod.swf" width="350" height="50">
+            <param name="bgcolor" value="#ffffff" />
+            <param name="allowScriptAccess" value="always" />
+            <param name="movie" value="http://caucasianpearl/content/plugins/audioplayer/player/uppod.swf" />
+            <param name="flashvars" value="comment=Жемчужина Кавказа&amp;st=http://caucasianpearl/content/plugins/audioplayer/styles/audio164-471.txt&amp;file=http://cs1-26v4.vk.me/p35/6e11d4c8f5d0e2.mp3" />
+        </object>
+    </div>
+*@
+
 @{
     var currentController = ViewContext.RouteData.Values["controller"] as string;
     var currentAction = ViewContext.RouteData.Values["action"] as string;
@@ -25,32 +40,27 @@
                 @* крупные спонсоры *@
                 @Html.Partial(Consts.Paths.UserControls.BigSponsorsControl, ViewBag.BigSponsors as IEnumerable<SponsorItem>)
 
-                @* форма заявки *@
-                @Html.Partial(Consts.Paths.UserControls.RequestFormControl, new ViewDataDictionary { { "elementId", "#sendRequest" } })
+                @* форма отправки заявки *@
+                @Html.Partial(Consts.Paths.UserControls.RequestFormControl, new ViewDataDictionary { { "triggerElementId", "#sendRequest" } })
 
-                <input id="sendRequest" type="button" value="Оставить заявку на выступление" />
+                @* кнопка "Оставить заявку" *@
+                <input id="sendRequest" class ="send_request" type="button" value="@ViewRes.SendRequestForPerformance" />
 
                 @* контакты разработчиков *@
                 @*@Html.Raw(Html.PlaceHolder("developersContacts"))*@
 
                 <div class="developer_contacts">
                     @ViewRes.FooterTitle, @DateTime.Now.Year
-                    <div>Разработка сайта: А. Погосян</div>
-                    <div>Дизайн: И. Киньябулатов</div>
-                    <div>Вёрстка: X. Xxxxxxxxx</div>
-                </div>
-
-                @*
-                    аудиоплеер
-                    <div class="player" @* style="display: none;"
-                        <object id="audioplayer361" type="application/x-shockwave-flash" data="http://caucasianpearl/content/audioplayer/player/uppod.swf" width="350" height="50">
-                            <param name="bgcolor" value="#ffffff" />
-                            <param name="allowScriptAccess" value="always" />
-                            <param name="movie" value="http://caucasianpearl/content/plugins/audioplayer/player/uppod.swf" />
-                            <param name="flashvars" value="comment=Жемчужина Кавказа&amp;st=http://caucasianpearl/content/plugins/audioplayer/styles/audio164-471.txt&amp;file=http://cs1-26v4.vk.me/p35/6e11d4c8f5d0e2.mp3" />
-                        </object>
+                    <div>
+                        Разработка сайта:&nbsp;<a href="#" data-who="develop">А. Погосян</a>
                     </div>
-                *@
+                    <div>
+                        Дизайн:&nbsp;<a href="#" data-who="design">И. Киньябулатов</a>
+                    </div>
+                    <div>
+                        Вёрстка:&nbsp;<a href="#" data-who="markup">X. Xxxxxxxxx</a>
+                    </div>
+                </div>
             </div>
         }
         else {
@@ -64,3 +74,27 @@
         }
     }
 }
+
+<div class="popup develop">
+    <div class="links">
+        <div><a href="http://www.odnoklassniki.ru/artem.pogosoff" target="_blank">odnoklassniki.ru/artem.pogosoff</a></div>
+        <div><a href="http://www.vk.com/artem.pogosoff" target="_blank">vk.com/artem.pogosoff</a></div>
+        <div><a href="http://www.facebook.com/artem.pogosoff" target="_blank">facebook.com/artem.pogosoff</a></div>
+    </div>
+</div>
+
+<div class="popup design">
+    <div class="links">
+        <div><a href="https://twitter.com/prounn" target="_blank">twitter.com/prounn</a></div>
+        <div><a href="http://vk.com/prounn" target="_blank">vk.com/prounn</a></div>
+        <div><a href="https://www.facebook.com/kinyabulatov" target="_blank">facebook.com/kinyabulatov</a></div>
+    </div>
+</div>
+
+<div class="popup markup">
+    <div class="links">
+        <div><a href="http://www.idangero.us/" target="_blank">www.idangero.us</a></div>
+        <div><a href="http://www.vk.com/xxx" target="_blank">vk.com/xxx</a></div>
+        <div><a href="http://www.facebook.com/xxx" target="_blank">facebook.com/xxx</a></div>
+    </div>
+</div>
