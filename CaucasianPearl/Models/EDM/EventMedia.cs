@@ -18,8 +18,8 @@ namespace CaucasianPearl.Models.EDM
         public Nullable<int> EventId { get; set; }
         public string PhotoId { get; set; }
         public string PhotosetId { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
-        public string Content { get; set; }
         public string MediaType { get; set; }
         public string FlickrUrl { get; set; }
         public string ThumbnailUrl { get; set; }

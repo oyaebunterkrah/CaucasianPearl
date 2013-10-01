@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Resources {
+namespace CaucasianPearl.Resources {
     using System;
     
     
@@ -223,6 +223,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Имя.
+        /// </summary>
+        public static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Группа.
         /// </summary>
         public static string Group {
@@ -264,6 +273,15 @@ namespace Resources {
         public static string LastName {
             get {
                 return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Логин.
+        /// </summary>
+        public static string Login {
+            get {
+                return ResourceManager.GetString("Login", resourceCulture);
             }
         }
         
@@ -349,6 +367,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Регистрация.
+        /// </summary>
+        public static string Register {
+            get {
+                return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Текст заявки.
         /// </summary>
         public static string RequestContent {
@@ -426,6 +453,15 @@ namespace Resources {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Зарегистрироваться.
+        /// </summary>
+        public static string ToRegister {
+            get {
+                return ResourceManager.GetString("ToRegister", resourceCulture);
             }
         }
         

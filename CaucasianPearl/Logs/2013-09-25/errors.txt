@@ -1,0 +1,81 @@
+2013-09-25 23:19:40.0037|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /account/changepassword
+Raw Url: /account/changepassword
+Message: A public action method 'changepassword' was not found on controller 'CaucasianPearl.Controllers.AccountController'.
+Source: System.Web.Mvc
+Stack Trace:    â System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   â System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   â System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   â System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: Void HandleUnknownAction(System.String)
+2013-09-25 23:19:40.6748|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /favicon.ico
+Raw Url: /favicon.ico
+Message: The controller for path '/favicon.ico' was not found or does not implement IController.
+Source: System.Web.Mvc
+Stack Trace:    â System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   â System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   â System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   â System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   â System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   â System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   â System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   â System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: System.Web.Mvc.IController GetControllerInstance(System.Web.Routing.RequestContext, System.Type)
+2013-09-25 23:30:36.0803|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /account/Register
+Raw Url: /account/Register
+Message: The following sections have been defined but have not been rendered for the layout page "~/Views/Shared/_Layout.cshtml": "Scripts".
+Source: System.Web.WebPages
+Stack Trace:    â System.Web.WebPages.WebPageBase.VerifyRenderedBodyOrSections()
+   â System.Web.WebPages.WebPageBase.PopContext()
+   â System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   â System.Web.WebPages.WebPageBase.<>c__DisplayClass7.<RenderPageCore>b__6(TextWriter writer)
+   â System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   â System.Web.WebPages.WebPageBase.Write(HelperResult result)
+   â System.Web.WebPages.WebPageBase.RenderSurrounding(String partialViewName, Action`1 body)
+   â System.Web.WebPages.WebPageBase.PopContext()
+   â System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   â System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   â System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   â System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   â System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   â System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   â System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   â System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   â System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   â System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   â System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   â System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   â System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   â System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   â System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   â System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   â System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   â System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+TargetSite: Void VerifyRenderedBodyOrSections()
+2013-09-25 23:31:33.1365|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+2013-09-25 23:34:33.9019|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+2013-09-25 23:34:43.4764|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|

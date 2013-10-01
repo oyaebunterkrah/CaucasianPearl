@@ -110,8 +110,8 @@
         var photoObj = {};
         photoObj[consts.fields.PhotoId] = mediaItem.data(consts.fields.photoid);
         photoObj[consts.fields.PhotosetId] = mediaItem.data(consts.fields.photosetid);
+        photoObj[consts.fields.Title] = mediaItem.data(consts.fields.title);
         photoObj[consts.fields.Description] = mediaItem.data(consts.fields.description);
-        photoObj[consts.fields.Content] = mediaItem.data(consts.fields.content);
         photoObj[consts.fields.MediaType] = mediaItem.data(consts.fields.mediatype);
         photoObj[consts.fields.FlickrUrl] = mediaItem.data(consts.fields.flickrurl);
         photoObj[consts.fields.ThumbnailUrl] = mediaItem.data(consts.fields.thumbnailurl);
@@ -292,8 +292,8 @@
                     src: photos[i].ThumbnailUrl,
                     'data-photoid': photos[i].PhotoId,
                     'data-photosetid': photos[i].PhotosetId,
+                    'data-title': '',
                     'data-description': '',
-                    'data-content': '',
                     'data-mediatype': photos[i].MediaType,
                     'data-flickrurl': photos[i].FlickrUrl,
                     'data-thumbnailurl': photos[i].ThumbnailUrl,
@@ -419,15 +419,15 @@
         var mediaItem = $('#{0}'.f(mediaItemId));
         var photoId = mediaItem.data(consts.fields.photoid);
 
+        var title = encodeScriptTags($('#mediaItemTitle').val());
         var description = encodeScriptTags($('#mediaItemDescription').val());
-        var content = encodeScriptTags($('#mediaItemContent').val());
 
         mediaItem.data(consts.fields.description, description);
-        mediaItem.data(consts.fields.content, content);
+        mediaItem.data(consts.fields.title, title);
 
         var dict = editInfoBox.data('mode') == 'edit' ? mediaItemsForEditJson : mediaItemsForCreateJson;
         dict[photoId].Description = description;
-        dict[photoId].Content = content;
+        dict[photoId].Title = title;
     };
 
     btnCancelClick = function () {
@@ -438,11 +438,11 @@
     openEditBox = function (mediaItemId) {
         var editInfoBox = $('#editInfoBox');
         var mediaItem = $('#{0}'.f(editInfoBox.data(consts.ids.mediaitemid)));
+        var title = decodeScriptTags(mediaItem.data(consts.fields.title));
         var description = decodeScriptTags(mediaItem.data(consts.fields.description));
-        var content = decodeScriptTags(mediaItem.data(consts.fields.content));
 
         $('#mediaItemDescription').val(description);
-        $('#mediaItemContent').val(content);
+        $('#mediaItemTitle').val(title);
 
         editInfoBox.dialog('open');
     };
@@ -462,14 +462,14 @@
             <a id="selection" class="unselected" href="#" data-state="unselected">Выделить все</a>
         </div>
         <div id="editInfoBox" class="display_none">
+            <div class="mediaItemTitle">
+                <label for="mediaItemTitle">Название</label>
+                <textarea id="mediaItemTitle"></textarea>
+            </div>
+            <br />
             <div class="mediaItemDescription">
                 <label for="mediaItemDescription">Описание</label>
                 <textarea id="mediaItemDescription"></textarea>
-            </div>
-            <br />
-            <div class="mediaItemContent">
-                <label for="mediaItemContent">Контент</label>
-                <textarea id="mediaItemContent"></textarea>
             </div>
         </div>
     </div>

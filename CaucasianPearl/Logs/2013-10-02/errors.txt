@@ -1,0 +1,24 @@
+2013-10-02 00:10:25.2542|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /&flickr_target=_self&onsite=true&flickr_noAutoPlay=true&hd_default=false
+Raw Url: /&flickr_target=_self&onsite=true&flickr_noAutoPlay=true&hd_default=false
+Message: Обнаружено потенциально опасное значение Request.Path, полученное от клиента (&).
+Source: System.Web
+Stack Trace:    в System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   в System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+TargetSite: Void ValidateInputIfRequiredByConfig()
+2013-10-02 00:10:27.0973|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /&flickr_target=_self&onsite=true&flickr_noAutoPlay=true&hd_default=false
+Raw Url: /&flickr_target=_self&onsite=true&flickr_noAutoPlay=true&hd_default=false
+Message: Обнаружено потенциально опасное значение Request.Path, полученное от клиента (&).
+Source: System.Web
+Stack Trace:    в System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   в System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+TargetSite: Void ValidateInputIfRequiredByConfig()
+2013-10-02 00:12:04.2469|ERROR|CaucasianPearl.Core.Services.LoggingService.LogService|
+Error in Path: /&flickr_target=_self&onsite=true&flickr_noAutoPlay=true&hd_default=false
+Raw Url: /&flickr_target=_self&onsite=true&flickr_noAutoPlay=true&hd_default=false
+Message: Обнаружено потенциально опасное значение Request.Path, полученное от клиента (&).
+Source: System.Web
+Stack Trace:    в System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   в System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+TargetSite: Void ValidateInputIfRequiredByConfig()

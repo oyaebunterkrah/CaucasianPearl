@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.Filters;
-using Resources;
+using CaucasianPearl.Resources;
 
 namespace CaucasianPearl.Models.Metadata
 {
@@ -28,14 +28,16 @@ namespace CaucasianPearl.Models.Metadata
         [Display(Name = "Description", ResourceType = typeof(ModelRes))]
         [DataType(DataType.MultilineText)]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
-        [StringLength(2000, ErrorMessageResourceName = "StringLengthMinMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
+        [StringLength(2048, ErrorMessageResourceName = "StringLengthMinMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
         [Show(ShowForDisplay = true, ShowForEdit = false)]
+        [AllowHtml]
         public string Description { get; set; }
 
         [Display(Name = "Content", ResourceType = typeof(ModelRes))]
         [DataType(DataType.MultilineText)]
         [Required(ErrorMessageResourceName = "Required", ErrorMessageResourceType = typeof(ValidationRes))]
-        [StringLength(2000, ErrorMessageResourceName = "StringLengthMinMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
+        [StringLength(2048, ErrorMessageResourceName = "StringLengthMinMax", ErrorMessageResourceType = typeof(ValidationRes), MinimumLength = 3)]
+        [AllowHtml]
         public string Content { get; set; }
 
         [Display(Name = "Cover", ResourceType = typeof(ModelRes))]

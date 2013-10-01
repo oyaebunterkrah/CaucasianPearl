@@ -1,45 +1,65 @@
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Models.EDM
+@using CaucasianPearl.Resources;
 
 @model Profile
 
-@{
-    ViewBag.Title = "Delete";
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProfileDeleting, ViewRes.ProjectTitleShort); }
 
-<h2>Delete</h2>
+<h2>@ViewRes.Deleting</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>@ViewRes.AreYouSureThatYouWantDeleteThisProfile</h3>
+
+<br />
+
+<div class="model-image">
+    <img src='@Url.Content(ImageHelper.GetImageUrl(Model, Consts.Controllers.Profile.ProfileImagesFolder))' />
+</div>
+
 <fieldset>
-    <legend>User</legend>
-
-    <div class="display-label">UserName</div>
-    <div class="display-field">@Model.UserName</div>
-
-    <div class="display-label">Email</div>
-    <div class="display-field">@Model.Email</div>
-
-    <div class="display-label">FirstName</div>
-    <div class="display-field">@Model.FirstName</div>
-
-    <div class="display-label">LastName</div>
-    <div class="display-field">@Model.LastName</div>
-
-    <div class="display-label">Group</div>
-    <div class="display-field">@Model.Position</div>
-
-    <div class="display-label">ImageExt</div>
-    <div class="display-field">@Model.ImageExt</div>
-
-    <div class="display-label">ShortName</div>
-    <div class="display-field">@Model.ShortName</div>
-
-    <div class="display-label">Sequence</div>
-    <div class="display-field">@Model.Sequence</div>
+    <legend>@Model.FirstName @Model.LastName</legend>
+    
+    <div class="display-form">
+        <div class="display-property">
+            <div class="display-label">@Html.LabelFor(model => model.UserName)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.UserName)</div>
+            <div class="clear"></div>
+            
+            <div class="display-label">@Html.LabelFor(model => model.Email)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Email)</div>
+            <div class="clear"></div>
+            
+            <div class="display-label">@Html.LabelFor(model => model.FirstName)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.FirstName)</div>
+            <div class="clear"></div>
+            
+            <div class="display-label">@Html.LabelFor(model => model.LastName)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.LastName)</div>
+            <div class="clear"></div>
+            
+            <div class="display-label">@Html.LabelFor(model => model.Position)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Position)</div>
+            <div class="clear"></div>
+            
+            <div class="display-label">@Html.LabelFor(model => model.ImageExt)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.ImageExt)</div>
+            <div class="clear"></div>
+            
+            <div class="display-label">@Html.LabelFor(model => model.ShortName)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.ShortName)</div>
+            <div class="clear"></div>
+            
+            <div class="display-label">@Html.LabelFor(model => model.Sequence)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Sequence)</div>
+            <div class="clear"></div>
+        </div>
+    </div>
 </fieldset>
 
+<br />
+
 @using (Html.BeginForm()) {
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+    <input type="submit" value="@ViewRes.Delete" /> @:|
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 }

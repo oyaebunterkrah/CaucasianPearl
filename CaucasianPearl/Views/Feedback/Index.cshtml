@@ -1,13 +1,14 @@
 @using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.EntityServices
 @using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Core.UserControls
 @using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Models
 @using CaucasianPearl.Models.EDM;
 @using PagedList
 @using PagedList.Mvc
-@using Resources
+@using CaucasianPearl.Resources;
 
 @model IEnumerable<Feedback>
 
@@ -72,15 +73,13 @@
             Consts.Actions.Edit,
             Consts.Controllers.Feedback.Name,
             new { id = feedback.ID },
-            new AjaxOptions
-                {
-                    HttpMethod = "Post",
-                    OnSuccess = "feedbackEntity.onSuccess",
-                    OnFailure = "feedbackEntity.onFailure",
-                    OnComplete = "feedbackEntity.onComplete"
-                },
-            new { id = string.Format("form{0}", feedback.ID) }))
-        {
+            new AjaxOptions {
+                HttpMethod = "Post",
+                OnSuccess = "feedbackEntity.onSuccess",
+                OnFailure = "feedbackEntity.onFailure",
+                OnComplete = "feedbackEntity.onComplete"
+            },
+            new { id = string.Format("form{0}", feedback.ID) })) {
             @* Display block *@
             <div id="@string.Format("displayBlock{0}", feedback.ID)">
                 <span id="title">
@@ -92,69 +91,64 @@
                         @feedback.Comment
                     </div>
 
-                    @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
-                    {
+                    @if (User.IsInAnyRole(Consts.Roles.AdminContentManager)) {
                         <span class="display-label">@ModelRes.IsApproved:</span>
                         @Html.DisplayFor(m => feedback.IsApproved)
                     }
 
-                    @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
-                    {
+                    @if (User.IsInAnyRole(Consts.Roles.AdminContentManager)) {
                         <p>
-                            @*  Редактировать *@
+                            @*  редактировать *@
                             @Html.ActionLink(
                                 linkText: ViewRes.Edit,
                                 actionName: Consts.Actions.Edit,
-                                routeValues: new {id = feedback.ID},
-                                htmlAttributes: new
-                                    {
-                                        id = string.Format("btnEdit{0}", feedback.ID),
-                                        onclick = "javascript:$(this).closest('#" + string.Format("displayBlock{0}", feedback.ID) + "').slideUp({ duration: feedbackEntity.slideUpDuration }); $('#" + string.Format("editBlock{0}", feedback.ID) + "').slideDown({ duration: feedbackEntity.slideDownDuration }); $('#result').slideUp({ duration: feedbackEntity.slideUpDuration }); return false;"
-                                    })|
-                            @*  Удалить *@
+                                routeValues: new { id = feedback.ID },
+                                htmlAttributes: new {
+                                    id = string.Format("btnEdit{0}", feedback.ID),
+                                    onclick = "javascript:$(this).closest('#" + string.Format("displayBlock{0}", feedback.ID) + "').slideUp({ duration: feedbackEntity.slideUpDuration }); $('#" + string.Format("editBlock{0}", feedback.ID) + "').slideDown({ duration: feedbackEntity.slideDownDuration }); $('#result').slideUp({ duration: feedbackEntity.slideUpDuration }); return false;"
+                                })|
+                            @*  удалить *@
                             @Html.ActionLink(
                                 linkText: ViewRes.Delete,
                                 actionName: Consts.Actions.Delete,
-                                routeValues: new {id = feedback.ID},
-                                htmlAttributes: new {id = string.Format("btnDelete{0}", feedback.ID)})
+                                routeValues: new { id = feedback.ID },
+                                htmlAttributes: new { id = string.Format("btnDelete{0}", feedback.ID) })
                         </p>
                     }
                 </div>
         
-                @*  Подробности *@
+                @*  подробности *@
                 @Html.ActionLink(
                     linkText: @ViewRes.Details,
                     actionName: Consts.Actions.Details,
-                    routeValues: new {id = feedback.ID},
-                    htmlAttributes: new {id = string.Format("btnDetails{0}", feedback.ID)})
+                    routeValues: new { id = feedback.ID },
+                    htmlAttributes: new { id = string.Format("btnDetails{0}", feedback.ID) })
             </div>
 
-            @* Edit block *@
-            if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
-            {
+            @* edit block *@
+                if (User.IsInAnyRole(Consts.Roles.AdminContentManager)) {
                 <div id="@string.Format("editBlock{0}", feedback.ID)" style="display: none;">
                     @Html.HiddenFor(model => feedback.ID)
-		            @Html.Partial("CreateOrEdit", feedback)
+                    @Html.Partial("CreateOrEdit", feedback)
             
-                    @* Сохранить *@
+                    @* сохранить *@
                     <input
                         id="@string.Format("btnSubmit{0}", feedback.ID)"
                         type="submit"
                         value="@ViewRes.Save" />
 
-                    @* Редактировать *@
+                    @* редактировать *@
                     <input
                         id="@string.Format("btnEdit{0}", feedback.ID)"
                         type="submit"
                         value="@ViewRes.Cancel"
-                        onclick="javascript:$(this).closest('#@string.Format("editBlock{0}", feedback.ID)').slideUp({ duration: feedbackEntity.slideUpDuration }); $('#@string.Format("displayBlock{0}", feedback.ID)').slideDown({ duration: feedbackEntity.slideDownDuration }); return false;" />
+                        onclick=" javascript:$(this).closest('#@string.Format("editBlock{0}", feedback.ID)').slideUp({ duration: feedbackEntity.slideUpDuration }); $('#@string.Format("displayBlock{0}", feedback.ID)').slideDown({ duration: feedbackEntity.slideDownDuration }); return false; " />
                 </div>
             }
-            
+
             <p id="result" style="background-color: #cef7be; display: none;"></p>
 
-            if (feedback != Model.Last())
-            {
+            if (feedback != Model.Last()) {
                 <hr />
             }
         }

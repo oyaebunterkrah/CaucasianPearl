@@ -3,7 +3,7 @@
 @using CaucasianPearl.Core.DAL.Data
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Core.UserControls
-@using Resources
+@using CaucasianPearl.Resources;
 
 @Html.Raw(CssJsRegControl.Render("footer.js", Consts.Paths.Js.CpJsPrefixPath, "windows-1251"))
 @Html.Raw(CssJsRegControl.Render("footer.css", Consts.Paths.Css.CpCssPrefixPath))
@@ -98,3 +98,7 @@
         <div><a href="http://www.facebook.com/xxx" target="_blank">facebook.com/xxx</a></div>
     </div>
 </div>
+
+<section id="login">
+    @Html.Partial(Consts.Paths.UserControls.LoginControl)
+</section>

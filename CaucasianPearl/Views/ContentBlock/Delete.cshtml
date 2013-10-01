@@ -1,11 +1,9 @@
 ﻿@model CaucasianPearl.Models.EDM.ContentBlock
 
 @using CaucasianPearl.Core.Constants
-@using Resources
+@using CaucasianPearl.Resources;
 
-@{
-    ViewBag.Title = string.Format("{0} | {1}", ViewRes.ContentBlockDeleting, Consts.Title);
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ContentBlockDeleting, ViewRes.ProjectTitleShort); }
 
 <p>
     @Html.ActionLink(ViewRes.Cancel,
@@ -15,13 +13,12 @@
             id = Model.ID,
             page = Request.QueryString["page"]
         },
-        htmlAttributes: new { @class = "link" }
-    )
+        htmlAttributes: new { @class = "link" })
 </p>
 
-<h2 style="color: Red">Вы уверены, что хотите удалить это событие?</h2>
+<br />
 
-@using (Html.BeginForm())
-{
-    <input type="submit" value="@ViewRes.Delete" />
+@using (Html.BeginForm()) {
+    <input type="submit" value="@ViewRes.Delete" /> @:|
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 }

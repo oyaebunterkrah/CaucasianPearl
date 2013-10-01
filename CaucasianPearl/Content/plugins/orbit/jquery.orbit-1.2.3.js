@@ -241,6 +241,19 @@
                 return false;
             }
 
+            function setSocialShareLinks() {
+                var currentImg = $('#featured img:visible');
+                var eventId = currentImg.data('eventid');
+                var mediaId = currentImg.data('mediaid');
+
+                $('.b-share__link').each(function () {
+                    var self = $(this);
+                    var href = self.attr('href');
+                    var newUrl = '{0}/events/{1}/{2}'.f(window.location.origin, eventId, mediaId);
+                    self.attr('href', href.replace(/(url=).*?(&)/, '$1' + newUrl + '$2'));
+                });
+            }
+
             // ==================
             // ! DIRECTIONAL NAV   
             // ==================
@@ -418,6 +431,7 @@
                         }
                     }
                     setCaption();
+                    setSocialShareLinks();
                 } //lock
                 return false;
             }; //orbit function

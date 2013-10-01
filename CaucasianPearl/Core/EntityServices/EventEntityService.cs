@@ -37,7 +37,7 @@ namespace CaucasianPearl.Core.EntityServices
         // если 1, то внизу отображается 2,3,4,5
         // если 2, то внизу отображается 1,3,4,5
         // если 4, то внизу отображается 2,3,5,6
-        public IEnumerable<EventItem> GetLastEvents(int count)
+        public IEnumerable<EventItem> GetLastEventItems(int count)
         {
             var eventItems = Get()
                 .OrderBy(e => e.EventDate)
@@ -57,14 +57,14 @@ namespace CaucasianPearl.Core.EntityServices
             return eventItems;
         }
 
-        public IEnumerable<EventItem> GetNeighborEvents(int id)
+        public IEnumerable<EventItem> GetNeighborEvents(int eventId)
         {
             var eventItems = new List<EventItem>();
 
-            if (id <= 0)
+            if (eventId <= 0)
                 return eventItems;
 
-            var currentEvent = Get(id);
+            var currentEvent = Get(eventId);
             var allEvents = Get().OrderBy(e => e.EventDate);
 
             eventItems.AddRange(allEvents

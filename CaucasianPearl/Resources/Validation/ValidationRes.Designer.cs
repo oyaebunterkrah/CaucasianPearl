@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Resources {
+namespace CaucasianPearl.Resources {
     using System;
     
     
@@ -165,6 +165,15 @@ namespace Resources {
         public static string Required {
             get {
                 return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Только маленькие латинские буквы, цифры и подчёркивание.
+        /// </summary>
+        public static string ShortNameRegex {
+            get {
+                return ResourceManager.GetString("ShortNameRegex", resourceCulture);
             }
         }
         

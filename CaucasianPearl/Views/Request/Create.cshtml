@@ -1,7 +1,7 @@
 @model CaucasianPearl.Models.EDM.Request
 
 @using CaucasianPearl.Core.Constants
-@using Resources
+@using CaucasianPearl.Resources;
 @{
     ViewBag.Title = ViewRes.Requests;
 }
@@ -10,7 +10,7 @@
 
 @using (Html.BeginForm(Consts.Actions.Create, Consts.Controllers.Request.Name, FormMethod.Post, new { id = "formSendRequest" }))
 {
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary()
     <fieldset>
         <legend>@ViewRes.Requests</legend>
 
@@ -22,7 +22,7 @@
     </fieldset>
 }
 
-@if (WebSecurity.IsAuthenticated && User.IsInRole(Consts.Roles.AdminContentManager)) {
+@if (User.IsInRole(Consts.Roles.AdminContentManager)) {
     <div>
         @Html.ActionLink(@ViewRes.BackToList, Consts.Actions.Index)
     </div>

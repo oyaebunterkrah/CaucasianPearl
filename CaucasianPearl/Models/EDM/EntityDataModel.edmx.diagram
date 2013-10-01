@@ -4,17 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b8594058d80f41e8ad42d0d1badec24e" Name="Diagram1">
+      <Diagram DiagramId="b8594058d80f41e8ad42d0d1badec24e" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="caucasianpearldbModel.Event" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="caucasianpearldbModel.Feedback" Width="1.5" PointX="2.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="caucasianpearldbModel.Request" Width="1.5" PointX="6.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="caucasianpearldbModel.Profile" Width="1.5" PointX="8.5" PointY="0.5" />
-        <EntityTypeShape EntityType="caucasianpearldbModel.ContentBlock" Width="1.5" PointX="2.5" PointY="4.625" />
-        <EntityTypeShape EntityType="caucasianpearldbModel.EventMedia" Width="1.5" PointX="0.5" PointY="4.625" />
+        <EntityTypeShape EntityType="caucasianpearldbModel.ContentBlock" Width="1.5" PointX="2.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="caucasianpearldbModel.EventMedia" Width="1.5" PointX="0.5" PointY="4.625" IsExpanded="true" />
         <AssociationConnector Association="caucasianpearldbModel.FK_EventMedia_Event" />
-        <EntityTypeShape EntityType="caucasianpearldbModel.SiteSetting" Width="1.5" PointX="4.5" PointY="4.625" />
-        <EntityTypeShape EntityType="caucasianpearldbModel.Sponsor" Width="1.5" PointX="4.5" PointY="0.5" />
-      </Diagram>
+        <EntityTypeShape EntityType="caucasianpearldbModel.SiteSetting" Width="1.5" PointX="4.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="caucasianpearldbModel.Sponsor" Width="1.5" PointX="4.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="caucasianpearldbModel.Profile" Width="1.5" PointX="8.5" PointY="0.5" />
+        <EntityTypeShape EntityType="caucasianpearldbModel.webpages_Membership" Width="1.5" PointX="12.875" PointY="0.5" />
+        <EntityTypeShape EntityType="caucasianpearldbModel.webpages_OAuthMembership" Width="1.5" PointX="14.875" PointY="0.5" />
+        <EntityTypeShape EntityType="caucasianpearldbModel.webpages_Roles" Width="1.5" PointX="10.875" PointY="0.5" />
+        <AssociationConnector Association="caucasianpearldbModel.webpages_UsersInRoles" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

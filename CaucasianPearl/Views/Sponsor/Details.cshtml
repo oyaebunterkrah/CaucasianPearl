@@ -1,7 +1,7 @@
 ﻿@using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
-@using Resources
+@using CaucasianPearl.Resources;
 
 @model CaucasianPearl.Models.EDM.Sponsor
 
@@ -112,9 +112,9 @@
 </fieldset>
 
 <p>
-    @if (WebSecurity.IsAuthenticated && Roles.IsUserInRole(Consts.Roles.Admin))
-    {
-        @Html.ActionLink(ViewRes.Edit, Consts.Actions.Edit, new { id = Model.ID }) @:|
+    @if (User.IsInAnyRole(Consts.Roles.Admin)) {
+        @Html.ActionLink(ViewRes.Edit, Consts.Actions.Edit, new { id = Model.ID })
+        @:|
     }
     @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 </p>

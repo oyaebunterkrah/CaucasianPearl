@@ -28,8 +28,8 @@ namespace CaucasianPearl.Core.DAL.Data
         {
             PhotoId = photo.PhotoId;
             PhotosetId = photosetId;
+            Title = string.Empty;
             Description = string.Empty;
-            Content = string.Empty;
             MediaType = FlickrNet.MediaType.Photos.ToString().ToLowerInvariant();
             FlickrUrl = photo.WebUrl;
             ThumbnailUrl = photo.ThumbnailUrl;
@@ -51,8 +51,8 @@ namespace CaucasianPearl.Core.DAL.Data
 
         public string PhotoId;
         public string PhotosetId;
+        public string Title;
         public string Description;
-        public string Content;
         public string MediaType;
         public string FlickrUrl;
         public string ThumbnailUrl;

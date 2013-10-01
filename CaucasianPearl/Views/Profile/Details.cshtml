@@ -1,60 +1,33 @@
 @using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.EntityServices
 @using CaucasianPearl.Core.Helpers
-@using Resources
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
+@using CaucasianPearl.Resources;
 
 @model CaucasianPearl.Models.EDM.Profile
 
-@{
-    ViewBag.Title = string.Format("{0} {1} | {2}", Model.FirstName, Model.LastName, Consts.Title);
-}
-
-<h2>@ViewRes.UserProfile: @Model.FirstName @Model.LastName</h2>
+@{ ViewBag.Title = string.Format("{0} {1} | {2}", Model.FirstName, Model.LastName, ViewRes.ProjectTitleShort); }
 
 <p>
-    @* На домашнюю страницу *@
-    @Html.ActionLink(
-        ViewRes.ToHomePage,
-        actionName: Consts.Actions.Index,
-        controllerName: Consts.Controllers.Home.Name,
-        routeValues: null,
-        htmlAttributes: new { @class = "link" })
+    @* на главную *@
+    @Html.ActionLink(ViewRes.ToHomePage, Consts.Actions.Index, Consts.Controllers.Home.Name, null, new { @class = "link" })
     @Consts.BreadcrumbsSeparator
-    @* Все новости *@
-    @Html.ActionLink(
-        ViewRes.AllProfiles,
-        actionName: Consts.Actions.Index,
-        routeValues: null,
-        htmlAttributes: new { @class = "link" })
+    @* все профили *@
+    @Html.ActionLink(ViewRes.AllProfiles, Consts.Actions.Index, null, new { @class = "link" })
     @Consts.BreadcrumbsSeparator
     @Model.FirstName @Model.LastName
 </p>
 
-@if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
-{
-    <p>
-        @* Редактировать *@
-        @Html.ActionLink(
-            ViewRes.Edit,
-            actionName: Consts.Actions.Edit,
-            controllerName: Consts.Controllers.Profile.Name,
-            routeValues: new { id = Model.ID },
-            htmlAttributes: new { @class = "link" })
-        @Consts.MenuSeparator
-        @* Удалить *@
-        @Html.ActionLink(
-            ViewRes.Delete,
-            actionName: Consts.Actions.Delete,
-            controllerName: Consts.Controllers.Profile.Name,
-            routeValues: new { id = Model.ID },
-            htmlAttributes: new { @class = "link" })
-    </p>
-}
+<p>
+    @if (User.IsInAnyRole(Consts.Roles.AdminContentManager)) {
+        @Html.ActionLink(ViewRes.Edit, Consts.Actions.Edit, new { id = Model.ID }, new { @class = "link" })
+        @:|
+        @Html.ActionLink(ViewRes.Delete, Consts.Actions.Delete, new { id = Model.ID }, new { @class = "link" })
+    }
+</p>
 
 <div class="model-image">
-    <img src='@string.Format("{0}/{1}/{2}",
-                             (Url.Content(Consts.Paths.Img.EntityImgFolder)),
-                             (Consts.Controllers.Profile.ProfileImagesFolder),
-                             ImageHelper.GetImageName(Model))' alt="@Model.FirstName @Model.LastName"/>
+    <img src="@Url.Content(Model.ImageUrl)" alt="@Model.FirstName @Model.LastName" />
 </div>
 
 <fieldset>
@@ -62,14 +35,6 @@
     
     <div class="display-form">
         <div class="display-property">
-            <div class="display-label">@Html.LabelFor(model => model.UserName)</div>
-            <div class="display-field">@Html.DisplayFor(model => model.UserName)</div>
-            <div class="clear"></div>
-
-            <div class="display-label">@Html.LabelFor(model => model.Email)</div>
-            <div class="display-field">@Html.DisplayFor(model => model.Email)</div>
-            <div class="clear"></div>
-
             <div class="display-label">@Html.LabelFor(model => model.FirstName)</div>
             <div class="display-field">@Html.DisplayFor(model => model.FirstName)</div>
             <div class="clear"></div>
@@ -77,7 +42,7 @@
             <div class="display-label">@Html.LabelFor(model => model.LastName)</div>
             <div class="display-field">@Html.DisplayFor(model => model.LastName)</div>
             <div class="clear"></div>
-
+            
             <div class="display-label">@Html.LabelFor(model => model.Position)</div>
             <div class="display-field">@Html.DisplayFor(model => model.Position)</div>
             <div class="clear"></div>
@@ -85,25 +50,38 @@
             <div class="display-label">@Html.LabelFor(model => model.Description)</div>
             <div class="display-field">@Html.DisplayFor(model => model.Description)</div>
             <div class="clear"></div>
+            
+            @if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager))) {
+                <div class="display-label">@Html.LabelFor(model => model.UserName)</div>
+                <div class="display-field">@Html.DisplayFor(model => model.UserName)</div>
+                <div class="clear"></div>
 
-            <div class="display-label">@Html.LabelFor(model => model.ImageExt)</div>
-            <div class="display-field">@Html.DisplayFor(model => model.ImageExt)</div>
-            <div class="clear"></div>
+                <div class="display-label">@Html.LabelFor(model => model.Email)</div>
+                <div class="display-field">@Html.DisplayFor(model => model.Email)</div>
+                <div class="clear"></div>
 
-            <div class="display-label">@Html.LabelFor(model => model.ShortName)</div>
-            <div class="display-field">@Html.DisplayFor(model => model.ShortName)</div>
-            <div class="clear"></div>
+                <div class="display-label">@Html.LabelFor(model => model.ShortName)</div>
+                <div class="display-field">@Html.DisplayFor(model => model.ShortName)</div>
+                <div class="clear"></div>
 
-            <div class="display-label">@Html.LabelFor(model => model.Sequence)</div>
-            <div class="display-field">@Html.DisplayFor(model => model.Sequence)</div>
-            <div class="clear"></div>
+                <div class="display-label">@Html.LabelFor(model => model.Sequence)</div>
+                <div class="display-field">@Html.DisplayFor(model => model.Sequence)</div>
+                <div class="clear"></div>
+                
+                <div class="display-label">@Html.Label(ViewRes.Role)</div>
+                <div class="display-field">@ProfileEntityService.GetProfileRoleTitle(Model)</div>
+                <div class="clear"></div>
+            }
+
+            @if (User.IsInAnyRole(Consts.Roles.Admin)) {
+                <div class="display-label">@Html.LabelFor(model => model.ImageExt)</div>
+                <div class="display-field">@Html.DisplayFor(model => model.ImageExt)</div>
+                <div class="clear"></div>
+                
+                <div class="display-label">@Html.LabelFor(model => model.ID)</div>
+                <div class="display-field">@Html.DisplayFor(model => model.ID)</div>
+                <div class="clear"></div>
+            }
         </div>
     </div>
 </fieldset>
-
-<p>
-    @if (WebSecurity.IsAuthenticated && Roles.IsUserInRole(Consts.Roles.Admin)) {
-        @Html.ActionLink(ViewRes.Edit, Consts.Actions.Edit, new { id = Model.ID }) @:|
-    }
-    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
-</p>

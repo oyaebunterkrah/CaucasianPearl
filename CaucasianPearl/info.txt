@@ -116,4 +116,3 @@ public ActionResult Index()
 
 // Решение проблемы с вылетанием авторизации на сайте.
 http://help.parking.ru/KB/a429/article.aspx?KBSearchID=0
-

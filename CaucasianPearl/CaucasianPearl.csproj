@@ -210,7 +210,17 @@
     <Compile Include="Core\EntityServices\Interface\IProfileService.cs" />
     <Compile Include="Core\EntityServices\ProfileEntityService.cs" />
     <Compile Include="Core\EntityServices\Interface\ISponsorService.cs" />
+    <Compile Include="Core\Helpers\QueryStringHelper.cs" />
     <Compile Include="Core\Helpers\MvcHtmlStringHelpers\MenuLink.cs" />
+    <Compile Include="Models\EDM\webpages_Membership.cs">
+      <DependentUpon>EntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EDM\webpages_OAuthMembership.cs">
+      <DependentUpon>EntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EDM\webpages_Roles.cs">
+      <DependentUpon>EntityDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Error\ErrorRes.Designer.cs">
       <DependentUpon>ErrorRes.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -387,7 +397,6 @@
     <Compile Include="Models\Metadata\FeedbackMetadata.cs" />
     <Compile Include="Models\Metadata\SponsorMetadata.cs" />
     <Compile Include="Models\Metadata\RequestMetadata.cs" />
-    <Compile Include="Models\Partial\AccountModelsPartial.cs" />
     <Compile Include="Models\Partial\SiteSettingsPartial.cs" />
     <Compile Include="Models\Partial\EventMediaPartial.cs" />
     <Compile Include="Models\Partial\RequestPartial.cs" />
@@ -420,6 +429,7 @@
     <Content Include="Content\img\cp\event\delete.png" />
     <Content Include="Content\img\cp\event\edit.png" />
     <Content Include="Content\img\cp\event\primary.png" />
+    <Content Include="Content\img\cp\profile\default-image.png" />
     <Content Include="Content\img\cp\sponsor\0.jpg" />
     <Content Include="Content\img\cp\sponsor\1.jpg" />
     <Content Include="Content\img\cp\sponsor\2.jpg" />
@@ -451,7 +461,12 @@
     <Content Include="Content\img\site\orderedList7.png" />
     <Content Include="Content\img\site\orderedList8.png" />
     <Content Include="Content\img\site\orderedList9.png" />
+    <Content Include="Content\img\site\social_share\aboutOgImage.png" />
+    <Content Include="Content\img\site\social_share\afficheOgImage.png" />
+    <Content Include="Content\img\site\social_share\defaultOgImage.png" />
+    <Content Include="Content\img\site\social_share\eventsOgImage.png" />
     <Content Include="Content\img\site\social_share\fb.png" />
+    <Content Include="Content\img\site\social_share\homeOgImage.png" />
     <Content Include="Content\img\site\social_share\ok.png" />
     <Content Include="Content\img\site\social-share.png" />
     <Content Include="Content\img\site\social_share\vk.png" />
@@ -477,9 +492,6 @@
     <Content Include="Content\js\sys\knockout-2.2.0.js" />
     <Content Include="Content\js\sys\modernizr-2.6.2.js" />
     <Content Include="Content\js\sys\_references.js" />
-    <Content Include="Content\plugins\uppod\player\uppod.swf" />
-    <Content Include="Content\plugins\uppod\styles\audio164-471.txt" />
-    <Content Include="Content\plugins\uppod\Три способа как вставить видео на сайт %282013-04-20 1-53-32%29.htm" />
     <Content Include="Content\plugins\ckeditor\build-config.js" />
     <Content Include="Content\plugins\ckeditor\ckeditor.js" />
     <Content Include="Content\plugins\ckeditor\config.js" />
@@ -691,6 +703,9 @@
     <Content Include="Content\plugins\orbit\orbit\rotator-black.png" />
     <Content Include="Content\plugins\orbit\orbit\timer-black.png" />
     <Content Include="Content\plugins\recaptcha\recaptcha_ajax.js" />
+    <Content Include="Content\plugins\uppod\arsen_petrosov-erevan.mp3" />
+    <Content Include="Content\plugins\uppod\audio176-541.txt" />
+    <Content Include="Content\plugins\uppod\uppod.swf" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -759,10 +774,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
-    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\SetPasswordPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -886,12 +901,11 @@
     <Content Include="Views\Shared\UserControls\FeedbackFormControl.cshtml" />
     <Content Include="Views\Feedback\CreateOrEditPartial.cshtml" />
     <Content Include="Views\Feedback\CreatePartial.cshtml" />
+    <Content Include="Views\Shared\UserControls\MetaTagsControl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\cp\covers\" />
-    <Folder Include="Content\plugins\uppod\audio\" />
-    <Folder Include="Content\plugins\uppod\playlists\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -908,7 +922,7 @@
     <EmbeddedResource Include="Resources\Error\ErrorRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorRes.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>CaucasianPearl.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Model\ModelRes.hy.resx">
@@ -919,7 +933,7 @@
     <EmbeddedResource Include="Resources\Model\ModelRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ModelRes.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>CaucasianPearl.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Validation\ValidationRes.hy.resx">
@@ -929,7 +943,8 @@
     <EmbeddedResource Include="Resources\Validation\ValidationRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ValidationRes.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>CaucasianPearl.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\View\ViewRes.hy.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -938,7 +953,7 @@
     <EmbeddedResource Include="Resources\View\ViewRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ViewRes.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <CustomToolNamespace>CaucasianPearl.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

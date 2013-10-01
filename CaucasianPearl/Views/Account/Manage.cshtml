@@ -1,28 +1,15 @@
-﻿@model CaucasianPearl.Models.LocalPasswordModel
-@{
-    ViewBag.Title = "Manage Account";
-}
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Resources
+@model CaucasianPearl.Models.LocalPasswordModel
+
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ManageAccount, ViewRes.ProjectTitleShort); }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
+    <h1>@ViewRes.ManageAccount</h1>
 </hgroup>
 
 <p class="message-success">@ViewBag.StatusMessage</p>
 
-<p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
+<p>@ViewRes.YouLoggedInAs <strong>@User.Identity.Name</strong>.</p>
 
-@if (ViewBag.HasLocalPassword)
-{
-    @Html.Partial("_ChangePasswordPartial")
-}
-else
-{ 
-    @Html.Partial("_SetPasswordPartial")
-}
-
-<section id="externalLogins">
-    @Html.Action("RemoveExternalLogins")
-
-    <h3>Add an external login</h3>
-    @Html.Action("ExternalLoginsList", new { returnUrl = ViewBag.ReturnUrl })
-</section>
+@(ViewBag.HasLocalPassword ? Html.Partial(Consts.Controllers.Account.Views.ChangePasswordPartial) : Html.Partial(Consts.Controllers.Account.Views.SetPasswordPartial))

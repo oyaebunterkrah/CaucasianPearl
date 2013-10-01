@@ -10,6 +10,7 @@ using CaucasianPearl.Core.Filters;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Models;
 using CaucasianPearl.Models.EDM;
+using CaucasianPearl.Resources;
 
 namespace CaucasianPearl.Controllers
 {
@@ -18,14 +19,12 @@ namespace CaucasianPearl.Controllers
         //[LocalizedCache(Duration = Consts.OutputCacheDuration)]
         public ActionResult Index()
         {
-            ViewBag.FooterVisible = true;
-
-            ViewBag.HomePageMode = SiteSettingsHelper.GetSiteSettingTyped(Consts.SiteSettings.HomePageMode, SiteSettingsHelper.HomePageMode.Events);
-
             var sponsorEntityService = ServiceHelper<ISponsorService<Sponsor>>.GetService();
-            ViewBag.BigSponsors = sponsorEntityService.GetSponsors(Consts.Controllers.Sponsor.DefaultBigSponsorsCount, true);
-
             var eventEntityService = ServiceHelper<IEventService<Event>>.GetService();
+
+            ViewBag.FooterVisible = true;
+            ViewBag.HomePageMode = SiteSettingsHelper.GetSiteSettingTyped(Consts.SiteSettings.HomePageMode, SiteSettingsHelper.HomePageMode.Events);
+            ViewBag.BigSponsors = sponsorEntityService.GetSponsors(Consts.Controllers.Sponsor.DefaultBigSponsorsCount, true);
             ViewBag.Events = eventEntityService.GetLastEventsInfo(Consts.Controllers.Event.EventCount);
 
             if (ViewBag.HomePageMode == SiteSettingsHelper.HomePageMode.Events)
@@ -36,43 +35,65 @@ namespace CaucasianPearl.Controllers
             }
 
             ViewBag.CoverImagePath = Url.Content(Consts.Paths.Img.CoversFolder + SiteSettingsHelper.GetSiteSettingValueAsString(Consts.SiteSettings.CoverImageName));
-            
+
             return View();
         }
-        
+
         //[LocalizedCache(Duration = Consts.OutputCacheDuration)]
         public ActionResult About()
         {
             var profileEntityService = ServiceHelper<IProfileService<Profile>>.GetService();
-            ViewBag.Members = profileEntityService.GetMembers();
-
             var feedbackEntityService = ServiceHelper<IFeedbackService<Feedback>>.GetService();
-            ViewBag.Feedbacks = feedbackEntityService.GetLastFeedback();
-
             var sponsorEntityService = ServiceHelper<ISponsorService<Sponsor>>.GetService();
+
+            ViewBag.Members = profileEntityService.GetMembers();
+            ViewBag.Feedbacks = feedbackEntityService.GetLastFeedback();
             ViewBag.BigSponsors = sponsorEntityService.GetSponsors(Consts.Controllers.Sponsor.DefaultBigSponsorsCount, true);
             ViewBag.SmallSponsors = sponsorEntityService.GetSponsors(Consts.Controllers.Sponsor.DefaultSmallSponsorsCount, false);
 
             return View();
         }
 
-        public ActionResult Events(string id)
+        public ActionResult Events(string @event, string eventMedia)
         {
+            // устанавливаем текущее событие - eventItem {
             int eventId;
-            int.TryParse(id, out eventId);
-            var eventEntityService = ServiceHelper<IEventService<Event>>.GetService();
-            var currentEvent = eventEntityService.Get(eventId);
-            var events = eventEntityService.GetLastEvents(Consts.Controllers.Event.EventCount);
-            var currentEventInfo = currentEvent != null ? new EventItem(currentEvent) : events.First();
-            ViewBag.CurrentEventInfo = currentEventInfo;
+            int.TryParse(@event, out eventId);
 
-            return View(events);
+            var eventEntityService = ServiceHelper<IEventService<Event>>.GetService();
+            var eventItems = eventEntityService.GetLastEventItems(Consts.Controllers.Event.EventCount);
+            var currentEventItem = eventItems.FirstOrDefault();
+
+            if (eventId > 0)
+            {
+                var currentEvent = eventEntityService.Get(eventId);
+
+                if (currentEvent != null)
+                    currentEventItem = new EventItem(currentEvent);
+            }
+
+            ViewBag.CurrentEventItem = currentEventItem; // }
+
+            // устанавливаем текущий медиа файл - mediaItem {
+            var currentEventMediaItem = currentEventItem.EventMedia.FirstOrDefault();
+
+            int eventMediaId;
+            int.TryParse(eventMedia, out eventMediaId);
+
+            if (eventMediaId > 0)
+                if (currentEventItem.EventMedia.Any(em => em.ID == eventMediaId))
+                    currentEventMediaItem = currentEventItem.EventMedia.FirstOrDefault(em => em.ID == eventMediaId); // }
+
+            ViewBag.CurrentEventMediaItem = currentEventMediaItem;
+
+            return View(eventItems);
         }
 
         //[LocalizedCacheAttribute(Duration = Consts.OutputCacheDuration)]
         public ActionResult Affiche()
         {
             var eventEntityService = ServiceHelper<IEventService<Event>>.GetService();
+
             if (eventEntityService != null)
             {
                 var eventsForMonth = eventEntityService.GetEventsForMonth();

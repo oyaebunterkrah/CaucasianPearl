@@ -24,10 +24,12 @@ namespace CaucasianPearl.Core.EntityServices.Abstract
 
             int? maxId = Get().OrderByDescending(item => item.ID).Select(item => item.ID).FirstOrDefault();
             var strAffix = maxId.Value.ToString(CultureInfo.InvariantCulture);
-            if (string.IsNullOrWhiteSpace(shortName)) strResult = strAffix;
+            if (string.IsNullOrWhiteSpace(shortName))
+                strResult = strAffix;
 
             var count = Get().Count(item => item.ShortName.ToLower() == strResult && item.ID != id);
-            if (count > 0) strResult = string.Format("{0}{1}", shortName, strAffix);
+            if (count > 0)
+                strResult = string.Format("{0}{1}", shortName, strAffix);
             if (Consts.ReservedWords.Contains(strResult))
                 strResult = string.Format("{0}{1}", strResult, strAffix);
 

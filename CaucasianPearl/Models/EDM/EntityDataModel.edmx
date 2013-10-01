@@ -14,9 +14,21 @@
           <EntitySet Name="Request" EntityType="caucasianpearldbModel.Store.Request" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SiteSettings" EntityType="caucasianpearldbModel.Store.SiteSettings" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Sponsor" EntityType="caucasianpearldbModel.Store.Sponsor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Membership" EntityType="caucasianpearldbModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="caucasianpearldbModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Roles" EntityType="caucasianpearldbModel.Store.webpages_Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="caucasianpearldbModel.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_EventMedia_Event1" Association="caucasianpearldbModel.Store.FK_EventMedia_Event1">
             <End Role="Event" EntitySet="Event" />
             <End Role="EventMedia" EntitySet="EventMedia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_UsersInRoles_Profile" Association="caucasianpearldbModel.Store.FK_webpages_UsersInRoles_Profile">
+            <End Role="Profile" EntitySet="Profile" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_UsersInRoles_webpages_Roles" Association="caucasianpearldbModel.Store.FK_webpages_UsersInRoles_webpages_Roles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="ContentBlock">
@@ -52,8 +64,8 @@
           <Property Name="EventId" Type="int" />
           <Property Name="PhotoId" Type="nvarchar" MaxLength="50" />
           <Property Name="PhotosetId" Type="nvarchar" MaxLength="50" />
-          <Property Name="Description" Type="nvarchar" MaxLength="256" />
-          <Property Name="Content" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Title" Type="nvarchar" MaxLength="512" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2048" />
           <Property Name="MediaType" Type="nvarchar" MaxLength="20" />
           <Property Name="FlickrUrl" Type="nvarchar" MaxLength="256" />
           <Property Name="ThumbnailUrl" Type="nvarchar" MaxLength="256" />
@@ -131,6 +143,45 @@
           <Property Name="Confirmed" Type="bit" Nullable="false" />
           <Property Name="ImageExt" Type="nvarchar" MaxLength="5" />
         </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="LastPasswordFailureDate" Type="datetime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordChangedDate" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_EventMedia_Event1">
           <End Role="Event" Type="caucasianpearldbModel.Store.Event" Multiplicity="0..1" />
           <End Role="EventMedia" Type="caucasianpearldbModel.Store.EventMedia" Multiplicity="*" />
@@ -143,6 +194,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_webpages_UsersInRoles_Profile">
+          <End Role="Profile" Type="caucasianpearldbModel.Store.Profile" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="caucasianpearldbModel.Store.webpages_UsersInRoles" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_UsersInRoles_webpages_Roles">
+          <End Role="webpages_Roles" Type="caucasianpearldbModel.Store.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="caucasianpearldbModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -151,7 +226,6 @@
           <EntitySet Name="Events" EntityType="caucasianpearldbModel.Event" />
           <EntitySet Name="Feedbacks" EntityType="caucasianpearldbModel.Feedback" />
           <EntitySet Name="Requests" EntityType="caucasianpearldbModel.Request" />
-          <EntitySet Name="Profiles" EntityType="caucasianpearldbModel.Profile" />
           <EntitySet Name="ContentBlocks" EntityType="caucasianpearldbModel.ContentBlock" />
           <EntitySet Name="EventMedias" EntityType="caucasianpearldbModel.EventMedia" />
           <AssociationSet Name="FK_EventMedia_Event" Association="caucasianpearldbModel.FK_EventMedia_Event">
@@ -160,7 +234,15 @@
           </AssociationSet>
           <EntitySet Name="SiteSettings" EntityType="caucasianpearldbModel.SiteSetting" />
           <EntitySet Name="Sponsors" EntityType="caucasianpearldbModel.Sponsor" />
-        </EntityContainer>
+          <EntitySet Name="Profiles" EntityType="caucasianpearldbModel.Profile" />
+          <EntitySet Name="webpages_Membership" EntityType="caucasianpearldbModel.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="caucasianpearldbModel.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="caucasianpearldbModel.webpages_Roles" />
+          <AssociationSet Name="webpages_UsersInRoles" Association="caucasianpearldbModel.webpages_UsersInRoles">
+            <End Role="Profile" EntitySet="Profiles" />
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Event">
           <Key>
             <PropertyRef Name="ID" />
@@ -201,21 +283,6 @@
           <Property Type="DateTime" Name="RequestDate" Precision="3" />
           <Property Type="DateTime" Name="Created" Precision="3" />
         </EntityType>
-        <EntityType Name="Profile">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
-          <Property Type="String" Name="UserName" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Email" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Position" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ImageExt" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ShortName" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Sequence" />
-        </EntityType>
         <EntityType Name="ContentBlock">
           <Key>
             <PropertyRef Name="ID" />
@@ -236,8 +303,8 @@
           <Property Type="Int32" Name="EventId" />
           <Property Type="String" Name="PhotoId" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PhotosetId" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Description" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Content" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Title" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="2048" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="MediaType" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="FlickrUrl" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="ThumbnailUrl" MaxLength="256" FixedLength="false" Unicode="true" />
@@ -287,7 +354,60 @@
           <Property Type="Boolean" Name="Confirmed" Nullable="false" />
           <Property Type="String" Name="ImageExt" MaxLength="5" FixedLength="false" Unicode="true" />
         </EntityType>
-      </Schema>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="UserName" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Position" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShortName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Sequence" />
+          <Property Type="String" Name="ImageExt" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="webpages_Roles" Relationship="caucasianpearldbModel.webpages_UsersInRoles" FromRole="Profile" ToRole="webpages_Roles" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Precision="3" />
+          <Property Type="String" Name="ConfirmationToken" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsConfirmed" />
+          <Property Type="DateTime" Name="LastPasswordFailureDate" Precision="3" />
+          <Property Type="Int32" Name="PasswordFailuresSinceLastSuccess" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PasswordChangedDate" Precision="3" />
+          <Property Type="String" Name="PasswordSalt" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PasswordVerificationToken" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PasswordVerificationTokenExpirationDate" Precision="3" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Type="String" Name="Provider" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProviderUserId" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Type="Int32" Name="RoleId" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Profiles" Relationship="caucasianpearldbModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="Profile" />
+        </EntityType>
+        <Association Name="webpages_UsersInRoles">
+          <End Type="caucasianpearldbModel.Profile" Role="Profile" Multiplicity="*" />
+          <End Type="caucasianpearldbModel.webpages_Roles" Role="webpages_Roles" Multiplicity="0..1" />
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -335,22 +455,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Profiles">
-            <EntityTypeMapping TypeName="caucasianpearldbModel.Profile">
-              <MappingFragment StoreEntitySet="Profile">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Position" ColumnName="Position" />
-                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="ImageExt" ColumnName="ImageExt" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ContentBlocks">
             <EntityTypeMapping TypeName="caucasianpearldbModel.ContentBlock">
               <MappingFragment StoreEntitySet="ContentBlock">
@@ -367,6 +471,7 @@
           <EntitySetMapping Name="EventMedias">
             <EntityTypeMapping TypeName="caucasianpearldbModel.EventMedia">
               <MappingFragment StoreEntitySet="EventMedia">
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="FlickrUrl" ColumnName="FlickrUrl" />
                 <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
                 <ScalarProperty Name="Sequence" ColumnName="Sequence" />
@@ -376,7 +481,6 @@
                 <ScalarProperty Name="SmallUrl" ColumnName="SmallUrl" />
                 <ScalarProperty Name="ThumbnailUrl" ColumnName="ThumbnailUrl" />
                 <ScalarProperty Name="MediaType" ColumnName="MediaType" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="PhotosetId" ColumnName="PhotosetId" />
                 <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
@@ -413,7 +517,66 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="caucasianpearldbModel.Profile">
+              <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="ImageExt" ColumnName="ImageExt" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="caucasianpearldbModel.webpages_Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_OAuthMembership">
+            <EntityTypeMapping TypeName="caucasianpearldbModel.webpages_OAuthMembership">
+              <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="caucasianpearldbModel.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="caucasianpearldbModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="Profile">
+              <ScalarProperty Name="ID" ColumnName="UserId" />
+            </EndProperty>
+            <Condition ColumnName="RoleId" IsNull="false" />
+          </AssociationSetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

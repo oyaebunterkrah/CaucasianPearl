@@ -12,15 +12,6 @@ namespace CaucasianPearl.App_Start
             routes.IgnoreRoute("content/{*pathInfo}");
             
             routes.MapRoute(
-                name: "GalleryById",
-                url: "gallery/{action}/{photoId}/{photosetId}",
-                defaults: new
-                {
-                    controller = Consts.Controllers.Gallery.Name,
-                    action = Consts.Actions.Index,
-                });
-
-            routes.MapRoute(
                 name: "About",
                 url: "about",
                 defaults: new
@@ -40,13 +31,14 @@ namespace CaucasianPearl.App_Start
 
             routes.MapRoute(
                 name: "EventById",
-                url: "events/{id}",
+                url: "events/{event}/{eventMedia}",
                 defaults: new
-                {
-                    controller = Consts.Controllers.Home.Name,
-                    action = Consts.Controllers.Home.Actions.Events,
-                    id = UrlParameter.Optional
-                });
+                    {
+                        controller = Consts.Controllers.Home.Name,
+                        action = Consts.Controllers.Home.Actions.Events,
+                        @event = UrlParameter.Optional, // id события, чтобы открывалось сразу нужное
+                        eventMedia = UrlParameter.Optional // id медиа, чтобы открывалось сразу нужное
+                    });
 
             routes.MapRoute(
                 name: "Affiche",
@@ -75,6 +67,15 @@ namespace CaucasianPearl.App_Start
                         controller = Consts.Controllers.Profile.Name,
                         action = Consts.Actions.GetByShortName,
                         shortname = UrlParameter.Optional
+                    });
+
+            routes.MapRoute(
+                name: "GalleryById",
+                url: "gallery/{action}/{photoId}/{photosetId}",
+                defaults: new
+                    {
+                        controller = Consts.Controllers.Gallery.Name,
+                        action = Consts.Actions.Index,
                     });
 
             //routes.MapRoute(

@@ -1,13 +1,10 @@
 ﻿@using CaucasianPearl;
 @using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Core.UserControls
      
-<meta name="description" content="Конструктор сайта - дизайн, структура, новости, статьи, товары и услуги, интернет-магазин, фотогалерея, гостевая, объявления, файловый менеджер, хостинг, домен бесплатно">
-<meta property="og:image" content="http://rutechdays.blob.core.windows.net/thumb/a056702f-6bb0-4320-9a5e-ddfe23792b8a/545x307.jpg">
-<link rel="image_src" type="image/jpeg" href="http://rutechdays.blob.core.windows.net/thumb/a056702f-6bb0-4320-9a5e-ddfe23792b8a/545x307.jpg">
-
-
 <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+
 <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="odnoklassniki,vkontakte,facebook"></div>
 
 <style>
@@ -54,52 +51,34 @@
             // что возвращается из конструктора,
             // т.е. instance === YaShareInstance
 
-
-            // После инициализации можно поменять ссылку или заголовок, которым требуется поделиться
-            //$('#test')
-            //    .click(function () {
-                // Ссылки и заголовок обновляются по щелчку на кнопке
-                // Параметры берутся из соответствующих полей
-                var parent = $(this).parent();
                 instance.updateShareLink(
-                    'http://ya.ru',
+                    'http://www.caucasian-pearl.ru/about/',
                     'title',
                     // В метод также можно передать serviceSpecific-блок
                     // В данном примере переопределяются все ссылки в Twitter
                     {
                         odnoklassniki: {
+                            title: 'title: odnoklassniki',
                             description: 'description: odnoklassniki',
                             image: 'http://www.newayseurasia.com/assets/images/s/13.09.2011_seti/o.jpg'
                         },
                         vkontakte: {
+                            title: 'title: vkontakte',
                             description: 'description: vkontakte',
                             image: 'http://www.showmehow.ru/img/social/vkontakte.png'
                         },
                         facebook: {
+                            title: 'title: facebook',
                             description: 'description: facebook',
                             image: 'http://www.ruprom.ru/templates/images/fb_ico.png'
                         }
                     }
                 );
-            //});
         }
     });
+    
     // Блок еще не проинициализировался, поэтому ничего не произойдет
     YaShareInstance.updateShareLink('http://api.yandex.ru', 'API');
-</script>
-
-<div id="ya_share"></div>
-
-<input id="test" type="button" value="test" />
-
-
-<script type="text/javascript" src="http://vkontakte.ru/js/api/share.js?9" charset="windows-1251"></script>
-<script type="text/javascript">
-    document.write(VK.Share.button({
-        url: 'http://mysite.com',
-        title: 'Хороший сайт',
-        description: 'Это мой собственный сайт, я его очень долго делал',
-        image: 'http://www.showmehow.ru/img/social/vkontakte.png',
-        noparse: true
-    }));
 </script>*@
+
+@*<div id="ya_share"></div>*@

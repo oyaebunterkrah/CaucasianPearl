@@ -1,11 +1,16 @@
-﻿namespace CaucasianPearl.Models
+﻿using System.ComponentModel.DataAnnotations;
+using CaucasianPearl.Models.Metadata;
+
+namespace CaucasianPearl.Models
 {
+    [MetadataType(typeof (RegisterExternalLoginModelMetadata))]
     public class RegisterExternalLoginModel
     {
         public string UserName { get; set; }
         public string ExternalLoginData { get; set; }
     }
 
+    [MetadataType(typeof (LocalPasswordModelMetadata))]
     public class LocalPasswordModel
     {
         public string OldPassword { get; set; }
@@ -13,6 +18,8 @@
         public string ConfirmPassword { get; set; }
     }
 
+
+    [MetadataType(typeof (LoginModelMetadata))]
     public class LoginModel
     {
         public string UserName { get; set; }
@@ -20,6 +27,7 @@
         public bool RememberMe { get; set; }
     }
 
+    [MetadataType(typeof (RegisterModelMetadata))]
     public class RegisterModel
     {
         public string UserName { get; set; }
@@ -34,6 +42,7 @@
         public string Sequence { get; set; }
     }
 
+    [MetadataType(typeof (ExternalLoginMetadata))]
     public class ExternalLogin
     {
         public string Provider { get; set; }

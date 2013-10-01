@@ -1,5 +1,5 @@
 ﻿@using CaucasianPearl.Core.Constants
-@using Resources
+@using CaucasianPearl.Resources;
 
 @if (WebSecurity.IsAuthenticated) {
     <text>
@@ -10,45 +10,53 @@
                               routeValues: null,
                               htmlAttributes: new {
                                   @class = "username",
-                                  title = ViewRes.ManageProfile })!
-        @* Выход *@
+                                  title = ViewRes.ManageProfile
+                              })!
+        @* форма выхода *@
         @using (Html.BeginForm(
             Consts.Controllers.Account.Actions.LogOff,
             Consts.Controllers.Account.Name,
-            routeValues: new { returnUrl = ViewContext.HttpContext == null
-                                    ? string.Empty
-                                    : HttpUtility.HtmlEncode(ViewContext.HttpContext.Request.RawUrl) },
+            routeValues: new {
+                returnUrl = ViewContext.HttpContext == null
+                                ? string.Empty
+                                : HttpUtility.HtmlEncode(ViewContext.HttpContext.Request.RawUrl)
+            },
             method: FormMethod.Post,
-            htmlAttributes: new {id = "logoutForm"}))
-        {
+            htmlAttributes: new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
+            @* выход *@
             @Html.ActionLink(
                 linkText: ViewRes.LogOff,
                 actionName: Consts.Controllers.Account.Actions.LogOff,
                 controllerName: Consts.Controllers.Account.Name,
                 routeValues: null,
-                htmlAttributes: new {href = "javascript:document.getElementById('logoutForm').submit()"})
+                htmlAttributes: new { href = "javascript:document.getElementById('logoutForm').submit()" })
         }
     </text>
-} else {
+}
+else {
     <ul>
-        <li>
-            @* Регистрация *@
-            @Html.ActionLink(
-                linkText: ViewRes.Login_Register,
-                actionName: Consts.Controllers.Account.Actions.Register,
-                controllerName: Consts.Controllers.Account.Name,
-                routeValues: null,
-                htmlAttributes: new { id = "registerLink" })
-        </li>
         <li>
             @* Вход *@
             @Html.ActionLink(
                 linkText: ViewRes.LoginPartial_Login,
                 actionName: Consts.Controllers.Account.Actions.Login,
                 controllerName: Consts.Controllers.Account.Name,
-                routeValues: null,
+                routeValues: new {
+                returnUrl = ViewContext.HttpContext == null
+                                ? string.Empty
+                                : HttpUtility.HtmlEncode(ViewContext.HttpContext.Request.RawUrl)
+                },
                 htmlAttributes: new { id = "loginLink" })
+        </li>
+        <li>
+            @* Регистрация *@
+            @Html.ActionLink(
+                linkText: ViewRes.Register,
+                actionName: Consts.Controllers.Account.Actions.Register,
+                controllerName: Consts.Controllers.Account.Name,
+                routeValues: null,
+                htmlAttributes: new { id = "registerLink" })
         </li>
     </ul>
 }

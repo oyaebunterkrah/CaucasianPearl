@@ -4,15 +4,15 @@
 @using CaucasianPearl.Core.UserControls
 @using CaucasianPearl.Models.EDM
 @using CaucasianPearl.Core.DAL.Data
-@using Resources
+@using CaucasianPearl.Resources;
 
 @model IEnumerable<EventItem>
 
-@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.Events); }
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.Events, ViewRes.ProjectTitleShort); }
 
 @Html.Raw(CssJsRegControl.Render("orbit/jquery.orbit-1.2.3.js", Consts.Paths.Plugins.PluginsPrefix))
 @Html.Raw(CssJsRegControl.Render("orbit/orbit-1.2.3.css", Consts.Paths.Plugins.PluginsPrefix))
-@Html.Raw(CssJsRegControl.Render("events.js", Consts.Paths.Js.CpJsPrefixPath))
+@Html.Raw(CssJsRegControl.Render("events.js", Consts.Paths.Js.CpJsPrefixPath, "windows-1251"))
 
 <!--[if IE]>
 		<style type="text/css">
@@ -23,17 +23,45 @@
 
 @* медиа элементы текущего события *@
 @if (Model != null) {
-    EventItem currentEvent = ViewBag.CurrentEventInfo;
-    if (currentEvent != null && currentEvent.EventMedia != null && currentEvent.EventMedia.Any()) {
+    EventItem currentEventItem = ViewBag.CurrentEventItem;
+    EventMediaItem currentEventMediaItem = ViewBag.CurrentEventMediaItem;
+    
+    if (currentEventItem != null && currentEventItem.EventMedia != null && currentEventItem.EventMedia.Any()) {
         <div class="container">
             @* event media *@
             <div id="featured">
-                @foreach (var eventMediaItem in currentEvent.EventMedia) {
+                @if (currentEventMediaItem.MediaType == "photos") {
+                    <img
+                        src="@currentEventMediaItem.LargeUrl"
+                        ondblclick=" openInNewTab('@currentEventMediaItem.FlickrUrl') "
+                        data-caption="#mediaItemInfo_@currentEventMediaItem.ID"
+                        data-eventid="@currentEventItem.ID"
+                        data-mediaid="@currentEventMediaItem.ID" />
+                }
+                else {
+                    <div class="video">
+                        <embed
+                            src="@currentEventMediaItem.VideoUrl"
+                            type="application/x-shockwave-flash"
+                            width="940"
+                            height="350"
+                            allowfullscreen="true"
+                            wmode="transparent"
+                            flashvars="flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false"
+                            data-caption="#mediaItemInfo_@currentEventMediaItem.ID"
+                            data-eventid="@currentEventItem.ID"
+                            data-mediaid="@currentEventMediaItem.ID" />
+                    </div>
+                }
+
+                @foreach (var eventMediaItem in currentEventItem.EventMedia.Where(em => em.ID != currentEventMediaItem.ID)) {
                     if (eventMediaItem.MediaType == "photos") {
                         <img
                             src="@eventMediaItem.LargeUrl"
                             ondblclick=" openInNewTab('@eventMediaItem.FlickrUrl') "
-                            data-caption="#mediaItemInfo_@eventMediaItem.ID" />
+                            data-caption="#mediaItemInfo_@currentEventMediaItem.ID"
+                            data-eventid="@currentEventItem.ID"
+                            data-mediaid="@eventMediaItem.ID" />
                     }
                     else {
                         <div class="video">
@@ -43,18 +71,24 @@
                                 width="940"
                                 height="350"
                                 allowfullscreen="true"
+                                wmode="transparent"
                                 flashvars="flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false"
-                                data-caption="#mediaItemInfo_@eventMediaItem.ID">
+                                data-caption="#mediaItemInfo_@eventMediaItem.ID"
+                                data-eventid="@currentEventItem.ID"
+                                data-mediaid="@eventMediaItem.ID" />
                         </div>
                     }
                 }
             </div>
 
-            @* description/content *@
+            @* title/description *@
             <div class="event_media_items_data">
-                @foreach (var eventMediaItem in currentEvent.EventMedia) {
-                    if (!string.IsNullOrWhiteSpace(eventMediaItem.Description) || !string.IsNullOrWhiteSpace(eventMediaItem.Content)) {
+                @foreach (var eventMediaItem in currentEventItem.EventMedia) {
+                    if (!string.IsNullOrWhiteSpace(eventMediaItem.Title) || !string.IsNullOrWhiteSpace(eventMediaItem.Description)) {
                         <div id="mediaItemInfo_@eventMediaItem.ID" class="orbit-caption">
+                            @if (!string.IsNullOrWhiteSpace(eventMediaItem.Title)) {
+                                <div class="title">@Html.Raw(eventMediaItem.Title)</div>
+                            }
                             @if (!string.IsNullOrWhiteSpace(eventMediaItem.Description)) {
                                 <div class="description">@Html.Raw(eventMediaItem.Description)</div>
                             }
@@ -88,22 +122,26 @@
                         @foreach (var eventMediaItem in eventItem.EventMedia) {
                             if (eventMediaItem.MediaType == "photos") {
                                 <img src="@eventMediaItem.LargeUrl"
-                                     data-eventid="@eventItem.ID"
-                                     data-flickrurl="@eventMediaItem.FlickrUrl"
-                                     data-description="@eventMediaItem.Description"
-                                     data-content="@eventMediaItem.Content"
-                                     data-caption="#mediaItemInfo_@eventMediaItem.ID"
-                                     ondblclick=" openInNewTab('@eventMediaItem.FlickrUrl') " />
+                                    data-eventid="@eventItem.ID"
+                                    data-flickrurl="@eventMediaItem.FlickrUrl"
+                                    data-title="@eventMediaItem.Title"
+                                    data-description="@eventMediaItem.Description"
+                                    data-caption="#mediaItemInfo_@eventMediaItem.ID"
+                                    data-eventid="@eventItem.ID"
+                                    data-mediaid="@eventMediaItem.ID"
+                                    ondblclick="openInNewTab('@eventMediaItem.FlickrUrl')" />
                             }
                             else {
                                 <div class="video">
-                                    <embed src="@eventMediaItem.VideoUrl&amp;flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false" type="application/x-shockwave-flash" width="940" height="350" scrolling="no" frameBorder="0" allowfullscreen="true"
-                                           data-eventid="@eventItem.ID"
-                                           data-flickrurl="@eventMediaItem.FlickrUrl"
-                                           data-description="@eventMediaItem.Description"
-                                           data-content="@eventMediaItem.Content"
-                                           data-caption="#mediaItemInfo_@eventMediaItem.ID"
-                                           ondblclick=" openInNewTab('@eventMediaItem.FlickrUrl') " />
+                                    <embed src="@eventMediaItem.VideoUrl&amp;flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false" type="application/x-shockwave-flash" width="940" height="350" scrolling="no" frameBorder="0" allowfullscreen="true" wmode="transparent"
+                                        data-eventid="@eventItem.ID"
+                                        data-flickrurl="@eventMediaItem.FlickrUrl"
+                                        data-title="@eventMediaItem.Title"
+                                        data-description="@eventMediaItem.Description"
+                                        data-caption="#mediaItemInfo_@eventMediaItem.ID"
+                                        data-eventid="@eventItem.ID"
+                                        data-mediaid="@eventMediaItem.ID"
+                                        ondblclick="openInNewTab('@eventMediaItem.FlickrUrl')" />
                                 </div>
                             }
                         }
@@ -112,8 +150,11 @@
                 @* описание/контент медиа файлов события *@
                     <div class="event_media_items_data">
                         @foreach (var eventMediaItem in eventItem.EventMedia) {
-                            if (!string.IsNullOrWhiteSpace(eventMediaItem.Description) || !string.IsNullOrWhiteSpace(eventMediaItem.Content)) {
-                                <div id="thumbMediaItemInfo_@eventMediaItem.ID" class="orbit-caption">
+                            if (!string.IsNullOrWhiteSpace(eventMediaItem.Title) || !string.IsNullOrWhiteSpace(eventMediaItem.Description)) {
+                                <div id="mediaItemInfo_@eventMediaItem.ID" class="orbit-caption">
+                                    @if (!string.IsNullOrWhiteSpace(eventMediaItem.Title)) {
+                                        <div class="title">@Html.Raw(eventMediaItem.Title)</div>
+                                    }
                                     @if (!string.IsNullOrWhiteSpace(eventMediaItem.Description)) {
                                         <div class="description">@Html.Raw(eventMediaItem.Description)</div>
                                     }
@@ -137,8 +178,8 @@
     <div class="properties float_left">
         <div class="title property"></div>
         <div class="date property"></div>
+        <div class="title property"></div>
         <div class="description property"></div>
-        @*<div class="content property"></div>*@
     </div>
     <div class="event_media_items"></div>
     <div class="event_media_items_data"></div>
@@ -148,14 +189,14 @@
 <div class="event_media_item_template">
     <img />
     <div class="video">
-        <embed src="&amp;flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false" type="application/x-shockwave-flash" width="940" height="350" scrolling="no" frameborder="0" allowfullscreen="true" />
+        <embed src="&amp;flickr_target=_self&amp;onsite=true&amp;flickr_noAutoPlay=true&amp;hd_default=false" type="application/x-shockwave-flash" width="940" height="350" scrolling="no" frameborder="0" allowfullscreen="true" wmode="transparent" />
     </div>
 </div>
 
-@* шаблон - описание/контент медиа файлов события *@
+@* шаблон - название/описание медиа файлов события *@
 <div class="event_media_item_info_template">
     <div class="orbit-caption">
+        <div class="title"></div>
         <div class="description"></div>
-        <div class="content"></div>
     </div>
 </div>

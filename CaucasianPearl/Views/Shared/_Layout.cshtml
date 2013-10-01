@@ -4,14 +4,32 @@
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Core.Helpers.MvcHtmlStringHelpers
 @using CaucasianPearl.Core.UserControls
-@using Resources
+@using CaucasianPearl.Resources;
 
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        <title>@ViewBag.Title</title>
+        <title>@ViewRes.ProjectTitle</title>
 
         <link href="@Url.Content("~/content/img/site/favicon.ico")" rel="site icon" type="image/x-icon" />
+        
+        @Html.Partial(Consts.Paths.UserControls.MetaTagsControl, new ViewDataDictionary { {"viewBag", ViewBag}})
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        
+        @* vk.com *@
+        <meta name="title" content="@ViewBag.Title" />
+        <meta name="description" content="@ViewBag.Description" />
+        <link rel="image_src" href="@ViewBag.Image" />
+
+        @* facebook.com *@
+        <meta property="og:title" content="@ViewBag.Title" />
+        <meta property="og:description" content="@ViewBag.Description" />
+        <meta property="og:image" content="@ViewBag.Image" />
+        <meta property="og:site_name" content="@ViewBag.SiteName" />
+        <meta property="og:url" content="@HttpContext.Current.Request.Url" />
+
+        <meta name="keywords" content="@ViewBag.Keywords" />
 
         @Styles.Render("~/bundles/styles")
         
@@ -48,7 +66,6 @@
                 </div>
                 <div class="float-right">
                     <section id="login">
-                        @Html.Partial(Consts.Paths.UserControls.LoginControl)
                         @Html.Partial(Consts.Paths.UserControls.CultureControl)
                     </section>
                     <nav>
@@ -77,67 +94,6 @@
                                     actionName: Consts.Actions.Index,
                                     controllerName: Consts.Controllers.SiteSettings.Name)
                             </li>
-                            @*<li>
-                                @Html.ActionLink(
-                                    linkText: ViewRes.Home,
-                                    actionName: Consts.Actions.Index,
-                                    controllerName: Consts.Controllers.Home.Name)
-                            </li>
-                            <li>
-                                @Html.ActionLink(
-                                    linkText: ViewRes.UserProfiles,
-                                    actionName: Consts.Actions.Index,
-                                    controllerName: Consts.Controllers.Profile.Name)
-                            </li>                            
-                            <li>
-                                @Html.ActionLink(
-                                    linkText: ViewRes.Sponsors,
-                                    actionName: Consts.Actions.Index,
-                                    controllerName: Consts.Controllers.Sponsor.Name)
-                            </li>
-                            
-                        </ul>
-                        <ul class="menu">
-                            <li>
-                                @Html.ActionLink(
-                                    linkText: ViewRes.Requests,
-                                    actionName: Consts.Actions.Create,
-                                    controllerName: Consts.Controllers.Request.Name)
-                            </li>
-                            <li>
-                                @Html.ActionLink(
-                                    linkText: ViewRes.Gallery,
-                                    actionName: Consts.Actions.Index,
-                                    controllerName: Consts.Controllers.Gallery.Name)
-                            </li>
-                            <li>
-                                @Html.ActionLink(
-                                    linkText: ViewRes.Feedbacks,
-                                    actionName: Consts.Actions.Index,
-                                    controllerName: Consts.Controllers.Feedback.Name)
-                            </li>
-                            <li>
-                                @Html.ActionLink(
-                                    linkText: ViewRes.Contacts,
-                                    actionName: Consts.Controllers.Home.Actions.Contacts,
-                                    controllerName: Consts.Controllers.Home.Name)
-                            </li>
-                            <li>
-                                @Html.ActionLink(
-                                    linkText: ViewRes.Contacts,
-                                    actionName: Consts.Controllers.Home.Actions.Contact,
-                                    controllerName: Consts.Controllers.Home.Name)
-                            </li>
-                            //TODO: убрать
-                            if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager)))
-                            {
-                                <li>
-                                    @Html.ActionLink(
-                                        linkText: ViewRes.ContentBlock,
-                                        actionName: Consts.Actions.Index,
-                                        controllerName: Consts.Controllers.ContentBlock.Name)
-                                </li>
-                            }*@
                         </ul>
                     </nav>
                 </div>

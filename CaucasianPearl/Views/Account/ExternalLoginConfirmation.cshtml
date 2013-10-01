@@ -13,7 +13,7 @@
 
 @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { returnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary()
 
     <fieldset>
         <legend>Association Form</legend>

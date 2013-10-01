@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.Filters;
-using Resources;
+using CaucasianPearl.Resources;
 
 namespace CaucasianPearl.Models.Metadata
 {

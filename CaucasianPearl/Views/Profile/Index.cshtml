@@ -4,24 +4,17 @@
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Core.UserControls
 @using CaucasianPearl.Models.EDM
-@using Resources
+@using CaucasianPearl.Resources;
 @using System.Globalization
 
 @model IEnumerable<Profile>
 
-@{
-    ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.UserProfiles);
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.UserProfiles); }
 
 @Html.Raw(CssJsRegControl.Render("photos.css", Consts.Paths.Css.CpCssPrefixPath))
 
 <p>
-    @Html.ActionLink(
-        ViewRes.ToHomePage,
-        actionName: Consts.Actions.Index,
-        controllerName: Consts.Controllers.Home.Name,
-        routeValues: null,
-        htmlAttributes: new { @class = "link" })
+    @Html.ActionLink(ViewRes.ToHomePage, Consts.Actions.Index, Consts.Controllers.Home.Name, null, new { @class = "link" })
     @Consts.BreadcrumbsSeparator
     @ViewRes.UserProfiles
 </p>
@@ -29,7 +22,7 @@
 <h2>@ViewRes.UserProfiles</h2>
 
 <div>
-    @if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager))) {
+    @if (WebSecurity.IsAuthenticated && User.IsInAnyRole(Consts.Roles.AdminContentManager)) {
         <p>
             @Html.ActionLink(
                 ViewRes.CreateProfile,
@@ -38,7 +31,7 @@
     }
 </div>
 
-<div class="wrapper">
+<div class="wrapper profile_index">
     <div class="photo-content">
         <ul class="photo-area" style="height: 238px;">
             @foreach (var profile in Model) {
@@ -48,12 +41,12 @@
                             <a class="image-zoom"
                                title="@profile.FirstName @profile.LastName"
                                href="@Url.Action(Consts.Actions.GetByShortName,
-                                         Consts.Controllers.Profile.Name,
-                                         new {
-                                             shortname = profile.ShortName,
-                                             page = Request.QueryString["page"],
-                                             find = Request.QueryString["find"]
-                                         })">
+                                                 Consts.Controllers.Profile.Name,
+                                                 new {
+                                                     shortname = profile.ShortName,
+                                                     page = Request.QueryString["page"],
+                                                     find = Request.QueryString["find"]
+                                                 })">
                                 <img class="photo"
                                      src="@Url.Content(profile.ImageUrl)"
                                      alt="@profile.FirstName @profile.LastName"
@@ -61,7 +54,7 @@
                             </a>
                         </span>
                         <div class="photo-text">
-                            <h2 class="photo-title">
+                            <h3 class="photo-title">
                                 <a href="@Url.Action(Consts.Actions.GetByShortName,
                                                      Consts.Controllers.Profile.Name,
                                                      new {
@@ -70,20 +63,13 @@
                                                          find = Request.QueryString["find"]
                                                      })"
                                    title="@profile.FirstName  @profile.LastName">@profile.FirstName @profile.LastName</a>
-                            </h2>
-                            <span>Имя: @profile.FirstName @profile.LastName</span>
-                            <br />
-                            <span>Позиция: @profile.Position</span>
+                            </h3>
+                            <div>@profile.Position</div>
+                            <div>@profile.Description</div>
                         </div>
 
-                        @if (WebSecurity.IsAuthenticated && (User.IsInAnyRole(Consts.Roles.AdminContentManager) || WebSecurity.CurrentUserId == profile.ID)) {
+                        @if (User.IsInAnyRole(Consts.Roles.AdminContentManager) || WebSecurity.CurrentUserId == profile.ID) {
                             <div class="photo-text">
-                                @Html.ActionLink(
-                                    ViewRes.Details,
-                                    Consts.Actions.Details,
-                                    new { id = profile.ID },
-                                    new { style = "display: block;" })
-
                                 @Html.ActionLink(
                                     ViewRes.Edit,
                                     Consts.Actions.Edit,

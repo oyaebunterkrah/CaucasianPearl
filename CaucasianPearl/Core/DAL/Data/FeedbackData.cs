@@ -5,7 +5,7 @@ using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Helpers.EntityHelpers;
 using CaucasianPearl.Models.EDM;
-using Resources;
+using CaucasianPearl.Resources;
 
 namespace CaucasianPearl.Core.DAL.Data
 {

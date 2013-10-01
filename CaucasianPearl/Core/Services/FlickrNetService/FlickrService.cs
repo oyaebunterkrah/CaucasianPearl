@@ -13,7 +13,7 @@ using CaucasianPearl.Core.DAL.Data;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Services.LoggingService;
 using CaucasianPearl.Properties;
-using Resources;
+using CaucasianPearl.Resources;
 using Photoset = CaucasianPearl.Models.Photoset;
 
 namespace CaucasianPearl.Core.Services.FlickrNetService

@@ -1,10 +1,11 @@
 @using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.EntityServices.Interface
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Core.UserControls
 @using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Models
 @using CaucasianPearl.Models.EDM;
-@using Resources
+@using CaucasianPearl.Resources;
 
 @model IEnumerable<Request>
 
@@ -63,18 +64,17 @@
                 @request.Comment
             </div>
 
-            @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
-            {
+            @if (User.IsInAnyRole(Consts.Roles.AdminContentManager)) {
                 <p>
                     @Html.ActionLink(
                         linkText: ViewRes.Edit,
                         actionName: Consts.Actions.Edit,
-                        routeValues: new {id = request.ID}
+                        routeValues: new { id = request.ID }
                          ) |
                     @Html.ActionLink(
                         linkText: ViewRes.Delete,
                         actionName: Consts.Actions.Delete,
-                        routeValues: new {id = request.ID}
+                        routeValues: new { id = request.ID }
                          )
                 </p>
             }

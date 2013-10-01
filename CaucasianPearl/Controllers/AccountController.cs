@@ -5,19 +5,25 @@ using System.Linq;
 using System.Transactions;
 using System.Web.Mvc;
 using System.Web.Security;
+using CaucasianPearl.Core.Services.LoggingService;
+using CaucasianPearl.Core.Utilities;
 using Microsoft.Web.WebPages.OAuth;
+using Ninject;
 using WebMatrix.WebData;
 
 using CaucasianPearl.Core.Constants;
 using CaucasianPearl.Models;
 using CaucasianPearl.Models.EDM;
-using Resources;
+using CaucasianPearl.Resources;
 
 namespace CaucasianPearl.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        [Inject]
+        public ILogService LogService { get; set; }
+
         //
         // GET: /Account/Login
 
@@ -30,7 +36,7 @@ namespace CaucasianPearl.Controllers
                                                                          StringComparison.InvariantCultureIgnoreCase) <
                                 0
                                     ? Request.UrlReferrer.AbsolutePath
-                                    : Consts.RootPath;
+                                    : Consts.Paths.RootPath;
 
             return View();
         }
@@ -44,10 +50,15 @@ namespace CaucasianPearl.Controllers
         public ActionResult Login(LoginModel model, string returnUrl)
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
-                return RedirectToAction(Consts.Actions.Index, Consts.Controllers.Home.Name);
+                return RedirectToLocal(returnUrl);
+            //return RedirectToAction(Consts.Actions.Index, Consts.Controllers.Home.Name);
 
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError(string.Empty, ErrorRes.TheUserNameOrPasswordProvidedIsIncorrect);
+            ViewBag.returnUrl = string.IsNullOrWhiteSpace(returnUrl)
+                                    ? Utility.GetReturnUrl
+                                    : returnUrl;
+
             return View(model);
         }
 
@@ -66,6 +77,7 @@ namespace CaucasianPearl.Controllers
         //
         // GET: /Account/Register
 
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -75,6 +87,7 @@ namespace CaucasianPearl.Controllers
         // POST: /Account/Register
 
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
@@ -128,7 +141,7 @@ namespace CaucasianPearl.Controllers
                 }
             }
 
-            return RedirectToAction("Manage", new {Message = message});
+            return RedirectToAction(Consts.Controllers.Account.Actions.Manage, new { Message = message });
         }
 
         //
@@ -138,14 +151,14 @@ namespace CaucasianPearl.Controllers
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess
-                    ? "Your password has been changed."
+                    ? ViewRes.YourPasswordHasBeenChanged
                     : message == ManageMessageId.SetPasswordSuccess
-                          ? "Your password has been set."
+                          ? ViewRes.YourPasswordHasBeenSet
                           : message == ManageMessageId.RemoveLoginSuccess
                                 ? "The external login was removed."
                                 : string.Empty;
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-            ViewBag.ReturnUrl = Url.Action("Manage");
+            ViewBag.ReturnUrl = Url.Action(Consts.Controllers.Account.Actions.Manage);
             return View();
         }
 
@@ -177,7 +190,7 @@ namespace CaucasianPearl.Controllers
 
                     if (changePasswordSucceeded)
                         return RedirectToAction(Consts.Controllers.Account.Actions.Manage,
-                                                new {Message = ManageMessageId.ChangePasswordSuccess});
+                                                new { Message = ManageMessageId.ChangePasswordSuccess });
 
                     ModelState.AddModelError(string.Empty,
                                              ErrorRes.TheCurrentPasswordIsIncorrectOrTheNewPasswordIsInvalid);
@@ -199,7 +212,7 @@ namespace CaucasianPearl.Controllers
                     {
                         WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
                         return RedirectToAction(Consts.Controllers.Account.Actions.Manage,
-                                                new {Message = ManageMessageId.SetPasswordSuccess});
+                                                new { Message = ManageMessageId.SetPasswordSuccess });
                     }
                     catch (Exception)
                     {
@@ -224,7 +237,7 @@ namespace CaucasianPearl.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
-            return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new {ReturnUrl = returnUrl}));
+            return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
         }
 
         //
@@ -233,7 +246,7 @@ namespace CaucasianPearl.Controllers
         [AllowAnonymous]
         public ActionResult ExternalLoginCallback(string returnUrl)
         {
-            var result = OAuthWebSecurity.VerifyAuthentication(Url.Action("ExternalLoginCallback", new {returnUrl}));
+            var result = OAuthWebSecurity.VerifyAuthentication(Url.Action("ExternalLoginCallback", new { returnUrl }));
             if (!result.IsSuccessful)
             {
                 return RedirectToAction("ExternalLoginFailure");
@@ -256,7 +269,7 @@ namespace CaucasianPearl.Controllers
             ViewBag.ProviderDisplayName = OAuthWebSecurity.GetOAuthClientData(result.Provider).DisplayName;
             ViewBag.ReturnUrl = returnUrl;
             return View("ExternalLoginConfirmation",
-                        new RegisterExternalLoginModel {UserName = result.UserName, ExternalLoginData = loginData});
+                        new RegisterExternalLoginModel { UserName = result.UserName, ExternalLoginData = loginData });
         }
 
         //
@@ -320,7 +333,7 @@ namespace CaucasianPearl.Controllers
         public ActionResult ExternalLoginsList(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return PartialView("_ExternalLoginsListPartial", OAuthWebSecurity.RegisteredClientData);
+            return PartialView("ExternalLoginsListPartial", OAuthWebSecurity.RegisteredClientData);
         }
 
         [ChildActionOnly]
@@ -342,7 +355,29 @@ namespace CaucasianPearl.Controllers
 
             ViewBag.ShowRemoveButton = externalLogins.Count > 1 ||
                                        OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-            return PartialView("_RemoveExternalLoginsPartial", externalLogins);
+            return PartialView("RemoveExternalLoginsPartial", externalLogins);
+        }
+
+        [Authorize(Roles = Consts.Roles.Admin)]
+        [HttpPost]
+        public ActionResult ResetPassword(string userName, string returnUrl)
+        {
+            try
+            {
+                if (WebSecurity.UserExists(userName))
+                {
+                    var resetToken = WebSecurity.GeneratePasswordResetToken(userName, 30);
+                    WebSecurity.ResetPassword(resetToken, Consts.DefaultPassword);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.Error(ex);
+
+                return Json(LogUtility.BuildExceptionMessage(ex));
+            }
+
+            return Json(ViewRes.PasswordSuccessfullyReseted);
         }
 
         #region Helpers

@@ -117,11 +117,86 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Об ансамбле</value>
+  </data>
   <data name="AccountCreatingWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
     <value>Аккаунт не был создан. Пожалуйста, исправьте ошибки и попробуйте снова</value>
   </data>
   <data name="AccountInformation" xml:space="preserve">
     <value>Учётные данные</value>
+  </data>
+  <data name="Account_Manage" xml:space="preserve">
+    <value>Редактировать профиль</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Действие</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="AddComment" xml:space="preserve">
+    <value>Добавить отзыв</value>
+  </data>
+  <data name="AddingFeedback" xml:space="preserve">
+    <value>Добавление отзыва</value>
+  </data>
+  <data name="AddingRequest" xml:space="preserve">
+    <value>Добавление заявки</value>
+  </data>
+  <data name="AddRequest" xml:space="preserve">
+    <value>Добавить заявку</value>
+  </data>
+  <data name="Affiche" xml:space="preserve">
+    <value>Афиша</value>
+  </data>
+  <data name="AllContentBlocks" xml:space="preserve">
+    <value>Все контент-блоки</value>
+  </data>
+  <data name="AllEvents" xml:space="preserve">
+    <value>Все события</value>
+  </data>
+  <data name="AllProfiles" xml:space="preserve">
+    <value>Все профили</value>
+  </data>
+  <data name="AllSponsors" xml:space="preserve">
+    <value>Все спонсоры</value>
+  </data>
+  <data name="AreYouSureThatYouWantDeleteThisContentBlock" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить этот контент-блок?</value>
+  </data>
+  <data name="AreYouSureThatYouWantDeleteThisEvent" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить это событие?</value>
+  </data>
+  <data name="AreYouSureThatYouWantDeleteThisProfile" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить этот профиль?</value>
+  </data>
+  <data name="AreYouSureThatYouWantDeleteThisRequest" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить эту заявку?</value>
+  </data>
+  <data name="AreYouSureThatYouWantDeleteThisSponsor" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить этого спонсора?</value>
+  </data>
+  <data name="AreYouSureYouWantToDeleteThis" xml:space="preserve">
+    <value>Вы уверены,что хотите удалить?</value>
+  </data>
+  <data name="AreYouSureYouWantToDeleteThisSiteSetting" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить эту настройку сайта?</value>
+  </data>
+  <data name="Authorize" xml:space="preserve">
+    <value>Авторизоваться</value>
+  </data>
+  <data name="BackToHomePage" xml:space="preserve">
+    <value>Вернуться на главную страницу</value>
+  </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>Назад к списку</value>
+  </data>
+  <data name="BecomeSponsor" xml:space="preserve">
+    <value>Стать спонсором</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Изменить пароль</value>
@@ -132,65 +207,14 @@
   <data name="CharactersInLength" xml:space="preserve">
     <value>символов в длину</value>
   </data>
-  <data name="CreateANewAccount" xml:space="preserve">
-    <value>Создание нового аккаунта</value>
+  <data name="Comment" xml:space="preserve">
+    <value>Комментарий</value>
   </data>
-  <data name="IfYouDontHaveAnAccount" xml:space="preserve">
-    <value>если у Вас нет аккаунта</value>
+  <data name="ContactInformation" xml:space="preserve">
+    <value>Контактная информация</value>
   </data>
-  <data name="Login" xml:space="preserve">
-    <value>Вход</value>
-  </data>
-  <data name="LoginPartial_Login" xml:space="preserve">
-    <value>Вход</value>
-  </data>
-  <data name="LoginWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
-    <value>Вход не выполнен. Пожалуйста, исправьте ошибки и попробуйте снова</value>
-  </data>
-  <data name="Login_Register" xml:space="preserve">
-    <value>Зарегистрируйтесь</value>
-  </data>
-  <data name="LogOff" xml:space="preserve">
-    <value>Выход</value>
-  </data>
-  <data name="Account_Manage" xml:space="preserve">
-    <value>Редактировать профиль</value>
-  </data>
-  <data name="NewPasswordAreRequiredToBeAminimumOf" xml:space="preserve">
-    <value>Новый пароль должен быть минимум</value>
-  </data>
-  <data name="PasswordChanging" xml:space="preserve">
-    <value>Изменение пароля</value>
-  </data>
-  <data name="PasswordsAreRequiredToBeAminimumOf" xml:space="preserve">
-    <value>Пароли должны быть минимум</value>
-  </data>
-  <data name="PleaseEnterYourUserNameAndPassword" xml:space="preserve">
-    <value>Пожалуйста, введите имя пользователя и пароль</value>
-  </data>
-  <data name="Register" xml:space="preserve">
-    <value>Регистрация</value>
-  </data>
-  <data name="UseTheFormBelowToChangeYourPassword" xml:space="preserve">
-    <value>Для изменения пароля используйте форму ниже</value>
-  </data>
-  <data name="UseTheFormBelowToCreateANewAccount" xml:space="preserve">
-    <value>Для создания аккаунта используйте форму ниже</value>
-  </data>
-  <data name="YourPasswordHasBeenChangedSuccessfully" xml:space="preserve">
-    <value>Ваш пароль был успешно изменён</value>
-  </data>
-  <data name="Actions" xml:space="preserve">
-    <value>Действия</value>
-  </data>
-  <data name="AllContentBlocks" xml:space="preserve">
-    <value>Все контент-блоки</value>
-  </data>
-  <data name="AreYouSureThatYouWantDeleteThisContentBlock" xml:space="preserve">
-    <value>Вы уверены, что хотите удалить этот контент-блок?</value>
-  </data>
-  <data name="BackToList" xml:space="preserve">
-    <value>Назад к списку</value>
+  <data name="Contacts" xml:space="preserve">
+    <value>Контакты</value>
   </data>
   <data name="ContentBlock" xml:space="preserve">
     <value>Контент-блок</value>
@@ -210,20 +234,56 @@
   <data name="ContentBlocks" xml:space="preserve">
     <value>Контент-блоки</value>
   </data>
+  <data name="Cover" xml:space="preserve">
+    <value>Обложка</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="CreateANewAccount" xml:space="preserve">
+    <value>Создание нового аккаунта</value>
+  </data>
   <data name="CreateContentBlock" xml:space="preserve">
     <value>Создать контент-блок</value>
-  </data>
-  <data name="AllEvents" xml:space="preserve">
-    <value>Все события</value>
-  </data>
-  <data name="AreYouSureThatYouWantDeleteThisEvent" xml:space="preserve">
-    <value>Вы уверены, что хотите удалить это событие?</value>
   </data>
   <data name="CreateEvent" xml:space="preserve">
     <value>Создать событие</value>
   </data>
-  <data name="EventDetails" xml:space="preserve">
-    <value>Подробности событие</value>
+  <data name="CreateProfile" xml:space="preserve">
+    <value>Создать профиль</value>
+  </data>
+  <data name="CreateSponsor" xml:space="preserve">
+    <value>Создать спонсора</value>
+  </data>
+  <data name="CreateUserProfile" xml:space="preserve">
+    <value>Создать профиль пользователя</value>
+  </data>
+  <data name="Creating" xml:space="preserve">
+    <value>Создание</value>
+  </data>
+  <data name="DefaultValue" xml:space="preserve">
+    <value>Значение по умолчанию</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="Deleting" xml:space="preserve">
+    <value>Удаление</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Подробности</value>
+  </data>
+  <data name="Down" xml:space="preserve">
+    <value>Вниз</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="Editing" xml:space="preserve">
+    <value>Редактирование</value>
   </data>
   <data name="Event" xml:space="preserve">
     <value>Событие</value>
@@ -234,17 +294,20 @@
   <data name="EventDeleting" xml:space="preserve">
     <value>Удаление события</value>
   </data>
+  <data name="EventDetails" xml:space="preserve">
+    <value>Подробности событие</value>
+  </data>
   <data name="EventEditing" xml:space="preserve">
     <value>Редактирование события</value>
   </data>
   <data name="Events" xml:space="preserve">
     <value>События</value>
   </data>
-  <data name="ImageForEvent" xml:space="preserve">
-    <value>Изображение для события</value>
+  <data name="Feedback" xml:space="preserve">
+    <value>Отзыв</value>
   </data>
-  <data name="AddComment" xml:space="preserve">
-    <value>Добавить отзыв</value>
+  <data name="FeedbackDeleting" xml:space="preserve">
+    <value>Удаление отзыва</value>
   </data>
   <data name="FeedbackDetails" xml:space="preserve">
     <value>Подробности отзыва</value>
@@ -252,26 +315,134 @@
   <data name="FeedbackEditing" xml:space="preserve">
     <value>Редактирование отзыва</value>
   </data>
-  <data name="NoPhotosetsFound" xml:space="preserve">
-    <value>Не найдено ни одного фотоальбома.</value>
+  <data name="Feedbacks" xml:space="preserve">
+    <value>Отзывы</value>
   </data>
-  <data name="Photosets" xml:space="preserve">
-    <value>Фотоальбомы</value>
+  <data name="FeedbackSendingError" xml:space="preserve">
+    <value>Во время отправки отзыва возникла неожиданная ошибка. Пожалуйста, повторите попытку позднее.</value>
   </data>
-  <data name="AllProfiles" xml:space="preserve">
-    <value>Все профили</value>
+  <data name="FeedbackThanks" xml:space="preserve">
+    <value>Спасибо за Ваше мнение! Отзыв появится на сайте после проверки модератором.</value>
   </data>
-  <data name="AreYouSureThatYouWantDeleteThisProfile" xml:space="preserve">
-    <value>Вы уверены, что хотите удалить свой профиль?</value>
+  <data name="FooterTitle" xml:space="preserve">
+    <value>© Ансамбль «Жемчужина Кавказа»</value>
   </data>
-  <data name="CreateProfile" xml:space="preserve">
-    <value>Создать профиль</value>
+  <data name="Gallery" xml:space="preserve">
+    <value>Галерея</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Домашняя</value>
+  </data>
+  <data name="HomePageModeSettings" xml:space="preserve">
+    <value>Настройка режима главной страницы</value>
+  </data>
+  <data name="IfYouDontHaveAnAccount" xml:space="preserve">
+    <value>если у Вас нет аккаунта</value>
+  </data>
+  <data name="ImageForEvent" xml:space="preserve">
+    <value>Изображение для события</value>
   </data>
   <data name="ImageForProfile" xml:space="preserve">
     <value>Изображение для профиля</value>
   </data>
-  <data name="UserProfile" xml:space="preserve">
-    <value>Профиль пользователя</value>
+  <data name="ImageForSponsor" xml:space="preserve">
+    <value>Изображение для спонсора</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="LoginPartial_Login" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="LoginWasUnsuccessfulPleaseCorrectTheErrorsAndTryAgain" xml:space="preserve">
+    <value>Вход не выполнен. Пожалуйста, исправьте ошибки и попробуйте снова</value>
+  </data>
+  <data name="Login_Register" xml:space="preserve">
+    <value>Зарегистрируйтесь</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="ManageProfile" xml:space="preserve">
+    <value>Управление профилем</value>
+  </data>
+  <data name="MetaAboutOgDescription" xml:space="preserve">
+    <value>Ансамбль национального танца под руководством Вердян Жанны Геннадьевны</value>
+  </data>
+  <data name="MetaAboutOgImage" xml:space="preserve">
+    <value>http://www.caucasian-pearl.ru/content/img/site/social_share/aboutOgImage.png</value>
+  </data>
+  <data name="MetaAboutOgTitle" xml:space="preserve">
+    <value>Ансамбль национального танца — «Жемчужина Кавказа»</value>
+  </data>
+  <data name="MetaAfficheOgDescription" xml:space="preserve">
+    <value>Ансамбль национального танца под руководством Вердян Жанны Геннадьевны</value>
+  </data>
+  <data name="MetaAfficheOgImage" xml:space="preserve">
+    <value>http://www.caucasian-pearl.ru/content/img/site/social_share/afficheOgImage.png</value>
+  </data>
+  <data name="MetaAfficheOgTitle" xml:space="preserve">
+    <value>Ансамбль национального танца — «Жемчужина Кавказа»</value>
+  </data>
+  <data name="MetaDefaultOgDescription" xml:space="preserve">
+    <value>Ансамбль национального танца под руководством Вердян Жанны Геннадьевны</value>
+  </data>
+  <data name="MetaDefaultOgImage" xml:space="preserve">
+    <value>http://www.caucasian-pearl.ru/content/img/site/social_share/defaultOgImage.png</value>
+  </data>
+  <data name="MetaDefaultOgTitle" xml:space="preserve">
+    <value>Ансамбль национального танца — «Жемчужина Кавказа»</value>
+  </data>
+  <data name="MetaDescription" xml:space="preserve">
+    <value>Ансамбль национального танца под руководством Вердян Жанны Геннадьевны</value>
+  </data>
+  <data name="MetaEventsOgDescription" xml:space="preserve">
+    <value>Ансамбль национального танца под руководством Вердян Жанны Геннадьевны</value>
+  </data>
+  <data name="MetaEventsOgImage" xml:space="preserve">
+    <value>http://www.caucasian-pearl.ru/content/img/site/social_share/eventsOgImage.png</value>
+  </data>
+  <data name="MetaEventsOgTitle" xml:space="preserve">
+    <value>Ансамбль национального танца — «Жемчужина Кавказа»</value>
+  </data>
+  <data name="MetaHomeOgDescription" xml:space="preserve">
+    <value>Ансамбль национального танца под руководством Вердян Жанны Геннадьевны</value>
+  </data>
+  <data name="MetaHomeOgImage" xml:space="preserve">
+    <value>http://www.caucasian-pearl.ru/content/img/site/social_share/homeOgImage.png</value>
+  </data>
+  <data name="MetaHomeOgTitle" xml:space="preserve">
+    <value>Ансамбль национального танца — «Жемчужина Кавказа»</value>
+  </data>
+  <data name="MetaKeyWords" xml:space="preserve">
+    <value>ансамбль,кавказ,танцы,выступление,народный</value>
+  </data>
+  <data name="NewPasswordAreRequiredToBeAminimumOf" xml:space="preserve">
+    <value>Новый пароль должен быть минимум</value>
+  </data>
+  <data name="NoPhotosetsFound" xml:space="preserve">
+    <value>Не найдено ни одного фотоальбома.</value>
+  </data>
+  <data name="NotSpecified" xml:space="preserve">
+    <value>Не указано</value>
+  </data>
+  <data name="OurTeam" xml:space="preserve">
+    <value>Наш коллектив</value>
+  </data>
+  <data name="PasswordChanging" xml:space="preserve">
+    <value>Изменение пароля</value>
+  </data>
+  <data name="PasswordsAreRequiredToBeAminimumOf" xml:space="preserve">
+    <value>Пароли должны быть минимум</value>
+  </data>
+  <data name="Photosets" xml:space="preserve">
+    <value>Фотоальбомы</value>
+  </data>
+  <data name="PleaseEnterYourUserNameAndPassword" xml:space="preserve">
+    <value>Пожалуйста, введите имя пользователя и пароль</value>
   </data>
   <data name="ProfileCreating" xml:space="preserve">
     <value>Создание профиля</value>
@@ -285,68 +456,59 @@
   <data name="ProfileEditing" xml:space="preserve">
     <value>Редактирование профиля</value>
   </data>
-  <data name="UserProfiles" xml:space="preserve">
-    <value>Профили пользователей</value>
+  <data name="Profiles" xml:space="preserve">
+    <value>Профили</value>
   </data>
-  <data name="Authorize" xml:space="preserve">
-    <value>Авторизоваться</value>
+  <data name="ProjectTitle" xml:space="preserve">
+    <value>Жемчужина Кавказа</value>
   </data>
-  <data name="BackToHomePage" xml:space="preserve">
-    <value>Вернуться на главную страницу</value>
+  <data name="ProjectTitleShort" xml:space="preserve">
+    <value>ЖК</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>Отмена</value>
+  <data name="Register" xml:space="preserve">
+    <value>Регистрация</value>
   </data>
-  <data name="Create" xml:space="preserve">
-    <value>Создать</value>
+  <data name="RequestDeleting" xml:space="preserve">
+    <value>Удаление заявки</value>
   </data>
-  <data name="Delete" xml:space="preserve">
-    <value>Удалить</value>
+  <data name="RequestDetails" xml:space="preserve">
+    <value>Подробности заявки</value>
   </data>
-  <data name="Details" xml:space="preserve">
-    <value>Подробности</value>
+  <data name="RequestEditing" xml:space="preserve">
+    <value>Редактирование заявки</value>
   </data>
-  <data name="Down" xml:space="preserve">
-    <value>Вниз</value>
+  <data name="Requests" xml:space="preserve">
+    <value>Заявки</value>
   </data>
-  <data name="Edit" xml:space="preserve">
-    <value>Редактировать</value>
+  <data name="RequestSendingError" xml:space="preserve">
+    <value>Во время отправки заявки возникла неожиданная ошибка. Пожалуйста, повторите попытку позднее.</value>
+  </data>
+  <data name="RequestThanks" xml:space="preserve">
+    <value>Спасибо за проявленный интерес! Мы обязательно с Вами свяжемся!</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="Thanks" xml:space="preserve">
-    <value>Спасибо</value>
+  <data name="Sections" xml:space="preserve">
+    <value>Разделы</value>
   </data>
-  <data name="ThankYouWeWillCertainlyContactYou" xml:space="preserve">
-    <value>Спасибо! Мы с Вами обязательно свяжемся!</value>
+  <data name="SendFeedback" xml:space="preserve">
+    <value>Оставить отзыв</value>
   </data>
-  <data name="ToHomePage" xml:space="preserve">
-    <value>На главную</value>
+  <data name="SendRequest" xml:space="preserve">
+    <value>Оставить заявку</value>
   </data>
-  <data name="Up" xml:space="preserve">
-    <value>Вверх</value>
+  <data name="SendRequestForPerformance" xml:space="preserve">
+    <value>Оставить заявку на выступление</value>
   </data>
-  <data name="Upload" xml:space="preserve">
-    <value>Загрузить</value>
+  <data name="SiteSetting" xml:space="preserve">
+    <value>Настройка сайта</value>
   </data>
-  <data name="AreYouSureYouWantToDeleteThis" xml:space="preserve">
-    <value>Вы уверены,что хотите удалить?</value>
+  <data name="SiteSettingDeleting" xml:space="preserve">
+    <value>Удаление настройки сайта</value>
   </data>
-  <data name="AllSponsors" xml:space="preserve">
-    <value>Все спонсоры</value>
-  </data>
-  <data name="AreYouSureThatYouWantDeleteThisSponsor" xml:space="preserve">
-    <value>Вы уверены, что хотите удалить этого спонсора?</value>
-  </data>
-  <data name="CreateSponsor" xml:space="preserve">
-    <value>Создать спонсора</value>
-  </data>
-  <data name="SponsorDetails" xml:space="preserve">
-    <value>Подробности спонсора</value>
-  </data>
-  <data name="ImageForSponsor" xml:space="preserve">
-    <value>Изображение для спонсора</value>
+  <data name="SiteSettings" xml:space="preserve">
+    <value>Настройки сайта</value>
   </data>
   <data name="Sponsor" xml:space="preserve">
     <value>Спонсор</value>
@@ -357,151 +519,97 @@
   <data name="SponsorDeleting" xml:space="preserve">
     <value>Удаление спонсора</value>
   </data>
+  <data name="SponsorDetails" xml:space="preserve">
+    <value>Подробности спонсора</value>
+  </data>
   <data name="SponsorEditing" xml:space="preserve">
     <value>Редактирование спонсора</value>
-  </data>
-  <data name="ProjectTitle" xml:space="preserve">
-    <value>Жемчужина Кавказа</value>
-  </data>
-  <data name="Affiche" xml:space="preserve">
-    <value>Афиша</value>
-  </data>
-  <data name="Contacts" xml:space="preserve">
-    <value>Контакты</value>
-  </data>
-  <data name="Feedbacks" xml:space="preserve">
-    <value>Отзывы</value>
-  </data>
-  <data name="Gallery" xml:space="preserve">
-    <value>Галерея</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Домашняя</value>
-  </data>
-  <data name="ManageProfile" xml:space="preserve">
-    <value>Управление профилем</value>
-  </data>
-  <data name="OurTeam" xml:space="preserve">
-    <value>Наш коллектив</value>
-  </data>
-  <data name="Requests" xml:space="preserve">
-    <value>Заявки</value>
-  </data>
-  <data name="SendRequest" xml:space="preserve">
-    <value>Оставить заявку</value>
-  </data>
-  <data name="SiteSettings" xml:space="preserve">
-    <value>Настройки сайта</value>
   </data>
   <data name="Sponsors" xml:space="preserve">
     <value>Спонсоры</value>
   </data>
-  <data name="WriteUs" xml:space="preserve">
-    <value>Написать нам</value>
+  <data name="Thanks" xml:space="preserve">
+    <value>Спасибо</value>
   </data>
-  <data name="YouSureYouWantToDeleteThis" xml:space="preserve">
-    <value>Вы уверены, что хотите удалить?</value>
-  </data>
-  <data name="ContactInformation" xml:space="preserve">
-    <value>Контактная информация</value>
-  </data>
-  <data name="FooterTitle" xml:space="preserve">
-    <value>© Ансамбль «Жемчужина Кавказа»</value>
-  </data>
-  <data name="About" xml:space="preserve">
-    <value>Об ансамбле</value>
-  </data>
-  <data name="Feedback" xml:space="preserve">
-    <value>Отзыв</value>
-  </data>
-  <data name="NotSpecified" xml:space="preserve">
-    <value>Не указано</value>
-  </data>
-  <data name="BecomeSponsor" xml:space="preserve">
-    <value>Стать спонсором</value>
-  </data>
-  <data name="AddingRequest" xml:space="preserve">
-    <value>Добавление заявки</value>
-  </data>
-  <data name="FeedbackSendingError" xml:space="preserve">
-    <value>Во время отправки отзыва возникла неожиданная ошибка. Пожалуйста, повторите попытку позднее.</value>
-  </data>
-  <data name="FeedbackThanks" xml:space="preserve">
-    <value>Спасибо за Ваше мнение! Отзыв появится на сайте после проверки модератором.</value>
-  </data>
-  <data name="RequestSendingError" xml:space="preserve">
-    <value>Во время отправки заявки возникла неожиданная ошибка. Пожалуйста, повторите попытку позднее.</value>
-  </data>
-  <data name="RequestThanks" xml:space="preserve">
-    <value>Спасибо за проявленный интерес! Мы обязательно с Вами свяжемся!</value>
-  </data>
-  <data name="SendFeedback" xml:space="preserve">
-    <value>Оставить отзыв</value>
-  </data>
-  <data name="SendRequestForPerformance" xml:space="preserve">
-    <value>Оставить заявку на выступление</value>
-  </data>
-  <data name="Action" xml:space="preserve">
-    <value>Действие</value>
-  </data>
-  <data name="AddingFeedback" xml:space="preserve">
-    <value>Добавление отзыва</value>
-  </data>
-  <data name="AddRequest" xml:space="preserve">
-    <value>Добавить заявку</value>
-  </data>
-  <data name="AreYouSureYouWantToDeleteThisSiteSetting" xml:space="preserve">
-    <value>Вы уверены, что хотите удалить эту настройку сайта?</value>
-  </data>
-  <data name="Comment" xml:space="preserve">
-    <value>Комментарий</value>
-  </data>
-  <data name="Cover" xml:space="preserve">
-    <value>Обложка</value>
-  </data>
-  <data name="Creating" xml:space="preserve">
-    <value>Создание</value>
-  </data>
-  <data name="DefaultValue" xml:space="preserve">
-    <value>Значение по умолчанию</value>
-  </data>
-  <data name="Deleting" xml:space="preserve">
-    <value>Удаление</value>
-  </data>
-  <data name="Description" xml:space="preserve">
-    <value>Описание</value>
-  </data>
-  <data name="Editing" xml:space="preserve">
-    <value>Редактирование</value>
-  </data>
-  <data name="HomePageModeSettings" xml:space="preserve">
-    <value>Настройка режима главной страницы</value>
-  </data>
-  <data name="Index" xml:space="preserve">
-    <value>Главная</value>
-  </data>
-  <data name="Profiles" xml:space="preserve">
-    <value>Профили</value>
-  </data>
-  <data name="ProjectTitleShort" xml:space="preserve">
-    <value>ЖК</value>
-  </data>
-  <data name="RequestDetails" xml:space="preserve">
-    <value>Подробности заявки</value>
-  </data>
-  <data name="RequestEditing" xml:space="preserve">
-    <value>Редактирование заявки</value>
-  </data>
-  <data name="Sections" xml:space="preserve">
-    <value>Разделы</value>
-  </data>
-  <data name="SiteSetting" xml:space="preserve">
-    <value>Настройка сайта</value>
+  <data name="ThankYouWeWillCertainlyContactYou" xml:space="preserve">
+    <value>Спасибо! Мы с Вами обязательно свяжемся!</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Название</value>
   </data>
+  <data name="ToHomePage" xml:space="preserve">
+    <value>На главную</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>Вверх</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Загрузить</value>
+  </data>
+  <data name="UserProfile" xml:space="preserve">
+    <value>Профиль пользователя</value>
+  </data>
+  <data name="UserProfiles" xml:space="preserve">
+    <value>Профили пользователей</value>
+  </data>
+  <data name="UseTheFormBelowToChangeYourPassword" xml:space="preserve">
+    <value>Для изменения пароля используйте форму ниже</value>
+  </data>
+  <data name="UseTheFormBelowToCreateANewAccount" xml:space="preserve">
+    <value>Для создания аккаунта используйте форму ниже</value>
+  </data>
   <data name="Value" xml:space="preserve">
     <value>Значение</value>
+  </data>
+  <data name="WriteUs" xml:space="preserve">
+    <value>Написать нам</value>
+  </data>
+  <data name="YourPasswordHasBeenChangedSuccessfully" xml:space="preserve">
+    <value>Ваш пароль был успешно изменён</value>
+  </data>
+  <data name="YouSureYouWantToDeleteThis" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить?</value>
+  </data>
+  <data name="YouSureYouWantToDeleteThisFeedback" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить этот отзыв?</value>
+  </data>
+  <data name="YouSureYouWantToDeleteThisSiteSettings" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить эту настройку сайта?</value>
+  </data>
+  <data name="PasswordSuccessfullyReseted" xml:space="preserve">
+    <value>Пароль успешно сброшен. Установлен пароль по умолчанию</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>Сбросить пароль</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Роль</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Роли</value>
+  </data>
+  <data name="UserDontHaveAnyRole" xml:space="preserve">
+    <value>Пользователь не имеет ни одной роли</value>
+  </data>
+  <data name="ManageAccount" xml:space="preserve">
+    <value>Управление аккаунтом</value>
+  </data>
+  <data name="RegisterNewAccount" xml:space="preserve">
+    <value>Регистрация нового пользователя</value>
+  </data>
+  <data name="SetPassword" xml:space="preserve">
+    <value>Установить пароль</value>
+  </data>
+  <data name="ToRegister" xml:space="preserve">
+    <value>Зарегистрируйтесь</value>
+  </data>
+  <data name="YouLoggedInAs" xml:space="preserve">
+    <value>Вы вошли как</value>
+  </data>
+  <data name="YourPasswordHasBeenChanged" xml:space="preserve">
+    <value>Ваш пароль был изменён.</value>
+  </data>
+  <data name="YourPasswordHasBeenSet" xml:space="preserve">
+    <value>Ваш пароль был установлен.</value>
   </data>
 </root>

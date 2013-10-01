@@ -31,14 +31,22 @@ namespace CaucasianPearl.Controllers.Abstract
             {
                 var objs = _service.Get(IsPageable);
 
+                foreach (var obj1 in objs)
+                    ModifyValuesOnDetails(obj1);
+
                 return View(Consts.Actions.Index, objs);
             }
 
             var obj = _service.Get(shortName);
 
-            return obj == null
-                ? View(Consts.Controllers.Error.Views.NotFound)
-                : View(Consts.Views.Details, obj);
+            if (obj != null)
+            {
+                ModifyValuesOnDetails(obj);
+
+                return View(Consts.Views.Details, obj);
+            }
+
+            return View(Consts.Controllers.Error.Views.NotFound);
         }
 
         #region Overridden virtual methods
@@ -53,6 +61,7 @@ namespace CaucasianPearl.Controllers.Abstract
             if (string.IsNullOrWhiteSpace(model.ShortName))
             {
                 var shortNameSource = GetShortNameSource(model);
+
                 if (!string.IsNullOrWhiteSpace(shortNameSource))
                     model.ShortName = Transliterate(shortNameSource);
             }

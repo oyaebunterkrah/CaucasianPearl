@@ -1,18 +1,16 @@
-﻿@using CaucasianPearl.Models
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Models
+@using CaucasianPearl.Resources
 
 @model RegisterModel
 
-@{
-    ViewBag.Title = "Register";
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.Register, ViewRes.ProjectTitleShort); }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
+    <h1>@ViewRes.RegisterNewAccount</h1>
 </hgroup>
 
-@using (Html.BeginForm())
-{
+@using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
@@ -33,9 +31,6 @@
             </li>
         </ol>
     </fieldset>
-    <input type="submit" value="Register" />
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    
+    <input type="submit" value="@ViewRes.Register" />
 }

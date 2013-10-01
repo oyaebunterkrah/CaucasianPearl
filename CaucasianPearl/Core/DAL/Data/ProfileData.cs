@@ -23,7 +23,7 @@ namespace CaucasianPearl.Core.DAL.Data
             LastName = profile.LastName;
             Email = profile.Email;
             Position = profile.Position;
-            ImageUrl = ProfileEntityService.GetProfileImage(profile);
+            ImageUrl = ImageHelper.GetImageUrl(profile, Consts.Controllers.Profile.ProfileImagesFolder);
             Description = profile.Description;
             ShortName = profile.ShortName;
         }

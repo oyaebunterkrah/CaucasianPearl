@@ -1,79 +1,107 @@
 @using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.EntityServices
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Models.EDM
+@using CaucasianPearl.Resources
 
 @model Profile
 
 <div class="create_or_edit_label">
-    @Html.LabelFor(model => model.FirstName)
+    @Html.LabelFor(m => m.FirstName)
 </div>
 <div class="create_or_edit_field">
-    @Html.EditorFor(model => model.FirstName)
-    @Html.ValidationMessageFor(model => model.FirstName)
+    @Html.EditorFor(m => m.FirstName)
+    @Html.ValidationMessageFor(m => m.FirstName)
 </div>
 
 <div class="create_or_edit_label">
-    @Html.LabelFor(model => model.LastName)
+    @Html.LabelFor(m => m.LastName)
 </div>
 <div class="create_or_edit_field">
-    @Html.EditorFor(model => model.LastName)
-    @Html.ValidationMessageFor(model => model.LastName)
+    @Html.EditorFor(m => m.LastName)
+    @Html.ValidationMessageFor(m => m.LastName)
 </div>
 
-@if (WebSecurity.IsAuthenticated && Roles.IsUserInRole(Consts.Roles.Admin))
+<div class="create_or_edit_label">
+    @Html.LabelFor(m => m.Position)
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(m => m.Position)
+    @Html.ValidationMessageFor(m => m.Position)
+</div>
+
+<div class="create_or_edit_label">
+    @Html.LabelFor(m => m.Description)
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(m => m.Description)
+    @Html.ValidationMessageFor(m => m.Description)
+</div>
+
+<div class="create_or_edit_label">
+    @Html.LabelFor(m => m.ShortName)
+</div>
+<div class="create_or_edit_field">
+    @Html.EditorFor(m => m.ShortName)
+    @Html.ValidationMessageFor(m => m.ShortName)
+</div>
+
+@if (User.IsInAnyRole(Consts.Roles.Admin))
 {
     <div class="create_or_edit_label">
-        @Html.LabelFor(model => model.UserName)
+        @Html.LabelFor(m => m.UserName)
     </div>
     <div class="create_or_edit_field">
-        @Html.EditorFor(model => model.UserName)
-        @Html.ValidationMessageFor(model => model.UserName)
+        @Html.EditorFor(m => m.UserName)
+        @Html.ValidationMessageFor(m => m.UserName)
     </div>
 
     <div class="create_or_edit_label">
-        @Html.LabelFor(model => model.Email)
+        @Html.LabelFor(m => m.Email)
     </div>
     <div class="create_or_edit_field">
-        @Html.EditorFor(model => model.Email)
-        @Html.ValidationMessageFor(model => model.Email)
+        @Html.EditorFor(m => m.Email)
+        @Html.ValidationMessageFor(m => m.Email)
     </div>
 
     <div class="create_or_edit_label">
-        @Html.LabelFor(model => model.Position)
+        @Html.LabelFor(m => m.Sequence)
     </div>
     <div class="create_or_edit_field">
-        @Html.EditorFor(model => model.Position)
-        @Html.ValidationMessageFor(model => model.Position)
-    </div>
-
-     <div class="create_or_edit_label">
-        @Html.LabelFor(model => model.Description)
-    </div>
-    <div class="create_or_edit_field">
-        @Html.EditorFor(model => model.Description)
-        @Html.ValidationMessageFor(model => model.Description)
+        @Html.EditorFor(m => m.Sequence)
+        @Html.ValidationMessageFor(m => m.Sequence)
     </div>
     
     <div class="create_or_edit_label">
-        @Html.LabelFor(model => model.ImageExt)
+        @Html.LabelFor(m => m.ImageExt)
     </div>
     <div class="create_or_edit_field">
-        @Html.EditorFor(model => model.ImageExt)
-        @Html.ValidationMessageFor(model => model.ImageExt)
+        @Html.EditorFor(m => m.ImageExt)
+        @Html.ValidationMessageFor(m => m.ImageExt)
     </div>
+}
+
+@* указать/изменить роль для профиля *@
+@if (User.IsInAnyRole(Consts.Roles.AdminContentManager)) {
+    if (ControllerHelper.GetCurrentLocation().Action == Consts.Actions.Edit) {
+        <div style="display: none;">
+            @Html.EditorFor(m => m.webpages_Roles.RoleId)
+            @Html.EditorFor(m => m.webpages_Roles.RoleName)
+        </div>
+    }
+    
+    var roles = ProfileEntityService.GetAllRoles();
+    var rolesList = roles.Select(r => new SelectListItem { Value = r.Key, Text = r.Value }).ToList();
+
+    rolesList.First(r => r.Value == (Model != null
+                                         ? Model.webpages_Roles.RoleName
+                                         : Consts.Roles.Profile)).Selected = true;
 
     <div class="create_or_edit_label">
-        @Html.LabelFor(model => model.ShortName)
+        @Html.Label(ViewRes.Role)
     </div>
     <div class="create_or_edit_field">
-        @Html.EditorFor(model => model.ShortName)
-        @Html.ValidationMessageFor(model => model.ShortName)
-    </div>
-
-    <div class="create_or_edit_label">
-        @Html.LabelFor(model => model.Sequence)
-    </div>
-    <div class="create_or_edit_field">
-        @Html.EditorFor(model => model.Sequence)
-        @Html.ValidationMessageFor(model => model.Sequence)
+        @Html.DropDownList("Role", new SelectList(rolesList, "Value", "Text", Model != null ? rolesList.First(s => s.Selected).Value : rolesList.First(s => s.Value == Consts.Roles.Profile).Value))
     </div>
 }

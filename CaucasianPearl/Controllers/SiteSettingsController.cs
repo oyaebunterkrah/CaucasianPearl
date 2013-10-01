@@ -10,7 +10,7 @@ using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Helpers.HtmlHelpers;
 using CaucasianPearl.Models.EDM;
-using Resources;
+using CaucasianPearl.Resources;
 
 namespace CaucasianPearl.Controllers
 {

@@ -1,22 +1,22 @@
 @using CaucasianPearl.Models.EDM
 @using CaucasianPearl.Core.Constants
-@using Resources
+@using CaucasianPearl.Resources;
 
 @model Profile
 
-@{
-    ViewBag.Title = ViewRes.ProfileCreating;
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProfileCreating, ViewRes.ProjectTitleShort); }
 
 <h2>@ViewRes.ProfileCreating</h2>
 
+<br />
+
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary()
     <fieldset>
         <legend>@ViewRes.UserProfile</legend>
 
 		@Html.Partial(Consts.Views.CreateOrEdit, Model)
-
+        
         <p>
             <input id="submit" type="submit" value="@ViewRes.Create" />
         </p>

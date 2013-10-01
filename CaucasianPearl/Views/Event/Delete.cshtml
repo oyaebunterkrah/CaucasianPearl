@@ -1,11 +1,9 @@
-﻿@model CaucasianPearl.Models.EDM.Event
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Resources;
 
-@using CaucasianPearl.Core.Constants
-@using Resources
+@model CaucasianPearl.Models.EDM.Event
 
-@{
-    ViewBag.Title = string.Format("{0} | {1}", ViewRes.EventDeleting, Consts.Title);
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.EventDeleting, ViewRes.ProjectTitleShort); }
 
 <p>
     @Html.ActionLink(ViewRes.Cancel,
@@ -19,9 +17,9 @@
     )
 </p>
 
-<h2 style="color: Red">@ViewRes.AreYouSureThatYouWantDeleteThisEvent</h2>
+<br />
 
-@using (Html.BeginForm())
-{
-    <input type="submit" value="@ViewRes.Delete" />
+@using (Html.BeginForm()) {
+    <input type="submit" value="@ViewRes.Delete" /> @:|
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 }

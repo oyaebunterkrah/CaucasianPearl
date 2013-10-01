@@ -1,21 +1,18 @@
-﻿@using Resources
+﻿@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.Utilities
+@using CaucasianPearl.Resources;
 
 @model CaucasianPearl.Models.LoginModel
 
-@{
-    ViewBag.Title = "LogOn";
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.Login, ViewRes.ProjectTitleShort); }
 
 <hgroup class="title">
-    <h1>LogOn</h1>
+    <h1>@ViewRes.Login</h1>
 </hgroup>
 
 <section id="loginForm">
-<h2>Use a local account to log in.</h2>
-@using (Html.BeginForm(new { returnUrl = ViewBag.ReturnUrl }))
-{
+@using (Html.BeginForm(new { returnUrl = ViewBag.returnUrl != null && ViewBag.returnUrl != Consts.Paths.RootPath ? ViewBag.returnUrl : Utility.GetReturnUrl })) {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Log in Form</legend>
@@ -35,15 +32,10 @@
                 @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
             </li>
         </ol>
-        <input type="submit" value="Log in" />
+        <input type="submit" value="@ViewRes.Login" />
     </fieldset>
     <p>
-        @Html.ActionLink("Register", "Register") if you don't have an account.
+        @Html.ActionLink(ViewRes.ToRegister, Consts.Controllers.Account.Actions.Register), @ViewRes.IfYouDontHaveAnAccount.
     </p>
 }
-</section>
-
-<section class="social" id="socialLoginForm">
-    <h2>Use another service to log in.</h2>
-    @Html.Action("ExternalLoginsList", new { returnUrl = ViewBag.ReturnUrl })
 </section>

@@ -5,13 +5,11 @@
 @using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Models
 @using CaucasianPearl.Models.EDM
-@using Resources
+@using CaucasianPearl.Resources;
 
 @model IEnumerable<Sponsor>
 
-@{
-    ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.Sponsor);
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.Sponsor); }
 
 <p>
     @Html.ActionLink(
@@ -24,8 +22,7 @@
     @ViewRes.Sponsors
 </p>
 
-@if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
-{
+@if (User.IsInAnyRole(Consts.Roles.AdminContentManager)) {
     <p>
         @Html.ActionLink(
             ViewRes.CreateSponsor,

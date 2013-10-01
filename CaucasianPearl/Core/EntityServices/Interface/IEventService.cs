@@ -13,7 +13,7 @@ namespace CaucasianPearl.Core.EntityServices.Interface
         /// </summary>
         /// <param name="count">Количество событий.</param>
         /// <returns>Список EventItem</returns>
-        IEnumerable<EventItem> GetLastEvents(int count);
+        IEnumerable<EventItem> GetLastEventItems(int count);
 
         /// <summary>
         /// Возвращает указанное кол-во событий.
@@ -25,9 +25,9 @@ namespace CaucasianPearl.Core.EntityServices.Interface
         /// <summary>
         /// Возвращает соседние события.
         /// </summary>
-        /// <param name="id">ID текущего события.</param>
+        /// <param name="eventId">ID текущего события.</param>
         /// <returns>Список EventItem</returns>
-        IEnumerable<EventItem> GetNeighborEvents(int id);
+        IEnumerable<EventItem> GetNeighborEvents(int eventId);
 
         /// <summary>
         /// Возвращает события на месяц.

@@ -1,5 +1,6 @@
 ﻿@using CaucasianPearl.Core.Constants
-@using Resources
+@using CaucasianPearl.Core.Utilities
+@using CaucasianPearl.Resources;
 
 @{
     ViewBag.Title = string.Format("{0} | {1}", ErrorRes.NotAuthorized, Consts.Title);
@@ -7,7 +8,7 @@
 
 <h2 style="color: Red">@ErrorRes.NotAuthorized</h2>
 <br />
-<a href="/account/login">@ViewRes.Authorize</a>
+@Html.ActionLink(ViewRes.Authorize, Consts.Controllers.Account.Actions.Login, Consts.Controllers.Account.Name, new { ReturnUrl = Utility.GetReturnUrl }, null)
 <br />
 <br />
-<a href="@Consts.RootPath">@ViewRes.BackToHomePage</a>
+<a href="@Consts.Paths.RootPath">@ViewRes.BackToHomePage</a>

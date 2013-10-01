@@ -1,15 +1,16 @@
 @using CaucasianPearl.Core.Constants
-@using Resources
+@using CaucasianPearl.Resources;
 
 @model CaucasianPearl.Models.EDM.SiteSetting
 
-@{
-    ViewBag.Title = ViewRes.Deleting;
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.SiteSettingDeleting, ViewRes.ProjectTitleShort); }
 
 <h2>@ViewRes.Deleting</h2>
 
-<h3>@ViewRes.AreYouSureYouWantToDeleteThisSiteSetting</h3>
+<h3>@ViewRes.YouSureYouWantToDeleteThisSiteSettings</h3>
+
+<br />
+
 <fieldset>
     <legend>SiteSetting</legend>
 
@@ -25,11 +26,10 @@
     <div class="display-label">Description</div>
     <div class="display-field">@Model.Description</div>
 </fieldset>
+
+<br />
+
 @using (Html.BeginForm()) {
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+    <input type="submit" value="@ViewRes.Delete" /> @:|
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 }
-
-

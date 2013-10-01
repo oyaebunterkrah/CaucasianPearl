@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Resources {
+namespace CaucasianPearl.Resources {
     using System;
     
     
@@ -228,6 +228,15 @@ namespace Resources {
         public static string UnexpectedError {
             get {
                 return ResourceManager.GetString("UnexpectedError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пользователь с таким именем уже существует.
+        /// </summary>
+        public static string UserAlreadyExist {
+            get {
+                return ResourceManager.GetString("UserAlreadyExist", resourceCulture);
             }
         }
         

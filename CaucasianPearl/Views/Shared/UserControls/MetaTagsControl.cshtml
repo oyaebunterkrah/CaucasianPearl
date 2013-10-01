@@ -1,0 +1,73 @@
+﻿@using CaucasianPearl;
+@using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.DAL.Data
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Resources;
+
+@{
+    var currentLocation = ControllerHelper.GetCurrentLocation();
+    var viewBag = ((dynamic)ViewData["viewBag"]);
+
+    if (currentLocation.Controller == Consts.Controllers.Home.Name) {
+        switch (currentLocation.Action) {
+            case Consts.Actions.Index:
+                viewBag.Title = ViewRes.MetaHomeOgTitle;
+                viewBag.Description = ViewRes.MetaHomeOgDescription;
+                viewBag.Image = ViewRes.MetaHomeOgImage;
+                break;
+            case Consts.Controllers.Home.Actions.About:
+                viewBag.Title = ViewRes.MetaAboutOgTitle;
+                viewBag.Description = ViewRes.MetaAboutOgDescription;
+                viewBag.Image = ViewRes.MetaAboutOgImage;
+                break;
+            case Consts.Controllers.Home.Actions.Events:
+                viewBag.Title = ViewRes.MetaEventsOgTitle;
+                viewBag.Description = ViewRes.MetaEventsOgDescription;
+                viewBag.Image = ViewRes.MetaEventsOgImage;
+
+                EventItem currentEventItem = viewBag.CurrentEventItem;
+                EventMediaItem currentEventMediaItem = viewBag.CurrentEventMediaItem;
+                
+                // если поля события установлены, то переопределяем ими
+                if (currentEventItem != null) {
+                    if (!string.IsNullOrWhiteSpace(currentEventItem.Title)) {
+                        viewBag.Title = currentEventItem.Title;
+                    }
+                    if (!string.IsNullOrWhiteSpace(currentEventItem.Description)) {
+                        viewBag.Description = currentEventItem.Description;
+                    }
+                    if (currentEventItem.EventMedia.Any()) {
+                        viewBag.Image = currentEventItem.EventMedia.First().ThumbnailUrl;
+                    }
+                }
+
+                // если поля медиа установлены, то переопределяем ими поля события
+                if (currentEventMediaItem != null) {
+                    if (!string.IsNullOrWhiteSpace(currentEventMediaItem.Title)) {
+                        viewBag.Title = currentEventMediaItem.Title;
+                    }
+                    if (!string.IsNullOrWhiteSpace(currentEventMediaItem.Description)) {
+                        viewBag.Description = currentEventMediaItem.Description;
+                    }
+                    if (!string.IsNullOrWhiteSpace(currentEventMediaItem.Description)) {
+                        viewBag.Image = currentEventMediaItem.ThumbnailUrl;
+                    }
+                }
+                break;
+            case Consts.Controllers.Home.Actions.Affiche:
+                viewBag.Title = ViewRes.MetaAfficheOgTitle;
+                viewBag.Description = ViewRes.MetaAfficheOgDescription;
+                viewBag.Image = ViewRes.MetaAfficheOgImage;
+                break;
+        }
+    }
+    else {
+        viewBag.Title = ViewRes.MetaDefaultOgTitle;
+        viewBag.Description = ViewRes.MetaDefaultOgDescription;
+        viewBag.Image = ViewRes.MetaDefaultOgImage;
+        
+    }
+
+    viewBag.SiteName = ViewRes.ProjectTitle;
+    viewBag.Keywords = ViewRes.MetaKeyWords;
+}

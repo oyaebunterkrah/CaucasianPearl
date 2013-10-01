@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using WebMatrix.WebData;
 
 using Newtonsoft.Json;
-using Resources;
+using CaucasianPearl.Resources;
 
 using CaucasianPearl.Controllers.Abstract;
 using CaucasianPearl.Core.Constants;
@@ -194,7 +194,7 @@ namespace CaucasianPearl.Controllers
                 return View(Consts.Controllers.Error.Views.Unexpected);
             }
 
-            return ReturnToObject(@event);
+            return ReturnToDetails(@event);
 
             /*загрузка chunk'ами {
             var fileUpload = Request.Files[0];
@@ -292,8 +292,8 @@ namespace CaucasianPearl.Controllers
                     if (oldEventMediaItemForEdit != null)
                     {
                         oldEventMediaItemForEdit.IsPrimary = mediaItemForEdit.IsPrimary;
+                        oldEventMediaItemForEdit.Title = mediaItemForEdit.Title;
                         oldEventMediaItemForEdit.Description = mediaItemForEdit.Description;
-                        oldEventMediaItemForEdit.Content = mediaItemForEdit.Content;
                     }
                 }
 
@@ -318,7 +318,7 @@ namespace CaucasianPearl.Controllers
                 PhotoId = smi.PhotoId,
                 PhotosetId = smi.PhotosetId,
                 Description = smi.Description,
-                Content = smi.Content,
+                Title = smi.Title,
                 MediaType = smi.MediaType,
                 FlickrUrl = smi.FlickrUrl,
                 ThumbnailUrl = smi.ThumbnailUrl,

@@ -13,6 +13,7 @@
         'largeurl': 'largeurl',
         'videourl': 'videourl',
         'isprimary': 'isprimary',
+        'title': 'title',
 
         'EventId': 'EventId',
         'PhotoId': 'PhotoId',
@@ -26,7 +27,8 @@
         'MediumUrl': 'MediumUrl',
         'LargeUrl': 'LargeUrl',
         'VideoUrl': 'VideoUrl',
-        'IsPrimary': 'IsPrimary'
+        'IsPrimary': 'IsPrimary',
+        'Title': 'Title',
     },
 
     'ids': {
@@ -36,13 +38,13 @@
     }
 };
 
-(function ($) {
-    $(document).ready(function () {
+(function($) {
+    $(document).ready(function() {
         jQuery.noConflict();
-        
+
         $.fn.extend({
             // центрирует элемент
-            center: function () {
+            center: function() {
                 this.css('position', 'absolute');
                 this.css('top', Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) +
                     $(window).scrollTop()) + 'px');
@@ -52,7 +54,7 @@
                 return this;
             }, // }
             // открывает popup для указанного элемента {
-            popup: function (options) {
+            popup: function(options) {
                 if (options == undefined)
                     options = {};
 
@@ -69,13 +71,13 @@
                     title: options.title != undefined ? options.title : '',
                     resizable: options.resizable != undefined ? options.resizable : false,
                     closeOnEscape: options.closeOnEscape != undefined ? options.closeOnEscape : true,
-                    close: options.close != undefined ? options.close : function () { closeDialogs(); },
+                    close: options.close != undefined ? options.close : function() { closeDialogs(); },
                     buttons: options.buttons != undefined ? options.buttons :
                         [
                             {
                                 text: 'Закрыть',
                                 id: 'btnClose',
-                                click: function () {
+                                click: function() {
                                     closeDialogs();
                                 }
                             }
@@ -83,11 +85,11 @@
                 });
             },
             // сравнивает значение из data по ключу key с указанным value {
-            isData: function (key, value) {
+            isData: function(key, value) {
                 return $(this).data(key) == value;
             }, // }
             // сбрасывает сообщения об ошибках валидации для инпутов в элементе (форме) {
-            resetValidation: function () {
+            resetValidation: function() {
                 var self = $(this);
                 self.find('.field-validation-error')
                     .removeClass('field-validation-error')
@@ -106,7 +108,7 @@
                 return self;
             }, // }
             // очищает инпуты внутри элемента (формы) {
-            clearData: function () {
+            clearData: function() {
                 var self = $(this);
                 self.find('textarea').val('');
                 self.find('input[type="email"]').val('');
@@ -116,16 +118,16 @@
                 return self;
             }, // }
             // валидация формы {
-            isValid: function () {
+            isValid: function() {
                 var self = $(this);
                 $.validator.unobtrusive.parse(self);
 
                 return self.data('unobtrusiveValidation').validate();
             }, // }
             // show more/less... {
-            trunc: function (numWords) {
+            trunc: function(numWords) {
                 var self = $(this);
-                self.each(function () {
+                self.each(function() {
                     var me = $(this);
                     var original = me.text();
                     var truncated = original.split(' ');
@@ -140,57 +142,62 @@
                         truncated.pop();
 
                     collapse();
-                    
+
                     function expand() {
                         me.empty();
                         me.text(original);
                         me.click(collapse);
-                        
+
                         return false;
-                    };
-                    
-                    function collapse () {
+                    }
+
+                    ;
+
+                    function collapse() {
                         me.empty();
                         me.text(truncated.join(' ') + '...');
                         me.click(expand);
-                        
+
                         return false;
-                    };
+                    }
+
+                    ;
                 });
 
                 return self;
             } //  } show more/less...
         });
-        
+
         // добавляем валидатор для даты для datepicker {
         $.validator.addMethod(
             'date',
-            function (value, element, params) {
+            function(value, element, params) {
                 if (this.optional(element)) {
                     return true;
-                };
+                }
+                ;
                 var result;
                 try {
                     $.datepicker.parseDate('dd.mm.yy', value);
                     result = true;
-                } catch (err) {
+                } catch(err) {
                     result = false;
                 }
                 return result;
             },
             ''
         ); // }
-        
+
         replaceMvcDatepicker();
 
-        $('.ui-widget-overlay').live('click', function () {
+        $('.ui-widget-overlay').live('click', function() {
             closeDialogs();
         });
-        
+
         //highlightActiveMenuItem();
     });
 
-    String.prototype.format = String.prototype.f = function () {
+    String.prototype.format = String.prototype.f = function() {
         var str = this;
         for (var i = 0; i < arguments.length; i++) {
             var reg = new RegExp('\\{' + i + '\\}', 'gm');
@@ -199,24 +206,25 @@
         return str;
     };
 
-    Date.prototype.toDate = function (key) {
+    Date.prototype.toDate = function(key) {
+
         function f(n) {
             return n < 10 ? '0' + n : n;
         }
 
         return f(this.getUTCDate()) + '.' +
-             f(this.getUTCMonth() + 1) + '.' +
-             this.getUTCFullYear();
+            f(this.getUTCMonth() + 1) + '.' +
+            this.getUTCFullYear();
     };
 
-    highlightActiveMenuItem = function () {
+    highlightActiveMenuItem = function() {
         var url = window.location.pathname;
         $('.menu a[href="' + url + '"]').addClass('active');
     };
 
     // ставим datepicker на поле выбора даты
     // убираем mvc'шный выбор даты
-    replaceMvcDatepicker = function () {
+    replaceMvcDatepicker = function() {
         var dateField = $('input[type="date"]');
         if (dateField.length) {
             dateField.get(0).type = 'text';
@@ -229,7 +237,7 @@
         }
     };
 
-    scrollToElement = function (element, duration) {
+    scrollToElement = function(element, duration) {
         var offset = element.offset().top + element.height() - $(window).scrollTop();
 
         // not in view so scroll to it
@@ -238,45 +246,45 @@
         }
     };
 
-    replaceByCKEditor = function (configPath, elementId, submitId) {
+    replaceByCKEditor = function(configPath, elementId, submitId) {
         CKEDITOR.config.customConfig = configPath;
         CKEDITOR.replace(elementId);
         CKEDITOR.instances[elementId].setData($('#' + elementId).val());
 
-        $('#{0}'.f(submitId)).click(function () {
+        $('#{0}'.f(submitId)).click(function() {
             $('#{0}'.f(elementId)).val(CKEDITOR.instances[elementId].getData());
         });
     };
 
-    toArray = function (json) {
+    toArray = function(json) {
         var photoArray = [];
 
-        $.each(json, function (key, value) {
+        $.each(json, function(key, value) {
             photoArray.push(json[key]);
         });
 
         return photoArray;
     };
 
-    openInNewTab = function (url) {
+    openInNewTab = function(url) {
         window.open(url, '_blank');
     };
 
-    encodeScriptTags = function (value) {
+    encodeScriptTags = function(value) {
         return value.replace(/\</g, '[').replace(/\>/g, ']');
     };
 
-    decodeScriptTags = function (value) {
-        return value.replace(/\[/g, '<').replace(/\]/g, '>');
+    decodeScriptTags = function(value) {
+        return value.toString().replace(/\[/g, '<').replace(/\]/g, '>');
     };
 
     // закрыть все jquery ui диалоговые окна
-    closeDialogs = function () {
+    closeDialogs = function() {
         $('.ui-dialog-content').dialog('close');
     };
-    
+
     // отобразить loading
-    showLoading = function (min) {
+    showLoading = function(min) {
         if (min) {
             $('.overlay_min').show();
             $('.loading_min').show();
@@ -287,7 +295,7 @@
     };
 
     // скрыть loading
-    hideLoading = function (min) {
+    hideLoading = function(min) {
         if (min) {
             $('.overlay_min').hide();
             $('.loading_min').hide();
@@ -296,13 +304,17 @@
             $('.loading').hide();
         }
     };
-    
-    unexpectedError = function () {
+
+    showError = function() {
+        alert('Возникла неожиданная ошибка');
+    };
+
+    unexpectedError = function() {
         $('#unexpectedError').dialog().dialog('open');
     };
 
     // возвращает название месяца прописью
-    getMonthStr = function (intMonth) {
+    getMonthStr = function(intMonth) {
         var monthRuArray = new Array('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря');
         var monthHyArray = new Array('հունվարի', 'փետրվարի', 'մարտի', 'ապրիլի', 'մայիսի', 'հունիսի', 'հուլիսի', 'օգոստոսի', 'սեպտեմբերի', 'հոկտեմբերի', 'նոյեմբերի', 'դեկտեմբերի');
 
@@ -310,7 +322,7 @@
     };
 
     // возвращает дату с месяцем, написанным прописью
-    getDateStr = function (date) {
+    getDateStr = function(date) {
         var year = date.getYear();
         if (year < 1000) year += 1900;
 
@@ -318,7 +330,7 @@
     };
 
     // Обёртка для ajax вызовов.
-    ajaxRequest = function (options) {
+    ajaxRequest = function(options) {
         $.ajax({
             // parameters {
             url: options.url,
@@ -326,27 +338,31 @@
             data: options.data != undefined ? options.data : '',
             contentType: options.contentType != undefined ? options.contentType : 'application/x-www-form-urlencoded; charset=UTF-8',
             dataType: options.dataType != undefined ? options.dataType : 'json', // }
-            
+
             // methods {
-            success: function (data) {
+            success: function(data) {
                 if (options.success != undefined) {
                     options.success(data);
-                };
+                }
+                ;
             },
-            beforeSend: function () {
+            beforeSend: function() {
                 if (options.beforeSend != undefined) {
                     options.beforeSend();
-                };
+                }
+                ;
             },
-            complete: function () {
+            complete: function() {
                 if (options.complete != undefined) {
                     options.complete();
-                };
+                }
+                ;
             },
-            error: function (request, status, error) {
+            error: function(request, status, error) {
                 if (options.error != undefined) {
                     options.error();
-                };
+                }
+                ;
             } // }
         });
     };

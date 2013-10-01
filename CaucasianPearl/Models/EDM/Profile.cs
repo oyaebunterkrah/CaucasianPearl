@@ -21,8 +21,10 @@ namespace CaucasianPearl.Models.EDM
         public string LastName { get; set; }
         public string Position { get; set; }
         public string Description { get; set; }
-        public string ImageExt { get; set; }
         public string ShortName { get; set; }
         public Nullable<int> Sequence { get; set; }
+        public string ImageExt { get; set; }
+    
+        public virtual webpages_Roles webpages_Roles { get; set; }
     }
 }

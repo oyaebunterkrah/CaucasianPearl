@@ -1,15 +1,16 @@
 @using CaucasianPearl.Core.Constants
-@using Resources
+@using CaucasianPearl.Resources;
 
 @model CaucasianPearl.Models.EDM.Feedback
 
-@{
-    ViewBag.Title = "Delete";
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.FeedbackDeleting, ViewRes.ProjectTitleShort); }
 
-<h2>Delete</h2>
+<h2>@ViewRes.Deleting</h2>
 
-<h3>@ViewRes.YouSureYouWantToDeleteThis</h3>
+<h3>@ViewRes.YouSureYouWantToDeleteThisFeedback</h3>
+
+<br />
+
 <fieldset>
     <legend>Feedback</legend>
 
@@ -29,10 +30,9 @@
     <div class="display-field">@Model.IsApproved</div>
 </fieldset>
 
-@using (Html.BeginForm())
-{
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+<br />
+
+@using (Html.BeginForm()) {
+    <input type="submit" value="@ViewRes.Delete" /> @:|
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 }

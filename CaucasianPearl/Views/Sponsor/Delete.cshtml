@@ -1,11 +1,9 @@
 ﻿@model CaucasianPearl.Models.EDM.Sponsor
 
 @using CaucasianPearl.Core.Constants
-@using Resources
+@using CaucasianPearl.Resources;
 
-@{
-    ViewBag.Title = string.Format("{0} | {1}", ViewRes.SponsorCreating, Consts.Title);
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.SponsorDeleting, ViewRes.ProjectTitleShort); }
 
 <p>
     @Html.ActionLink(
@@ -21,7 +19,7 @@
 
 <h2 style="color: Red">@ViewRes.AreYouSureThatYouWantDeleteThisSponsor</h2>
 
-@using (Html.BeginForm())
-{
+@using (Html.BeginForm()) {
     <input type="submit" value="@ViewRes.Delete" />
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 }

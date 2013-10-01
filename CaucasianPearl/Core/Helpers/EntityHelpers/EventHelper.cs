@@ -1,10 +1,18 @@
 ﻿using System.Globalization;
 using System.Linq;
+using System.Web;
 using CaucasianPearl.Core.Constants;
+using CaucasianPearl.Core.DAL.Data;
 using CaucasianPearl.Models.EDM;
 
 namespace CaucasianPearl.Core.Helpers.EntityHelpers
 {
+    public class CurrentEventAndMedia
+    {
+        public EventItem CurrentEventItem { get; set; }
+        public EventMediaItem CurrentEventMediaItem { get; set; }
+    }
+
     public class EventHelper
     {
         /// <summary>
@@ -17,6 +25,7 @@ namespace CaucasianPearl.Core.Helpers.EntityHelpers
                 return ImageHelper.GetDefaultImageUrl(Consts.Controllers.Event.DefaultImagePath);
 
             var coverImage = @event.EventMedia.FirstOrDefault(em => em.IsPrimary ?? false);
+            
             return coverImage != null ? coverImage.MediumUrl : @event.EventMedia.First().MediumUrl;
         }
     }

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 using CaucasianPearl.Core.Filters;
-using Resources;
+using CaucasianPearl.Resources;
 
 namespace CaucasianPearl.Models.Metadata
 {

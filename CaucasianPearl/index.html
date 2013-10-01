@@ -156,6 +156,10 @@
         var col = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
         $('.eqItem').css({ 'background-color': col });
     }, 500);
+	
+	$(document).ready(function() {
+		$('img').fadeIn(20000);
+	});
 </script>
 
 <style type="text/css">
@@ -186,49 +190,27 @@
 	.eqCol .eqItem:last-child { opacity: 1 !important }
 	
 	.button {
-		-moz-box-shadow:inset 0px 0px 5px -50px #fce2c1;
-		-webkit-box-shadow:inset 0px 0px 5px -50px #fce2c1;
-		box-shadow:inset 0px 0px 5px -50px #fce2c1;
-		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
-		background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
-		background-color:#ffc477;
-		-webkit-border-top-left-radius:5px;
-		-moz-border-radius-topleft:5px;
-		border-top-left-radius:5px;
-		-webkit-border-top-right-radius:5px;
-		-moz-border-radius-topright:5px;
-		border-top-right-radius:5px;
-		-webkit-border-bottom-right-radius:5px;
-		-moz-border-radius-bottomright:5px;
-		border-bottom-right-radius:5px;
-		-webkit-border-bottom-left-radius:5px;
-		-moz-border-radius-bottomleft:5px;
-		border-bottom-left-radius:5px;
-		text-indent:0px;
-		border:1px solid #eeb44f;
-		display:inline-block;
-		color:#ffffff;
-		font-family:Trebuchet MS;
-		font-size:30px;
-		font-weight:bold;
-		font-style:normal;
-		height:60px;
-		line-height:60px;
-		width:200px;
-		text-decoration:none;
-		text-align:center;
-		text-shadow:1px 0px 50px #cc9f52;
+		background: #ced989;
+		background: -webkit-gradient(linear, left top, left bottom, from(#ced989), to(#ced989));
+		background: -webkit-linear-gradient(top, #ced989, #ced989);
+		background: -moz-linear-gradient(top, #ced989, #ced989);
+		background: -ms-linear-gradient(top, #ced989, #ced989);
+		background: -o-linear-gradient(top, #ced989, #ced989);
+		padding: 15px 50px;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		color: #4a4a4a;
+		font-size: 24px;
+		font-family: Helvetica, Arial, Sans-Serif;
+		font-weight: bold;
+		text-decoration: none;
+		vertical-align: middle;
 	}
 	.button:hover {
-		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );
-		background:-moz-linear-gradient( center top, #fb9e25 5%, #ffc477 100% );
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
-		background-color:#fb9e25;
-	}
-	.button:active {
-		position:relative;
-		top:1px;
+		border-top-color: #424242;
+		background: #424242;
+		color: #ced989;
 	}
 </style>
 
@@ -236,11 +218,11 @@
     <tr>
 		<td style="vertical-align: bottom; text-align: center; width: 30%">
 		</td>
-		<td style="vertical-align: bottom; text-align: center">
-			<a class="button" href="#" onclick="javascript:alert('Coming soon!'); return false;">ВОЙТИ</a>
+		<td style="vertical-align: bottom; text-align: center">	
+			<div style="font-size: 50px; margin-top: 25px;">Жемчужина Кавказа</div>
 			
-			<div style="font-size: 50px; margin-top: 25px;">
-				Жемчужина Кавказа
+			<div style="margin-top: 50px;">
+				<a class="button" href="/account/login">ВОЙТИ</a>
 			</div>
 		</td>
 		<td style="vertical-align: bottom; text-align: center; width: 30%">
@@ -255,9 +237,9 @@
             </div>
         </td>
         <td style="vertical-align: bottom; text-align: center">
-            <img src="http://img-fotki.yandex.ru/get/3415/shuraev-d.9/0_46d5a_1ead701f_L.gif" style="height: 450px; width: 450px;" />
+            <img src="http://img-fotki.yandex.ru/get/3415/shuraev-d.9/0_46d5a_1ead701f_L.gif" style="display: none;height: 400px; width: 400px;" />
 			
-			<object id="audioplayer361" type="application/x-shockwave-flash" data="http://oyaebunterkrah.ucoz.ru/player/uppod.swf" width="350" height="50"><param name="bgcolor" value="#ffffff" /><param name="allowScriptAccess" value="always" /><param name="movie" value="http://oyaebunterkrah.ucoz.ru/player/uppod.swf" /><param name="flashvars" value="auto=play&amp;comment=Жемчужина Кавказа&amp;st=http://oyaebunterkrah.ucoz.ru/player/audio164-471.txt&amp;file=http://oyaebunterkrah.ucoz.ru/player/arsen_petrosov-erevan.mp3" /></object>	
+			<object id="audioplayer331" type="application/x-shockwave-flash" data="http://caucasian-pearl.ru/content/plugins/uppod/uppod.swf" width="300" height="23"><param name="bgcolor" value="#ffffff" /><param name="allowScriptAccess" value="always" /><param name="movie" value="http://caucasian-pearl.ru/content/plugins/uppod/uppod.swf" /><param name="flashvars" value="auto=play&amp;comment=Арсен Петросов - Ереван&amp;st=http://caucasian-pearl.ru/content/plugins/uppod/audio176-541.txt&amp;file=http://caucasian-pearl.ru/content/plugins/uppod/arsen_petrosov-erevan.mp3" /></object>
         </td>
         <td style="vertical-align: bottom; text-align: center; width: 30%">
             <div class="anyClass"></div>

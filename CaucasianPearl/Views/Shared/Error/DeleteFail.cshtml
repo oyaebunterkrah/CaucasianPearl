@@ -1,5 +1,5 @@
 ﻿@using CaucasianPearl.Core.Constants
-@using Resources
+@using CaucasianPearl.Resources;
 
 @{
     ViewBag.Title = string.Format("{0} | {1}", ErrorRes.DeleteForbidden, Consts.Title);
@@ -7,4 +7,4 @@
 
 <h2 style="color: Red">@ErrorRes.DeleteForbidden</h2>
 <br />
-<a href="@Consts.RootPath">@ViewRes.BackToHomePage</a>
+<a href="@Consts.Paths.RootPath">@ViewRes.BackToHomePage</a>

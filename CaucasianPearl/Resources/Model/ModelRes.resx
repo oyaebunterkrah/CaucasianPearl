@@ -255,4 +255,16 @@
   <data name="Value" xml:space="preserve">
     <value>Значение</value>
   </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="ToRegister" xml:space="preserve">
+    <value>Зарегистрироваться</value>
+  </data>
 </root>

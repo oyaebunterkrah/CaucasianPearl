@@ -1112,9 +1112,9 @@ html {
 
 /* Профили
 ----------------------------------------------------------*/
-/*.image-block .photo {
-    cursor: pointer;   
-}*/
+.profile_index .container {
+    text-align: center;
+}
 
 
 /* Loading

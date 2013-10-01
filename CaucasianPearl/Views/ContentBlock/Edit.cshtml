@@ -1,12 +1,10 @@
 ﻿@using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.UserControls
-@using Resources
+@using CaucasianPearl.Resources;
 
 @model CaucasianPearl.Models.EDM.ContentBlock
 
-@{
-    ViewBag.Title = string.Format("{0} | {1}", ViewRes.ContentBlockEditing, Consts.Title);
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ContentBlockEditing, ViewRes.ContentBlocks); }
 
 @Html.Raw(CssJsRegControl.Render(Consts.Paths.Plugins.CKEditor))
 
@@ -35,7 +33,7 @@
 
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary()
     <fieldset>
         <legend>@ViewRes.ContentBlocks</legend>
 

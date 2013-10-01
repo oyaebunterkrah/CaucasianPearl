@@ -14,6 +14,7 @@ namespace CaucasianPearl.Core.Constants
         
         public const string AdminLoginName = "admin";
         public const string AdminPassword = "Eekoogh4";
+        public const string DefaultPassword = "P@ssw0rd";
 
         public static class Culture
         {
@@ -30,7 +31,6 @@ namespace CaucasianPearl.Core.Constants
         public const string MenuSeparator = " | ";
 
         public const string PathDelimiter = "/";
-        public const string RootPath = "/";
 
         public static class PaginatorControl
         {
@@ -87,6 +87,17 @@ namespace CaucasianPearl.Core.Constants
             public const string Admin = "admin";
             public const string ContentManager = "contentmanager";
             public const string AdminContentManager = "admin,contentmanager";
+            public const string User = "user";
+            public const string Profile = "profile";
+
+            public static readonly Dictionary<string, string> RolesDict = new Dictionary<string, string>
+                {
+                    { Admin, "Администратор" },
+                    { ContentManager, "Контент-менеджер" },
+                    { AdminContentManager, "Администратор, Контент-менеджер" },
+                    { User, "Пользователь" },
+                    { Profile, "Профиль" },
+                };
         }
 
         public const string ProfileFirstName = "FirstName";
@@ -132,12 +143,10 @@ namespace CaucasianPearl.Core.Constants
         // Controllers.
         public static class Controllers
         {
-            // Home.
             public static class Home
             {
                 public const string Name = "home";
 
-                // Actions.
                 public static class Actions
                 {
                     // О нас.
@@ -149,27 +158,35 @@ namespace CaucasianPearl.Core.Constants
                 }
             }
 
-            // Account.
             public static class Account
             {
                 public const string Name = "account";
 
-                // Actions.
                 public static class Actions
                 {
-                    // Регистрация.
+                    // регистрация
                     public const string Register = "register";
-                    // Вход.
+                    // вход
                     public const string Login = "login";
-                    // Выход.
+                    // выход.
                     public const string LogOff = "logoff";
-                    // Управление.
+                    // управление
                     public const string Manage = "manage";
-                    // Изменить язык.
+                    // изменить язык
                     public const string ChangeCulture = "changeculture";
-                    // Успешное изменение пароля.
+                    // успешное изменение пароля
                     public const string ChangePasswordSuccess = "changepasswordsuccess";
-                    
+                    // сброс пароля
+                    public const string ResetPassword = "resetpassword";
+
+                    public const string RemoveExternalLogins = "removeexternallogins";
+                    public const string ExternalLoginsList = "externalloginslist";
+                }
+
+                public static class Views
+                {
+                    public const string ChangePasswordPartial = "ChangePasswordPartial";
+                    public const string SetPasswordPartial = "SetPasswordPartial";
                 }
             }
             
@@ -577,16 +594,20 @@ namespace CaucasianPearl.Core.Constants
 
         public const string EmailRegex = @"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}";
         public const string UserNameRegex = "^[a-zA-Z0-9]+$";
+        public const string ShortNameRegex = "[a-z0-9_]+";
 
         #endregion
 
         public static class QueryStringParameters
         {
             public const string Page = "page";
+            public const string ReturnUrl = "returnUrl";
         }
 
         public static class Paths
         {
+            public const string RootPath = "/";
+
             public static class UserControls
             {
                 private const string PathPrefix = "UserControls/";
@@ -604,6 +625,7 @@ namespace CaucasianPearl.Core.Constants
                 public const string SmallSponsorsControl = PathPrefix + "SmallSponsorsControl";
                 public const string SocialShareControl = PathPrefix + "SocialShareControl";
                 public const string SponsorsControl = PathPrefix + "SponsorsControl";
+                public const string MetaTagsControl = PathPrefix + "MetaTagsControl";
             }
 
             public static class Fields

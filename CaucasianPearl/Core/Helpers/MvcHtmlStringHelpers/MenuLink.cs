@@ -11,8 +11,7 @@ namespace CaucasianPearl.Core.Helpers.MvcHtmlStringHelpers
             get { return ServiceHelper<ILogService>.GetService(); }
         }
 
-        public static MvcHtmlString MenuLink(this HtmlHelper htmlHelper, string linkText, string actionName,
-                                             string controllerName)
+        public static MvcHtmlString MenuLink(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName)
         {
             var currentAction = htmlHelper.ViewContext.RouteData.GetRequiredString("action");
             var currentController = htmlHelper.ViewContext.RouteData.GetRequiredString("controller");
@@ -28,6 +27,7 @@ namespace CaucasianPearl.Core.Helpers.MvcHtmlStringHelpers
                             @class = "active"
                         });
             }
+
             return htmlHelper.ActionLink(linkText, actionName, controllerName);
         }
     }

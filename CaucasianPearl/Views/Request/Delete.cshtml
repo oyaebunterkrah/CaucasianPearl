@@ -1,19 +1,16 @@
 @using CaucasianPearl.Core.Constants
-@using Resources
+@using CaucasianPearl.Resources;
 
 @model CaucasianPearl.Models.EDM.Request
 
-@{
-    ViewBag.Title = ViewRes.Delete;
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.RequestDeleting, ViewRes.ProjectTitleShort); }
 
-<h2>@ViewRes.Delete</h2>
+<h2>@ViewRes.Deleting</h2>
 
-<div>
-    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
-</div>
+<h3>@ViewRes.AreYouSureThatYouWantDeleteThisRequest</h3>
 
-<h3>@ViewRes.YouSureYouWantToDeleteThis</h3>
+<br />
+
 <fieldset>
     <legend>@ViewRes.Requests</legend>
 
@@ -45,7 +42,9 @@
     <div class="display-field">@Model.Comment</div>
 </fieldset>
 
-@using (Html.BeginForm())
-{
-    <input type="submit" value="@ViewRes.Delete" /> @:| @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
+<br />
+
+@using (Html.BeginForm()) {
+    <input type="submit" value="@ViewRes.Delete" /> @:|
+    @Html.ActionLink(ViewRes.BackToList, Consts.Actions.Index)
 }

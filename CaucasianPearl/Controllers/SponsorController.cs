@@ -8,7 +8,7 @@ using CaucasianPearl.Core.EntityServices.Interface;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Helpers.HtmlHelpers;
 using CaucasianPearl.Models.EDM;
-using Resources;
+using CaucasianPearl.Resources;
 
 namespace CaucasianPearl.Controllers
 {
@@ -84,7 +84,7 @@ namespace CaucasianPearl.Controllers
                 return View(Consts.Controllers.Error.Views.Unexpected);
             }
 
-            return ReturnToObject(sponsor);
+            return ReturnToDetails(sponsor);
 
             /*загрузка chunk'ами {
             var fileUpload = Request.Files[0];

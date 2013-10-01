@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Resources {
+namespace CaucasianPearl.Resources {
     using System;
     
     
@@ -214,11 +214,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вы уверены, что хотите удалить свой профиль?.
+        ///   Looks up a localized string similar to Вы уверены, что хотите удалить этот профиль?.
         /// </summary>
         public static string AreYouSureThatYouWantDeleteThisProfile {
             get {
                 return ResourceManager.GetString("AreYouSureThatYouWantDeleteThisProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вы уверены, что хотите удалить эту заявку?.
+        /// </summary>
+        public static string AreYouSureThatYouWantDeleteThisRequest {
+            get {
+                return ResourceManager.GetString("AreYouSureThatYouWantDeleteThisRequest", resourceCulture);
             }
         }
         
@@ -466,6 +475,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Создать профиль пользователя.
+        /// </summary>
+        public static string CreateUserProfile {
+            get {
+                return ResourceManager.GetString("CreateUserProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Создание.
         /// </summary>
         public static string Creating {
@@ -606,6 +624,15 @@ namespace Resources {
         public static string Feedback {
             get {
                 return ResourceManager.GetString("Feedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удаление отзыва.
+        /// </summary>
+        public static string FeedbackDeleting {
+            get {
+                return ResourceManager.GetString("FeedbackDeleting", resourceCulture);
             }
         }
         
@@ -781,11 +808,173 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Управление аккаунтом.
+        /// </summary>
+        public static string ManageAccount {
+            get {
+                return ResourceManager.GetString("ManageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Управление профилем.
         /// </summary>
         public static string ManageProfile {
             get {
                 return ResourceManager.GetString("ManageProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ансамбль национального танца под руководством Вердян Жанны Геннадьевны.
+        /// </summary>
+        public static string MetaAboutOgDescription {
+            get {
+                return ResourceManager.GetString("MetaAboutOgDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://www.caucasian-pearl.ru/content/img/site/social_share/aboutOgImage.png.
+        /// </summary>
+        public static string MetaAboutOgImage {
+            get {
+                return ResourceManager.GetString("MetaAboutOgImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ансамбль национального танца — «Жемчужина Кавказа».
+        /// </summary>
+        public static string MetaAboutOgTitle {
+            get {
+                return ResourceManager.GetString("MetaAboutOgTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ансамбль национального танца под руководством Вердян Жанны Геннадьевны.
+        /// </summary>
+        public static string MetaAfficheOgDescription {
+            get {
+                return ResourceManager.GetString("MetaAfficheOgDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://www.caucasian-pearl.ru/content/img/site/social_share/afficheOgImage.png.
+        /// </summary>
+        public static string MetaAfficheOgImage {
+            get {
+                return ResourceManager.GetString("MetaAfficheOgImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ансамбль национального танца — «Жемчужина Кавказа».
+        /// </summary>
+        public static string MetaAfficheOgTitle {
+            get {
+                return ResourceManager.GetString("MetaAfficheOgTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ансамбль национального танца под руководством Вердян Жанны Геннадьевны.
+        /// </summary>
+        public static string MetaDefaultOgDescription {
+            get {
+                return ResourceManager.GetString("MetaDefaultOgDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://www.caucasian-pearl.ru/content/img/site/social_share/defaultOgImage.png.
+        /// </summary>
+        public static string MetaDefaultOgImage {
+            get {
+                return ResourceManager.GetString("MetaDefaultOgImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ансамбль национального танца — «Жемчужина Кавказа».
+        /// </summary>
+        public static string MetaDefaultOgTitle {
+            get {
+                return ResourceManager.GetString("MetaDefaultOgTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ансамбль национального танца под руководством Вердян Жанны Геннадьевны.
+        /// </summary>
+        public static string MetaDescription {
+            get {
+                return ResourceManager.GetString("MetaDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ансамбль национального танца под руководством Вердян Жанны Геннадьевны.
+        /// </summary>
+        public static string MetaEventsOgDescription {
+            get {
+                return ResourceManager.GetString("MetaEventsOgDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://www.caucasian-pearl.ru/content/img/site/social_share/eventsOgImage.png.
+        /// </summary>
+        public static string MetaEventsOgImage {
+            get {
+                return ResourceManager.GetString("MetaEventsOgImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ансамбль национального танца — «Жемчужина Кавказа».
+        /// </summary>
+        public static string MetaEventsOgTitle {
+            get {
+                return ResourceManager.GetString("MetaEventsOgTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ансамбль национального танца под руководством Вердян Жанны Геннадьевны.
+        /// </summary>
+        public static string MetaHomeOgDescription {
+            get {
+                return ResourceManager.GetString("MetaHomeOgDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://www.caucasian-pearl.ru/content/img/site/social_share/homeOgImage.png.
+        /// </summary>
+        public static string MetaHomeOgImage {
+            get {
+                return ResourceManager.GetString("MetaHomeOgImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ансамбль национального танца — «Жемчужина Кавказа».
+        /// </summary>
+        public static string MetaHomeOgTitle {
+            get {
+                return ResourceManager.GetString("MetaHomeOgTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ансамбль,кавказ,танцы,выступление,народный.
+        /// </summary>
+        public static string MetaKeyWords {
+            get {
+                return ResourceManager.GetString("MetaKeyWords", resourceCulture);
             }
         }
         
@@ -840,6 +1029,15 @@ namespace Resources {
         public static string PasswordsAreRequiredToBeAminimumOf {
             get {
                 return ResourceManager.GetString("PasswordsAreRequiredToBeAminimumOf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пароль успешно сброшен. Установлен пароль по умолчанию.
+        /// </summary>
+        public static string PasswordSuccessfullyReseted {
+            get {
+                return ResourceManager.GetString("PasswordSuccessfullyReseted", resourceCulture);
             }
         }
         
@@ -934,6 +1132,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Регистрация нового пользователя.
+        /// </summary>
+        public static string RegisterNewAccount {
+            get {
+                return ResourceManager.GetString("RegisterNewAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удаление заявки.
+        /// </summary>
+        public static string RequestDeleting {
+            get {
+                return ResourceManager.GetString("RequestDeleting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Подробности заявки.
         /// </summary>
         public static string RequestDetails {
@@ -975,6 +1191,33 @@ namespace Resources {
         public static string RequestThanks {
             get {
                 return ResourceManager.GetString("RequestThanks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сбросить пароль.
+        /// </summary>
+        public static string ResetPassword {
+            get {
+                return ResourceManager.GetString("ResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Роль.
+        /// </summary>
+        public static string Role {
+            get {
+                return ResourceManager.GetString("Role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Роли.
+        /// </summary>
+        public static string Roles {
+            get {
+                return ResourceManager.GetString("Roles", resourceCulture);
             }
         }
         
@@ -1024,11 +1267,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Установить пароль.
+        /// </summary>
+        public static string SetPassword {
+            get {
+                return ResourceManager.GetString("SetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Настройка сайта.
         /// </summary>
         public static string SiteSetting {
             get {
                 return ResourceManager.GetString("SiteSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удаление настройки сайта.
+        /// </summary>
+        public static string SiteSettingDeleting {
+            get {
+                return ResourceManager.GetString("SiteSettingDeleting", resourceCulture);
             }
         }
         
@@ -1132,6 +1393,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Зарегистрируйтесь.
+        /// </summary>
+        public static string ToRegister {
+            get {
+                return ResourceManager.GetString("ToRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вверх.
         /// </summary>
         public static string Up {
@@ -1146,6 +1416,15 @@ namespace Resources {
         public static string Upload {
             get {
                 return ResourceManager.GetString("Upload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пользователь не имеет ни одной роли.
+        /// </summary>
+        public static string UserDontHaveAnyRole {
+            get {
+                return ResourceManager.GetString("UserDontHaveAnyRole", resourceCulture);
             }
         }
         
@@ -1204,6 +1483,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Вы вошли как.
+        /// </summary>
+        public static string YouLoggedInAs {
+            get {
+                return ResourceManager.GetString("YouLoggedInAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ваш пароль был изменён..
+        /// </summary>
+        public static string YourPasswordHasBeenChanged {
+            get {
+                return ResourceManager.GetString("YourPasswordHasBeenChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ваш пароль был успешно изменён.
         /// </summary>
         public static string YourPasswordHasBeenChangedSuccessfully {
@@ -1213,11 +1510,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ваш пароль был установлен..
+        /// </summary>
+        public static string YourPasswordHasBeenSet {
+            get {
+                return ResourceManager.GetString("YourPasswordHasBeenSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вы уверены, что хотите удалить?.
         /// </summary>
         public static string YouSureYouWantToDeleteThis {
             get {
                 return ResourceManager.GetString("YouSureYouWantToDeleteThis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вы уверены, что хотите удалить этот отзыв?.
+        /// </summary>
+        public static string YouSureYouWantToDeleteThisFeedback {
+            get {
+                return ResourceManager.GetString("YouSureYouWantToDeleteThisFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вы уверены, что хотите удалить эту настройку сайта?.
+        /// </summary>
+        public static string YouSureYouWantToDeleteThisSiteSettings {
+            get {
+                return ResourceManager.GetString("YouSureYouWantToDeleteThisSiteSettings", resourceCulture);
             }
         }
     }

@@ -5,13 +5,11 @@
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Models
 @using CaucasianPearl.Models.EDM;
-@using Resources
+@using CaucasianPearl.Resources;
 
 @model IEnumerable<ContentBlock>
 
-@{
-    ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.ContentBlocks);
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.ContentBlocks); }
 
 <p>
     @Html.ActionLink(
@@ -90,8 +88,7 @@
 
             <br />
 
-            @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
-            {
+            @if (User.IsInAnyRole(Consts.Roles.AdminContentManager)) {
                 <div>
                     <!-- Вверх -->
                     @Html.ActionLink(

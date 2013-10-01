@@ -1,12 +1,11 @@
 ﻿@using CaucasianPearl.Core.Constants
 @using CaucasianPearl.Core.Helpers
-@using Resources
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
+@using CaucasianPearl.Resources;
 
 @model CaucasianPearl.Models.EDM.Event
 
-@{
-    ViewBag.Title = string.Format("{0} | {1}", Model.Title, Consts.Title);
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", Model.Title, ViewRes.ProjectTitleShort); }
 
 <p>
     @* На домашнюю страницу *@
@@ -28,8 +27,7 @@
     @Model.Title
 </p>
 
-@if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
-{
+@if (User.IsInAnyRole(Consts.Roles.AdminContentManager)) {
     <p>
         <!-- Редактировать -->
         @Html.ActionLink(

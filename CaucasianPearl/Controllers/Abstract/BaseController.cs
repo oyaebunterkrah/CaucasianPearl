@@ -17,7 +17,7 @@ using CaucasianPearl.Core.Filters;
 using CaucasianPearl.Core.Helpers;
 using CaucasianPearl.Core.Services.LoggingService;
 using CaucasianPearl.Properties;
-using Resources;
+using CaucasianPearl.Resources;
 
 namespace CaucasianPearl.Controllers.Abstract
 {
@@ -30,13 +30,13 @@ namespace CaucasianPearl.Controllers.Abstract
         where T : class, IBase, new()
         where S : IBaseService<T>
     {
-        // Параметризованный конструктор.
+        // Параметризованный конструктор
         protected BaseController(S service)
         {
             _service = service;
         }
 
-        // Сервис для для работы с данными.
+        // Сервис для для работы с данными
         protected readonly S _service;
 
         // Свойство, определяющее, работает ли в списке объектов постраничный вывод.
@@ -48,7 +48,7 @@ namespace CaucasianPearl.Controllers.Abstract
         
         #region Actions
 
-        // Получение списка объектов.
+        // Получение списка объектов
         public virtual ActionResult Index()
         {
             var models = _service.Get(IsPageable);
@@ -59,7 +59,7 @@ namespace CaucasianPearl.Controllers.Abstract
             return View(models);
         }
 
-        // Получение объекта по его ID.
+        // Получение объекта по его ID
         public virtual ActionResult Details(int id)
         {
             var model = _service.Get(id);
@@ -72,40 +72,44 @@ namespace CaucasianPearl.Controllers.Abstract
             return View(model);
         }
 
-        // Открытие формы создания объекта.
+        // Открытие формы создания объекта
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
         public virtual ActionResult Create()
         {
             return View();
         }
 
-        // Обработка формы создания объекта.
+        // Обработка формы создания объекта
         [HttpPost]
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
-        public virtual ActionResult Create(T obj)
+        public virtual ActionResult Create(T model)
         {
             if (ModelState.IsValid)
             {
-                ModifyValuesOnCreate(obj);
+                ModifyValuesOnCreate(model);
 
-                _service.Create(obj);
+                // после ModifyValuesOnCreate ещё раз проверяем на валидность
+                if (ModelState.IsValid)
+                {
+                    _service.Create(model);
 
-                return OnCreated(obj);
+                    return OnCreated(model);
+                }
             }
 
             return View();
         }
 
-        // Обработка формы создания объекта без редиректа.
+        // Обработка формы создания объекта без редиректа
         [HttpPost]
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
-        public virtual void CreateExpress(T obj)
+        public virtual void CreateExpress(T model)
         {
             if (ModelState.IsValid)
             {
-                ModifyValuesOnCreate(obj);
+                ModifyValuesOnCreate(model);
 
-                _service.Create(obj);
+                _service.Create(model);
             }
         }
 
@@ -117,11 +121,11 @@ namespace CaucasianPearl.Controllers.Abstract
 
         [HttpPost]
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
-        public virtual ActionResult CreatePartial(T obj)
+        public virtual ActionResult CreatePartial(T model)
         {
             try
             {
-                CreateExpress(obj);
+                CreateExpress(model);
 
                 return Json(true);
             }
@@ -135,7 +139,7 @@ namespace CaucasianPearl.Controllers.Abstract
 
         [HttpPost]
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
-        public virtual ActionResult CreatePartialWithCaptcha(T obj, bool captchaValid, string captchaErrorMessage)
+        public virtual ActionResult CreatePartialWithCaptcha(T model, bool captchaValid, string captchaErrorMessage)
         {
             if (!WebSecurity.IsAuthenticated)
                 if (!captchaValid)
@@ -153,7 +157,7 @@ namespace CaucasianPearl.Controllers.Abstract
                     });
                 }
 
-                CreateExpress(obj);
+                CreateExpress(model);
 
                 return Json(new AjaxResultData { success = true });
             }
@@ -165,7 +169,7 @@ namespace CaucasianPearl.Controllers.Abstract
             }
         }
 
-        // Открытие формы редактирование объекта.
+        // Открытие формы редактирование объекта
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
         public virtual ActionResult Edit(int id)
         {
@@ -174,35 +178,40 @@ namespace CaucasianPearl.Controllers.Abstract
             return model == null ? View(Consts.Controllers.Error.Views.NotFound) : View(model);
         }
 
-        // Обработка формы редактирования объекта.
+        // Обработка формы редактирования объекта
         [HttpPost]
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
-        public virtual ActionResult Edit(int id, T obj)
+        public virtual ActionResult Edit(int id, T model)
         {
             if (ModelState.IsValid)
             {
-                if (TryUpdateModel(obj))
+                if (TryUpdateModel(model))
                 {
                     var old = _service.Get(id);
                     UpdateModel(old);
+
                     ModifyValuesOnEdit(old);
 
-                    _service.Update(old);
+                    // после ModifyValuesOnEdit ещё раз проверяем на валидность
+                    if (ModelState.IsValid)
+                    {
+                        _service.Update(old);
 
-                    return OnEdited(obj);
+                        return OnEdited(model);
+                    }
                 }
             }
 
-            return View(obj);
+            return View(model);
         }
 
-        // Обработка формы редактирования объекта без редиректа.
+        // Обработка формы редактирования объекта без редиректа
         [HttpPost]
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
-        public virtual void EditExpress(int id, T obj)
+        public virtual void EditExpress(int id, T model)
         {
             if (ModelState.IsValid)
-                if (TryUpdateModel(obj))
+                if (TryUpdateModel(model))
                 {
                     var old = _service.Get(id);
 
@@ -216,7 +225,7 @@ namespace CaucasianPearl.Controllers.Abstract
                 }
         }
 
-        // Открытие страницы с подтверждением удаления объекта.
+        // Открытие страницы с подтверждением удаления объекта
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
         public virtual ActionResult Delete(int id)
         {
@@ -227,7 +236,7 @@ namespace CaucasianPearl.Controllers.Abstract
             return View(model);
         }
 
-        // Удаление объекта после подтверждения.
+        // Удаление объекта после подтверждения
         [HttpPost]
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
         public virtual ActionResult Delete(int id, FormCollection formCollection)
@@ -259,7 +268,7 @@ namespace CaucasianPearl.Controllers.Abstract
                 _service.Delete(model);
         }
 
-        // Удаление объекта без перенаправления на страницу подтверждения.
+        // Удаление объекта без перенаправления на страницу подтверждения
         [Authorize(Roles = Consts.Roles.AdminContentManager)]
         public virtual ActionResult DeleteExpress(int id)
         {
@@ -287,50 +296,72 @@ namespace CaucasianPearl.Controllers.Abstract
 
         #region Virtual methods
 
-        // Перенаправление к странице списка объектов.
+        #region On...
+
+        // Перенаправление к странице списка объектов
         protected virtual ActionResult ReturnToList(T model)
         {
-            return RedirectToAction(Consts.Actions.Index,
-                                    new { page = Request.QueryString[Consts.QueryStringParameters.Page] });
+            return RedirectToAction(Consts.Actions.Index, new { page = Request.QueryString[Consts.QueryStringParameters.Page] });
         }
 
-        // Перенаправление к странице объекта.
-        protected virtual ActionResult ReturnToObject(T model)
+        // Перенаправление на страницу создания объекта
+        protected virtual ActionResult ReturnToCreate(T model)
         {
-            return RedirectToAction(Consts.Actions.Details,
-                                    new { id = model.ID, page = Request.QueryString[Consts.QueryStringParameters.Page] });
+            return RedirectToAction(Consts.Actions.Create, new { id = model.ID });
         }
 
-        // Перенаправление после создания объекта.
+        // Перенаправление на страницу редактирования объекта
+        protected virtual ActionResult ReturnToEdit(T model)
+        {
+            return RedirectToAction(Consts.Actions.Edit, new { id = model.ID });
+        }
+
+        // Перенаправление на страницу деталей объекта
+        protected virtual ActionResult ReturnToDetails(T model)
+        {
+            return RedirectToAction(Consts.Actions.Details, new { id = model.ID });
+        }
+
+        #endregion
+
+        #region On...
+
+        // Перенаправление после создания объекта
         protected virtual ActionResult OnCreated(T model)
         {
-            return ReturnToObject(model);
+            return ReturnToDetails(model);
         }
 
-        // Перенаправление после редактирования объекта.
+        // Перенаправление после редактирования объекта
         protected virtual ActionResult OnEdited(T model)
         {
-            return ReturnToObject(model);
+            return ReturnToDetails(model);
         }
 
-        // Перенаправление после удаления объекта.
+        // Перенаправление после удаления объекта
         protected virtual ActionResult OnDeleted(T model)
         {
             return ReturnToList(model);
         }
 
-        // Автоматическое добавление свойств объекта, не получаемых с формы создания объекта.
-        protected virtual void ModifyValuesOnCreate(T model) { }
-
-        // Изменение значений, полученных с формы создания/редактирования.
-        protected virtual void ModifyValuesOnEdit(T model) { }
-
-        // Изменение значений перед отображением.
-        protected virtual void ModifyValuesOnDetails(T model) { }
-
-        // Действия перед удалением объекта.
+        // Действия перед удалением объекта
         protected virtual void OnDelete(T model) { }
 
+        #endregion
+
+        #region ModifyValuesOn...
+
+        // Автоматическое добавление свойств объекта, не получаемых с формы создания объекта
+        protected virtual void ModifyValuesOnCreate(T model) { }
+
+        // Изменение значений, полученных с формы создания/редактирования
+        protected virtual void ModifyValuesOnEdit(T model) { }
+
+        // Изменение значений перед отображением
+        protected virtual void ModifyValuesOnDetails(T model) { }
+
+        #endregion
+        
         #endregion
     }
 }

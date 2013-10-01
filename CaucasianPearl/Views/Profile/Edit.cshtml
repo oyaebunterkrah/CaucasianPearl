@@ -1,57 +1,49 @@
 @using CaucasianPearl.Core.Constants
+@using CaucasianPearl.Core.Helpers
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Models.EDM
-@using Resources
+@using CaucasianPearl.Resources;
 
 @model Profile
 
-@{
-    ViewBag.Title = ViewRes.ProfileEditing;
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProfileEditing, ViewRes.ProjectTitleShort); }
 
 <p>
-    @* Отмена *@
+    @* отмена *@
     @Html.ActionLink(
         ViewRes.Cancel,
         actionName: Consts.Actions.GetByShortName,
         controllerName: Consts.Controllers.Profile.Name,
         routeValues: new
-            {
-                shortname = Model.ShortName,
-                page = Request.QueryString["page"]
-            },
+        {
+            shortname = Model.ShortName,
+            page = Request.QueryString["page"]
+        },
         htmlAttributes: new
-            {
-                @class = "link"
-            })
+        {
+            @class = "link"
+        })
 </p>
 
-<h2>@ViewRes.ProfileEditing</h2>
+<h2>@ViewRes.ProfileEditing: @Model.FirstName @Model.LastName</h2>
 
 <h3>@ViewRes.ImageForProfile</h3>
 
 @using (Html.BeginForm(
-            actionName: Consts.Controllers.Profile.Actions.UploadImage,
-            controllerName: Consts.Controllers.Profile.Name,
-            method: FormMethod.Post,
-            htmlAttributes: new
-            {
-                enctype = "multipart/form-data",
-                id = string.Format("uploadForm{0}", Model.ID)
-            }))
-{
+    actionName: Consts.Controllers.Profile.Actions.UploadImage,
+    controllerName: Consts.Controllers.Profile.Name,
+    method: FormMethod.Post,
+    htmlAttributes: new {
+        enctype = "multipart/form-data",
+        id = string.Format("uploadForm{0}", Model.ID)
+    })) {
     @Html.Hidden("profileId", Model.ID)
 
     <table>
         <tr>
             <td>
-                @{
-                    var filename = string.IsNullOrWhiteSpace(Model.ImageExt)
-                       ? Consts.DefaultImage
-                       : string.Format("{0}{1}", Model.ID, Model.ImageExt.TrimEnd());
-                }
-
                 <div class="model-image">
-                    <img src='@(Url.Content(Consts.Paths.Img.EntityImgFolder))/@(Consts.Controllers.Profile.ProfileImagesFolder)/@(filename)' />
+                    <img src='@Url.Content(ImageHelper.GetImageUrl(Model, Consts.Controllers.Profile.ProfileImagesFolder))' />
                 </div>
             </td>
             <td style="padding-left: 20px">
@@ -63,9 +55,8 @@
     </table>
 }
 
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true)
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary()
     <fieldset>
         <legend>@ViewRes.UserProfile</legend>
 
@@ -74,10 +65,28 @@
         @Html.Hidden("hiddendata", "hello")
 
         @Html.Partial(Consts.Views.CreateOrEdit, Model)
-
+        
         <p>
             <input id="submit" type="submit" value="@ViewRes.Save" />
         </p>
+
+        @if (User.IsInAnyRole(Consts.Roles.Admin)) {
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#btnResetPassword').click(function() {
+                        $.ajax({
+                            url: "/account/resetpassword",
+                            type: "post",
+                            data: { userName: '@Model.UserName', returnUrl: window.location.href },
+                            success: function(result) { alert(result); },
+                            error: function(result) { alert(result); }
+                        });
+                    });
+                });
+            </script>
+
+            <input id="btnResetPassword" type="button" value="@ViewRes.ResetPassword" />
+        }
     </fieldset>
 }
 

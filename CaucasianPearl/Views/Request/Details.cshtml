@@ -1,5 +1,6 @@
 @using CaucasianPearl.Core.Constants
-@using Resources
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
+@using CaucasianPearl.Resources;
 
 @model CaucasianPearl.Models.EDM.Request
 
@@ -44,7 +45,7 @@
             @Model.Comment
         </div>
 
-        @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
+        @if (User.IsInAnyRole(Consts.Roles.AdminContentManager))
         {
             <p>
                 @Html.ActionLink(

@@ -1,11 +1,10 @@
 @using CaucasianPearl.Core.Constants
-@using Resources
+@using CaucasianPearl.Core.Helpers.HtmlHelpers
+@using CaucasianPearl.Resources;
 
 @model CaucasianPearl.Models.EDM.Feedback
 
-@{
-    ViewBag.Title = ViewRes.Feedback;
-}
+@{ ViewBag.Title = string.Format("{0} | {1}", ViewRes.ProjectTitleShort, ViewRes.Events); }
 
 <h2>@ViewRes.Feedback: @Model.Name</h2>
 
@@ -22,25 +21,21 @@
         <span class="display-label">@ModelRes.Comment:</span>
         <div class="display-field">@Model.Comment</div>
 
-        @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
-        {
+        @if (User.IsInAnyRole(Consts.Roles.AdminContentManager)) {
             <span class="display-label">@ModelRes.IsApproved:</span>
             <div class="display-field">@Model.IsApproved</div>
         }
 
-        @if (WebSecurity.IsAuthenticated && (Roles.IsUserInRole(Consts.Roles.Admin) || Roles.IsUserInRole(Consts.Roles.ContentManager)))
-        {
+        @if (User.IsInAnyRole(Consts.Roles.AdminContentManager)) {
             <p>
                 @Html.ActionLink(
                     linkText: ViewRes.Edit,
                     actionName: Consts.Actions.Edit,
-                    routeValues: new { id = Model.ID }
-                        ) |
+                    routeValues: new { id = Model.ID }) |
                 @Html.ActionLink(
                     linkText: ViewRes.Delete,
                     actionName: Consts.Actions.Delete,
-                    routeValues: new { id = Model.ID }
-                        )
+                    routeValues: new { id = Model.ID })
             </p>
         }
     </div>

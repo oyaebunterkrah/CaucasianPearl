@@ -12,7 +12,7 @@ namespace CaucasianPearl.Core.EntityServices.Interface
         /// Возвращает профили пользователей.
         /// </summary>
         /// <returns>IEnumerable of Profile для Index</returns>
-        IEnumerable<Profile> GetProfiles();
+        IEnumerable<Profile> GetProfiles(bool isPageble);
 
         /// <summary>
         /// Возвращает участников ансамбля.

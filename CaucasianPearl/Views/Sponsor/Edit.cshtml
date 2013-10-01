@@ -2,7 +2,7 @@
 @using CaucasianPearl.Core.Helpers
 @using CaucasianPearl.Core.Helpers.HtmlHelpers
 @using CaucasianPearl.Core.UserControls
-@using Resources
+@using CaucasianPearl.Resources;
 
 @model CaucasianPearl.Models.EDM.Sponsor
 
@@ -68,7 +68,7 @@
 
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary(true)
+    @Html.ValidationSummary()
     <fieldset>
         <legend>@ViewRes.Sponsor</legend>
 

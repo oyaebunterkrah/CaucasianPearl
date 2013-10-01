@@ -59,8 +59,12 @@
             url: '/event/getneighborevents',
             type: 'POST',
             data: { eventId: eventId },
-            success: function (events) { onGetNeighborEventsSuccess(events); }
+            success: function (events) { onGetNeighborEventsSuccess(events); },
+            error: function() {
+                showError();
+            }
         };
+        
         ajaxRequest(options);
     };
 
@@ -86,8 +90,8 @@
 
             eventItemControl.find('.title').text(eventItem.Title);
             eventItemControl.find('.date').text(new Date(eventItem.EventDate).toDate());
+            eventItemControl.find('.title').text(eventItem.Title);
             eventItemControl.find('.description').text(eventItem.Description);
-            eventItemControl.find('.content').text(eventItem.Content);
 
             // div ס לוהטא פאיכאלט סמבûעטÿ
             var eventMediaItemsControl = eventItemControl.find('.event_media_items');
@@ -103,9 +107,10 @@
 
                 eventMediaItemControl.data({
                     eventid: eventMediaItem.EventId,
+                    mediaid: eventMediaItem.ID,
                     flickrurl: eventMediaItem.FlickrUrl,
                     description: eventMediaItem.Description,
-                    content: eventMediaItem.Content,
+                    title: eventMediaItem.Title,
                     caption: '#mediaItemInfo_{0}'.f(eventMediaItem.ID)
                 });
 
@@ -130,16 +135,16 @@
             var eventMediaItemsInfosControl = eventItemControl.find('.event_media_items_data');
 
             $.each(eventItem.EventMedia, function (k, eventMediaItem) {
-                if (eventMediaItem.Description != '' || eventMediaItem.Content != '') {
+                if (eventMediaItem.Title != '' || eventMediaItem.Description != '') {
                     var eventmediaItemInfoControl =
                     $('.event_media_item_info_template')
                         .find('.orbit-caption')
                         .clone();
 
-                    eventmediaItemInfoControl.attr({ id: 'thumbMediaItemInfo_{0}'.f(eventMediaItem.ID) });
+                    eventmediaItemInfoControl.attr({ id: 'mediaItemInfo_{0}'.f(eventMediaItem.ID) });
 
+                    eventmediaItemInfoControl.find('.title').html(eventMediaItem.Title);
                     eventmediaItemInfoControl.find('.description').html(eventMediaItem.Description);
-                    eventmediaItemInfoControl.find('.content').html(eventMediaItem.Content);
 
                     eventMediaItemsInfosControl.append(eventmediaItemInfoControl);
                 }

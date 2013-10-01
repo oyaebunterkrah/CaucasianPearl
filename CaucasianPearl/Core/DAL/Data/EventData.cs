@@ -76,7 +76,7 @@ namespace CaucasianPearl.Core.DAL.Data
         {
             ID = eventMedia.ID;
             EventId = eventMedia.EventId;
-            Content = StringHelper.DecodeScriptTags(eventMedia.Content);
+            Title = StringHelper.DecodeScriptTags(eventMedia.Title);
             Description = StringHelper.DecodeScriptTags(eventMedia.Description);
             FlickrUrl = eventMedia.FlickrUrl;
             IsPrimary = eventMedia.IsPrimary ?? false;
@@ -88,7 +88,7 @@ namespace CaucasianPearl.Core.DAL.Data
 
         public int ID { get; set; }
         public int? EventId { get; set; }
-        public string Content { get; set; }
+        public string Title { get; set; }
         public string Description { get; set; }
         public string FlickrUrl { get; set; }
         public bool? IsPrimary { get; set; }

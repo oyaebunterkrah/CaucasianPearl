@@ -153,6 +153,9 @@
   <data name="Required" xml:space="preserve">
     <value>Поле обязательно для заполнения</value>
   </data>
+  <data name="ShortNameRegex" xml:space="preserve">
+    <value>Только маленькие латинские буквы, цифры и подчёркивание</value>
+  </data>
   <data name="StringLengthMax" xml:space="preserve">
     <value>Поле "{0}" должно содержать не более {1} символов</value>
   </data>
